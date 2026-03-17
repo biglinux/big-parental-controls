@@ -1,0 +1,577 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the big-parental-controls package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: big-parental-controls\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
+msgid "Parental Controls"
+msgstr "Γονικοί Έλεγχοι"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 61
+msgid "Privacy Policy"
+msgstr "Πολιτική Απορρήτου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 65
+#, python-format
+msgid ""
+"This application does not collect, store, or transmit personal data. All processing happens locally "
+"on this device. No data is shared with third parties.\n"
+"\n"
+"Full policy: %s"
+msgstr ""
+"Αυτή η εφαρμογή δεν συλλέγει, δεν αποθηκεύει και δεν μεταδίδει προσωπικά δεδομένα. Όλη η "
+"επεξεργασία γίνεται τοπικά σε αυτή τη συσκευή. Δεν μοιράζεται κανένα δεδομένο με τρίτους.\n"
+"\n"
+"Πλήρης πολιτική: %s"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 27
+msgid "Home"
+msgstr "Αρχική"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
+msgid "Users"
+msgstr "Χρήστες"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
+msgid "Allowed Apps"
+msgstr "Επιτρεπόμενες Εφαρμογές"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 30
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 27
+msgid "Screen Time"
+msgstr "Χρόνος Οθόνης"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
+msgid "Web Filter"
+msgstr "Φίλτρο Ιστού"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 32
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 37
+msgid "Help"
+msgstr "Βοήθεια"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
+msgid "Add Supervised Account"
+msgstr "Προσθήκη Εποπτευόμενου Λογαριασμού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
+msgid "No supervised accounts"
+msgstr "Χωρίς επιτηρούμενους λογαριασμούς"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
+msgid "Error"
+msgstr "Σφάλμα"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
+msgid "Centro de Valorização da Vida — emotional support by phone or chat"
+msgstr "Κέντρο Αξιοποίησης της Ζωής — συναισθηματική υποστήριξη μέσω τηλεφώνου ή συνομιλίας"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
+msgid "Report and get help with online safety issues"
+msgstr "Αναφέρετε και ζητήστε βοήθεια σχετικά με ζητήματα διαδικτυακής ασφάλειας"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
+msgid "Disque 100"
+msgstr "Δίσκος 100"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
+msgid "Report violations of children's and adolescents' rights"
+msgstr "Αναφέρετε παραβιάσεις των δικαιωμάτων των παιδιών και των εφήβων."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
+msgid "Internet security guides and best practices"
+msgstr "Οδηγίες και βέλτιστες πρακτικές για την ασφάλεια του διαδικτύου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
+msgid ""
+"If you or someone you know needs help, you are not alone. These organizations provide free, "
+"confidential support — no one will judge you."
+msgstr ""
+"Αν εσείς ή κάποιος που γνωρίζετε χρειάζεται βοήθεια, δεν είστε μόνοι. Αυτές οι οργανώσεις παρέχουν "
+"δωρεάν, εμπιστευτική υποστήριξη — κανείς δεν θα σας κρίνει."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
+msgid "Emergency"
+msgstr "Έκτακτη ανάγκη"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
+msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
+msgstr "Σε περίπτωση άμεσου κινδύνου, καλέστε το 190 (Αστυνομία) ή το 192 (SAMU)"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
+msgid "These numbers are free and available 24/7"
+msgstr "Αυτοί οι αριθμοί είναι δωρεάν και διαθέσιμοι 24/7."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
+msgid "Child (under 10)"
+msgstr "Παιδί (κάτω των 10)"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
+msgid "Pre-teen (10–13)"
+msgstr "Προ-έφηβος (10–13)"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
+msgid "Teen (13–16)"
+msgstr "Έφηβος (13–16)"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
+msgid "Young adult (16–18)"
+msgstr "Νέοι ενήλικες (16–18)"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 70
+msgid ""
+"Supervised accounts have extra protections to keep children safe. Only a parent or guardian can "
+"change these settings."
+msgstr ""
+"Οι εποπτευόμενοι λογαριασμοί έχουν επιπλέον προστασίες για να διατηρούν τα παιδιά ασφαλή. Μόνο ένας "
+"γονέας ή κηδεμόνας μπορεί να αλλάξει αυτές τις ρυθμίσεις."
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 84
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 61
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 63
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 70
+msgid "No Supervised Accounts"
+msgstr "Χωρίς Εποπτευόμενους Λογαριασμούς"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
+msgid "Create a supervised account so a child can use this computer safely."
+msgstr ""
+"Δημιουργήστε έναν εποπτευόμενο λογαριασμό ώστε ένα παιδί να μπορεί να χρησιμοποιεί αυτόν τον "
+"υπολογιστή με ασφάλεια."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
+msgid "Supervised"
+msgstr "Επιτηρούμενη"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 142
+msgid "Administrator"
+msgstr "Διαχειριστής"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 144
+msgid "Standard"
+msgstr "Πρότυπο"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
+msgid "Remove supervised status"
+msgstr "Αφαίρεση επιβλεπόμενης κατάστασης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
+msgid "Make supervised"
+msgstr "Κάντε επιτηρούμενη"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
+msgid "Create Supervised Account"
+msgstr "Δημιουργία Εποπτευόμενου Λογαριασμού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 198
+msgid ""
+"Create a new account with protections for a child or teenager. This account will have safe settings "
+"by default."
+msgstr ""
+"Δημιουργήστε έναν νέο λογαριασμό με προστασίες για ένα παιδί ή έφηβο. Αυτός ο λογαριασμός θα έχει "
+"ασφαλείς ρυθμίσεις από προεπιλογή."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
+msgid "Username"
+msgstr "Όνομα χρήστη"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
+msgid "Full Name"
+msgstr "Πλήρες Όνομα"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
+msgid "Confirm Password"
+msgstr "Επιβεβαίωση Κωδικού Πρόσβασης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 221
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 293
+msgid "Passwords do not match."
+msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
+msgid "Age group"
+msgstr "Ηλικιακή ομάδα"
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 255
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 472
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 534
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 172
+msgid "Cancel"
+msgstr "Ακύρωση"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
+msgid "Create"
+msgstr "Δημιουργία"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
+msgid "Username and password are required."
+msgstr "Απαιτούνται όνομα χρήστη και κωδικός πρόσβασης."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 289
+msgid "Username must be 32 characters or less."
+msgstr "Το όνομα χρήστη πρέπει να έχει 32 χαρακτήρες ή λιγότερους."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 300
+msgid ""
+"Username must start with a lowercase letter and contain only letters, numbers, hyphens, and "
+"underscores."
+msgstr ""
+"Το όνομα χρήστη πρέπει να ξεκινά με πεζό γράμμα και να περιέχει μόνο γράμματα, αριθμούς, παύλες και "
+"κάτω παύλες."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 308
+#, python-format
+msgid "A user named '%s' already exists."
+msgstr "Ένας χρήστης με το όνομα '%s' υπάρχει ήδη."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 325
+msgid "Failed to prepare credentials."
+msgstr "Αποτυχία προετοιμασίας διαπιστευτηρίων."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
+msgid "Creating account…"
+msgstr "Δημιουργία λογαριασμού…"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
+msgid "Authentication was cancelled."
+msgstr "Η αυθεντικοποίηση ακυρώθηκε."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 363
+msgid "Helper script not found. Is the package installed correctly?"
+msgstr "Δεν βρέθηκε το βοηθητικό σενάριο. Είναι εγκατεστημένο σωστά το πακέτο;"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 367
+#, python-format
+msgid "Exit code %d"
+msgstr "Κωδικός εξόδου %d"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
+#, python-format
+msgid "Failed to create user account: %s"
+msgstr "Αποτυχία δημιουργίας λογαριασμού χρήστη: %s"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
+msgid "Remove Supervised Account"
+msgstr "Αφαίρεση Εποπτευόμενου Λογαριασμού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 466
+#, python-format
+msgid ""
+"What would you like to do with %s's account?\n"
+"\n"
+"• <b>Remove restrictions</b> keeps the account but removes all parental protections.\n"
+"• <b>Delete account</b> permanently removes the account and all their files."
+msgstr ""
+"Τι θα θέλατε να κάνετε με τον λογαριασμό του %s;\n"
+"\n"
+"• <b>Αφαίρεση περιορισμών</b> διατηρεί τον λογαριασμό αλλά αφαιρεί όλες τις γονικές προστασίες.\n"
+"• <b>Διαγραφή λογαριασμού</b> αφαιρεί μόνιμα τον λογαριασμό και όλα τα αρχεία του."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 473
+msgid "Remove Restrictions"
+msgstr "Αφαίρεση Περιορισμών"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
+msgid "Delete Account"
+msgstr "Διαγραφή Λογαριασμού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
+msgid "Add Supervision"
+msgstr "Προσθήκη Επίβλεψης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 521
+#, python-format
+msgid "Add protections to %s? Installing apps and changing settings will require a parent's permission."
+msgstr ""
+"Προσθέστε προστασίες στο %s; Η εγκατάσταση εφαρμογών και η αλλαγή ρυθμίσεων θα απαιτούν άδεια από "
+"γονέα."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 535
+msgid "Add Controls"
+msgstr "Προσθήκη Ελέγχων"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 579
+msgid "Failed to apply supervised controls."
+msgstr "Αποτυχία εφαρμογής επιτηρούμενων ελέγχων."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 18
+msgid "Manage supervised accounts for children"
+msgstr "Διαχείριση εποπτευόμενων λογαριασμών για παιδιά"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 23
+msgid "Choose which programs are available"
+msgstr "Επιλέξτε ποια προγράμματα είναι διαθέσιμα"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
+msgid "Set daily usage limits"
+msgstr "Ορίστε ημερήσια όρια χρήσης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 33
+msgid "Block harmful websites automatically"
+msgstr "Αυτόματη μπλοκάρισμα επιβλαβών ιστοσελίδων"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 38
+msgid "Find support contacts and resources"
+msgstr "Βρείτε επαφές υποστήριξης και πόρους"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 82
+msgid ""
+"Keep children safe on this computer. Everything works locally — age range data is shared with other "
+"apps on this device via D-Bus to adjust content, but nothing is sent to the internet."
+msgstr ""
+"Κρατήστε τα παιδιά ασφαλή σε αυτόν τον υπολογιστή. Όλα λειτουργούν τοπικά — τα δεδομένα ηλικιακής "
+"κατηγορίας μοιράζονται με άλλες εφαρμογές σε αυτή τη συσκευή μέσω D-Bus για να προσαρμόσουν το "
+"περιεχόμενο, αλλά τίποτα δεν αποστέλλεται στο διαδίκτυο."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
+msgid "Features"
+msgstr "Χαρακτηριστικά"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
+msgid "Your Privacy"
+msgstr "Η Ιδιωτικότητά σας"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 118
+msgid ""
+"This application does not collect, store, or transmit personal data. All settings stay on this "
+"device. You can read the full privacy policy in the About menu."
+msgstr ""
+"Αυτή η εφαρμογή δεν συλλέγει, αποθηκεύει ή μεταδίδει προσωπικά δεδομένα. Όλες οι ρυθμίσεις "
+"παραμένουν σε αυτή τη συσκευή. Μπορείτε να διαβάσετε την πλήρη πολιτική απορρήτου στο μενού "
+"\"Σχετικά\"."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 125
+msgid "Compliance"
+msgstr "Συμμόρφωση"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 128
+msgid "Follows ECA Digital (Law 15.211/2025), UK Children's Code and EU Digital Services Act"
+msgstr ""
+"Ακολουθεί τον Ψηφιακό Κώδικα ECA (Νόμος 15.211/2025), τον Κώδικα Παιδιών του Ηνωμένου Βασιλείου και "
+"τον Νόμο για τις Ψηφιακές Υπηρεσίες της ΕΕ."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
+msgid "Create one in the Users page to get started."
+msgstr "Δημιουργήστε ένα στη σελίδα Χρηστών για να ξεκινήσετε."
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 80
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 129
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 110
+msgid "Apply"
+msgstr "Εφαρμογή"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 210
+msgid "Failed to update app filter."
+msgstr "Αποτυχία ενημέρωσης φίλτρου εφαρμογής."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
+msgid "App permissions updated."
+msgstr "Οι άδειες της εφαρμογής ενημερώθηκαν."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 237
+msgid "Failed to apply file permissions."
+msgstr "Αποτυχία εφαρμογής δικαιωμάτων αρχείου."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 51
+msgid "Choose when the computer can be used. Outside these hours, this account will be locked."
+msgstr ""
+"Επιλέξτε πότε μπορεί να χρησιμοποιηθεί ο υπολογιστής. Εκτός αυτών των ωρών, αυτός ο λογαριασμός θα "
+"κλειδωθεί."
+# 
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 65
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 72
+msgid "Create one in the Users page first."
+msgstr "Δημιουργήστε ένα πρώτα στη σελίδα Χρηστών."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
+msgid "Allowed Hours"
+msgstr "Επιτρεπόμενες Ώρες"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
+msgid "Enable time limits"
+msgstr "Ενεργοποίηση χρονικών περιορισμών"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 75
+msgid "Only allow computer use during chosen hours"
+msgstr "Επιτρέψτε τη χρήση υπολογιστή μόνο κατά τις επιλεγμένες ώρες."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
+msgid "Add time range"
+msgstr "Προσθέστε εύρος χρόνου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
+msgid "Daily Usage Limit"
+msgstr "Ημερήσιο Όριο Χρήσης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
+msgid "Enable daily time limit"
+msgstr "Ενεργοποίηση ημερήσιου ορίου χρόνου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 107
+msgid "Automatically close the session after a set number of minutes"
+msgstr "Αυτόματη κλείσιμο της συνεδρίας μετά από καθορισμένο αριθμό λεπτών"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
+msgid "Minutes per day"
+msgstr "Λεπτά ανά ημέρα"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 117
+msgid "Session ends when this limit is reached"
+msgstr "Η συνεδρία λήγει όταν επιτευχθεί αυτό το όριο."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 175
+msgid "Start hour"
+msgstr "Ώρα έναρξης"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 192
+msgid "Start minute"
+msgstr "Έναρξη λεπτού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 211
+msgid "End hour"
+msgstr "Τέλος ώρας"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
+msgid "End minute"
+msgstr "Τέλος λεπτού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
+msgid "Remove this time range"
+msgstr "Αφαιρέστε αυτό το χρονικό διάστημα"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 377
+msgid "End time must be after start time in all ranges."
+msgstr "Ο χρόνος λήξης πρέπει να είναι μετά τον χρόνο έναρξης σε όλες τις περιοχές."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 420
+msgid "Time settings applied."
+msgstr "Οι ρυθμίσεις ώρας εφαρμόστηκαν."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 34
+msgid ""
+"If the internet stops working after turning this on, try disabling the web filter — some networks "
+"do not allow it."
+msgstr ""
+"Εάν το διαδίκτυο σταματήσει να λειτουργεί αφού το ενεργοποιήσετε, δοκιμάστε να απενεργοποιήσετε το "
+"φίλτρο ιστού — ορισμένα δίκτυα δεν το επιτρέπουν."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 58
+msgid ""
+"Turn on a web filter to automatically block websites that are not appropriate for children. Works "
+"with any browser."
+msgstr ""
+"Ενεργοποιήστε ένα φίλτρο ιστού για να αποκλείσετε αυτόματα ιστότοπους που δεν είναι κατάλληλοι για "
+"παιδιά. Λειτουργεί με οποιονδήποτε περιηγητή."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 79
+msgid "Filter Settings"
+msgstr "Ρυθμίσεις Φίλτρου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
+msgid "Enable web filter"
+msgstr "Ενεργοποίηση φίλτρου ιστού"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 82
+msgid "Automatically block inappropriate websites"
+msgstr "Αυτόματα αποκλείστε ακατάλληλες ιστοσελίδες"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 87
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
+msgid "Filter provider"
+msgstr "Πάροχος φίλτρου"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
+msgid "Primary DNS"
+msgstr "Πρωτεύων DNS"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 100
+msgid "Secondary DNS"
+msgstr "Δευτερεύων DNS"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 168
+msgid "Disable web filter?"
+msgstr "Απενεργοποίηση φίλτρου ιστού;"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 170
+msgid "Inappropriate websites will no longer be blocked for this account."
+msgstr "Οι ακατάλληλες ιστοσελίδες δεν θα αποκλείονται πλέον για αυτόν τον λογαριασμό."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 173
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
+msgid "Web filter disabled."
+msgstr "Ο φίλτρο ιστού είναι απενεργοποιημένο."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 220
+#, python-format
+msgid "Web filter set to %s."
+msgstr "Ο φίλτρο ιστού έχει ρυθμιστεί σε %s."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
+msgid "Primary DNS is required."
+msgstr "Απαιτείται κύρια DNS."
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 234
+msgid "Custom web filter configured."
+msgstr "Διαμορφωμένο φίλτρο ιστού προσαρμοσμένο."
