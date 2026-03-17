@@ -97,6 +97,10 @@ msgstr "Chyba"
 # 
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
 # 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
 msgstr "Centrum na podporu života — emocionálna podpora telefonicky alebo cez chat"

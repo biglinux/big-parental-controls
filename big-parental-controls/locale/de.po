@@ -97,6 +97,10 @@ msgstr "Fehler"
 # 
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
 # 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+# 
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
 msgstr "Centro de Valorisierung des Lebens — emotionale Unterstützung per Telefon oder Chat"
