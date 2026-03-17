@@ -1,0 +1,121 @@
+#!/bin/bash
+# Check supervised users daily time limits and terminate sessions that exceed them.
+# Executed by big-parental-time-check.timer every minute.
+set -e
+
+STATE_DIR="/var/lib/big-parental-controls"
+LIMITS_FILE="$STATE_DIR/time-limits.json"
+USAGE_FILE="$STATE_DIR/time-state.json"
+TODAY=$(date +%Y-%m-%d)
+
+[[ -f "$LIMITS_FILE" ]] || exit 0
+
+# Initialize usage file if missing or from a different day
+if [[ ! -f "$USAGE_FILE" ]]; then
+    echo '{}' > "$USAGE_FILE"
+fi
+
+python3 << 'PYEOF'
+import json
+import subprocess
+import sys
+from datetime import date, datetime
+
+STATE_DIR = "/var/lib/big-parental-controls"
+LIMITS_FILE = f"{STATE_DIR}/time-limits.json"
+USAGE_FILE = f"{STATE_DIR}/time-state.json"
+TODAY = date.today().isoformat()
+
+try:
+    with open(LIMITS_FILE) as f:
+        limits = json.load(f)
+except (OSError, json.JSONDecodeError):
+    sys.exit(0)
+
+try:
+    with open(USAGE_FILE) as f:
+        usage = json.load(f)
+except (OSError, json.JSONDecodeError):
+    usage = {}
+
+# Reset usage if day changed
+if usage.get("_date") != TODAY:
+    usage = {"_date": TODAY}
+
+changed = False
+
+for username, cfg in limits.items():
+    daily_minutes = cfg.get("daily_minutes", 0)
+    if daily_minutes <= 0:
+        continue
+
+    # Check if user has an active session
+    try:
+        result = subprocess.run(
+            ["loginctl", "show-user", username, "--property=State", "--value"],
+            capture_output=True, text=True, check=True
+        )
+        state = result.stdout.strip()
+    except subprocess.CalledProcessError:
+        continue
+
+    if state != "active":
+        continue
+
+    # Get session start timestamp
+    try:
+        result = subprocess.run(
+            ["loginctl", "show-user", username, "--property=Timestamp", "--value"],
+            capture_output=True, text=True, check=True
+        )
+        timestamp_str = result.stdout.strip()
+        # Parse "Mon 2026-03-16 17:34:24 -03" → datetime
+        # loginctl uses locale-dependent format, parse with flexibility
+        session_start = datetime.strptime(
+            " ".join(timestamp_str.split()[:3]),
+            "%a %Y-%m-%d %H:%M:%S"
+        )
+    except (subprocess.CalledProcessError, ValueError):
+        continue
+
+    now = datetime.now()
+    session_minutes = (now - session_start).total_seconds() / 60
+
+    # Track accumulated usage today
+    prev_used = usage.get(username, 0)
+    total_used = prev_used + 1  # Add 1 minute per check cycle
+
+    if total_used >= daily_minutes:
+        print(f"Time limit exceeded for {username}: {total_used}/{daily_minutes} min. Terminating session.")
+        # Send warning notification first (best effort)
+        try:
+            subprocess.run(
+                ["sudo", "-u", username, "notify-send",
+                 "--urgency=critical",
+                 "Time limit reached",
+                 f"Your daily computer time of {daily_minutes} minutes has been used up."],
+                check=False, timeout=5
+            )
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+            pass
+
+        # Wait 60 seconds for the notification to be seen, then terminate
+        # (the actual termination happens on the next timer cycle)
+        if total_used >= daily_minutes + 1:
+            try:
+                subprocess.run(
+                    ["loginctl", "terminate-user", username],
+                    check=True
+                )
+                print(f"Session terminated for {username}")
+            except subprocess.CalledProcessError:
+                print(f"Failed to terminate session for {username}", file=sys.stderr)
+
+    usage[username] = total_used
+    changed = True
+
+if changed:
+    usage["_date"] = TODAY
+    with open(USAGE_FILE, "w") as f:
+        json.dump(usage, f, indent=2)
+PYEOF

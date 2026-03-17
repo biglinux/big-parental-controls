@@ -1,0 +1,635 @@
+#!/bin/bash
+# Helper script for big-parental-controls.
+# Runs via pkexec for privilege escalation.
+set -e
+
+GROUP="supervised"
+STATE_DIR="/var/lib/big-parental-controls"
+ACL_STATE="$STATE_DIR/acl-blocks.json"
+
+# Ensure state directory exists
+mkdir -p "$STATE_DIR"
+
+# Validate username: only alphanumeric, dash, underscore
+validate_username() {
+    [[ "$1" =~ ^[a-zA-Z0-9_-]+$ ]] || { echo "Invalid username" >&2; exit 1; }
+}
+
+# Validate path: must be absolute and exist
+validate_path() {
+    [[ "$1" == /* ]] || { echo "Path must be absolute" >&2; exit 1; }
+    [[ -e "$1" ]] || { echo "Path does not exist: $1" >&2; exit 1; }
+}
+
+# Get user home directory from passwd
+get_home() {
+    getent passwd "$1" | cut -d: -f6
+}
+
+case "$1" in
+    add)
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        groupadd -r "$GROUP" 2>/dev/null || true
+        usermod -aG "$GROUP" "$2"
+        ;;
+    create-full)
+        # Usage: create-full USERNAME FULLNAME PWFILE
+        # Password is read from a temp file created by the caller (mode 0600).
+        # The file is deleted immediately after reading.
+        # Creates user + adds to supervised + applies all default enforcement
+        [[ -z "$2" || -z "$3" || -z "$4" ]] && { echo "Usage: create-full USERNAME FULLNAME PWFILE" >&2; exit 1; }
+        validate_username "$2"
+        USERNAME="$2"
+        FULLNAME="$3"
+        PWFILE="$4"
+
+        # Read and immediately remove the temp file
+        [[ -f "$PWFILE" ]] || { echo "Password file not found" >&2; exit 1; }
+        PASSWORD=$(cat "$PWFILE")
+        rm -f "$PWFILE"
+        [[ -z "$PASSWORD" ]] && { echo "Password required" >&2; exit 1; }
+
+        # Create user as standard account
+        useradd -m -c "$FULLNAME" -s /bin/bash "$USERNAME" || exit 1
+        printf '%s:%s' "$USERNAME" "$PASSWORD" | chpasswd || exit 1
+
+        # Add to supervised group
+        groupadd -r "$GROUP" 2>/dev/null || true
+        usermod -aG "$GROUP" "$USERNAME"
+
+        # Apply default ACL blocks
+        DEFAULT_BLOCKS=(
+            /usr/bin/pacman
+            /usr/bin/pamac-manager
+            /usr/bin/pamac-installer
+            /usr/bin/pamac-daemon
+            /usr/bin/yay
+            /usr/bin/paru
+            /usr/bin/flatpak
+            /usr/bin/snap
+            /usr/bin/docker
+            /usr/bin/podman
+            /usr/bin/ncat
+            /usr/bin/nmap
+            /usr/bin/socat
+            /usr/bin/curl
+            /usr/bin/wget
+            /usr/bin/ssh
+        )
+        for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+        done
+
+        # Save ACL state
+        if [[ -f "$ACL_STATE" ]]; then
+            CURRENT=$(cat "$ACL_STATE")
+        else
+            CURRENT="{}"
+        fi
+        BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
+import json, os
+state = json.loads(os.environ["BPC_STATE"])
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/docker","/usr/bin/podman","/usr/bin/ncat","/usr/bin/nmap","/usr/bin/socat","/usr/bin/curl","/usr/bin/wget","/usr/bin/ssh"] if os.path.exists(p)]
+state[os.environ["BPC_USER"]] = blocks
+print(json.dumps(state, indent=2))
+' > "$ACL_STATE" 2>/dev/null || true
+        chmod 644 "$ACL_STATE"
+
+        HOME_DIR=$(get_home "$USERNAME")
+
+        # Hide blocked apps from desktop menu
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        mkdir -p "$APPS_DIR"
+        for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -e "$path" ]] || continue
+            BINARY=$(basename "$path")
+            # Find .desktop files that reference this binary
+            for desktop in /usr/share/applications/*.desktop; do
+                [[ -f "$desktop" ]] || continue
+                if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
+                    DESKTOP_NAME=$(basename "$desktop")
+                    cat > "$APPS_DIR/$DESKTOP_NAME" << DEOF
+[Desktop Entry]
+NoDisplay=true
+DEOF
+                    chown "${USERNAME}:${USERNAME}" "$APPS_DIR/$DESKTOP_NAME"
+                fi
+            done
+        done
+
+        # Enable noexec on /tmp and /dev/shm
+        mkdir -p /etc/systemd/system/tmp.mount.d
+        cat > /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf << TEOF
+[Mount]
+Options=mode=1777,strictatime,noexec,nosuid,nodev
+TEOF
+        mkdir -p /etc/systemd/system/dev-shm.mount.d
+        cat > /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf << SEOF
+[Mount]
+Options=nosuid,noexec,nodev
+SEOF
+        systemctl daemon-reload
+        mount -o remount,noexec,nosuid,nodev /tmp 2>/dev/null || true
+        mount -o remount,noexec,nosuid,nodev /dev/shm 2>/dev/null || true
+        ;;
+    remove)
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        gpasswd -d "$2" "$GROUP"
+        ;;
+    enforce-defaults)
+        # Usage: enforce-defaults USERNAME
+        # Adds user to supervised group + applies all default enforcement
+        # Used for existing users being made supervised
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        USERNAME="$2"
+
+        # Add to supervised group
+        groupadd -r "$GROUP" 2>/dev/null || true
+        usermod -aG "$GROUP" "$USERNAME"
+
+        # Apply default ACL blocks
+        DEFAULT_BLOCKS=(
+            /usr/bin/pacman
+            /usr/bin/pamac-manager
+            /usr/bin/pamac-installer
+            /usr/bin/pamac-daemon
+            /usr/bin/yay
+            /usr/bin/paru
+            /usr/bin/flatpak
+            /usr/bin/snap
+            /usr/bin/docker
+            /usr/bin/podman
+            /usr/bin/ncat
+            /usr/bin/nmap
+            /usr/bin/socat
+            /usr/bin/curl
+            /usr/bin/wget
+            /usr/bin/ssh
+        )
+        for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+        done
+
+        # Save ACL state
+        if [[ -f "$ACL_STATE" ]]; then
+            CURRENT=$(cat "$ACL_STATE")
+        else
+            CURRENT="{}"
+        fi
+        BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
+import json, os
+state = json.loads(os.environ["BPC_STATE"])
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/docker","/usr/bin/podman","/usr/bin/ncat","/usr/bin/nmap","/usr/bin/socat","/usr/bin/curl","/usr/bin/wget","/usr/bin/ssh"] if os.path.exists(p)]
+state[os.environ["BPC_USER"]] = blocks
+print(json.dumps(state, indent=2))
+' > "$ACL_STATE" 2>/dev/null || true
+        chmod 644 "$ACL_STATE"
+
+        HOME_DIR=$(get_home "$USERNAME")
+
+        # Hide blocked apps from desktop menu
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        mkdir -p "$APPS_DIR"
+        for path in "${DEFAULT_BLOCKS[@]}"; do
+            [[ -e "$path" ]] || continue
+            BINARY=$(basename "$path")
+            for desktop in /usr/share/applications/*.desktop; do
+                [[ -f "$desktop" ]] || continue
+                if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
+                    DESKTOP_NAME=$(basename "$desktop")
+                    cat > "$APPS_DIR/$DESKTOP_NAME" << DEOF
+[Desktop Entry]
+NoDisplay=true
+DEOF
+                    chown "${USERNAME}:${USERNAME}" "$APPS_DIR/$DESKTOP_NAME"
+                fi
+            done
+        done
+
+        # Enable noexec on /tmp and /dev/shm
+        mkdir -p /etc/systemd/system/tmp.mount.d
+        cat > /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf << TEOF
+[Mount]
+Options=mode=1777,strictatime,noexec,nosuid,nodev
+TEOF
+        mkdir -p /etc/systemd/system/dev-shm.mount.d
+        cat > /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf << SEOF
+[Mount]
+Options=nosuid,noexec,nodev
+SEOF
+        systemctl daemon-reload
+        mount -o remount,noexec,nosuid,nodev /tmp 2>/dev/null || true
+        mount -o remount,noexec,nosuid,nodev /dev/shm 2>/dev/null || true
+        ;;
+    acl-apply)
+        # Usage: acl-apply USERNAME PATH
+        [[ -z "$2" || -z "$3" ]] && exit 1
+        validate_username "$2"
+        validate_path "$3"
+        setfacl -m "u:$2:---" "$3"
+        ;;
+    acl-remove)
+        # Usage: acl-remove USERNAME PATH
+        [[ -z "$2" || -z "$3" ]] && exit 1
+        validate_username "$2"
+        validate_path "$3"
+        setfacl -x "u:$2" "$3" 2>/dev/null || true
+        ;;
+    acl-save-state)
+        # Usage: acl-save-state JSON_DATA
+        [[ -z "$2" ]] && exit 1
+        # Validate it's valid JSON before writing
+        echo "$2" | python3 -c "import sys,json; json.load(sys.stdin)" 2>/dev/null || { echo "Invalid JSON" >&2; exit 1; }
+        echo "$2" > "$ACL_STATE"
+        chmod 644 "$ACL_STATE"
+        ;;
+    acl-reapply)
+        # Re-apply all ACLs from state file (used by pacman hook)
+        [[ -f "$ACL_STATE" ]] || exit 0
+        BPC_ACL_FILE="$ACL_STATE" python3 -c '
+import json, subprocess, os, sys
+with open(os.environ["BPC_ACL_FILE"]) as f:
+    state = json.load(f)
+count = 0
+for user, paths in state.items():
+    for path in paths:
+        if os.path.exists(path):
+            try:
+                subprocess.run(["setfacl", "-m", f"u:{user}:---", path], check=True)
+                count += 1
+            except subprocess.CalledProcessError:
+                print(f"Warning: failed to reapply ACL on {path} for {user}", file=sys.stderr)
+print(f"Re-applied {count} ACL(s)")
+'
+        ;;
+    desktop-hide)
+        # Usage: desktop-hide USERNAME DESKTOP_ID
+        [[ -z "$2" || -z "$3" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        [[ -d "$HOME_DIR" ]] || exit 1
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        mkdir -p "$APPS_DIR"
+        # Write NoDisplay override
+        cat > "$APPS_DIR/$3" << EOF
+[Desktop Entry]
+NoDisplay=true
+EOF
+        chown "$2":"$2" "$APPS_DIR/$3"
+        ;;
+    desktop-unhide)
+        # Usage: desktop-unhide USERNAME DESKTOP_ID
+        [[ -z "$2" || -z "$3" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        OVERRIDE="$HOME_DIR/.local/share/applications/$3"
+        [[ -f "$OVERRIDE" ]] && rm -f "$OVERRIDE"
+        ;;
+    desktop-unhide-all)
+        # Usage: desktop-unhide-all USERNAME
+        # Remove only our NoDisplay overrides (files containing ONLY NoDisplay=true)
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        [[ -d "$APPS_DIR" ]] || exit 0
+        for f in "$APPS_DIR"/*.desktop; do
+            [[ -f "$f" ]] || continue
+            # Only remove if it's our minimal NoDisplay override (2 lines)
+            lines=$(wc -l < "$f")
+            if [[ "$lines" -le 3 ]] && grep -q "NoDisplay=true" "$f"; then
+                rm -f "$f"
+            fi
+        done
+        ;;
+    refresh-menu-cache)
+        # Usage: refresh-menu-cache USERNAME
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        if command -v kbuildsycoca6 &>/dev/null; then
+            su - "$2" -c "kbuildsycoca6 --noincremental" 2>/dev/null || true
+        fi
+        ;;
+    noexec-enable)
+        # Usage: noexec-enable USERNAME
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        HOME_DIR=$(get_home "$2")
+        [[ -d "$HOME_DIR" ]] || exit 1
+        # Escape path for systemd unit name: replace / with -
+        UNIT_NAME="home-${2}.mount"
+        cat > "/etc/systemd/system/$UNIT_NAME" << EOF
+[Unit]
+Description=Noexec mount for supervised user $2
+After=local-fs.target
+
+[Mount]
+What=$HOME_DIR
+Where=$HOME_DIR
+Type=none
+Options=bind,noexec,nosuid,nodev
+
+[Install]
+WantedBy=multi-user.target
+EOF
+        systemctl daemon-reload
+        systemctl enable --now "$UNIT_NAME"
+        ;;
+    noexec-disable)
+        # Usage: noexec-disable USERNAME
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        UNIT_NAME="home-${2}.mount"
+        systemctl disable --now "$UNIT_NAME" 2>/dev/null || true
+        rm -f "/etc/systemd/system/$UNIT_NAME"
+        systemctl daemon-reload
+        ;;
+    noexec-tmp-enable)
+        # Enable noexec on /tmp and /dev/shm via systemd drop-in + immediate remount
+        mkdir -p /etc/systemd/system/tmp.mount.d
+        cat > /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf << EOF
+[Mount]
+Options=mode=1777,strictatime,noexec,nosuid,nodev
+EOF
+        mkdir -p /etc/systemd/system/dev-shm.mount.d
+        cat > /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf << EOF
+[Mount]
+Options=nosuid,noexec,nodev
+EOF
+        systemctl daemon-reload
+        # Immediate remount for current session
+        mount -o remount,noexec,nosuid,nodev /tmp 2>/dev/null || true
+        mount -o remount,noexec,nosuid,nodev /dev/shm 2>/dev/null || true
+        ;;
+    noexec-tmp-disable)
+        # Remove noexec drop-ins for /tmp and /dev/shm + immediate remount
+        rm -f /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf
+        rm -f /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf
+        rmdir /etc/systemd/system/tmp.mount.d 2>/dev/null || true
+        rmdir /etc/systemd/system/dev-shm.mount.d 2>/dev/null || true
+        systemctl daemon-reload
+        # Immediate remount to restore exec permissions
+        mount -o remount,exec /tmp 2>/dev/null || true
+        mount -o remount,exec /dev/shm 2>/dev/null || true
+        ;;
+    time-schedule-set)
+        # Usage: time-schedule-set USERNAME TIMESPEC
+        # TIMESPEC format: "Wk0800-2000|Wd0900-1800" (pam_time format)
+        [[ -z "$2" || -z "$3" ]] && exit 1
+        validate_username "$2"
+        CONF="/etc/security/time.conf"
+        # Remove existing entry for this user
+        sed -i "/^\\*;\\*;$2;/d" "$CONF"
+        # Add new entry
+        echo "*;*;$2;$3" >> "$CONF"
+        ;;
+    time-schedule-remove)
+        # Usage: time-schedule-remove USERNAME
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        CONF="/etc/security/time.conf"
+        sed -i "/^\\*;\\*;$2;/d" "$CONF"
+        ;;
+    time-limit-save)
+        # Usage: time-limit-save JSON_DATA
+        [[ -z "$2" ]] && exit 1
+        echo "$2" | python3 -c "import sys,json; json.load(sys.stdin)" 2>/dev/null || { echo "Invalid JSON" >&2; exit 1; }
+        echo "$2" > "$STATE_DIR/time-limits.json"
+        chmod 644 "$STATE_DIR/time-limits.json"
+        ;;
+    time-timer-enable)
+        # Install and enable the time check timer
+        cat > /etc/systemd/system/big-parental-time-check.service << EOF
+[Unit]
+Description=Check supervised users daily time limits
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/big-parental-controls/time-check
+EOF
+        cat > /etc/systemd/system/big-parental-time-check.timer << EOF
+[Unit]
+Description=Parental controls daily time limit check
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target
+EOF
+        systemctl daemon-reload
+        systemctl enable --now big-parental-time-check.timer
+        ;;
+    time-timer-disable)
+        systemctl disable --now big-parental-time-check.timer 2>/dev/null || true
+        rm -f /etc/systemd/system/big-parental-time-check.timer
+        rm -f /etc/systemd/system/big-parental-time-check.service
+        systemctl daemon-reload
+        ;;
+    remove-full)
+        # Usage: remove-full USERNAME
+        # Complete cleanup: ACLs + desktop + time + group + noexec + /tmp
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        USERNAME="$2"
+        HOME_DIR=$(get_home "$USERNAME")
+
+        # 1. Remove all ACLs from state
+        if [[ -f "$ACL_STATE" ]]; then
+            BPC_ACL_FILE="$ACL_STATE" BPC_USER="$USERNAME" python3 -c '
+import json, subprocess, os
+acl_file = os.environ["BPC_ACL_FILE"]
+username = os.environ["BPC_USER"]
+with open(acl_file) as f:
+    state = json.load(f)
+if username in state:
+    for path in state[username]:
+        if os.path.exists(path):
+            subprocess.run(["setfacl", "-x", f"u:{username}", path], check=False)
+    del state[username]
+    with open(acl_file, "w") as f:
+        json.dump(state, f, indent=2)
+' 2>/dev/null || true
+        fi
+
+        # 2. Remove desktop NoDisplay overrides
+        if [[ -d "$HOME_DIR/.local/share/applications" ]]; then
+            for f in "$HOME_DIR/.local/share/applications"/*.desktop; do
+                [[ -f "$f" ]] || continue
+                lines=$(wc -l < "$f")
+                if [[ "$lines" -le 3 ]] && grep -q "NoDisplay=true" "$f"; then
+                    rm -f "$f"
+                fi
+            done
+        fi
+
+        # 3. Refresh menu cache
+        if command -v kbuildsycoca6 &>/dev/null; then
+            su - "$USERNAME" -c "kbuildsycoca6 --noincremental" 2>/dev/null || true
+        fi
+
+        # 4. Remove time schedule
+        CONF="/etc/security/time.conf"
+        sed -i "/^\\*;\\*;${USERNAME};/d" "$CONF" 2>/dev/null || true
+
+        # 5. Remove time limits from state
+        LIMITS_FILE="$STATE_DIR/time-limits.json"
+        if [[ -f "$LIMITS_FILE" ]]; then
+            BPC_LIMITS_FILE="$LIMITS_FILE" BPC_USER="$USERNAME" python3 -c '
+import json, os
+limits_file = os.environ["BPC_LIMITS_FILE"]
+username = os.environ["BPC_USER"]
+with open(limits_file) as f:
+    data = json.load(f)
+data.pop(username, None)
+with open(limits_file, "w") as f:
+    json.dump(data, f, indent=2)
+' 2>/dev/null || true
+        fi
+
+        # 6. Remove from supervised group
+        gpasswd -d "$USERNAME" "$GROUP" 2>/dev/null || true
+
+        # 7. Disable noexec on user home
+        UNIT_NAME="home-${USERNAME}.mount"
+        systemctl disable --now "$UNIT_NAME" 2>/dev/null || true
+        rm -f "/etc/systemd/system/$UNIT_NAME"
+
+        # 8. Check if any supervised users remain
+        if getent group "$GROUP" &>/dev/null; then
+            MEMBERS=$(getent group "$GROUP" | cut -d: -f4)
+        else
+            MEMBERS=""
+        fi
+        if [[ -z "$MEMBERS" ]]; then
+            # No more supervised users — clean up system-wide protections
+            rm -f /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf
+            rm -f /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf
+            rmdir /etc/systemd/system/tmp.mount.d 2>/dev/null || true
+            rmdir /etc/systemd/system/dev-shm.mount.d 2>/dev/null || true
+            mount -o remount,exec /tmp 2>/dev/null || true
+            mount -o remount,exec /dev/shm 2>/dev/null || true
+            systemctl disable --now big-parental-time-check.timer 2>/dev/null || true
+            rm -f /etc/systemd/system/big-parental-time-check.timer
+            rm -f /etc/systemd/system/big-parental-time-check.service
+        fi
+        systemctl daemon-reload
+        ;;
+    acl-batch)
+        # Usage: acl-batch USERNAME BLOCK_CSV UNBLOCK_CSV
+        # BLOCK_CSV / UNBLOCK_CSV are comma-separated absolute paths (or empty string "")
+        # Applies setfacl + desktop NoDisplay in one shot
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        USERNAME="$2"
+        BLOCK_CSV="$3"
+        UNBLOCK_CSV="$4"
+        HOME_DIR=$(get_home "$USERNAME")
+        APPS_DIR="$HOME_DIR/.local/share/applications"
+        mkdir -p "$APPS_DIR"
+
+        # Load current ACL state
+        if [[ -f "$ACL_STATE" ]]; then
+            CURRENT_STATE=$(cat "$ACL_STATE")
+        else
+            CURRENT_STATE="{}"
+        fi
+
+        # Parse current user blocks from state
+        EXISTING_BLOCKS=$(BPC_STATE="$CURRENT_STATE" BPC_USER="$USERNAME" python3 -c '
+import json, os
+state = json.loads(os.environ["BPC_STATE"])
+for p in state.get(os.environ["BPC_USER"], []):
+    print(p)
+' 2>/dev/null || true)
+
+        # Process blocks
+        if [[ -n "$BLOCK_CSV" && "$BLOCK_CSV" != "" ]]; then
+            IFS=',' read -ra BLOCK_PATHS <<< "$BLOCK_CSV"
+            for path in "${BLOCK_PATHS[@]}"; do
+                [[ -e "$path" ]] || continue
+                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
+                # Hide from desktop menu
+                BINARY=$(basename "$path")
+                for desktop in /usr/share/applications/*.desktop; do
+                    [[ -f "$desktop" ]] || continue
+                    if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
+                        DESKTOP_NAME=$(basename "$desktop")
+                        cat > "$APPS_DIR/$DESKTOP_NAME" << DEOF
+[Desktop Entry]
+NoDisplay=true
+DEOF
+                        chown "${USERNAME}:${USERNAME}" "$APPS_DIR/$DESKTOP_NAME"
+                    fi
+                done
+            done
+        fi
+
+        # Process unblocks
+        if [[ -n "$UNBLOCK_CSV" && "$UNBLOCK_CSV" != "" ]]; then
+            IFS=',' read -ra UNBLOCK_PATHS <<< "$UNBLOCK_CSV"
+            for path in "${UNBLOCK_PATHS[@]}"; do
+                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null || true
+                # Unhide from desktop menu
+                BINARY=$(basename "$path")
+                for desktop in /usr/share/applications/*.desktop; do
+                    [[ -f "$desktop" ]] || continue
+                    if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
+                        DESKTOP_NAME=$(basename "$desktop")
+                        rm -f "$APPS_DIR/$DESKTOP_NAME"
+                    fi
+                done
+            done
+        fi
+
+        # Update ACL state JSON
+        BPC_STATE="$CURRENT_STATE" BPC_USER="$USERNAME" BPC_BLOCK="$BLOCK_CSV" BPC_UNBLOCK="$UNBLOCK_CSV" python3 -c '
+import json, os
+state = json.loads(os.environ["BPC_STATE"])
+username = os.environ["BPC_USER"]
+current = set(state.get(username, []))
+block_csv = os.environ.get("BPC_BLOCK", "")
+unblock_csv = os.environ.get("BPC_UNBLOCK", "")
+if block_csv:
+    for p in block_csv.split(","):
+        if os.path.exists(p):
+            current.add(p)
+if unblock_csv:
+    for p in unblock_csv.split(","):
+        current.discard(p)
+state[username] = sorted(current)
+print(json.dumps(state, indent=2))
+' > "$ACL_STATE" 2>/dev/null || true
+        chmod 644 "$ACL_STATE"
+        ;;
+    dns-set)
+        # Usage: dns-set UID JSON_DATA
+        # Write DNS config for a user UID
+        [[ -z "$2" || -z "$3" ]] && { echo "Usage: dns-set UID JSON_DATA" >&2; exit 1; }
+        [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
+        DNS_DIR="/etc/big-parental-controls/dns"
+        mkdir -p "$DNS_DIR"
+        # Validate JSON
+        echo "$3" | python3 -c "import sys,json; json.load(sys.stdin)" 2>/dev/null || { echo "Invalid JSON" >&2; exit 1; }
+        echo "$3" > "$DNS_DIR/$2.json"
+        chmod 644 "$DNS_DIR/$2.json"
+        ;;
+    dns-remove)
+        # Usage: dns-remove UID
+        # Remove DNS config for a user UID
+        [[ -z "$2" ]] && { echo "Usage: dns-remove UID" >&2; exit 1; }
+        [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
+        DNS_DIR="/etc/big-parental-controls/dns"
+        rm -f "$DNS_DIR/$2.json"
+        # Remove login script hook
+        rm -f "/etc/profile.d/big-dns-$2.sh"
+        ;;
+    *)
+        echo "Unknown command: $1" >&2
+        exit 1
+        ;;
+esac

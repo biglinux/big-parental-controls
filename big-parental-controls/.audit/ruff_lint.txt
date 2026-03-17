@@ -1,0 +1,443 @@
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/app.py:10:1
+   |
+ 8 | gi.require_version("Adw", "1")
+ 9 | gi.require_version("Gdk", "4.0")
+10 | from gi.repository import Adw, Gdk, Gio, Gtk
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |
+12 | from window import MainWindow
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/app.py:12:1
+   |
+10 | from gi.repository import Adw, Gdk, Gio, Gtk
+11 |
+12 | from window import MainWindow
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/app.py:13:1
+   |
+12 | from window import MainWindow
+13 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14 |
+15 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/dbus/age_signal.py:13:1
+   |
+12 | gi.require_version("Gio", "2.0")
+13 | from gi.repository import Gio, GLib
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14 |
+15 | BUS_NAME = "br.com.biglinux.AgeSignal"
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/main.py:12:1
+   |
+10 |     sys.path.insert(0, APP_DIR)
+11 |
+12 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 |
+14 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/main.py:16:1
+   |
+14 | _ = setup_i18n()
+15 |
+16 | from app import ParentalControlsApp
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/app_filter_page.py:10:1
+   |
+ 8 | gi.require_version("Gtk", "4.0")
+ 9 | gi.require_version("Adw", "1")
+10 | from gi.repository import Adw, Gio, GLib, Gtk
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |
+12 | from services.accounts_service import AccountsServiceWrapper
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/app_filter_page.py:12:1
+   |
+10 | from gi.repository import Adw, Gio, GLib, Gtk
+11 |
+12 | from services.accounts_service import AccountsServiceWrapper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 | from services.malcontent_service import MalcontentService
+14 | from services import acl_service
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/app_filter_page.py:13:1
+   |
+12 | from services.accounts_service import AccountsServiceWrapper
+13 | from services.malcontent_service import MalcontentService
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14 | from services import acl_service
+15 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/app_filter_page.py:14:1
+   |
+12 | from services.accounts_service import AccountsServiceWrapper
+13 | from services.malcontent_service import MalcontentService
+14 | from services import acl_service
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+15 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/app_filter_page.py:15:1
+   |
+13 | from services.malcontent_service import MalcontentService
+14 | from services import acl_service
+15 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 |
+17 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/pages/dns_page.py:7:1
+  |
+5 | gi.require_version("Gtk", "4.0")
+6 | gi.require_version("Adw", "1")
+7 | from gi.repository import Adw, Gtk
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 |
+9 | from services.accounts_service import AccountsServiceWrapper
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/dns_page.py:9:1
+   |
+ 7 | from gi.repository import Adw, Gtk
+ 8 |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 | from services.dns_service import DNS_PROVIDERS, DnsService
+11 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/dns_page.py:10:1
+   |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+10 | from services.dns_service import DNS_PROVIDERS, DnsService
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/dns_page.py:11:1
+   |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+10 | from services.dns_service import DNS_PROVIDERS, DnsService
+11 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 |
+13 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/pages/support_page.py:7:1
+  |
+5 | gi.require_version("Gtk", "4.0")
+6 | gi.require_version("Adw", "1")
+7 | from gi.repository import Adw, Gio, Gtk
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 |
+9 | from utils.i18n import setup_i18n
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/support_page.py:9:1
+   |
+ 7 | from gi.repository import Adw, Gio, Gtk
+ 8 |
+ 9 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 |
+11 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/pages/time_limits_page.py:7:1
+  |
+5 | gi.require_version("Gtk", "4.0")
+6 | gi.require_version("Adw", "1")
+7 | from gi.repository import Adw, GLib, Gtk
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 |
+9 | from services.accounts_service import AccountsServiceWrapper
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/time_limits_page.py:9:1
+   |
+ 7 | from gi.repository import Adw, GLib, Gtk
+ 8 |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 | from services.malcontent_service import MalcontentService
+11 | from services import time_service
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/time_limits_page.py:10:1
+   |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+10 | from services.malcontent_service import MalcontentService
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | from services import time_service
+12 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/time_limits_page.py:11:1
+   |
+ 9 | from services.accounts_service import AccountsServiceWrapper
+10 | from services.malcontent_service import MalcontentService
+11 | from services import time_service
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/time_limits_page.py:12:1
+   |
+10 | from services.malcontent_service import MalcontentService
+11 | from services import time_service
+12 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 |
+14 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/users_page.py:10:1
+   |
+ 8 | gi.require_version("Gtk", "4.0")
+ 9 | gi.require_version("Adw", "1")
+10 | from gi.repository import Adw, GLib, Gtk
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |
+12 | from services.accounts_service import AccountsServiceWrapper
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/users_page.py:12:1
+   |
+10 | from gi.repository import Adw, GLib, Gtk
+11 |
+12 | from services.accounts_service import AccountsServiceWrapper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 | from services.malcontent_service import MalcontentService, OARS_PRESETS
+14 | from services import acl_service, desktop_hide_service, time_service
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/users_page.py:13:1
+   |
+12 | from services.accounts_service import AccountsServiceWrapper
+13 | from services.malcontent_service import MalcontentService, OARS_PRESETS
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14 | from services import acl_service, desktop_hide_service, time_service
+15 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/users_page.py:14:1
+   |
+12 | from services.accounts_service import AccountsServiceWrapper
+13 | from services.malcontent_service import MalcontentService, OARS_PRESETS
+14 | from services import acl_service, desktop_hide_service, time_service
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+15 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/users_page.py:15:1
+   |
+13 | from services.malcontent_service import MalcontentService, OARS_PRESETS
+14 | from services import acl_service, desktop_hide_service, time_service
+15 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 |
+17 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/pages/welcome_page.py:7:1
+  |
+5 | gi.require_version("Gtk", "4.0")
+6 | gi.require_version("Adw", "1")
+7 | from gi.repository import Adw, Gtk
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 |
+9 | from utils.i18n import setup_i18n
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/pages/welcome_page.py:9:1
+   |
+ 7 | from gi.repository import Adw, Gtk
+ 8 |
+ 9 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 |
+11 | _ = setup_i18n()
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/services/accounts_service.py:8:1
+  |
+7 | gi.require_version("AccountsService", "1.0")
+8 | from gi.repository import AccountsService, GLib
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/services/desktop_hide_service.py:11:1
+   |
+10 | gi.require_version("Gio", "2.0")
+11 | from gi.repository import Gio
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 |
+13 | log = logging.getLogger(__name__)
+   |
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/services/malcontent_service.py:6:1
+  |
+5 | gi.require_version("Malcontent", "0")
+6 | from gi.repository import GLib, Gio, Malcontent
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+
+F401 [*] `os` imported but unused
+ --> usr/share/biglinux/parental-controls/utils/i18n.py:5:8
+  |
+3 | import gettext
+4 | import locale
+5 | import os
+  |        ^^
+6 |
+7 | DOMAIN = "big-parental-controls"
+  |
+help: Remove unused import: `os`
+
+E402 Module level import not at top of file
+ --> usr/share/biglinux/parental-controls/window.py:7:1
+  |
+5 | gi.require_version("Gtk", "4.0")
+6 | gi.require_version("Adw", "1")
+7 | from gi.repository import Adw, Gio, Gtk
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 |
+9 | from pages.app_filter_page import AppFilterPage
+  |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:9:1
+   |
+ 7 | from gi.repository import Adw, Gio, Gtk
+ 8 |
+ 9 | from pages.app_filter_page import AppFilterPage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 | from pages.dns_page import DnsPage
+11 | from pages.support_page import SupportPage
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:10:1
+   |
+ 9 | from pages.app_filter_page import AppFilterPage
+10 | from pages.dns_page import DnsPage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 | from pages.support_page import SupportPage
+12 | from pages.time_limits_page import TimeLimitsPage
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:11:1
+   |
+ 9 | from pages.app_filter_page import AppFilterPage
+10 | from pages.dns_page import DnsPage
+11 | from pages.support_page import SupportPage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 | from pages.time_limits_page import TimeLimitsPage
+13 | from pages.users_page import UsersPage
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:12:1
+   |
+10 | from pages.dns_page import DnsPage
+11 | from pages.support_page import SupportPage
+12 | from pages.time_limits_page import TimeLimitsPage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13 | from pages.users_page import UsersPage
+14 | from pages.welcome_page import WelcomePage
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:13:1
+   |
+11 | from pages.support_page import SupportPage
+12 | from pages.time_limits_page import TimeLimitsPage
+13 | from pages.users_page import UsersPage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14 | from pages.welcome_page import WelcomePage
+15 | from services.accounts_service import AccountsServiceWrapper
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:14:1
+   |
+12 | from pages.time_limits_page import TimeLimitsPage
+13 | from pages.users_page import UsersPage
+14 | from pages.welcome_page import WelcomePage
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+15 | from services.accounts_service import AccountsServiceWrapper
+16 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:15:1
+   |
+13 | from pages.users_page import UsersPage
+14 | from pages.welcome_page import WelcomePage
+15 | from services.accounts_service import AccountsServiceWrapper
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 | from utils.i18n import setup_i18n
+   |
+
+E402 Module level import not at top of file
+  --> usr/share/biglinux/parental-controls/window.py:16:1
+   |
+14 | from pages.welcome_page import WelcomePage
+15 | from services.accounts_service import AccountsServiceWrapper
+16 | from utils.i18n import setup_i18n
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17 |
+18 | _ = setup_i18n()
+   |
+
+Found 42 errors.
+[*] 1 fixable with the `--fix` option.

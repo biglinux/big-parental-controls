@@ -1,0 +1,11 @@
+usr/share/biglinux/parental-controls/pages/users_page.py
+    M 253:4 UsersPage._on_create_response - C (12)
+usr/share/biglinux/parental-controls/pages/app_filter_page.py
+    M 162:4 AppFilterPage._on_apply - D (27)
+    M 108:4 AppFilterPage._refresh_app_list - C (15)
+usr/share/biglinux/parental-controls/pages/time_limits_page.py
+    M 216:4 TimeLimitsPage._on_apply - C (11)
+usr/share/biglinux/parental-controls/services/acl_service.py
+    F 253:0 sync_oars_enforcement - C (11)
+usr/share/biglinux/parental-controls/services/desktop_hide_service.py
+    F 31:0 _find_desktop_id_for_binary - C (12)

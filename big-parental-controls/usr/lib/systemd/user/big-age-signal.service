@@ -1,0 +1,12 @@
+[Unit]
+Description=BigLinux Age Signal D-Bus Service
+After=dbus.service
+
+[Service]
+Type=dbus
+BusName=br.com.biglinux.AgeSignal
+ExecStart=/usr/bin/big-age-signal
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+  "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="br.com.biglinux.AgeSignal1">
+    <method name="GetAgeRange">
+      <arg type="s" direction="out" name="age_range"/>
+      <!-- Returns: "adult", "teen", "child", or "unknown" -->
+    </method>
+    <method name="IsMinor">
+      <arg type="b" direction="out" name="is_minor"/>
+    </method>
+    <property name="Version" type="s" access="read"/>
+  </interface>
+</node>

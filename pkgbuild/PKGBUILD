@@ -1,42 +1,76 @@
-# Maintainer: Barnabé di Kartola <barnabedikartola@gmail.com>
+# Maintainer: Bruno Goncalves <bigbruno@gmail.com>
 
-pkgname=biglinux-package-template
-pkgdesc="Package template for biglinux"
-# depends=('')
-# makedepends=('')
-# conflicts=('')
+pkgname=big-parental-controls
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
-arch=('any')
-license=('GPL3')
+arch=('x86_64')
+license=('GPL')
 url="https://github.com/biglinux/$pkgname"
-provides=("$pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
-if [ -e "${pkgname}.install" ];then
-    install=${pkgname}.install
-elif [ -e "pkgbuild.install" ];then
-    install=pkgbuild.install
-fi
+pkgdesc="Parental controls and supervised accounts for BigLinux — ECA Digital compliance"
+depends=(
+    'python'
+    'python-gobject'
+    'gtk4'
+    'libadwaita'
+    'malcontent'
+    'accountsservice'
+    'polkit'
+    'gettext'
+    'libappindicator-gtk3'
+    'acl'
+)
+makedepends=(
+    'rust'
+    'cargo'
+)
+optdepends=(
+    'ufw: Firewall management (recommended for security)'
+)
+source=("git+https://github.com/biglinux/$pkgname.git")
+md5sums=(SKIP)
+install=$pkgname.install
+
+build() {
+    # Verify default folder
+    if [ -d "$srcdir/$pkgname/$pkgname" ]; then
+        InternalDir="$srcdir/$pkgname/$pkgname"
+    else
+        InternalDir="$srcdir/$pkgname"
+    fi
+
+    # Build Rust D-Bus age signal service
+    cd "$InternalDir/../big-age-signal"
+    cargo build --release
+}
 
 package() {
     # Verify default folder
-    if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
-        InternalDir="${srcdir}/${pkgname}/${pkgname}"
+    if [ -d "$srcdir/$pkgname/$pkgname" ]; then
+        InternalDir="$srcdir/$pkgname/$pkgname"
     else
-        InternalDir="${srcdir}/${pkgname}"
+        InternalDir="$srcdir/$pkgname"
     fi
 
     # Copy files
-    if [ -d "${InternalDir}/usr" ]; then
-        cp -r "${InternalDir}/usr" "${pkgdir}/"
+    if [ -d "$InternalDir/usr" ]; then
+        cp -r "$InternalDir/usr" "$pkgdir/"
     fi
 
-    if [ -d "${InternalDir}/etc" ]; then
-        cp -r "${InternalDir}/etc" "${pkgdir}/"
+    if [ -d "$InternalDir/etc" ]; then
+        cp -r "$InternalDir/etc" "$pkgdir/"
     fi
 
-    if [ -d "${InternalDir}/opt" ]; then
-        cp -r "${InternalDir}/opt" "${pkgdir}/"
-    fi
+    # Install Rust age signal binary
+    install -Dm755 "$InternalDir/../big-age-signal/target/release/big-age-signal" \
+        "$pkgdir/usr/bin/big-age-signal"
+
+    # Set executable permissions
+    chmod +x "$pkgdir/usr/bin/big-parental-controls" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/bin/big-supervised-indicator" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/lib/big-parental-controls/group-helper" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/lib/big-parental-controls/acl-reapply" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/lib/big-parental-controls/time-check" 2>/dev/null || true
+
+    # Create state directory
+    install -dm755 "$pkgdir/var/lib/big-parental-controls"
 }

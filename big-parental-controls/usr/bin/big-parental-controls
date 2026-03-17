@@ -1,0 +1,4 @@
+#!/bin/bash
+# BigLinux Parental Controls Launcher
+cd /usr/share/biglinux/parental-controls/ || exit 1
+exec -a big-parental-controls python3 main.py "$@"

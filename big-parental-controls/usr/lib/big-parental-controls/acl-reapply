@@ -1,0 +1,4 @@
+#!/bin/bash
+# Re-apply parental control ACL restrictions after pacman transactions.
+# Called by the pacman hook big-parental-controls-acl.hook
+exec /usr/lib/big-parental-controls/group-helper acl-reapply

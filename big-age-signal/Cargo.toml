@@ -1,0 +1,17 @@
+[package]
+name = "big-age-signal"
+version = "1.0.0"
+edition = "2021"
+description = "D-Bus session service for age range detection (ECA Digital Art. 12)"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+zbus = { version = "5", default-features = false, features = ["tokio"] }
+tokio = { version = "1", features = ["rt", "macros"] }
+nix = { version = "0.29", default-features = false, features = ["user"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
+codegen-units = 1

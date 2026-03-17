@@ -1,0 +1,11 @@
+Would reformat: usr/share/biglinux/parental-controls/dbus/age_signal.py
+Would reformat: usr/share/biglinux/parental-controls/pages/app_filter_page.py
+Would reformat: usr/share/biglinux/parental-controls/pages/dns_page.py
+Would reformat: usr/share/biglinux/parental-controls/pages/support_page.py
+Would reformat: usr/share/biglinux/parental-controls/pages/time_limits_page.py
+Would reformat: usr/share/biglinux/parental-controls/pages/users_page.py
+Would reformat: usr/share/biglinux/parental-controls/services/acl_service.py
+Would reformat: usr/share/biglinux/parental-controls/services/desktop_hide_service.py
+Would reformat: usr/share/biglinux/parental-controls/services/time_service.py
+Would reformat: usr/share/biglinux/parental-controls/window.py
+10 files would be reformatted, 12 files already formatted

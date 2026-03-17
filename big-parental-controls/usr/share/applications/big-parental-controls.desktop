@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Application
+Name=Parental Controls
+Name[pt]=Controle Parental
+Name[pt_BR]=Controle Parental
+Name[es]=Controles Parentales
+Name[fr]=Contrôle Parental
+Name[de]=Kindersicherung
+Comment=Manage supervised accounts and parental controls
+Comment[pt]=Gerenciar contas supervisionadas e controles parentais
+Comment[pt_BR]=Gerenciar contas supervisionadas e controles parentais
+Comment[es]=Gestionar cuentas supervisadas y controles parentales
+Comment[fr]=Gérer les comptes supervisés et les contrôles parentaux
+Comment[de]=Beaufsichtigte Konten und Kindersicherung verwalten
+Exec=big-parental-controls
+Icon=big-parental-controls
+Categories=Settings;System;
+Keywords=parental;control;family;children;kids;supervised;safety;
+Keywords[pt]=parental;controle;familia;criancas;supervisionado;seguranca;
+Keywords[pt_BR]=parental;controle;família;crianças;supervisionado;segurança;
+Terminal=false
+StartupNotify=true
