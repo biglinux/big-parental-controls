@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Rust / Cargo
+big-age-signal/target/
+Cargo.lock
+
+# GTK compiled resources
+*.gresource
+
+# Compiled locale
+big-parental-controls/usr/share/locale/
+usr/share/locale/
+
+# Audit / tooling artifacts
+big-parental-controls/.audit/
+.audit/
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Package build artifacts
+pkgbuild/src/
+pkgbuild/pkg/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+
+# Packages installed via makepkg
+big-parental-controls-*/
+
+# Test caches in legacy path
+big-parental-controls/tests/__pycache__/
+tests/__pycache__/
+
+# Env
+.env
+.venv
+venv/
