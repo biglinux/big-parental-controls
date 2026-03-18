@@ -239,6 +239,15 @@ SEOF
         [[ -f "$ACL_STATE" ]] || exit 0
         BPC_ACL_FILE="$ACL_STATE" python3 -c '
 import json, subprocess, os, sys
+
+# Quick check: does /usr/bin filesystem support ACLs?
+# Use a known binary as a probe — setfacl with no change (u:root:r-x is default).
+probe = "/usr/bin/true"
+if os.path.exists(probe):
+    r = subprocess.run(["setfacl", "-m", "u:root:r-x", probe], capture_output=True)
+    if r.returncode != 0:
+        sys.exit(0)  # filesystem does not support ACLs — skip silently
+
 with open(os.environ["BPC_ACL_FILE"]) as f:
     state = json.load(f)
 count = 0
@@ -246,7 +255,8 @@ for user, paths in state.items():
     for path in paths:
         if os.path.exists(path):
             try:
-                subprocess.run(["setfacl", "-m", f"u:{user}:---", path], check=True)
+                subprocess.run(["setfacl", "-m", f"u:{user}:---", path],
+                               capture_output=True, check=True)
                 count += 1
             except subprocess.CalledProcessError:
                 print(f"Warning: failed to reapply ACL on {path} for {user}", file=sys.stderr)
