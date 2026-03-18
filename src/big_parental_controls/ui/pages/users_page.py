@@ -257,10 +257,13 @@ class UsersPage(Gtk.Box):
                 raise RuntimeError(_("Failed to create user."))
 
             if self._malcontent and age_group in OARS_PRESETS:
-                self._malcontent.set_app_filter(
-                    user.get_uid(),
-                    oars_values=OARS_PRESETS[age_group],
-                )
+                try:
+                    self._malcontent.set_app_filter(
+                        user.get_uid(),
+                        oars_values=OARS_PRESETS[age_group],
+                    )
+                except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
+                    pass
             _save_user_age_profile(user.get_user_name(), age_range)
             return username
 
@@ -310,7 +313,10 @@ class UsersPage(Gtk.Box):
             acl_service.unblock_all(username)
             time_service.remove_all(username)
             if self._malcontent:
-                self._malcontent.clear_app_filter(uid)
+                try:
+                    self._malcontent.clear_app_filter(uid)
+                except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
+                    pass
             return username
 
         def on_done(result: str) -> None:

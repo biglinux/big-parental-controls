@@ -139,7 +139,10 @@ class AppFilterPage(Gtk.Box):
 
             allowed = True
             if self._malcontent:
-                allowed = self._malcontent.is_appinfo_allowed(self._selected_uid, app_info)
+                try:
+                    allowed = self._malcontent.is_appinfo_allowed(self._selected_uid, app_info)
+                except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
+                    pass
 
             row = Adw.SwitchRow()
             row.set_title(name)
