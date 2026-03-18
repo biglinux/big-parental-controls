@@ -33,7 +33,7 @@ def _read_age_range(username: str) -> str:
         with open(_USER_PROFILES_FILE) as f:
             profiles = json.load(f)
         return profiles.get(username, {}).get("age_range", "18+")
-    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+    except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError):
         return "18+"
 
 

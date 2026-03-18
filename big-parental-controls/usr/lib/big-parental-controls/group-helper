@@ -736,6 +736,7 @@ except (FileNotFoundError, json.JSONDecodeError):
 profiles.setdefault(username, {})["age_range"] = age_range
 with open(profiles_file, "w") as f:
     json.dump(profiles, f, indent=2)
+os.chmod(profiles_file, 0o644)
 PYEOF
         ;;
     *)

@@ -75,8 +75,8 @@ package() {
     chmod +x "$pkgdir/usr/lib/big-parental-controls/time-check" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/pam-time-message" 2>/dev/null || true
 
-    # Create state directory
-    install -dm700 "$pkgdir/var/lib/big-parental-controls"
+    # Create state directory (755 so the app user can read user-profiles.json)
+    install -dm755 "$pkgdir/var/lib/big-parental-controls"
     install -dm700 "$pkgdir/var/lib/big-parental-controls/activity"
 
     # Install compiled locale files
