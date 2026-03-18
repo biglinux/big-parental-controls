@@ -7,793 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-18 10:34-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
-#: big-parental-controls/usr/share/biglinux/parental-controls/app.py:50
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:73
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:58
-#: src/big_parental_controls/ui/pages/main_view.py:60
-#: src/big_parental_controls/ui/pages/welcome_page.py:38
-#: src/big_parental_controls/window.py:31
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:15
-msgid "Parental Controls"
-msgstr "Foreldrakontrollur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 61
-#: big-parental-controls/usr/share/biglinux/parental-controls/app.py:61
-msgid "Privacy Policy"
-msgstr "Stefnureglur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 65
-#: big-parental-controls/usr/share/biglinux/parental-controls/app.py:65
-#, python-format
-msgid ""
-"This application does not collect, store, or transmit personal data. All "
-"processing happens locally on this device. No data is shared with third "
-"parties.\n"
-"\n"
-"Full policy: %s"
-msgstr ""
-"Þetta forrit safnar ekki, geymir ekki eða sendir ekki persónuupplýsingar. "
-"Öll úrvinnsla fer fram á þessu tæki. Engar upplýsingar eru deilt með þriðja "
-"aðila.\n"
-"\n"
-"Heildarstefna: %s"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 84
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 61
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 63
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 70
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:61
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:70
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:63
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:84
-msgid "No Supervised Accounts"
-msgstr "Engin ekki eftirlitsreikningar"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:63
-msgid "Create one in the Users page to get started."
-msgstr "Búðu til einn á Notendur síðu til að byrja."
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 80
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 129
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 110
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:80
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:110
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:129
-#: src/big_parental_controls/ui/pages/dns_page.py:94
-#: src/big_parental_controls/ui/pages/time_limits_page.py:119
-msgid "Apply"
-msgstr "Sækja"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 210
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:210
-msgid "Failed to update app filter."
-msgstr "Mistók að uppfæra forritasíuna."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:232
-msgid "App permissions updated."
-msgstr "Íslyrðum forrita uppfært."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 237
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:237
-msgid "Failed to apply file permissions."
-msgstr "Mistók að beita skráarréttindum."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 34
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:34
-msgid ""
-"If the internet stops working after turning this on, try disabling the web "
-"filter — some networks do not allow it."
-msgstr ""
-"Ef internetið hættir að virka eftir að þú kveikir á þessu, reyndu að slökkva "
-"á vefsíusíunni — sum net leyfa það ekki."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 58
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:58
-msgid ""
-"Turn on a web filter to automatically block websites that are not "
-"appropriate for children. Works with any browser."
-msgstr ""
-"Kveiktu á vefsíusíun til að sjálfkrafa blokkera vefsíður sem eru ekki "
-"viðeigandi fyrir börn. Virkar með hvaða vafra sem er."
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 65
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 72
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:72
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:65
-msgid "Create one in the Users page first."
-msgstr "Búðu til einn á notendaskjánum fyrst."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 79
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:79
-msgid "Filter Settings"
-msgstr "Síurstillingar"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:81
-msgid "Enable web filter"
-msgstr "Virkja vefsíusfilter"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 82
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:82
-msgid "Automatically block inappropriate websites"
-msgstr "Að sjálfvirkt loka óviðeigandi vefsíðum"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 87
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:87
-#: src/big_parental_controls/ui/pages/dns_page.py:70
-msgid "Custom"
-msgstr "Sérsniðið"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:90
-msgid "Filter provider"
-msgstr "Síunaraðili"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:96
-#: src/big_parental_controls/ui/pages/dns_page.py:83
-msgid "Primary DNS"
-msgstr "Aðal DNS"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 100
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:100
-#: src/big_parental_controls/ui/pages/dns_page.py:87
-msgid "Secondary DNS"
-msgstr "Aukagagnagrunnur DNS"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 168
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:168
-msgid "Disable web filter?"
-msgstr "Viltu slökkva á vefsíusíun?"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 170
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:170
-msgid "Inappropriate websites will no longer be blocked for this account."
-msgstr ""
-"Ósneiðar sem eru óviðeigandi verða ekki lengur blokkeraðar fyrir þetta "
-"reikning."
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 255
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 472
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 534
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 172
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:172
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:255
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:472
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:534
-#: src/big_parental_controls/ui/compliance.py:52
-#: src/big_parental_controls/ui/compliance.py:86
-#: src/big_parental_controls/ui/pages/user_detail_page.py:250
-#: src/big_parental_controls/ui/pages/users_page.py:175
-#: src/big_parental_controls/ui/pages/users_page.py:244
-msgid "Cancel"
-msgstr "Hætta við"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 173
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:173
-msgid "Disable"
-msgstr "Aftengja"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:210
-msgid "Web filter disabled."
-msgstr "Vefskilji óvirkt."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 220
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:220
-#, python-format
-msgid "Web filter set to %s."
-msgstr "Vefskiljari stilltur á %s."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:226
-#: src/big_parental_controls/ui/pages/dns_page.py:201
-msgid "Primary DNS is required."
-msgstr "Kraf DNS er nauðsynlegur."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 234
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:234
-msgid "Custom web filter configured."
-msgstr "Sérsniðin vefsíu stillt."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:16
-#: src/big_parental_controls/ui/pages/support_page.py:16
-msgid "Centro de Valorização da Vida — emotional support by phone or chat"
-msgstr ""
-"Centro de Valorização da Vida — stuðningur við tilfinningar í gegnum síma "
-"eða spjall"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:22
-#: src/big_parental_controls/ui/pages/support_page.py:22
-msgid "Report and get help with online safety issues"
-msgstr "Skýrðu frá og fáðu aðstoð við netöryggismál."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:27
-#: src/big_parental_controls/ui/pages/support_page.py:27
-msgid "Disque 100"
-msgstr "Diskur 100"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:28
-#: src/big_parental_controls/ui/pages/support_page.py:28
-msgid "Report violations of children's and adolescents' rights"
-msgstr "Tilkynna um brot á réttindum barna og unglinga"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:34
-#: src/big_parental_controls/ui/pages/support_page.py:34
-msgid "Internet security guides and best practices"
-msgstr "Leiðbeiningar um netöryggi og bestu venjur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:65
-#: src/big_parental_controls/ui/pages/support_page.py:64
-msgid ""
-"If you or someone you know needs help, you are not alone. These "
-"organizations provide free, confidential support — no one will judge you."
-msgstr ""
-"Ef þú eða einhver sem þú þekkir þarft hjálp, þá ert þú ekki einn. Þessar "
-"stofnanir veita ókeypis, trúnaðarbundna aðstoð - enginn mun dæma þig."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:99
-#: src/big_parental_controls/ui/pages/support_page.py:103
-msgid "Emergency"
-msgstr "Neyðartilvik"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:102
-#: src/big_parental_controls/ui/pages/support_page.py:106
-msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
-msgstr "Í tilfelli strax hættu, hringdu í 190 (Lögreglu) eða 192 (SAMU)"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:103
-#: src/big_parental_controls/ui/pages/support_page.py:107
-msgid "These numbers are free and available 24/7"
-msgstr "Þessar tölur eru ókeypis og í boði allan sólarhringinn."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 51
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:51
-msgid ""
-"Choose when the computer can be used. Outside these hours, this account will "
-"be locked."
-msgstr ""
-"Veldu hvenær tölvan má vera notuð. Utan þessara tíma verður þessi reikningur "
-"lokaður."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:72
-#: src/big_parental_controls/ui/pages/time_limits_page.py:67
-msgid "Allowed Hours"
-msgstr "Leyfilegar Tímar"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:74
-msgid "Enable time limits"
-msgstr "Virkja tímamörk"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 75
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:75
-msgid "Only allow computer use during chosen hours"
-msgstr "Leyfðu tölvunni að nota aðeins á valnum tímum"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:90
-msgid "Add time range"
-msgstr "Bættu við tímabil."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:101
-#: src/big_parental_controls/ui/pages/time_limits_page.py:98
-msgid "Daily Usage Limit"
-msgstr "Dagleg notkunarmörk"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:104
-msgid "Enable daily time limit"
-msgstr "Virkja daglega tímamörk"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 107
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:107
-msgid "Automatically close the session after a set number of minutes"
-msgstr "Lokaðu sjálfkrafa sessjóninni eftir ákveðinn fjölda mínútna."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:115
-#: src/big_parental_controls/ui/pages/time_limits_page.py:110
-msgid "Minutes per day"
-msgstr "Mínútur á dag"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 117
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:117
-msgid "Session ends when this limit is reached"
-msgstr "Sesíon lýkur þegar þessi takmörk eru náð."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 175
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:175
-#: src/big_parental_controls/ui/pages/time_limits_page.py:218
-msgid "Start hour"
-msgstr "Byrjunartími"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 192
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:192
-#: src/big_parental_controls/ui/pages/time_limits_page.py:228
-msgid "Start minute"
-msgstr "Byrjun mínútu"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 211
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:211
-#: src/big_parental_controls/ui/pages/time_limits_page.py:238
-msgid "End hour"
-msgstr "Lokaháttur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:228
-#: src/big_parental_controls/ui/pages/time_limits_page.py:248
-msgid "End minute"
-msgstr "Endi mínúta"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:240
-msgid "Remove this time range"
-msgstr "Fjarlægðu þetta tímabil"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 377
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:377
-#: src/big_parental_controls/ui/pages/time_limits_page.py:321
-msgid "End time must be after start time in all ranges."
-msgstr "Endir tími verður að vera eftir byrjunartíma í öllum sviðum."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 420
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:420
-#: src/big_parental_controls/ui/pages/time_limits_page.py:355
-msgid "Time settings applied."
-msgstr "Tímasetningar hafa verið notaðar."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:22
-msgid "Child (under 10)"
-msgstr "Barn (undir 10)"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:23
-msgid "Pre-teen (10–13)"
-msgstr "Fyrir unglinga (10–13)"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:24
-msgid "Teen (13–16)"
-msgstr "Unglingur (13–16)"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:25
-msgid "Young adult (16–18)"
-msgstr "Unglingur (16–18)"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 70
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:70
-msgid ""
-"Supervised accounts have extra protections to keep children safe. Only a "
-"parent or guardian can change these settings."
-msgstr ""
-"Vönduð reikningar hafa aukaverndun til að halda börnum öruggum. Aðeins "
-"foreldri eða forráðamaður getur breytt þessum stillingum."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:86
-msgid "Create a supervised account so a child can use this computer safely."
-msgstr ""
-"Búðu til aðgengilegan aðgang svo barn geti notað þennan tölvu örugglega."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:139
-#: src/big_parental_controls/ui/pages/users_page.py:108
-msgid "Supervised"
-msgstr "Vönduð"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 142
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:142
-msgid "Administrator"
-msgstr "Stjórnandi"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 144
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:144
-msgid "Standard"
-msgstr "Staðall"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:161
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:164
-msgid "Remove supervised status"
-msgstr "Fjarlægðu eftirlitsstöðu"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:176
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:179
-msgid "Make supervised"
-msgstr "Gerðu að eftirliti"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:195
-msgid "Create Supervised Account"
-msgstr "Búa til aðstoðarkóða"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 198
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:198
-msgid ""
-"Create a new account with protections for a child or teenager. This account "
-"will have safe settings by default."
-msgstr ""
-"Búðu til nýjan aðgang með verndun fyrir barn eða ungling. Þessi aðgangur mun "
-"hafa örugg stillingar sjálfgefið."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:207
-#: src/big_parental_controls/ui/pages/users_page.py:153
-msgid "Username"
-msgstr "notendanafn"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:211
-#: src/big_parental_controls/ui/pages/users_page.py:157
-msgid "Full Name"
-msgstr "Fullt nafn"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:214
-#: src/big_parental_controls/ui/pages/users_page.py:161
-msgid "Password"
-msgstr "Lykilorð"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:217
-msgid "Confirm Password"
-msgstr "Staðfesta lykilorð"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 221
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 293
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:221
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:293
-msgid "Passwords do not match."
-msgstr "Lyklar passa ekki saman."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:247
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:527
-msgid "Age group"
-msgstr "Aldurhópur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:256
-#: src/big_parental_controls/ui/pages/users_page.py:176
-msgid "Create"
-msgstr "Búa til"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:285
-#: src/big_parental_controls/ui/pages/users_page.py:207
-msgid "Username and password are required."
-msgstr "Notendanafn og lykilorð eru nauðsynleg."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 289
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:289
-msgid "Username must be 32 characters or less."
-msgstr "Notendanafn verður að vera 32 stafir eða færri."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 300
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:300
-msgid ""
-"Username must start with a lowercase letter and contain only letters, "
-"numbers, hyphens, and underscores."
-msgstr ""
-"Notendanafn verður að byrja á lágstaf og innihalda aðeins bókstafi, tölur, "
-"bandstrik og undirstrik."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 308
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:308
-#, python-format
-msgid "A user named '%s' already exists."
-msgstr "Notandi með nafnið '%s' er þegar til."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 325
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:325
-msgid "Failed to prepare credentials."
-msgstr "Mistók að undirbúa auðkenni."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:330
-msgid "Creating account…"
-msgstr "Að búa til reikning…"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:360
-msgid "Authentication was cancelled."
-msgstr "Auðkenning var aflýst."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 363
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:363
-msgid "Helper script not found. Is the package installed correctly?"
-msgstr "Hjálparskrift fannst ekki. Er pakkinn rétt uppsettur?"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 367
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:367
-#, python-format
-msgid "Exit code %d"
-msgstr "Útgangskóði %d"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:369
-#, python-format
-msgid "Failed to create user account: %s"
-msgstr "Ekki tókst að búa til notendareikning: %s"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:463
-msgid "Remove Supervised Account"
-msgstr "Fjarlægja eftirlitsreikning"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 466
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:466
-#, python-format
-msgid ""
-"What would you like to do with %s's account?\n"
-"\n"
-"• <b>Remove restrictions</b> keeps the account but removes all parental "
-"protections.\n"
-"• <b>Delete account</b> permanently removes the account and all their files."
-msgstr ""
-"Hvað viltu gera við reikning %s?\n"
-"\n"
-"• <b>Fjarlægja takmarkanir</b> heldur reikningnum en fjarlægir allar "
-"foreldra verndun.\n"
-"• <b>Eyða reikningi</b> fjarlægir reikninginn varanlega og öll þeirra skrár."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 473
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:473
-msgid "Remove Restrictions"
-msgstr "Fjarlægja takmarkanir"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:474
-msgid "Delete Account"
-msgstr "Eyða reikningi"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:519
-msgid "Add Supervision"
-msgstr "Bæta við eftirliti"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 521
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:521
-#, python-format
-msgid ""
-"Add protections to %s? Installing apps and changing settings will require a "
-"parent's permission."
-msgstr ""
-"Bættu við verndun á %s? Að setja upp forrit og breyta stillingum mun krafist "
-"foreldrisleyfis."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 535
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:535
-msgid "Add Controls"
-msgstr "Bæta við stjórntækjum"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 579
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:579
-msgid "Failed to apply supervised controls."
-msgstr "Ekki tókst að beita eftirlitsstjórnum."
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:17
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:28
-#: src/big_parental_controls/window.py:79
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:76
-msgid "Users"
-msgstr "Notendur"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 18
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:18
-msgid "Manage supervised accounts for children"
-msgstr "Stjórna eftirlitsreikningum fyrir börn"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:22
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:29
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:104
-msgid "Allowed Apps"
-msgstr "Leyfðar forrit"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 23
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:23
-msgid "Choose which programs are available"
-msgstr "Veldu hvaða forrit eru í boði"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 30
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 27
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:27
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:30
-#: src/big_parental_controls/ui/pages/user_detail_page.py:194
-#: src/big_parental_controls/ui/pages/welcome_page.py:57
-#: src/big_parental_controls/window.py:59
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:132
-msgid "Screen Time"
-msgstr "Skjástími"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:28
-msgid "Set daily usage limits"
-msgstr "Settu daglegar notkunarmörk"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:32
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:31
-#: src/big_parental_controls/ui/pages/dns_page.py:60
-#: src/big_parental_controls/ui/pages/user_detail_page.py:212
-#: src/big_parental_controls/ui/pages/welcome_page.py:60
-#: src/big_parental_controls/window.py:69
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:160
-msgid "Web Filter"
-msgstr "Vefsíusfilter"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 33
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:33
-msgid "Block harmful websites automatically"
-msgstr "Loka skaðlegar vefsíður sjálfkrafa"
-#
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 32
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 37
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:37
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:32
-#: big-parental-controls/usr/bin/big-supervised-indicator:169
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:188
-msgid "Help"
-msgstr ""
-"I'm sorry, I can only translate the provided string. Please provide a string "
-"for translation."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 38
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:38
-msgid "Find support contacts and resources"
-msgstr "Finndu stuðnings tengiliði og auðlindir"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 82
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:82
-msgid ""
-"Keep children safe on this computer. Everything works locally — age range "
-"data is shared with other apps on this device via D-Bus to adjust content, "
-"but nothing is sent to the internet."
-msgstr ""
-"Hafðu börnin örugg á þessum tölvu. Allt virkar á staðnum - aldursbilsgögn "
-"eru deilt með öðrum forritum á þessari tækni í gegnum D-Bus til að aðlaga "
-"efni, en ekkert er sent á internetið."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:96
-#: src/big_parental_controls/ui/pages/welcome_page.py:46
-msgid "Features"
-msgstr "Eiginleikar"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:115
-msgid "Your Privacy"
-msgstr "Þín persónuvernd"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 118
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:118
-msgid ""
-"This application does not collect, store, or transmit personal data. All "
-"settings stay on this device. You can read the full privacy policy in the "
-"About menu."
-msgstr ""
-"Þetta forrit safnar, geymir eða sendir ekki persónuupplýsingar. Öll "
-"stillingar eru á þessu tæki. Þú getur lesið heildar persónuverndarstefnuna í "
-"Um valmyndinni."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 125
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:125
-msgid "Compliance"
-msgstr "Samþykki"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 128
-#: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:128
-msgid ""
-"Follows ECA Digital (Law 15.211/2025), UK Children's Code and EU Digital "
-"Services Act"
-msgstr ""
-"Fylgir ECA Digital (Lög 15.211/2025), Barnalög Bretlands og Stafrænn "
-"þjónustulög Evrópusambandsins."
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 27
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:27
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:48
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:207
-msgid "Home"
-msgstr "Heimili"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:74
-msgid "Add Supervised Account"
-msgstr "Bæta við eftirlitsreikningi"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:125
-msgid "No supervised accounts"
-msgstr "Engin ekki eftirlitsreikningar"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:214
-#: src/big_parental_controls/window.py:101
-msgid "Error"
-msgstr "Villa"
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.py:216
-#: src/big_parental_controls/window.py:94
-#: src/big_parental_controls/window.py:103
-msgid "OK"
-msgstr ""
-#: src/big_parental_controls/app.py:79
+
+#: src/big_parental_controls/app.py:95
 msgid ""
 "Keep children safe on this computer.\n"
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:27
+
+#: src/big_parental_controls/ui/compliance.py:28
 msgid "Enable Activity Monitoring"
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:30
+
+#: src/big_parental_controls/ui/compliance.py:31
 #, python-format
 msgid ""
 "By enabling monitoring for %(user)s, the following data will be collected "
@@ -816,14 +49,35 @@ msgid ""
 "time. The supervised user will be informed that monitoring is active via the "
 "system tray indicator."
 msgstr ""
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 255
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 472
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 534
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 172
 #: src/big_parental_controls/ui/compliance.py:53
+#: src/big_parental_controls/ui/compliance.py:87
+#: src/big_parental_controls/ui/pages/user_detail_page.py:374
+#: src/big_parental_controls/ui/pages/user_detail_page.py:414
+#: src/big_parental_controls/ui/pages/user_detail_page.py:437
+#: src/big_parental_controls/ui/pages/users_page.py:169
+#: src/big_parental_controls/ui/pages/users_page.py:293
+msgid "Cancel"
+msgstr "Hætta við"
+
+#: src/big_parental_controls/ui/compliance.py:54
 msgid "I Understand and Consent"
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:77
-#: src/big_parental_controls/ui/pages/user_detail_page.py:117
+
+#: src/big_parental_controls/ui/compliance.py:78
+#: src/big_parental_controls/ui/pages/user_detail_page.py:172
+#: src/big_parental_controls/ui/pages/user_detail_page.py:226
 msgid "Delete Activity Data"
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:80
+
+#: src/big_parental_controls/ui/compliance.py:81
 #, python-format
 msgid ""
 "All activity data for %(user)s will be permanently deleted.\n"
@@ -831,23 +85,29 @@ msgid ""
 "\n"
 "This action cannot be undone."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
-#: src/big_parental_controls/ui/compliance.py:87
+#: src/big_parental_controls/ui/compliance.py:88
 msgid "Delete All Data"
 msgstr "Eyða reikningi"
-#: src/big_parental_controls/ui/compliance.py:115
+
+#: src/big_parental_controls/ui/compliance.py:116
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:129
-#: src/big_parental_controls/ui/pages/user_detail_page.py:130
+
+#: src/big_parental_controls/ui/compliance.py:130
+#: src/big_parental_controls/ui/pages/user_detail_page.py:184
+#: src/big_parental_controls/ui/pages/user_detail_page.py:239
 msgid "Export Activity Data"
 msgstr ""
-#: src/big_parental_controls/ui/compliance.py:178
+
+#: src/big_parental_controls/ui/compliance.py:179
 #, python-format
 msgid "Data exported to %s"
 msgstr ""
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -855,75 +115,85 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/activity_page.py:47
 #: src/big_parental_controls/ui/pages/app_filter_page.py:52
-#: src/big_parental_controls/ui/pages/dns_page.py:51
-#: src/big_parental_controls/ui/pages/time_limits_page.py:51
 msgid "User"
 msgstr "Notendur"
+
 #: src/big_parental_controls/ui/pages/activity_page.py:56
 msgid "Monitored Users"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:59
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
 "running programs every minute."
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:68
 #: src/big_parental_controls/ui/pages/app_filter_page.py:62
-#: src/big_parental_controls/ui/pages/time_limits_page.py:61
 msgid "Select a User"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:70
 msgid "Choose a supervised user to view activity."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: src/big_parental_controls/ui/pages/activity_page.py:76
 msgid "Daily Usage"
 msgstr "Dagleg notkunarmörk"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: src/big_parental_controls/ui/pages/activity_page.py:77
 msgid "Minutes of screen time per day"
 msgstr "Mínútur á dag"
+
 #: src/big_parental_controls/ui/pages/activity_page.py:87
 msgid "Time of Day"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "When this user is most active"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:98
-#: src/big_parental_controls/ui/widgets/activity_block.py:58
 msgid "Recent Sessions"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:207
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:221
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:232
-#: src/big_parental_controls/ui/widgets/activity_block.py:126
+#: src/big_parental_controls/ui/widgets/activity_block.py:243
 msgid "still active"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/activity_page.py:237
-#: src/big_parental_controls/ui/widgets/activity_block.py:131
-#: big-parental-controls/usr/bin/big-supervised-indicator:88
+#: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%dh %dmin"
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: src/big_parental_controls/ui/pages/activity_page.py:239
-#: src/big_parental_controls/ui/widgets/activity_block.py:133
-#: big-parental-controls/usr/bin/big-supervised-indicator:89
+#: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, fuzzy, python-format
 msgid "%d min"
 msgstr "Endi mínúta"
+
 #: src/big_parental_controls/ui/pages/app_filter_page.py:63
 msgid "Choose a supervised user to manage app access."
 msgstr ""
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -932,351 +202,825 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/app_filter_page.py:68
 msgid "Installed Apps"
 msgstr "Leyfðar forrit"
+
 #: src/big_parental_controls/ui/pages/app_filter_page.py:73
 msgid "Apply Changes"
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: src/big_parental_controls/ui/pages/app_filter_page.py:192
 msgid "App access updated."
 msgstr "Íslyrðum forrita uppfært."
-#: src/big_parental_controls/ui/pages/dns_page.py:44
-msgid "DNS filtering requires systemd-resolved or manual network setup."
+
+#: src/big_parental_controls/ui/pages/dns_page.py:30
+msgid ""
+"Blocks adult content, gambling, and phishing websites. One of the most "
+"widely used free family filters."
 msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:41
+msgid ""
+"By Cisco. Automatically blocks adult content on all devices. No account or "
+"configuration needed."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:52
+msgid ""
+"By Cloudflare (1.1.1.3). Blocks malware and adult content. Very fast and "
+"privacy-focused."
+msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
-#: src/big_parental_controls/ui/pages/dns_page.py:64
+#: src/big_parental_controls/ui/pages/dns_page.py:91
+#, fuzzy
+msgid "What is web filtering?"
+msgstr "Virkja vefsíusfilter"
+
+#: src/big_parental_controls/ui/pages/dns_page.py:94
+msgid ""
+"Web filtering uses special DNS servers to block access to inappropriate "
+"websites such as adult content, gambling, and known malicious pages. It "
+"works transparently — no software is installed on the child's session; the "
+"system's firewall redirects their internet lookups to a protective server."
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 79
+#: src/big_parental_controls/ui/pages/dns_page.py:108
+#, fuzzy, python-format
+msgid "Filtering for %s"
+msgstr "Síurstillingar"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
+#: src/big_parental_controls/ui/pages/dns_page.py:112
 msgid "Enable web filtering"
 msgstr "Virkja vefsíusfilter"
-#: src/big_parental_controls/ui/pages/dns_page.py:65
-msgid "Block inappropriate content via DNS"
+
+#: src/big_parental_controls/ui/pages/dns_page.py:115
+msgid ""
+"When enabled, all web requests from this user are redirected through the "
+"chosen DNS provider."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
-#: src/big_parental_controls/ui/pages/dns_page.py:72
-msgid "Provider"
+#: src/big_parental_controls/ui/pages/dns_page.py:125
+#, fuzzy
+msgid "Choose a provider"
 msgstr "Síunaraðili"
+
+#: src/big_parental_controls/ui/pages/dns_page.py:128
+msgid ""
+"Each provider maintains a list of blocked sites. All options below are free "
+"and privacy-respecting."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:154
+msgid "Learn more"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:165
+msgid "Custom DNS server"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:167
+msgid "Enter your own DNS addresses for advanced setups."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/dns_page.py:182
+msgid "Custom DNS Addresses"
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
+#: src/big_parental_controls/ui/pages/dns_page.py:186
+msgid "Primary DNS"
+msgstr "Aðal DNS"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 100
+#: src/big_parental_controls/ui/pages/dns_page.py:190
+#, fuzzy
+msgid "Secondary DNS (optional)"
+msgstr "Aukagagnagrunnur DNS"
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 80
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 129
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 110
+#: src/big_parental_controls/ui/pages/dns_page.py:196
+#: src/big_parental_controls/ui/pages/time_limits_page.py:113
+msgid "Apply"
+msgstr "Sækja"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
-#: src/big_parental_controls/ui/pages/dns_page.py:178
+#: src/big_parental_controls/ui/pages/dns_page.py:275
 msgid "Web filtering disabled."
 msgstr "Vefskilji óvirkt."
+
+#: src/big_parental_controls/ui/pages/dns_page.py:282
+msgid "Please select a DNS provider."
+msgstr ""
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
-#: src/big_parental_controls/ui/pages/dns_page.py:194
-msgid "Web filtering enabled."
-msgstr "Vefskilji óvirkt."
-#: src/big_parental_controls/ui/pages/dns_page.py:211
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
+#: src/big_parental_controls/ui/pages/dns_page.py:289
+#, fuzzy
+msgid "Primary DNS address is required."
+msgstr "Kraf DNS er nauðsynlegur."
+
+#: src/big_parental_controls/ui/pages/dns_page.py:300
 msgid "Custom DNS applied."
 msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
+#: src/big_parental_controls/ui/pages/dns_page.py:311
+msgid "Web filtering enabled."
+msgstr "Vefskilji óvirkt."
+
 #: src/big_parental_controls/ui/pages/main_view.py:17
 msgid "Emotional support, 24h"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/main_view.py:18
 msgid "Online safety for children"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Human rights violations"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/main_view.py:40
 msgid "Main Menu"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:62
+
+#: src/big_parental_controls/ui/pages/main_view.py:70
 msgid "Manage screen time, apps and web filters for supervised users."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
-#: src/big_parental_controls/ui/pages/main_view.py:68
-#: src/big_parental_controls/ui/pages/users_page.py:48
+#: src/big_parental_controls/ui/pages/main_view.py:81
 msgid "Supervised Users"
 msgstr "Vönduð"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: src/big_parental_controls/ui/pages/main_view.py:73
+#: src/big_parental_controls/ui/pages/main_view.py:86
 msgid "Add Supervised User"
 msgstr "Bæta við eftirlitsreikningi"
-#: src/big_parental_controls/ui/pages/main_view.py:82
-msgid "Help & Support"
+
+#: src/big_parental_controls/ui/pages/main_view.py:95
+#: src/big_parental_controls/ui/pages/supervised_view.py:157
+msgid "Help and Support"
 msgstr ""
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
+#: src/big_parental_controls/ui/pages/main_view.py:120
+#, fuzzy
+msgid "About Parental Controls"
+msgstr "Foreldrakontrollur"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
-#: src/big_parental_controls/ui/pages/main_view.py:125
+#: src/big_parental_controls/ui/pages/main_view.py:145
 msgid "No supervised users yet"
 msgstr "Engin ekki eftirlitsreikningar"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
-#: src/big_parental_controls/ui/pages/main_view.py:127
+#: src/big_parental_controls/ui/pages/main_view.py:147
 msgid "Create a supervised account to get started."
 msgstr "Búðu til einn á Notendur síðu til að byrja."
-#: src/big_parental_controls/ui/pages/main_view.py:164
+
+#: src/big_parental_controls/ui/pages/main_view.py:184
 msgid "Legal Framework"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:168
+
+#: src/big_parental_controls/ui/pages/main_view.py:188
 msgid "ECA Digital — Brazil"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:170
+
+#: src/big_parental_controls/ui/pages/main_view.py:190
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
 "Digital Environment. This app implements Art. 12 (age verification), Art. 13 "
 "(data minimization), Art. 17 (protective measures), and Art. 18 (activity "
 "monitoring)."
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:178
+
+#: src/big_parental_controls/ui/pages/main_view.py:198
 msgid "LGPD — Brazil"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:180
+
+#: src/big_parental_controls/ui/pages/main_view.py:200
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
 "(children's data requires specific parental consent), Art. 18 (right to "
 "access and delete data), Art. 46 (security)."
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:187
+
+#: src/big_parental_controls/ui/pages/main_view.py:207
 msgid "GDPR — European Union"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:189
+
+#: src/big_parental_controls/ui/pages/main_view.py:209
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
 "Art. 8 (child consent via parent), Art. 13 (transparent information), Art. "
 "17 (right to erasure), Art. 20 (data portability), Art. 25 (privacy by "
 "design)."
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:197
+
+#: src/big_parental_controls/ui/pages/main_view.py:217
 msgid "UK Children's Code"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:199
+
+#: src/big_parental_controls/ui/pages/main_view.py:219
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
 "including data minimization, default protections, and parental controls."
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:206
+
+#: src/big_parental_controls/ui/pages/main_view.py:226
 msgid "EU Digital Services Act"
 msgstr ""
-#: src/big_parental_controls/ui/pages/main_view.py:208
+
+#: src/big_parental_controls/ui/pages/main_view.py:228
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
 "digital platforms."
 msgstr ""
-#: src/big_parental_controls/ui/pages/time_limits_page.py:62
-msgid "Choose a supervised user to manage screen time."
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 30
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 27
+#: src/big_parental_controls/ui/pages/supervised_view.py:96
+#, fuzzy
+msgid "My Screen Time"
+msgstr "Skjástími"
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:136
+#, python-format
+msgid "Hello, %s"
 msgstr ""
-#: src/big_parental_controls/ui/pages/time_limits_page.py:69
+
+#: src/big_parental_controls/ui/pages/supervised_view.py:142
+msgid "Here you can see your screen time and application usage."
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
+#: src/big_parental_controls/ui/pages/support_page.py:16
+msgid "Centro de Valorização da Vida — emotional support by phone or chat"
+msgstr ""
+"Centro de Valorização da Vida — stuðningur við tilfinningar í gegnum síma "
+"eða spjall"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
+#: src/big_parental_controls/ui/pages/support_page.py:22
+msgid "Report and get help with online safety issues"
+msgstr "Skýrðu frá og fáðu aðstoð við netöryggismál."
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
+#: src/big_parental_controls/ui/pages/support_page.py:27
+msgid "Disque 100"
+msgstr "Diskur 100"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
+#: src/big_parental_controls/ui/pages/support_page.py:28
+msgid "Report violations of children's and adolescents' rights"
+msgstr "Tilkynna um brot á réttindum barna og unglinga"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
+#: src/big_parental_controls/ui/pages/support_page.py:34
+msgid "Internet security guides and best practices"
+msgstr "Leiðbeiningar um netöryggi og bestu venjur"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
+#: src/big_parental_controls/ui/pages/support_page.py:64
+msgid ""
+"If you or someone you know needs help, you are not alone. These "
+"organizations provide free, confidential support — no one will judge you."
+msgstr ""
+"Ef þú eða einhver sem þú þekkir þarft hjálp, þá ert þú ekki einn. Þessar "
+"stofnanir veita ókeypis, trúnaðarbundna aðstoð - enginn mun dæma þig."
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
+#: src/big_parental_controls/ui/pages/support_page.py:103
+msgid "Emergency"
+msgstr "Neyðartilvik"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
+#: src/big_parental_controls/ui/pages/support_page.py:106
+msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
+msgstr "Í tilfelli strax hættu, hringdu í 190 (Lögreglu) eða 192 (SAMU)"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
+#: src/big_parental_controls/ui/pages/support_page.py:107
+msgid "These numbers are free and available 24/7"
+msgstr "Þessar tölur eru ókeypis og í boði allan sólarhringinn."
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
+#: src/big_parental_controls/ui/pages/time_limits_page.py:61
+msgid "Allowed Hours"
+msgstr "Leyfilegar Tímar"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:63
 msgid "When this user is allowed to log in."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
-#: src/big_parental_controls/ui/pages/time_limits_page.py:74
+#: src/big_parental_controls/ui/pages/time_limits_page.py:68
 msgid "Enable schedule"
 msgstr "Virkja vefsíusfilter"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
-#: src/big_parental_controls/ui/pages/time_limits_page.py:88
+#: src/big_parental_controls/ui/pages/time_limits_page.py:82
 msgid "Add Time Range"
 msgstr "Bættu við tímabil."
-#: src/big_parental_controls/ui/pages/time_limits_page.py:100
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
+#: src/big_parental_controls/ui/pages/time_limits_page.py:92
+msgid "Daily Usage Limit"
+msgstr "Dagleg notkunarmörk"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py:94
 msgid "Maximum time this user can stay logged in per day."
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
-#: src/big_parental_controls/ui/pages/time_limits_page.py:105
+#: src/big_parental_controls/ui/pages/time_limits_page.py:99
 msgid "Enable daily limit"
 msgstr "Virkja daglega tímamörk"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
+#: src/big_parental_controls/ui/pages/time_limits_page.py:104
+msgid "Minutes per day"
+msgstr "Mínútur á dag"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 175
+#: src/big_parental_controls/ui/pages/time_limits_page.py:185
+msgid "Start hour"
+msgstr "Byrjunartími"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 192
+#: src/big_parental_controls/ui/pages/time_limits_page.py:195
+msgid "Start minute"
+msgstr "Byrjun mínútu"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 211
+#: src/big_parental_controls/ui/pages/time_limits_page.py:205
+msgid "End hour"
+msgstr "Lokaháttur"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
+#: src/big_parental_controls/ui/pages/time_limits_page.py:215
+msgid "End minute"
+msgstr "Endi mínúta"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
-#: src/big_parental_controls/ui/pages/time_limits_page.py:262
+#: src/big_parental_controls/ui/pages/time_limits_page.py:229
 msgid "Delete range"
 msgstr "Eyða reikningi"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
-#: src/big_parental_controls/ui/pages/time_limits_page.py:264
+#: src/big_parental_controls/ui/pages/time_limits_page.py:231
 msgid "Delete time range"
 msgstr "Fjarlægðu þetta tímabil"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 377
+#: src/big_parental_controls/ui/pages/time_limits_page.py:288
+msgid "End time must be after start time in all ranges."
+msgstr "Endir tími verður að vera eftir byrjunartíma í öllum sviðum."
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 420
+#: src/big_parental_controls/ui/pages/time_limits_page.py:322
+msgid "Time settings applied."
+msgstr "Tímasetningar hafa verið notaðar."
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
-#: src/big_parental_controls/ui/pages/user_detail_page.py:78
+#: src/big_parental_controls/ui/pages/user_detail_page.py:138
 msgid "Account"
 msgstr "Eyða reikningi"
-#: src/big_parental_controls/ui/pages/user_detail_page.py:89
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:149
+msgid "Profile"
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
+#: src/big_parental_controls/ui/pages/user_detail_page.py:153
+#: src/big_parental_controls/ui/pages/users_page.py:159
+msgid "Age Group"
+msgstr "Aldurhópur"
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:154
+msgid "ECA Digital classification"
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
+#: src/big_parental_controls/ui/pages/user_detail_page.py:156
+#: src/big_parental_controls/ui/pages/users_page.py:161
+#, fuzzy
+msgid "Child (0–12)"
+msgstr "Barn (undir 10)"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
+#: src/big_parental_controls/ui/pages/user_detail_page.py:156
+#: src/big_parental_controls/ui/pages/users_page.py:161
+#, fuzzy
+msgid "Adolescent (13–15)"
+msgstr "Unglingur (13–16)"
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:156
+#: src/big_parental_controls/ui/pages/users_page.py:161
+msgid "Adolescent (16–17)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:156
+#: src/big_parental_controls/ui/pages/users_page.py:161
+msgid "Adult (18+)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:174
+#: src/big_parental_controls/ui/pages/user_detail_page.py:228
+msgid "Permanently remove all collected data (LGPD Art. 18)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:186
+#: src/big_parental_controls/ui/pages/user_detail_page.py:241
+msgid "Download data as JSON file (GDPR Art. 20)"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:198
 msgid "Monitoring"
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:91
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:200
 msgid "Track which programs are used and for how long."
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:95
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:204
 msgid "Activity Monitoring"
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:98
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:207
 msgid ""
 "Usage data stays exclusively on this device. In accordance with ECA Digital, "
 "LGPD, UK Children's Code, and EU DSA, parents may review usage patterns. No "
 "data is transmitted externally."
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:110
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:219
 msgid "Enable monitoring"
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:112
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:221
 msgid "Checks running programs every minute"
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:119
-msgid "Permanently remove all collected data (LGPD Art. 18)"
-msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:132
-msgid "Download data as JSON file (GDPR Art. 20)"
-msgstr ""
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 30
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 27
+#: src/big_parental_controls/ui/pages/user_detail_page.py:306
+#: src/big_parental_controls/ui/pages/welcome_page.py:57
+#: src/big_parental_controls/window.py:193
+#: src/big_parental_controls/data/window.ui:132
+msgid "Screen Time"
+msgstr "Skjástími"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
-#: src/big_parental_controls/ui/pages/user_detail_page.py:196
+#: src/big_parental_controls/ui/pages/user_detail_page.py:308
 msgid "Edit Time Limits"
 msgstr "Virkja tímamörk"
-#: src/big_parental_controls/ui/pages/user_detail_page.py:198
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:310
 msgid "Set allowed hours and daily duration"
 msgstr ""
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
-#: src/big_parental_controls/ui/pages/user_detail_page.py:214
+#: src/big_parental_controls/ui/pages/user_detail_page.py:324
+#: src/big_parental_controls/ui/pages/welcome_page.py:60
+#: src/big_parental_controls/window.py:205
+#: src/big_parental_controls/data/window.ui:160
+msgid "Web Filter"
+msgstr "Vefsíusfilter"
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
+#: src/big_parental_controls/ui/pages/user_detail_page.py:326
 msgid "Edit Web Filter"
 msgstr "Vefsíusfilter"
-#: src/big_parental_controls/ui/pages/user_detail_page.py:216
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:328
 msgid "Choose DNS provider to block inappropriate content"
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:230
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:342
 msgid "Account Actions"
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
-#: src/big_parental_controls/ui/pages/user_detail_page.py:232
-#: src/big_parental_controls/ui/pages/users_page.py:240
+#: src/big_parental_controls/ui/pages/user_detail_page.py:345
+#: src/big_parental_controls/ui/pages/users_page.py:289
 msgid "Remove Supervision"
 msgstr "Fjarlægja eftirlitsreikning"
-#: src/big_parental_controls/ui/pages/user_detail_page.py:234
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:347
 msgid "Keep the account but remove parental controls"
 msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
+#: src/big_parental_controls/ui/pages/user_detail_page.py:355
+#, fuzzy
+msgid "Delete User"
+msgstr "Eyða reikningi"
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:357
+msgid "Permanently remove the account and all data"
+msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
-#: src/big_parental_controls/ui/pages/user_detail_page.py:244
+#: src/big_parental_controls/ui/pages/user_detail_page.py:368
 msgid "Remove Supervision?"
 msgstr "Fjarlægja eftirlitsreikning"
-#: src/big_parental_controls/ui/pages/user_detail_page.py:246
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:370
 #, python-format
 msgid ""
 "This will remove parental controls from %s. The account will remain but "
 "without restrictions."
 msgstr ""
-#: src/big_parental_controls/ui/pages/user_detail_page.py:251
-#: src/big_parental_controls/ui/pages/users_page.py:245
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:375
+#: src/big_parental_controls/ui/pages/users_page.py:294
 msgid "Remove"
 msgstr ""
-#: src/big_parental_controls/ui/pages/users_page.py:49
-msgid "Users with restricted access to this computer."
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:401
+#: src/big_parental_controls/ui/pages/users_page.py:318
+#, python-format
+msgid "Supervision removed from %s."
 msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:409
+#, python-format
+msgid "Delete User '%s'?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:411
+msgid ""
+"This will permanently delete the account and the home folder with all files. "
+"This action cannot be undone."
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
+#: src/big_parental_controls/ui/pages/user_detail_page.py:415
+#, fuzzy
+msgid "Delete Permanently"
+msgstr "Eyða reikningi"
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:431
+msgid "Are you sure?"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:433
+#, python-format
+msgid ""
+"ALL data of user '%s' will be permanently erased, including documents, "
+"photos and settings. This action CANNOT be undone."
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:438
+msgid "Yes, delete everything"
+msgstr ""
+
+#: src/big_parental_controls/ui/pages/user_detail_page.py:465
+#, python-format
+msgid "User '%s' has been deleted."
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
+#: src/big_parental_controls/ui/pages/user_detail_page.py:469
+#, fuzzy, python-format
+msgid "Failed to delete user '%s'."
+msgstr "Ekki tókst að búa til notendareikning: %s"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
-#: src/big_parental_controls/ui/pages/users_page.py:53
-#: src/big_parental_controls/ui/pages/users_page.py:55
+#: src/big_parental_controls/ui/pages/users_page.py:69
+#: src/big_parental_controls/ui/pages/users_page.py:134
+msgid "Create Supervised User"
+msgstr "Búa til aðstoðarkóða"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
+#: src/big_parental_controls/ui/pages/users_page.py:72
 msgid "Create supervised user"
 msgstr "Búa til aðstoðarkóða"
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
-#: src/big_parental_controls/ui/pages/users_page.py:64
+#: src/big_parental_controls/ui/pages/users_page.py:79
 msgid "Other Users"
 msgstr "Notendur"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
-#: src/big_parental_controls/ui/pages/users_page.py:65
+#: src/big_parental_controls/ui/pages/users_page.py:80
 msgid "Add supervision to an existing account."
 msgstr "Bæta við eftirlitsreikningi"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
-#: src/big_parental_controls/ui/pages/users_page.py:116
-msgid "Remove supervision"
-msgstr "Fjarlægja eftirlitsreikning"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
-#: src/big_parental_controls/ui/pages/users_page.py:119
-#, fuzzy, python-format
-msgid "Remove supervision from %s"
-msgstr "Fjarlægðu eftirlitsstöðu"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:131
+#: src/big_parental_controls/ui/pages/users_page.py:120
 msgid "Add supervision"
 msgstr "Bæta við eftirliti"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
-#: src/big_parental_controls/ui/pages/users_page.py:134
+#: src/big_parental_controls/ui/pages/users_page.py:123
 #, fuzzy, python-format
 msgid "Add supervision to %s"
 msgstr "Bæta við eftirliti"
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
-#: src/big_parental_controls/ui/pages/users_page.py:144
-msgid "Create Supervised User"
-msgstr "Búa til aðstoðarkóða"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
-#: src/big_parental_controls/ui/pages/users_page.py:145
+#: src/big_parental_controls/ui/pages/users_page.py:135
 msgid "Set up a new supervised account on this computer."
 msgstr ""
 "Búðu til aðgengilegan aðgang svo barn geti notað þennan tölvu örugglega."
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
-#: src/big_parental_controls/ui/pages/users_page.py:165
-msgid "Age Group"
-msgstr "Aldurhópur"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
+#: src/big_parental_controls/ui/pages/users_page.py:143
+msgid "Username"
+msgstr "notendanafn"
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
-#: src/big_parental_controls/ui/pages/users_page.py:167
-msgid "Child (< 10)"
-msgstr "Barn (undir 10)"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
+#: src/big_parental_controls/ui/pages/users_page.py:147
+msgid "Full Name"
+msgstr "Fullt nafn"
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
-#: src/big_parental_controls/ui/pages/users_page.py:167
-msgid "Pre-teen (10-12)"
-msgstr "Fyrir unglinga (10–13)"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
+#: src/big_parental_controls/ui/pages/users_page.py:151
+msgid "Password"
+msgstr "Lykilorð"
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
-#: src/big_parental_controls/ui/pages/users_page.py:167
-msgid "Teen (13-17)"
-msgstr "Unglingur (13–16)"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
+#: src/big_parental_controls/ui/pages/users_page.py:155
+msgid "Confirm Password"
+msgstr "Staðfesta lykilorð"
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
-#: src/big_parental_controls/ui/pages/users_page.py:167
-msgid "Young adult (16-17)"
-msgstr "Unglingur (16–18)"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
+#: src/big_parental_controls/ui/pages/users_page.py:170
+msgid "Create"
+msgstr "Búa til"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
+#: src/big_parental_controls/ui/pages/users_page.py:241
+msgid "Username and password are required."
+msgstr "Notendanafn og lykilorð eru nauðsynleg."
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
+#: src/big_parental_controls/ui/pages/users_page.py:251
+#, fuzzy, python-format
+msgid "Creating user %s…"
+msgstr "Að búa til reikning…"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
-#: src/big_parental_controls/ui/pages/users_page.py:216
+#: src/big_parental_controls/ui/pages/users_page.py:257
 msgid "Failed to create user."
 msgstr "Ekki tókst að búa til notendareikning: %s"
-#: src/big_parental_controls/ui/pages/users_page.py:229
+
+#: src/big_parental_controls/ui/pages/users_page.py:273
+#: src/big_parental_controls/ui/pages/users_page.py:276
 #, python-format
 msgid "User %s created."
 msgstr ""
-#: src/big_parental_controls/ui/pages/users_page.py:242
+
+#: src/big_parental_controls/ui/pages/users_page.py:291
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr ""
-#: src/big_parental_controls/ui/pages/users_page.py:269
-#, python-format
-msgid "Supervision removed from %s."
-msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
+#: src/big_parental_controls/ui/pages/users_page.py:328
+#, fuzzy
+msgid "Adding supervision…"
+msgstr "Bæta við eftirliti"
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
-#: src/big_parental_controls/ui/pages/users_page.py:287
+#: src/big_parental_controls/ui/pages/users_page.py:340
+#: src/big_parental_controls/ui/pages/users_page.py:343
 #, fuzzy, python-format
 msgid "%s is now supervised."
 msgstr "Gerðu að eftirliti"
+
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
+#: src/big_parental_controls/ui/pages/welcome_page.py:38
+#: src/big_parental_controls/window.py:29
+#: src/big_parental_controls/window.py:67
+#: src/big_parental_controls/window.py:154
+#: src/big_parental_controls/window.py:178
+#: src/big_parental_controls/data/window.ui:15
+msgid "Parental Controls"
+msgstr "Foreldrakontrollur"
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:40
 msgid "Protect children online — manage apps, screen time, and web filtering."
 msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
+#: src/big_parental_controls/ui/pages/welcome_page.py:46
+msgid "Features"
+msgstr "Eiginleikar"
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1291,6 +1035,7 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Supervised Accounts"
 msgstr "Engin ekki eftirlitsreikningar"
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1299,134 +1044,212 @@ msgstr "Engin ekki eftirlitsreikningar"
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Create protected user profiles"
 msgstr "Búðu til einn á notendaskjánum fyrst."
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
 msgid "App Access"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:53
 msgid "Control which apps each child can use"
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: src/big_parental_controls/ui/pages/welcome_page.py:58
 msgid "Set allowed hours and daily usage limits"
 msgstr "Settu daglegar notkunarmörk"
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 msgid "Block inappropriate web content via DNS"
 msgstr ""
+
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: src/big_parental_controls/ui/pages/welcome_page.py:78
 msgid "Privacy"
 msgstr "Þín persónuvernd"
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:81
 msgid "Data stays on this computer"
 msgstr ""
+
 #: src/big_parental_controls/ui/pages/welcome_page.py:83
 msgid ""
 "Compliant with ECA Digital, LGPD, and GDPR — no data leaves this device."
 msgstr ""
-#: src/big_parental_controls/ui/widgets/activity_block.py:33
-msgid "Activity"
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:68
+msgid "No data"
 msgstr ""
-#: src/big_parental_controls/ui/widgets/activity_block.py:35
-msgid "Usage data from session history"
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:88
+msgid "Previous week"
 msgstr ""
-#: src/big_parental_controls/ui/widgets/activity_block.py:103
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:99
+msgid "Next week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:122
+msgid "Hours of the Day"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:131
+msgid "Sessions"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:174
+msgid "This week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:176
+msgid "Last week"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:179
+#, python-format
+msgid "%d weeks ago"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:201
 msgid "Extended usage detected"
 msgstr ""
-#: src/big_parental_controls/ui/widgets/activity_block.py:107
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:203
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr ""
-#: src/big_parental_controls/ui/widgets/usage_chart.py:187
-msgid "No activity data"
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:233
+msgid "No sessions on this day"
 msgstr ""
-#: src/big_parental_controls/window.py:92
-msgid "Notice"
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:249
+msgid "Graphical session"
 msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
+#: src/big_parental_controls/ui/widgets/activity_block.py:250
+#, fuzzy
+msgid "Remote session"
+msgstr "Fjarlægja eftirlitsreikning"
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:251
+msgid "Console session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/activity_block.py:252
+msgid "Session"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:58
+msgid "No activity"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Mon"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Tue"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Wed"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:81
+msgid "Thu"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Fri"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Sat"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:82
+msgid "Sun"
+msgstr ""
+
+#: src/big_parental_controls/ui/widgets/usage_chart.py:331
+msgid "No activity on this day"
+msgstr ""
+
+#: src/big_parental_controls/window.py:72
+msgid "Administrator authentication is required to change settings."
+msgstr ""
+
+#: src/big_parental_controls/window.py:89
+msgid "Authenticate"
+msgstr ""
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
+#: src/big_parental_controls/window.py:130
+#, fuzzy
+msgid "Authentication failed. Try again."
+msgstr "Auðkenning var aflýst."
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
+#: src/big_parental_controls/window.py:217
+#: src/big_parental_controls/data/window.ui:76
+msgid "Users"
+msgstr "Notendur"
+
+#: src/big_parental_controls/window.py:252
+#: src/big_parental_controls/window.py:265
+msgid "OK"
+msgstr ""
+
 #
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
-#: big-parental-controls/usr/bin/big-supervised-indicator:97
-#: big-parental-controls/usr/bin/big-supervised-indicator:140
-msgid "Parental controls are active"
-msgstr "Foreldrakontrollur"
-#: big-parental-controls/usr/bin/big-supervised-indicator:103
-msgid "Activity is shared with your parent"
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:114
-#: big-parental-controls/usr/bin/big-supervised-indicator:212
-#, python-format
-msgid "Your computer time today: %s"
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:122
-msgid "What does this mean?"
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:127
-msgid "I need help"
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:142
-msgid ""
-"A responsible adult set up protections on this account to help keep you "
-"safe.\n"
-"\n"
-"Some apps may be blocked and there may be time limits for using the "
-"computer.\n"
-"\n"
-"If you think something is wrong, talk to a trusted adult."
-msgstr ""
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
+#: src/big_parental_controls/window.py:263
+msgid "Error"
+msgstr "Villa"
+
+#
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 27
+#: src/big_parental_controls/data/window.ui:48
+#: src/big_parental_controls/data/window.ui:235
+msgid "Home"
+msgstr "Heimili"
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
-#: big-parental-controls/usr/bin/big-supervised-indicator:149
-msgid "About parental controls"
-msgstr "Foreldrakontrollur"
-#: big-parental-controls/usr/bin/big-supervised-indicator:159
-msgid "Need help?"
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
+#: src/big_parental_controls/data/window.ui:104
+msgid "Allowed Apps"
+msgstr "Leyfðar forrit"
+
+#: src/big_parental_controls/data/window.ui:188
+msgid "Activity"
 msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:161
-msgid ""
-"Talk to a trusted adult — a parent, teacher, or relative.\n"
-"\n"
-"You can also call:\n"
-"• CVV 188 — free emotional support, 24 hours\n"
-"• Disque 100 — report rights violations\n"
-"• SaferNet — safernet.org.br\n"
-"\n"
-"These services are free and confidential."
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:232
-msgid "Time for a break!"
-msgstr ""
-#: big-parental-controls/usr/bin/big-supervised-indicator:234
-#, python-format
-msgid ""
-"You've been using the computer for %s. A short break helps you feel better."
-msgstr ""
+
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
-# #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
-#
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 50
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
-# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
-#: big-parental-controls/usr/bin/big-supervised-indicator:259
-msgid "Parental controls active"
-msgstr "Foreldrakontrollur"
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:217
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 32
+# File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 37
+#: src/big_parental_controls/data/window.ui:216
+msgid "Help"
+msgstr ""
+"I'm sorry, I can only translate the provided string. Please provide a string "
+"for translation."
+
+#: src/big_parental_controls/data/window.ui:245
 msgid "Main menu"
 msgstr ""
-#: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:242
+
+#: src/big_parental_controls/data/window.ui:270
 msgid "About"
 msgstr ""
