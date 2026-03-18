@@ -23,10 +23,6 @@ Cargo.lock
 # GTK compiled resources
 *.gresource
 
-# Compiled locale
-big-parental-controls/usr/share/locale/
-usr/share/locale/
-
 # Audit / tooling artifacts
 big-parental-controls/.audit/
 .audit/
