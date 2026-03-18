@@ -24,6 +24,12 @@ All enforcement happens locally. No remote account or cloud sync is required.
 
 ## ECA Digital Compliance — Who Is Responsible for What
 
+> **⚠ Developer's interpretation, not legal advice.**
+> This section reflects a technical position taken by the developer of this free software project.
+> It represents a good-faith reading of Lei 15.211/2025 (ECA Digital) and explains why the measures
+> implemented in BigLinux Parental Controls are believed to be sufficient for a community Linux distribution
+> to comply with the law. The full reasoning is described below and in the author's note at the end of this file.
+
 The following diagram describes how BigLinux Parental Controls maps to the responsibility chain required by Brazil's ECA Digital (Lei 15.211/2025):
 
 ```
