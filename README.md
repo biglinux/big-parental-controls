@@ -302,3 +302,11 @@ Bruno Goncalves and the BigLinux team.
 *And I am publishing this program in an attempt to keep BigLinux alive and out of legal trouble — one of the longest-running free software projects in Brazil, maintained by nerds, voluntarily, and completely free of charge to anyone who wants to use it or learn from it, driven only by our attachment to shared knowledge and our desire to understand how things work.*
 
 — Bruno Goncalves
+
+## Screenshots
+
+<img width="1000" height="1156" alt="parental-controls" src="https://github.com/user-attachments/assets/ec0e892d-8238-4d2d-9088-18a7b74e0b13" />
+<img width="1000" height="1156" alt="parental-controls2" src="https://github.com/user-attachments/assets/4de491c9-ed18-4909-9ea9-d08cebcddb1f" />
+<img width="1000" height="1156" alt="parental-controls3" src="https://github.com/user-attachments/assets/b7991f4f-ac95-43f1-9a99-11e35062e11c" />
+<img width="1000" height="842" alt="parental-controls4" src="https://github.com/user-attachments/assets/4b0c50e1-9d2e-4ddb-9cfa-98587a672530" />
+<img width="1000" height="842" alt="parental-controls5" src="https://github.com/user-attachments/assets/edb28087-f209-4416-b50c-dc26b5e69a0d" />
