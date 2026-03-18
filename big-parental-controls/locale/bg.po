@@ -7,15 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-17 20:27-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -33,13 +31,11 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:15
 msgid "Parental Controls"
 msgstr "Родителски контрол"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 61
 #: big-parental-controls/usr/share/biglinux/parental-controls/app.py:61
 msgid "Privacy Policy"
 msgstr "Политика за поверителност"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 65
 #: big-parental-controls/usr/share/biglinux/parental-controls/app.py:65
@@ -56,7 +52,6 @@ msgstr ""
 "споделят с трети страни.\n"
 "\n"
 "Пълна политика: %s"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -74,13 +69,11 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:84
 msgid "No Supervised Accounts"
 msgstr "Няма наблюдавани акаунти"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:63
 msgid "Create one in the Users page to get started."
 msgstr "Създайте един на страницата Потребители, за да започнете."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -96,25 +89,21 @@ msgstr "Създайте един на страницата Потребител
 #: src/big_parental_controls/ui/pages/time_limits_page.py:119
 msgid "Apply"
 msgstr "Приложи"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 210
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:210
 msgid "Failed to update app filter."
 msgstr "Неуспешно актуализиране на филтъра на приложението."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:232
 msgid "App permissions updated."
 msgstr "Актуализирани разрешения за приложението."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 237
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:237
 msgid "Failed to apply file permissions."
 msgstr "Неуспешно прилагане на разрешения за файл."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 34
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:34
@@ -124,7 +113,6 @@ msgid ""
 msgstr ""
 "Ако интернетът спре да работи след включването на това, опитайте да "
 "деактивирате уеб филтъра — някои мрежи не го позволяват."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 58
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:58
@@ -134,7 +122,6 @@ msgid ""
 msgstr ""
 "Включете уеб филтър, за да блокирате автоматично уебсайтове, които не са "
 "подходящи за деца. Работи с всеки браузър."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -144,64 +131,54 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:65
 msgid "Create one in the Users page first."
 msgstr "Създайте първо един на страницата Потребители."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 79
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:79
 msgid "Filter Settings"
 msgstr "Настройки на филтъра"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:81
 msgid "Enable web filter"
 msgstr "Активирайте уеб филтър"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 82
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:82
 msgid "Automatically block inappropriate websites"
 msgstr "Автоматично блокиране на неподходящи уебсайтове"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 87
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:87
 #: src/big_parental_controls/ui/pages/dns_page.py:70
 msgid "Custom"
 msgstr "Персонализиран"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:90
 msgid "Filter provider"
 msgstr "Филтър доставчик"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:96
 #: src/big_parental_controls/ui/pages/dns_page.py:83
 msgid "Primary DNS"
 msgstr "Основен DNS"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 100
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:100
 #: src/big_parental_controls/ui/pages/dns_page.py:87
 msgid "Secondary DNS"
 msgstr "Вторичен DNS"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 168
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:168
 msgid "Disable web filter?"
 msgstr "Деактивиране на уеб филтър?"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 170
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:170
 msgid "Inappropriate websites will no longer be blocked for this account."
 msgstr "Неподходящите уебсайтове вече няма да бъдат блокирани за този акаунт."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -220,39 +197,33 @@ msgstr "Неподходящите уебсайтове вече няма да �
 #: src/big_parental_controls/ui/pages/users_page.py:244
 msgid "Cancel"
 msgstr "Отмяна"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 173
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:173
 msgid "Disable"
 msgstr "Деактивирай"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:210
 msgid "Web filter disabled."
 msgstr "Уеб филтърът е деактивиран."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 220
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:220
 #, python-format
 msgid "Web filter set to %s."
 msgstr "Уеб филтърът е зададен на %s."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:226
 #: src/big_parental_controls/ui/pages/dns_page.py:201
 msgid "Primary DNS is required."
 msgstr "Изисква се основен DNS."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 234
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:234
 msgid "Custom web filter configured."
 msgstr "Конфигуриран персонализиран уеб филтър."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
 #
@@ -263,35 +234,30 @@ msgstr "Конфигуриран персонализиран уеб филтъ�
 #: src/big_parental_controls/ui/pages/support_page.py:16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
 msgstr "Център за оценка на живота — емоционална подкрепа по телефон или чат"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:22
 #: src/big_parental_controls/ui/pages/support_page.py:22
 msgid "Report and get help with online safety issues"
 msgstr "Докладвайте и получавайте помощ при проблеми с онлайн безопасността."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:27
 #: src/big_parental_controls/ui/pages/support_page.py:27
 msgid "Disque 100"
 msgstr "Диск 100"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:28
 #: src/big_parental_controls/ui/pages/support_page.py:28
 msgid "Report violations of children's and adolescents' rights"
 msgstr "Докладвайте нарушения на правата на деца и младежи."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:34
 #: src/big_parental_controls/ui/pages/support_page.py:34
 msgid "Internet security guides and best practices"
 msgstr "Ръководства за интернет сигурност и най-добри практики"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:65
@@ -303,14 +269,12 @@ msgstr ""
 "Ако вие или някой, когото познавате, се нуждае от помощ, не сте сами. Тези "
 "организации предлагат безплатна, конфиденциална подкрепа - никой няма да ви "
 "съди."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:99
 #: src/big_parental_controls/ui/pages/support_page.py:103
 msgid "Emergency"
 msgstr "Спешен"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:102
@@ -319,14 +283,12 @@ msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
 msgstr ""
 "В случай на непосредствена опасност, обадете се на 190 (Полиция) или 192 "
 "(САМУ)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:103
 #: src/big_parental_controls/ui/pages/support_page.py:107
 msgid "These numbers are free and available 24/7"
 msgstr "Тези номера са безплатни и налични 24/7."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 51
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:51
@@ -336,98 +298,83 @@ msgid ""
 msgstr ""
 "Изберете кога компютърът може да се използва. Извън тези часове, тази сметка "
 "ще бъде заключена."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:72
 #: src/big_parental_controls/ui/pages/time_limits_page.py:67
 msgid "Allowed Hours"
 msgstr "Разрешени часове"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:74
 msgid "Enable time limits"
 msgstr "Активирайте времеви ограничения"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 75
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:75
 msgid "Only allow computer use during chosen hours"
 msgstr "Позволявайте използването на компютъра само през избрани часове."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:90
 msgid "Add time range"
 msgstr "Добавете времеви диапазон"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:101
 #: src/big_parental_controls/ui/pages/time_limits_page.py:98
 msgid "Daily Usage Limit"
 msgstr "Дневен лимит за използване"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:104
 msgid "Enable daily time limit"
 msgstr "Активирайте дневен лимит на времето"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 107
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:107
 msgid "Automatically close the session after a set number of minutes"
 msgstr "Автоматично затваряйте сесията след зададен брой минути."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:115
 #: src/big_parental_controls/ui/pages/time_limits_page.py:110
 msgid "Minutes per day"
 msgstr "Минути на ден"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 117
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:117
 msgid "Session ends when this limit is reached"
 msgstr "Сесията приключва, когато бъде достигнат този лимит."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 175
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:175
 #: src/big_parental_controls/ui/pages/time_limits_page.py:218
 msgid "Start hour"
 msgstr "Начален час"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 192
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:192
 #: src/big_parental_controls/ui/pages/time_limits_page.py:228
 msgid "Start minute"
 msgstr "Започнете минута"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 211
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:211
 #: src/big_parental_controls/ui/pages/time_limits_page.py:238
 msgid "End hour"
 msgstr "Край на часа"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:228
 #: src/big_parental_controls/ui/pages/time_limits_page.py:248
 msgid "End minute"
 msgstr "Край на минутата"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:240
 msgid "Remove this time range"
 msgstr "Премахнете този времеви диапазон."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 377
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:377
@@ -435,38 +382,32 @@ msgstr "Премахнете този времеви диапазон."
 msgid "End time must be after start time in all ranges."
 msgstr ""
 "Времето за край трябва да бъде след времето за начало във всички диапазони."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 420
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:420
 #: src/big_parental_controls/ui/pages/time_limits_page.py:355
 msgid "Time settings applied."
 msgstr "Настройките за време са приложени."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:22
 msgid "Child (under 10)"
 msgstr "Дете (под 10 години)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:23
 msgid "Pre-teen (10–13)"
 msgstr "Предпубертет (10–13)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:24
 msgid "Teen (13–16)"
 msgstr "Тийн (13–16)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:25
 msgid "Young adult (16–18)"
 msgstr "Млад възрастен (16–18)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 70
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:70
@@ -476,7 +417,6 @@ msgid ""
 msgstr ""
 "Надзираваните акаунти имат допълнителни защити, за да запазят децата в "
 "безопасност. Само родител или настойник може да променя тези настройки."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:86
@@ -484,26 +424,22 @@ msgid "Create a supervised account so a child can use this computer safely."
 msgstr ""
 "Създайте надзираван акаунт, за да може детето да използва безопасно този "
 "компютър."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:139
 #: src/big_parental_controls/ui/pages/users_page.py:108
 msgid "Supervised"
 msgstr "Надзираван"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 142
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:142
 msgid "Administrator"
 msgstr "Администратор"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 144
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:144
 msgid "Standard"
 msgstr "Стандартен"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
@@ -511,7 +447,6 @@ msgstr "Стандартен"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:164
 msgid "Remove supervised status"
 msgstr "Премахнете статуса на наблюдение"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
@@ -519,13 +454,11 @@ msgstr "Премахнете статуса на наблюдение"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:179
 msgid "Make supervised"
 msgstr "Направете наблюдавано"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:195
 msgid "Create Supervised Account"
 msgstr "Създайте наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 198
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:198
@@ -535,34 +468,29 @@ msgid ""
 msgstr ""
 "Създайте нов акаунт с защити за дете или тийнейджър. Този акаунт ще има "
 "безопасни настройки по подразбиране."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:207
 #: src/big_parental_controls/ui/pages/users_page.py:153
 msgid "Username"
 msgstr "Потребителско име"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:211
 #: src/big_parental_controls/ui/pages/users_page.py:157
 msgid "Full Name"
 msgstr "Пълно име"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:214
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Password"
 msgstr "Парола"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:217
 msgid "Confirm Password"
 msgstr "Потвърдете паролата"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 221
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 293
@@ -570,7 +498,6 @@ msgstr "Потвърдете паролата"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:293
 msgid "Passwords do not match."
 msgstr "Паролите не съвпадат."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
@@ -578,27 +505,23 @@ msgstr "Паролите не съвпадат."
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:527
 msgid "Age group"
 msgstr "Възрастова група"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:256
 #: src/big_parental_controls/ui/pages/users_page.py:176
 msgid "Create"
 msgstr "Създаване"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:285
 #: src/big_parental_controls/ui/pages/users_page.py:207
 msgid "Username and password are required."
 msgstr "Потребителското име и паролата са задължителни."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 289
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:289
 msgid "Username must be 32 characters or less."
 msgstr "Потребителското име трябва да е с 32 знака или по-малко."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 300
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:300
@@ -608,58 +531,49 @@ msgid ""
 msgstr ""
 "Потребителското име трябва да започва с малка буква и да съдържа само букви, "
 "цифри, тирета и долни черти."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 308
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:308
 #, python-format
 msgid "A user named '%s' already exists."
 msgstr "Потребител с име '%s' вече съществува."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 325
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:325
 msgid "Failed to prepare credentials."
 msgstr "Неуспешна подготовка на удостоверенията."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:330
 msgid "Creating account…"
 msgstr "Създаване на акаунт…"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:360
 msgid "Authentication was cancelled."
 msgstr "Аутентификацията беше отменена."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 363
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:363
 msgid "Helper script not found. Is the package installed correctly?"
 msgstr "Не е намерен помощен скрипт. Инсталиран ли е пакетът правилно?"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 367
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:367
 #, python-format
 msgid "Exit code %d"
 msgstr "Код за изход %d"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:369
 #, python-format
 msgid "Failed to create user account: %s"
 msgstr "Неуспешно създаване на потребителски акаунт: %s"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:463
 msgid "Remove Supervised Account"
 msgstr "Премахнете наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 466
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:466
@@ -676,25 +590,21 @@ msgstr ""
 "• <b>Премахване на ограничения</b> запазва акаунта, но премахва всички "
 "родителски защити.\n"
 "• <b>Изтриване на акаунт</b> трайно премахва акаунта и всички техни файлове."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 473
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:473
 msgid "Remove Restrictions"
 msgstr "Премахнете ограниченията"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:474
 msgid "Delete Account"
 msgstr "Изтрий акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:519
 msgid "Add Supervision"
 msgstr "Добавяне на надзор"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 521
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:521
@@ -705,19 +615,16 @@ msgid ""
 msgstr ""
 "Добавете защити на %s? Инсталирането на приложения и промяната на настройки "
 "ще изискват разрешение от родител."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 535
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:535
 msgid "Add Controls"
 msgstr "Добавяне на контроли"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 579
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:579
 msgid "Failed to apply supervised controls."
 msgstr "Неуспешно прилагане на контролите за наблюдение."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -729,13 +636,11 @@ msgstr "Неуспешно прилагане на контролите за н�
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:76
 msgid "Users"
 msgstr "Потребители"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 18
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:18
 msgid "Manage supervised accounts for children"
 msgstr "Управлявайте надзираваните акаунти за деца"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -746,13 +651,11 @@ msgstr "Управлявайте надзираваните акаунти за 
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:104
 msgid "Allowed Apps"
 msgstr "Разрешени приложения"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 23
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:23
 msgid "Choose which programs are available"
 msgstr "Изберете кои програми са налични"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -766,13 +669,11 @@ msgstr "Изберете кои програми са налични"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:132
 msgid "Screen Time"
 msgstr "Време на екрана"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:28
 msgid "Set daily usage limits"
 msgstr "Задайте дневни лимити за използване"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -787,13 +688,11 @@ msgstr "Задайте дневни лимити за използване"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:160
 msgid "Web Filter"
 msgstr "Уеб филтър"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 33
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:33
 msgid "Block harmful websites automatically"
 msgstr "Автоматично блокирайте вредни уебсайтове."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -805,13 +704,11 @@ msgstr "Автоматично блокирайте вредни уебсайт�
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:188
 msgid "Help"
 msgstr "Помощь"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 38
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:38
 msgid "Find support contacts and resources"
 msgstr "Намерете контакти за поддръжка и ресурси"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 82
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:82
@@ -824,20 +721,17 @@ msgstr ""
 "данните за възрастовия диапазон се споделят с други приложения на това "
 "устройство чрез D-Bus, за да се регулира съдържанието, но нищо не се изпраща "
 "в интернет."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:96
 #: src/big_parental_controls/ui/pages/welcome_page.py:46
 msgid "Features"
 msgstr "Характеристики"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:115
 msgid "Your Privacy"
 msgstr "Вашата поверителност"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 118
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:118
@@ -849,13 +743,11 @@ msgstr ""
 "Тази приложение не събира, не съхранява и не предава лични данни. Всички "
 "настройки остават на това устройство. Можете да прочетете пълната политика "
 "за поверителност в менюто \"За приложението\"."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 125
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:125
 msgid "Compliance"
 msgstr "Съответствие"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 128
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:128
@@ -865,7 +757,6 @@ msgid ""
 msgstr ""
 "Следва ECA Digital (Закон 15.211/2025), Кодекс за деца на Великобритания и "
 "Закон за цифровите услуги на ЕС"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 27
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:27
@@ -873,42 +764,35 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:207
 msgid "Home"
 msgstr "Начало"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:74
 msgid "Add Supervised Account"
 msgstr "Добавяне на наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:125
 msgid "No supervised accounts"
 msgstr "Няма наблюдавани акаунти"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:214
 #: src/big_parental_controls/window.py:101
 msgid "Error"
 msgstr "Грешка"
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:216
 #: src/big_parental_controls/window.py:94
 #: src/big_parental_controls/window.py:103
 msgid "OK"
 msgstr ""
-
 #: src/big_parental_controls/app.py:79
 msgid ""
 "Keep children safe on this computer.\n"
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:27
 msgid "Enable Activity Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:30
 #, python-format
 msgid ""
@@ -932,16 +816,13 @@ msgid ""
 "time. The supervised user will be informed that monitoring is active via the "
 "system tray indicator."
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:53
 msgid "I Understand and Consent"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:77
 #: src/big_parental_controls/ui/pages/user_detail_page.py:117
 msgid "Delete Activity Data"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:80
 #, python-format
 msgid ""
@@ -950,29 +831,23 @@ msgid ""
 "\n"
 "This action cannot be undone."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/compliance.py:87
-#, fuzzy
 msgid "Delete All Data"
 msgstr "Изтрий акаунт"
-
 #: src/big_parental_controls/ui/compliance.py:115
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:129
 #: src/big_parental_controls/ui/pages/user_detail_page.py:130
 msgid "Export Activity Data"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:178
 #, python-format
 msgid "Data exported to %s"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -982,79 +857,62 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/app_filter_page.py:52
 #: src/big_parental_controls/ui/pages/dns_page.py:51
 #: src/big_parental_controls/ui/pages/time_limits_page.py:51
-#, fuzzy
 msgid "User"
 msgstr "Потребители"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:56
 msgid "Monitored Users"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:59
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
 "running programs every minute."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:68
 #: src/big_parental_controls/ui/pages/app_filter_page.py:62
 #: src/big_parental_controls/ui/pages/time_limits_page.py:61
 msgid "Select a User"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:70
 msgid "Choose a supervised user to view activity."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: src/big_parental_controls/ui/pages/activity_page.py:76
-#, fuzzy
 msgid "Daily Usage"
 msgstr "Дневен лимит за използване"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: src/big_parental_controls/ui/pages/activity_page.py:77
-#, fuzzy
 msgid "Minutes of screen time per day"
 msgstr "Минути на ден"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:87
 msgid "Time of Day"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "When this user is most active"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:98
 #: src/big_parental_controls/ui/widgets/activity_block.py:58
 msgid "Recent Sessions"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:207
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:221
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:232
 #: src/big_parental_controls/ui/widgets/activity_block.py:126
 msgid "still active"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:237
 #: src/big_parental_controls/ui/widgets/activity_block.py:131
 #: big-parental-controls/usr/bin/big-supervised-indicator:88
 #, python-format
 msgid "%dh %dmin"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: src/big_parental_controls/ui/pages/activity_page.py:239
@@ -1063,133 +921,99 @@ msgstr ""
 #, fuzzy, python-format
 msgid "%d min"
 msgstr "Край на минутата"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:63
 msgid "Choose a supervised user to manage app access."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
 #: src/big_parental_controls/ui/pages/app_filter_page.py:68
-#, fuzzy
 msgid "Installed Apps"
 msgstr "Разрешени приложения"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:73
 msgid "Apply Changes"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: src/big_parental_controls/ui/pages/app_filter_page.py:192
-#, fuzzy
 msgid "App access updated."
 msgstr "Актуализирани разрешения за приложението."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:44
 msgid "DNS filtering requires systemd-resolved or manual network setup."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/dns_page.py:64
-#, fuzzy
 msgid "Enable web filtering"
 msgstr "Активирайте уеб филтър"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:65
 msgid "Block inappropriate content via DNS"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
 #: src/big_parental_controls/ui/pages/dns_page.py:72
-#, fuzzy
 msgid "Provider"
 msgstr "Филтър доставчик"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: src/big_parental_controls/ui/pages/dns_page.py:178
-#, fuzzy
 msgid "Web filtering disabled."
 msgstr "Уеб филтърът е деактивиран."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: src/big_parental_controls/ui/pages/dns_page.py:194
-#, fuzzy
 msgid "Web filtering enabled."
 msgstr "Уеб филтърът е деактивиран."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:211
 msgid "Custom DNS applied."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:17
 msgid "Emotional support, 24h"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:18
 msgid "Online safety for children"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Human rights violations"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:40
 msgid "Main Menu"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:62
 msgid "Manage screen time, apps and web filters for supervised users."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
 #: src/big_parental_controls/ui/pages/main_view.py:68
 #: src/big_parental_controls/ui/pages/users_page.py:48
-#, fuzzy
 msgid "Supervised Users"
 msgstr "Надзираван"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/main_view.py:73
-#, fuzzy
 msgid "Add Supervised User"
 msgstr "Добавяне на наблюдаван акаунт"
-
 #: src/big_parental_controls/ui/pages/main_view.py:82
 msgid "Help & Support"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
 #: src/big_parental_controls/ui/pages/main_view.py:125
-#, fuzzy
 msgid "No supervised users yet"
 msgstr "Няма наблюдавани акаунти"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
 #: src/big_parental_controls/ui/pages/main_view.py:127
-#, fuzzy
 msgid "Create a supervised account to get started."
 msgstr "Създайте един на страницата Потребители, за да започнете."
-
 #: src/big_parental_controls/ui/pages/main_view.py:164
 msgid "Legal Framework"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:168
 msgid "ECA Digital — Brazil"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:170
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
@@ -1197,22 +1021,18 @@ msgid ""
 "(data minimization), Art. 17 (protective measures), and Art. 18 (activity "
 "monitoring)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:178
 msgid "LGPD — Brazil"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:180
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
 "(children's data requires specific parental consent), Art. 18 (right to "
 "access and delete data), Art. 46 (security)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:187
 msgid "GDPR — European Union"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:189
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
@@ -1220,212 +1040,161 @@ msgid ""
 "17 (right to erasure), Art. 20 (data portability), Art. 25 (privacy by "
 "design)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:197
 msgid "UK Children's Code"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:199
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
 "including data minimization, default protections, and parental controls."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:206
 msgid "EU Digital Services Act"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:208
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
 "digital platforms."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:62
 msgid "Choose a supervised user to manage screen time."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:69
 msgid "When this user is allowed to log in."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/time_limits_page.py:74
-#, fuzzy
 msgid "Enable schedule"
 msgstr "Активирайте уеб филтър"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
 #: src/big_parental_controls/ui/pages/time_limits_page.py:88
-#, fuzzy
 msgid "Add Time Range"
 msgstr "Добавете времеви диапазон"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:100
 msgid "Maximum time this user can stay logged in per day."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
 #: src/big_parental_controls/ui/pages/time_limits_page.py:105
-#, fuzzy
 msgid "Enable daily limit"
 msgstr "Активирайте дневен лимит на времето"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/time_limits_page.py:262
-#, fuzzy
 msgid "Delete range"
 msgstr "Изтрий акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
 #: src/big_parental_controls/ui/pages/time_limits_page.py:264
-#, fuzzy
 msgid "Delete time range"
 msgstr "Премахнете този времеви диапазон."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:78
-#, fuzzy
 msgid "Account"
 msgstr "Изтрий акаунт"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:89
 msgid "Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:91
 msgid "Track which programs are used and for how long."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:95
 msgid "Activity Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:98
 msgid ""
 "Usage data stays exclusively on this device. In accordance with ECA Digital, "
 "LGPD, UK Children's Code, and EU DSA, parents may review usage patterns. No "
 "data is transmitted externally."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:110
 msgid "Enable monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:112
 msgid "Checks running programs every minute"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:119
 msgid "Permanently remove all collected data (LGPD Art. 18)"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:132
 msgid "Download data as JSON file (GDPR Art. 20)"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
 #: src/big_parental_controls/ui/pages/user_detail_page.py:196
-#, fuzzy
 msgid "Edit Time Limits"
 msgstr "Активирайте времеви ограничения"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:198
 msgid "Set allowed hours and daily duration"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
 #: src/big_parental_controls/ui/pages/user_detail_page.py:214
-#, fuzzy
 msgid "Edit Web Filter"
 msgstr "Уеб филтър"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:216
 msgid "Choose DNS provider to block inappropriate content"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:230
 msgid "Account Actions"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:232
 #: src/big_parental_controls/ui/pages/users_page.py:240
-#, fuzzy
 msgid "Remove Supervision"
 msgstr "Премахнете наблюдаван акаунт"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:234
 msgid "Keep the account but remove parental controls"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:244
-#, fuzzy
 msgid "Remove Supervision?"
 msgstr "Премахнете наблюдаван акаунт"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:246
 #, python-format
 msgid ""
 "This will remove parental controls from %s. The account will remain but "
 "without restrictions."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:251
 #: src/big_parental_controls/ui/pages/users_page.py:245
 msgid "Remove"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:49
 msgid "Users with restricted access to this computer."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/users_page.py:53
 #: src/big_parental_controls/ui/pages/users_page.py:55
-#, fuzzy
 msgid "Create supervised user"
 msgstr "Създайте наблюдаван акаунт"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/users_page.py:64
-#, fuzzy
 msgid "Other Users"
 msgstr "Потребители"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/users_page.py:65
-#, fuzzy
 msgid "Add supervision to an existing account."
 msgstr "Добавяне на наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/users_page.py:116
-#, fuzzy
 msgid "Remove supervision"
 msgstr "Премахнете наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
@@ -1433,95 +1202,72 @@ msgstr "Премахнете наблюдаван акаунт"
 #, fuzzy, python-format
 msgid "Remove supervision from %s"
 msgstr "Премахнете статуса на наблюдение"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:131
-#, fuzzy
 msgid "Add supervision"
 msgstr "Добавяне на надзор"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:134
 #, fuzzy, python-format
 msgid "Add supervision to %s"
 msgstr "Добавяне на надзор"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/users_page.py:144
-#, fuzzy
 msgid "Create Supervised User"
 msgstr "Създайте наблюдаван акаунт"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
 #: src/big_parental_controls/ui/pages/users_page.py:145
-#, fuzzy
 msgid "Set up a new supervised account on this computer."
 msgstr ""
 "Създайте надзираван акаунт, за да може детето да използва безопасно този "
 "компютър."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
 #: src/big_parental_controls/ui/pages/users_page.py:165
-#, fuzzy
 msgid "Age Group"
 msgstr "Възрастова група"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Child (< 10)"
 msgstr "Дете (под 10 години)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Pre-teen (10-12)"
 msgstr "Предпубертет (10–13)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Teen (13-17)"
 msgstr "Тийн (13–16)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Young adult (16-17)"
 msgstr "Млад възрастен (16–18)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: src/big_parental_controls/ui/pages/users_page.py:216
-#, fuzzy
 msgid "Failed to create user."
 msgstr "Неуспешно създаване на потребителски акаунт: %s"
-
 #: src/big_parental_controls/ui/pages/users_page.py:229
 #, python-format
 msgid "User %s created."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:242
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:269
 #, python-format
 msgid "Supervision removed from %s."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
@@ -1529,11 +1275,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "%s is now supervised."
 msgstr "Направете наблюдавано"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:40
 msgid "Protect children online — manage apps, screen time, and web filtering."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1546,80 +1290,61 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 63
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 70
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
-#, fuzzy
 msgid "Supervised Accounts"
 msgstr "Няма наблюдавани акаунти"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 65
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 72
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
-#, fuzzy
 msgid "Create protected user profiles"
 msgstr "Създайте първо един на страницата Потребители."
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
 msgid "App Access"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:53
 msgid "Control which apps each child can use"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: src/big_parental_controls/ui/pages/welcome_page.py:58
-#, fuzzy
 msgid "Set allowed hours and daily usage limits"
 msgstr "Задайте дневни лимити за използване"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 msgid "Block inappropriate web content via DNS"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: src/big_parental_controls/ui/pages/welcome_page.py:78
-#, fuzzy
 msgid "Privacy"
 msgstr "Вашата поверителност"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:81
 msgid "Data stays on this computer"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:83
 msgid ""
 "Compliant with ECA Digital, LGPD, and GDPR — no data leaves this device."
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:33
 msgid "Activity"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:35
 msgid "Usage data from session history"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:103
 msgid "Extended usage detected"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:107
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:187
 msgid "No activity data"
 msgstr ""
-
 #: src/big_parental_controls/window.py:92
 msgid "Notice"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1630,28 +1355,22 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:97
 #: big-parental-controls/usr/bin/big-supervised-indicator:140
-#, fuzzy
 msgid "Parental controls are active"
 msgstr "Родителски контрол"
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:103
 msgid "Activity is shared with your parent"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:114
 #: big-parental-controls/usr/bin/big-supervised-indicator:212
 #, python-format
 msgid "Your computer time today: %s"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:122
 msgid "What does this mean?"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:127
 msgid "I need help"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:142
 msgid ""
 "A responsible adult set up protections on this account to help keep you "
@@ -1662,7 +1381,6 @@ msgid ""
 "\n"
 "If you think something is wrong, talk to a trusted adult."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1672,14 +1390,11 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:149
-#, fuzzy
 msgid "About parental controls"
 msgstr "Родителски контрол"
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:159
 msgid "Need help?"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:161
 msgid ""
 "Talk to a trusted adult — a parent, teacher, or relative.\n"
@@ -1691,17 +1406,14 @@ msgid ""
 "\n"
 "These services are free and confidential."
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:232
 msgid "Time for a break!"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:234
 #, python-format
 msgid ""
 "You've been using the computer for %s. A short break helps you feel better."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1711,14 +1423,11 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:259
-#, fuzzy
 msgid "Parental controls active"
 msgstr "Родителски контрол"
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:217
 msgid "Main menu"
 msgstr ""
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:242
 msgid "About"
 msgstr ""

@@ -7,15 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: big-parental-controls\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-17 20:27-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -33,13 +31,11 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:15
 msgid "Parental Controls"
 msgstr "בקרת הורים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 61
 #: big-parental-controls/usr/share/biglinux/parental-controls/app.py:61
 msgid "Privacy Policy"
 msgstr "מדיניות פרטיות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/app.py, line: 65
 #: big-parental-controls/usr/share/biglinux/parental-controls/app.py:65
@@ -55,7 +51,6 @@ msgstr ""
 "באופן מקומי על מכשיר זה. אין נתונים משותפים עם צדדים שלישיים.\n"
 "\n"
 "מדיניות מלאה: %s"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -73,13 +68,11 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:84
 msgid "No Supervised Accounts"
 msgstr "אין חשבונות מפוקחים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:63
 msgid "Create one in the Users page to get started."
 msgstr "צור אחד בדף המשתמשים כדי להתחיל."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -95,25 +88,21 @@ msgstr "צור אחד בדף המשתמשים כדי להתחיל."
 #: src/big_parental_controls/ui/pages/time_limits_page.py:119
 msgid "Apply"
 msgstr "החל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 210
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:210
 msgid "Failed to update app filter."
 msgstr "כישלון בעדכון מסנן האפליקציה."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:232
 msgid "App permissions updated."
 msgstr "הרשאות האפליקציה עודכנו."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 237
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py:237
 msgid "Failed to apply file permissions."
 msgstr "נכשל בהחלת הרשאות קובץ."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 34
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:34
@@ -123,7 +112,6 @@ msgid ""
 msgstr ""
 "אם האינטרנט מפסיק לעבוד לאחר הפעלת זה, נסה להשבית את מסנן האינטרנט - כמה "
 "רשתות אינן מאפשרות זאת."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 58
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:58
@@ -133,7 +121,6 @@ msgid ""
 msgstr ""
 "הפעל מסנן אינטרנט כדי לחסום אוטומטית אתרים שאינם מתאימים לילדים. עובד עם כל "
 "דפדפן."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -143,64 +130,54 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:65
 msgid "Create one in the Users page first."
 msgstr "ראשית צור אחד בדף המשתמשים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 79
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:79
 msgid "Filter Settings"
 msgstr "הגדרות מסנן"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:81
 msgid "Enable web filter"
 msgstr "אפשר לסנן את האינטרנט"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 82
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:82
 msgid "Automatically block inappropriate websites"
 msgstr "חסום אוטומטית אתרים לא הולמים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 87
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:87
 #: src/big_parental_controls/ui/pages/dns_page.py:70
 msgid "Custom"
 msgstr "מותאם אישית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:90
 msgid "Filter provider"
 msgstr "ספק מסנן"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:96
 #: src/big_parental_controls/ui/pages/dns_page.py:83
 msgid "Primary DNS"
 msgstr "DNS ראשי"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 100
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:100
 #: src/big_parental_controls/ui/pages/dns_page.py:87
 msgid "Secondary DNS"
 msgstr "DNS משני"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 168
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:168
 msgid "Disable web filter?"
 msgstr "לכבות מסנן אינטרנט?"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 170
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:170
 msgid "Inappropriate websites will no longer be blocked for this account."
 msgstr "אתרים לא הולמים לא יחסמו יותר עבור חשבון זה."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -219,39 +196,33 @@ msgstr "אתרים לא הולמים לא יחסמו יותר עבור חשבו�
 #: src/big_parental_controls/ui/pages/users_page.py:244
 msgid "Cancel"
 msgstr "ביטול"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 173
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:173
 msgid "Disable"
 msgstr "השבתה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:210
 msgid "Web filter disabled."
 msgstr "מסנן האינטרנט מושבת."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 220
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:220
 #, python-format
 msgid "Web filter set to %s."
 msgstr "מסנן האינטרנט מוגדר ל%s."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:226
 #: src/big_parental_controls/ui/pages/dns_page.py:201
 msgid "Primary DNS is required."
 msgstr "דרוש DNS ראשי."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 234
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py:234
 msgid "Custom web filter configured."
 msgstr "מסנן אינטרנט מותאם אישית הוגדר."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
 #
@@ -262,35 +233,30 @@ msgstr "מסנן אינטרנט מותאם אישית הוגדר."
 #: src/big_parental_controls/ui/pages/support_page.py:16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
 msgstr "מרכז להערכה של החיים - תמיכה רגשית בטלפון או בצ'אט"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:22
 #: src/big_parental_controls/ui/pages/support_page.py:22
 msgid "Report and get help with online safety issues"
 msgstr "דווח וקבל עזרה בנושאי בטיחות מקוונת"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:27
 #: src/big_parental_controls/ui/pages/support_page.py:27
 msgid "Disque 100"
 msgstr "דיסק 100"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:28
 #: src/big_parental_controls/ui/pages/support_page.py:28
 msgid "Report violations of children's and adolescents' rights"
 msgstr "דווח על הפרות זכויות ילדים ונוער"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 34
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:34
 #: src/big_parental_controls/ui/pages/support_page.py:34
 msgid "Internet security guides and best practices"
 msgstr "מדריכי אבטחת אינטרנט ושיטות עבודה מומלצות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 65
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:65
@@ -301,28 +267,24 @@ msgid ""
 msgstr ""
 "אם אתה או מישהו שאתה מכיר זקוק לעזרה, אתה לא לבד. הארגונים הללו מספקים תמיכה "
 "חינם וסודית - אף אחד לא ישפוט אותך."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 99
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:99
 #: src/big_parental_controls/ui/pages/support_page.py:103
 msgid "Emergency"
 msgstr "חירום"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:102
 #: src/big_parental_controls/ui/pages/support_page.py:106
 msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
 msgstr "במקרה של סכנה מיידית, התקשר 190 (משטרה) או 192 (סמו)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py:103
 #: src/big_parental_controls/ui/pages/support_page.py:107
 msgid "These numbers are free and available 24/7"
 msgstr "מספרים אלה חינם וזמינים 24/7"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 51
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:51
@@ -330,136 +292,115 @@ msgid ""
 "Choose when the computer can be used. Outside these hours, this account will "
 "be locked."
 msgstr "בחר מתי ניתן להשתמש במחשב. מחוץ לשעות אלו, החשבון הזה יהיה נעול."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 72
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:72
 #: src/big_parental_controls/ui/pages/time_limits_page.py:67
 msgid "Allowed Hours"
 msgstr "שעות מותרות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:74
 msgid "Enable time limits"
 msgstr "אפשר מגבלות זמן"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 75
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:75
 msgid "Only allow computer use during chosen hours"
 msgstr "אפשר להשתמש במחשב רק בשעות שנבחרו"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:90
 msgid "Add time range"
 msgstr "הוסף טווח זמן"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:101
 #: src/big_parental_controls/ui/pages/time_limits_page.py:98
 msgid "Daily Usage Limit"
 msgstr "מגבלת שימוש יומית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:104
 msgid "Enable daily time limit"
 msgstr "אפשר מגבלת זמן יומית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 107
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:107
 msgid "Automatically close the session after a set number of minutes"
 msgstr "סגור את המושב באופן אוטומטי לאחר מספר דקות שנקבעו"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:115
 #: src/big_parental_controls/ui/pages/time_limits_page.py:110
 msgid "Minutes per day"
 msgstr "דקות ביום"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 117
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:117
 msgid "Session ends when this limit is reached"
 msgstr "הסשן מסתיים כאשר גבול זה מושג"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 175
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:175
 #: src/big_parental_controls/ui/pages/time_limits_page.py:218
 msgid "Start hour"
 msgstr "שעת התחלה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 192
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:192
 #: src/big_parental_controls/ui/pages/time_limits_page.py:228
 msgid "Start minute"
 msgstr "דקה התחלה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 211
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:211
 #: src/big_parental_controls/ui/pages/time_limits_page.py:238
 msgid "End hour"
 msgstr "שעת סיום"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:228
 #: src/big_parental_controls/ui/pages/time_limits_page.py:248
 msgid "End minute"
 msgstr "סוף דקה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:240
 msgid "Remove this time range"
 msgstr "הסר טווח זמן זה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 377
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:377
 #: src/big_parental_controls/ui/pages/time_limits_page.py:321
 msgid "End time must be after start time in all ranges."
 msgstr "זמן הסיום חייב להיות לאחר זמן ההתחלה בכל הטווחים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 420
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py:420
 #: src/big_parental_controls/ui/pages/time_limits_page.py:355
 msgid "Time settings applied."
 msgstr "הגדרות הזמן הוחלו."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:22
 msgid "Child (under 10)"
 msgstr "ילד (מתחת לגיל 10)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:23
 msgid "Pre-teen (10–13)"
 msgstr "טרום מתבגר (10–13)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:24
 msgid "Teen (13–16)"
 msgstr "נוער (13–16)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:25
 msgid "Young adult (16–18)"
 msgstr "צעירים (16–18)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 70
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:70
@@ -469,32 +410,27 @@ msgid ""
 msgstr ""
 "חשבונות מפוקחים כוללים הגנות נוספות לשמירה על בטיחות ילדים. רק הורה או "
 "אפוטרופוס יכולים לשנות הגדרות אלו."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:86
 msgid "Create a supervised account so a child can use this computer safely."
 msgstr "צור חשבון מפוקח כך שילד יוכל להשתמש במחשב הזה בבטחה."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:139
 #: src/big_parental_controls/ui/pages/users_page.py:108
 msgid "Supervised"
 msgstr "מנוהל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 142
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:142
 msgid "Administrator"
 msgstr "מנהל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 144
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:144
 msgid "Standard"
 msgstr "סטנדרט"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
@@ -502,7 +438,6 @@ msgstr "סטנדרט"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:164
 msgid "Remove supervised status"
 msgstr "הסר מצב מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
@@ -510,13 +445,11 @@ msgstr "הסר מצב מפוקח"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:179
 msgid "Make supervised"
 msgstr "בצע פיקוח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:195
 msgid "Create Supervised Account"
 msgstr "צור חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 198
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:198
@@ -526,34 +459,29 @@ msgid ""
 msgstr ""
 "צור חשבון חדש עם הגנות לילד או מתבגר. חשבון זה יהיה עם הגדרות בטוחות כברירת "
 "מחדל."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:207
 #: src/big_parental_controls/ui/pages/users_page.py:153
 msgid "Username"
 msgstr "שם משתמש"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 211
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:211
 #: src/big_parental_controls/ui/pages/users_page.py:157
 msgid "Full Name"
 msgstr "שם מלא"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 214
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:214
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Password"
 msgstr "סיסמה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 217
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:217
 msgid "Confirm Password"
 msgstr "אשר סיסמה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 221
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 293
@@ -561,7 +489,6 @@ msgstr "אשר סיסמה"
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:293
 msgid "Passwords do not match."
 msgstr "הסיסמאות אינן תואמות."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
@@ -569,27 +496,23 @@ msgstr "הסיסמאות אינן תואמות."
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:527
 msgid "Age group"
 msgstr "קבוצת גיל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 256
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:256
 #: src/big_parental_controls/ui/pages/users_page.py:176
 msgid "Create"
 msgstr "צור"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 285
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:285
 #: src/big_parental_controls/ui/pages/users_page.py:207
 msgid "Username and password are required."
 msgstr "שם משתמש וסיסמה נדרשים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 289
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:289
 msgid "Username must be 32 characters or less."
 msgstr "שם המשתמש חייב להיות 32 תווים או פחות."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 300
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:300
@@ -599,58 +522,49 @@ msgid ""
 msgstr ""
 "שם המשתמש חייב להתחיל באות קטנה ולכלול רק אותיות, מספרים, מקפים וקווים "
 "תחתונים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 308
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:308
 #, python-format
 msgid "A user named '%s' already exists."
 msgstr "משתמש בשם '%s' כבר קיים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 325
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:325
 msgid "Failed to prepare credentials."
 msgstr "כישלון בהכנת אישורים."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 330
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:330
 msgid "Creating account…"
 msgstr "יוצרים חשבון…"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:360
 msgid "Authentication was cancelled."
 msgstr "האימות בוטל."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 363
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:363
 msgid "Helper script not found. Is the package installed correctly?"
 msgstr "סקריפט העזרה לא נמצא. האם החבילה מותקנת כראוי?"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 367
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:367
 #, python-format
 msgid "Exit code %d"
 msgstr "קוד יציאה %d"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:369
 #, python-format
 msgid "Failed to create user account: %s"
 msgstr "נכשל ביצירת חשבון משתמש: %s"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:463
 msgid "Remove Supervised Account"
 msgstr "הסר חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 466
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:466
@@ -666,25 +580,21 @@ msgstr ""
 "\n"
 "• <b>הסר מגבלות</b> שומר על החשבון אך מסיר את כל ההגנות ההוריות.\n"
 "• <b>מחק חשבון</b> מסיר לצמיתות את החשבון ואת כל הקבצים שלו."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 473
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:473
 msgid "Remove Restrictions"
 msgstr "הסר מגבלות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:474
 msgid "Delete Account"
 msgstr "מחק חשבון"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:519
 msgid "Add Supervision"
 msgstr "הוסף פיקוח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 521
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:521
@@ -694,19 +604,16 @@ msgid ""
 "parent's permission."
 msgstr ""
 "האם להוסיף הגנות ל-%s? התקנת אפליקציות ושינוי הגדרות ידרשו אישור מההורה."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 535
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:535
 msgid "Add Controls"
 msgstr "הוסף בקרות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 579
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py:579
 msgid "Failed to apply supervised controls."
 msgstr "כישלון בהחלת בקרות מפוקחות."
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -718,13 +625,11 @@ msgstr "כישלון בהחלת בקרות מפוקחות."
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:76
 msgid "Users"
 msgstr "משתמשים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 18
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:18
 msgid "Manage supervised accounts for children"
 msgstr "נהל חשבונות מפוקחים עבור ילדים"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -735,13 +640,11 @@ msgstr "נהל חשבונות מפוקחים עבור ילדים"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:104
 msgid "Allowed Apps"
 msgstr "אפליקציות מותרות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 23
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:23
 msgid "Choose which programs are available"
 msgstr "בחר אילו תוכניות זמינות"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -755,13 +658,11 @@ msgstr "בחר אילו תוכניות זמינות"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:132
 msgid "Screen Time"
 msgstr "זמן מסך"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:28
 msgid "Set daily usage limits"
 msgstr "קבע מגבלות שימוש יומיות"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -776,13 +677,11 @@ msgstr "קבע מגבלות שימוש יומיות"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:160
 msgid "Web Filter"
 msgstr "מסנן אינטרנט"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 33
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:33
 msgid "Block harmful websites automatically"
 msgstr "חסום אתרים מזיקים באופן אוטומטי"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -794,13 +693,11 @@ msgstr "חסום אתרים מזיקים באופן אוטומטי"
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:188
 msgid "Help"
 msgstr "עזרה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 38
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:38
 msgid "Find support contacts and resources"
 msgstr "מצא את פרטי הקשר ותמיכה ומשאבים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 82
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:82
@@ -812,20 +709,17 @@ msgstr ""
 "שמור על ילדים בטוחים במחשב הזה. הכל פועל באופן מקומי - נתוני טווח גילאים "
 "משותפים עם אפליקציות אחרות במכשיר הזה דרך D-Bus כדי להתאים תוכן, אך שום דבר "
 "לא נשלח לאינטרנט."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:96
 #: src/big_parental_controls/ui/pages/welcome_page.py:46
 msgid "Features"
 msgstr "תכונות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:115
 msgid "Your Privacy"
 msgstr "הפרטיות שלך"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 118
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:118
@@ -836,13 +730,11 @@ msgid ""
 msgstr ""
 "אפליקציה זו אינה אוספת, מאחסנת או מעבירה נתונים אישיים. כל ההגדרות נשארות "
 "במכשיר זה. אתה יכול לקרוא את מדיניות הפרטיות המלאה בתפריט אודות."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 125
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:125
 msgid "Compliance"
 msgstr "ציות"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 128
 #: big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py:128
@@ -852,7 +744,6 @@ msgid ""
 msgstr ""
 "עוקב אחרי ECA Digital (חוק 15.211/2025), קוד הילדים של הממלכה המאוחדת וחוק "
 "שירותי הדיגיטל של האיחוד האירופי"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 27
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:27
@@ -860,42 +751,35 @@ msgstr ""
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:207
 msgid "Home"
 msgstr "בית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:74
 msgid "Add Supervised Account"
 msgstr "הוסף חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:125
 msgid "No supervised accounts"
 msgstr "אין חשבונות מפוקחים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:214
 #: src/big_parental_controls/window.py:101
 msgid "Error"
 msgstr "שגיאה"
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.py:216
 #: src/big_parental_controls/window.py:94
 #: src/big_parental_controls/window.py:103
 msgid "OK"
 msgstr ""
-
 #: src/big_parental_controls/app.py:79
 msgid ""
 "Keep children safe on this computer.\n"
 "Compliant with ECA Digital (Lei 15.211/2025), LGPD, and GDPR."
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:27
 msgid "Enable Activity Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:30
 #, python-format
 msgid ""
@@ -919,16 +803,13 @@ msgid ""
 "time. The supervised user will be informed that monitoring is active via the "
 "system tray indicator."
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:53
 msgid "I Understand and Consent"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:77
 #: src/big_parental_controls/ui/pages/user_detail_page.py:117
 msgid "Delete Activity Data"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:80
 #, python-format
 msgid ""
@@ -937,29 +818,23 @@ msgid ""
 "\n"
 "This action cannot be undone."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/compliance.py:87
-#, fuzzy
 msgid "Delete All Data"
 msgstr "מחק חשבון"
-
 #: src/big_parental_controls/ui/compliance.py:115
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:129
 #: src/big_parental_controls/ui/pages/user_detail_page.py:130
 msgid "Export Activity Data"
 msgstr ""
-
 #: src/big_parental_controls/ui/compliance.py:178
 #, python-format
 msgid "Data exported to %s"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -969,79 +844,62 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/app_filter_page.py:52
 #: src/big_parental_controls/ui/pages/dns_page.py:51
 #: src/big_parental_controls/ui/pages/time_limits_page.py:51
-#, fuzzy
 msgid "User"
 msgstr "משתמשים"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:56
 msgid "Monitored Users"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:59
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
 "running programs every minute."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:68
 #: src/big_parental_controls/ui/pages/app_filter_page.py:62
 #: src/big_parental_controls/ui/pages/time_limits_page.py:61
 msgid "Select a User"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:70
 msgid "Choose a supervised user to view activity."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: src/big_parental_controls/ui/pages/activity_page.py:76
-#, fuzzy
 msgid "Daily Usage"
 msgstr "מגבלת שימוש יומית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: src/big_parental_controls/ui/pages/activity_page.py:77
-#, fuzzy
 msgid "Minutes of screen time per day"
 msgstr "דקות ביום"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:87
 msgid "Time of Day"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "When this user is most active"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:98
 #: src/big_parental_controls/ui/widgets/activity_block.py:58
 msgid "Recent Sessions"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:207
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:221
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:232
 #: src/big_parental_controls/ui/widgets/activity_block.py:126
 msgid "still active"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/activity_page.py:237
 #: src/big_parental_controls/ui/widgets/activity_block.py:131
 #: big-parental-controls/usr/bin/big-supervised-indicator:88
 #, python-format
 msgid "%dh %dmin"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: src/big_parental_controls/ui/pages/activity_page.py:239
@@ -1050,133 +908,99 @@ msgstr ""
 #, fuzzy, python-format
 msgid "%d min"
 msgstr "סוף דקה"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:63
 msgid "Choose a supervised user to manage app access."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 29
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
 #: src/big_parental_controls/ui/pages/app_filter_page.py:68
-#, fuzzy
 msgid "Installed Apps"
 msgstr "אפליקציות מותרות"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:73
 msgid "Apply Changes"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: src/big_parental_controls/ui/pages/app_filter_page.py:192
-#, fuzzy
 msgid "App access updated."
 msgstr "הרשאות האפליקציה עודכנו."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:44
 msgid "DNS filtering requires systemd-resolved or manual network setup."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/dns_page.py:64
-#, fuzzy
 msgid "Enable web filtering"
 msgstr "אפשר לסנן את האינטרנט"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:65
 msgid "Block inappropriate content via DNS"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 90
 #: src/big_parental_controls/ui/pages/dns_page.py:72
-#, fuzzy
 msgid "Provider"
 msgstr "ספק מסנן"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: src/big_parental_controls/ui/pages/dns_page.py:178
-#, fuzzy
 msgid "Web filtering disabled."
 msgstr "מסנן האינטרנט מושבת."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: src/big_parental_controls/ui/pages/dns_page.py:194
-#, fuzzy
 msgid "Web filtering enabled."
 msgstr "מסנן האינטרנט מושבת."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:211
 msgid "Custom DNS applied."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:17
 msgid "Emotional support, 24h"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:18
 msgid "Online safety for children"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Human rights violations"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:40
 msgid "Main Menu"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:62
 msgid "Manage screen time, apps and web filters for supervised users."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
 #: src/big_parental_controls/ui/pages/main_view.py:68
 #: src/big_parental_controls/ui/pages/users_page.py:48
-#, fuzzy
 msgid "Supervised Users"
 msgstr "מנוהל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/main_view.py:73
-#, fuzzy
 msgid "Add Supervised User"
 msgstr "הוסף חשבון מפוקח"
-
 #: src/big_parental_controls/ui/pages/main_view.py:82
 msgid "Help & Support"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 125
 #: src/big_parental_controls/ui/pages/main_view.py:125
-#, fuzzy
 msgid "No supervised users yet"
 msgstr "אין חשבונות מפוקחים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 63
 #: src/big_parental_controls/ui/pages/main_view.py:127
-#, fuzzy
 msgid "Create a supervised account to get started."
 msgstr "צור אחד בדף המשתמשים כדי להתחיל."
-
 #: src/big_parental_controls/ui/pages/main_view.py:164
 msgid "Legal Framework"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:168
 msgid "ECA Digital — Brazil"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:170
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
@@ -1184,22 +1008,18 @@ msgid ""
 "(data minimization), Art. 17 (protective measures), and Art. 18 (activity "
 "monitoring)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:178
 msgid "LGPD — Brazil"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:180
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
 "(children's data requires specific parental consent), Art. 18 (right to "
 "access and delete data), Art. 46 (security)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:187
 msgid "GDPR — European Union"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:189
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
@@ -1207,212 +1027,161 @@ msgid ""
 "17 (right to erasure), Art. 20 (data portability), Art. 25 (privacy by "
 "design)."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:197
 msgid "UK Children's Code"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:199
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
 "including data minimization, default protections, and parental controls."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:206
 msgid "EU Digital Services Act"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/main_view.py:208
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
 "digital platforms."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:62
 msgid "Choose a supervised user to manage screen time."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:69
 msgid "When this user is allowed to log in."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/time_limits_page.py:74
-#, fuzzy
 msgid "Enable schedule"
 msgstr "אפשר לסנן את האינטרנט"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
 #: src/big_parental_controls/ui/pages/time_limits_page.py:88
-#, fuzzy
 msgid "Add Time Range"
 msgstr "הוסף טווח זמן"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:100
 msgid "Maximum time this user can stay logged in per day."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
 #: src/big_parental_controls/ui/pages/time_limits_page.py:105
-#, fuzzy
 msgid "Enable daily limit"
 msgstr "אפשר מגבלת זמן יומית"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/time_limits_page.py:262
-#, fuzzy
 msgid "Delete range"
 msgstr "מחק חשבון"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
 #: src/big_parental_controls/ui/pages/time_limits_page.py:264
-#, fuzzy
 msgid "Delete time range"
 msgstr "הסר טווח זמן זה"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:78
-#, fuzzy
 msgid "Account"
 msgstr "מחק חשבון"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:89
 msgid "Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:91
 msgid "Track which programs are used and for how long."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:95
 msgid "Activity Monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:98
 msgid ""
 "Usage data stays exclusively on this device. In accordance with ECA Digital, "
 "LGPD, UK Children's Code, and EU DSA, parents may review usage patterns. No "
 "data is transmitted externally."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:110
 msgid "Enable monitoring"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:112
 msgid "Checks running programs every minute"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:119
 msgid "Permanently remove all collected data (LGPD Art. 18)"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:132
 msgid "Download data as JSON file (GDPR Art. 20)"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
 #: src/big_parental_controls/ui/pages/user_detail_page.py:196
-#, fuzzy
 msgid "Edit Time Limits"
 msgstr "אפשר מגבלות זמן"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:198
 msgid "Set allowed hours and daily duration"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 31
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
 #: src/big_parental_controls/ui/pages/user_detail_page.py:214
-#, fuzzy
 msgid "Edit Web Filter"
 msgstr "מסנן אינטרנט"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:216
 msgid "Choose DNS provider to block inappropriate content"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:230
 msgid "Account Actions"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:232
 #: src/big_parental_controls/ui/pages/users_page.py:240
-#, fuzzy
 msgid "Remove Supervision"
 msgstr "הסר חשבון מפוקח"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:234
 msgid "Keep the account but remove parental controls"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:244
-#, fuzzy
 msgid "Remove Supervision?"
 msgstr "הסר חשבון מפוקח"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:246
 #, python-format
 msgid ""
 "This will remove parental controls from %s. The account will remain but "
 "without restrictions."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:251
 #: src/big_parental_controls/ui/pages/users_page.py:245
 msgid "Remove"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:49
 msgid "Users with restricted access to this computer."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/users_page.py:53
 #: src/big_parental_controls/ui/pages/users_page.py:55
-#, fuzzy
 msgid "Create supervised user"
 msgstr "צור חשבון מפוקח"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 28
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/users_page.py:64
-#, fuzzy
 msgid "Other Users"
 msgstr "משתמשים"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/users_page.py:65
-#, fuzzy
 msgid "Add supervision to an existing account."
 msgstr "הוסף חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/users_page.py:116
-#, fuzzy
 msgid "Remove supervision"
 msgstr "הסר חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 161
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 164
@@ -1420,93 +1189,70 @@ msgstr "הסר חשבון מפוקח"
 #, fuzzy, python-format
 msgid "Remove supervision from %s"
 msgstr "הסר מצב מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:131
-#, fuzzy
 msgid "Add supervision"
 msgstr "הוסף פיקוח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:134
 #, fuzzy, python-format
 msgid "Add supervision to %s"
 msgstr "הוסף פיקוח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/users_page.py:144
-#, fuzzy
 msgid "Create Supervised User"
 msgstr "צור חשבון מפוקח"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
 #: src/big_parental_controls/ui/pages/users_page.py:145
-#, fuzzy
 msgid "Set up a new supervised account on this computer."
 msgstr "צור חשבון מפוקח כך שילד יוכל להשתמש במחשב הזה בבטחה."
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
 #: src/big_parental_controls/ui/pages/users_page.py:165
-#, fuzzy
 msgid "Age Group"
 msgstr "קבוצת גיל"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Child (< 10)"
 msgstr "ילד (מתחת לגיל 10)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 23
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Pre-teen (10-12)"
 msgstr "טרום מתבגר (10–13)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Teen (13-17)"
 msgstr "נוער (13–16)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 25
 #: src/big_parental_controls/ui/pages/users_page.py:167
-#, fuzzy
 msgid "Young adult (16-17)"
 msgstr "צעירים (16–18)"
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: src/big_parental_controls/ui/pages/users_page.py:216
-#, fuzzy
 msgid "Failed to create user."
 msgstr "נכשל ביצירת חשבון משתמש: %s"
-
 #: src/big_parental_controls/ui/pages/users_page.py:229
 #, python-format
 msgid "User %s created."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:242
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/users_page.py:269
 #, python-format
 msgid "Supervision removed from %s."
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
@@ -1514,11 +1260,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "%s is now supervised."
 msgstr "בצע פיקוח"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:40
 msgid "Protect children online — manage apps, screen time, and web filtering."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1531,80 +1275,61 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 63
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 70
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
-#, fuzzy
 msgid "Supervised Accounts"
 msgstr "אין חשבונות מפוקחים"
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 65
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 72
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
-#, fuzzy
 msgid "Create protected user profiles"
 msgstr "ראשית צור אחד בדף המשתמשים."
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
 msgid "App Access"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:53
 msgid "Control which apps each child can use"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: src/big_parental_controls/ui/pages/welcome_page.py:58
-#, fuzzy
 msgid "Set allowed hours and daily usage limits"
 msgstr "קבע מגבלות שימוש יומיות"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 msgid "Block inappropriate web content via DNS"
 msgstr ""
-
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: src/big_parental_controls/ui/pages/welcome_page.py:78
-#, fuzzy
 msgid "Privacy"
 msgstr "הפרטיות שלך"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:81
 msgid "Data stays on this computer"
 msgstr ""
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:83
 msgid ""
 "Compliant with ECA Digital, LGPD, and GDPR — no data leaves this device."
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:33
 msgid "Activity"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:35
 msgid "Usage data from session history"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:103
 msgid "Extended usage detected"
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:107
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr ""
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:187
 msgid "No activity data"
 msgstr ""
-
 #: src/big_parental_controls/window.py:92
 msgid "Notice"
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1615,28 +1340,22 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:97
 #: big-parental-controls/usr/bin/big-supervised-indicator:140
-#, fuzzy
 msgid "Parental controls are active"
 msgstr "בקרת הורים"
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:103
 msgid "Activity is shared with your parent"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:114
 #: big-parental-controls/usr/bin/big-supervised-indicator:212
 #, python-format
 msgid "Your computer time today: %s"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:122
 msgid "What does this mean?"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:127
 msgid "I need help"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:142
 msgid ""
 "A responsible adult set up protections on this account to help keep you "
@@ -1647,7 +1366,6 @@ msgid ""
 "\n"
 "If you think something is wrong, talk to a trusted adult."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1657,14 +1375,11 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:149
-#, fuzzy
 msgid "About parental controls"
 msgstr "בקרת הורים"
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:159
 msgid "Need help?"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:161
 msgid ""
 "Talk to a trusted adult — a parent, teacher, or relative.\n"
@@ -1676,17 +1391,14 @@ msgid ""
 "\n"
 "These services are free and confidential."
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:232
 msgid "Time for a break!"
 msgstr ""
-
 #: big-parental-controls/usr/bin/big-supervised-indicator:234
 #, python-format
 msgid ""
 "You've been using the computer for %s. A short break helps you feel better."
 msgstr ""
-
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1696,14 +1408,11 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 58
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 73
 #: big-parental-controls/usr/bin/big-supervised-indicator:259
-#, fuzzy
 msgid "Parental controls active"
 msgstr "בקרת הורים"
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:217
 msgid "Main menu"
 msgstr ""
-
 #: big-parental-controls/usr/share/biglinux/parental-controls/window.ui:242
 msgid "About"
 msgstr ""
