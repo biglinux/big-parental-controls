@@ -106,6 +106,12 @@ WHO DOWNLOADS THE ISO AND INSTALLS THE SYSTEM
 > The software provides the tools; the legal obligation belongs to the person who sets up the computer for a child.
 > This is the same model used by dedicated hardware devices (parental routers, smart TVs, set-top boxes) —
 > the manufacturer supplies the controls; the adult is responsible for activating them.
+>
+> **This interpretation was written by a systems developer who maintains a free software project and believes
+> that the measures implemented here should be sufficient for a community Linux distribution to comply with
+> the law.** The reasoning is laid out in the diagram above and in the author's note at the end of this file.
+> This is not legal advice — it is a technical position taken in good faith by a developer who does not want
+> BigLinux to become illegal simply because it runs on a computer that a child might someday touch.
 
 ## What It Does
 
