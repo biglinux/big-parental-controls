@@ -12,7 +12,7 @@ depends=(
     'python-gobject'
     'gtk4'
     'libadwaita'
-    'malcontent'
+    'libmalcontent'
     'accountsservice'
     'polkit'
     'gettext'
