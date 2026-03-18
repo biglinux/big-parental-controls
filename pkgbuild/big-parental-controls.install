@@ -2,8 +2,8 @@ post_install() {
     # Create supervised accounts group
     groupadd -r supervised 2>/dev/null || true
 
-    # Enable the D-Bus age signal service for all users
-    echo ">>> Enabling big-age-signal.service for user sessions..."
+    # Enable the daemon (handles activity monitoring + time enforcement)
+    systemctl enable --now big-parental-daemon.service 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -38,12 +38,14 @@ except Exception:
         rm -f "$unit"
     done
 
-    # Disable time check timer
+    # Disable time check timer (replaced by daemon enforcement)
     systemctl disable --now big-parental-time-check.timer 2>/dev/null || true
     rm -f /etc/systemd/system/big-parental-time-check.timer
     rm -f /etc/systemd/system/big-parental-time-check.service
 
-    # Remove noexec drop-ins for /tmp and /dev/shm
+    # Disable daemon
+    systemctl disable --now big-parental-daemon.service 2>/dev/null || true
+
     rm -rf /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf
     rm -rf /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf
     rmdir /etc/systemd/system/tmp.mount.d 2>/dev/null || true

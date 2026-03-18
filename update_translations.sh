@@ -2,11 +2,9 @@
 set -e
 
 DOMAIN="big-parental-controls"
-SRC_DIR="big-parental-controls/usr/share/biglinux/parental-controls"
-INDICATOR="big-parental-controls/usr/bin/big-supervised-indicator"
-LOCALE_DIR="locale"
+SRC_DIR="src/big_parental_controls"
+LOCALE_DIR="big-parental-controls/locale"
 POT_FILE="$LOCALE_DIR/$DOMAIN.pot"
-APP_LOCALE_SRC_DIR="$SRC_DIR/locale"
 MO_BASE="big-parental-controls/usr/share/locale"
 
 echo "=== $DOMAIN — update translations ==="
@@ -14,8 +12,6 @@ echo "=== $DOMAIN — update translations ==="
 # 1. Extract translatable strings from Python sources + UI templates
 echo "Extracting strings from Python sources..."
 find "$SRC_DIR" -name '*.py' | sort > /tmp/bpc_files.txt
-# Include the indicator script
-echo "$INDICATOR" >> /tmp/bpc_files.txt
 
 xgettext \
     --files-from=/tmp/bpc_files.txt \
@@ -27,7 +23,7 @@ xgettext \
     --package-name="$DOMAIN" \
     --package-version="1.0" \
     --copyright-holder="BigLinux Team" \
-    --msgid-bugs-address="dev@biglinux.com.br" \
+    --msgid-bugs-address="biglinux@biglinux.com.br" \
     --add-comments=Note:
 
 # Merge strings from .ui templates (translatable="yes" attributes)
@@ -52,15 +48,6 @@ for po_file in "$LOCALE_DIR"/*.po; do
     msgattrib --no-obsolete -o "$po_file" "$po_file"
 done
 
-# 2.1 Mirror source locale files into the app tree so shipped sources stay in sync
-echo "Syncing locale sources into app tree..."
-mkdir -p "$APP_LOCALE_SRC_DIR"
-cp "$POT_FILE" "$APP_LOCALE_SRC_DIR/$DOMAIN.pot"
-for po_file in "$LOCALE_DIR"/*.po; do
-    [ -f "$po_file" ] || continue
-    cp "$po_file" "$APP_LOCALE_SRC_DIR/$(basename "$po_file")"
-done
-
 # 3. Compile .po → .mo and install to usr/share/locale tree
 echo "Compiling MO files..."
 rm -rf "$MO_BASE"
@@ -68,7 +55,6 @@ mkdir -p "$MO_BASE"
 for po_file in "$LOCALE_DIR"/*.po; do
     [ -f "$po_file" ] || continue
     lang=$(basename "$po_file" .po)
-    # Convert pt_BR → pt_BR (keep as-is), pt → pt
     mo_dir="$MO_BASE/$lang/LC_MESSAGES"
     mkdir -p "$mo_dir"
     msgfmt -o "$mo_dir/$DOMAIN.mo" "$po_file"

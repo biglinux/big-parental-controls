@@ -1,0 +1,45 @@
+/* big-parental-controls — Custom styles */
+
+/* Sidebar section icons */
+.navigation-sidebar row {
+    min-height: 44px;
+}
+
+/* Status badges */
+.supervised-badge {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* Warning banner */
+.warning-banner {
+    background-color: alpha(@warning_color, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+/* Support cards */
+.support-card {
+    padding: 8px;
+}
+
+/* User row icons */
+.user-icon-supervised {
+    color: @accent_color;
+}
+
+.user-icon-admin {
+    color: @warning_color;
+}
+
+/* Loading overlay */
+.bpc-loading-overlay {
+    background-color: rgba(0, 0, 0, 0.42);
+}
+.bpc-loading-overlay label {
+    color: white;
+}

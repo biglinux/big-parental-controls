@@ -16,7 +16,6 @@ depends=(
     'accountsservice'
     'polkit'
     'gettext'
-    'libappindicator-gtk3'
     'acl'
 )
 makedepends=(
@@ -24,7 +23,7 @@ makedepends=(
     'cargo'
 )
 optdepends=(
-    'ufw: Firewall management (recommended for security)'
+    'nftables: DNS redirect enforcement per supervised user (recommended)'
 )
 source=("git+https://github.com/biglinux/$pkgname.git")
 md5sums=(SKIP)
@@ -38,7 +37,7 @@ build() {
         InternalDir="$srcdir/$pkgname"
     fi
 
-    # Build Rust D-Bus age signal service
+    # Build Rust unified daemon (age signal + parental monitor)
     cd "$InternalDir/../big-age-signal"
     cargo build --release
 }
@@ -56,21 +55,32 @@ package() {
         cp -r "$InternalDir/usr" "$pkgdir/"
     fi
 
-    if [ -d "$InternalDir/etc" ]; then
-        cp -r "$InternalDir/etc" "$pkgdir/"
-    fi
+    # Install unified Rust daemon binary
+    install -Dm755 "$InternalDir/../big-age-signal/target/release/big-parental-daemon" \
+        "$pkgdir/usr/lib/big-parental-controls/big-parental-daemon"
 
-    # Install Rust age signal binary
-    install -Dm755 "$InternalDir/../big-age-signal/target/release/big-age-signal" \
+    # Symlink for backward compatibility (big-age-signal → big-parental-daemon)
+    ln -sf /usr/lib/big-parental-controls/big-parental-daemon \
         "$pkgdir/usr/bin/big-age-signal"
+
+    # Install Python package
+    local site_packages="$pkgdir/$(python -c 'import site; print(site.getsitepackages()[0])')"
+    install -dm755 "$site_packages/big_parental_controls"
+    cp -r "$InternalDir/../src/big_parental_controls/"* "$site_packages/big_parental_controls/"
 
     # Set executable permissions
     chmod +x "$pkgdir/usr/bin/big-parental-controls" 2>/dev/null || true
-    chmod +x "$pkgdir/usr/bin/big-supervised-indicator" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/group-helper" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/acl-reapply" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/time-check" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/lib/big-parental-controls/pam-time-message" 2>/dev/null || true
 
     # Create state directory
-    install -dm755 "$pkgdir/var/lib/big-parental-controls"
+    install -dm700 "$pkgdir/var/lib/big-parental-controls"
+    install -dm700 "$pkgdir/var/lib/big-parental-controls/activity"
+
+    # Install compiled locale files
+    if [ -d "$InternalDir/../usr/share/locale" ]; then
+        cp -r "$InternalDir/../usr/share/locale" "$pkgdir/usr/share/"
+    fi
 }

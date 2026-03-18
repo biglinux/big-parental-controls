@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""PAM account check for supervised users.
+
+Called via pam_exec.so (account required) in /etc/pam.d/sddm.
+stdout is forwarded to the SDDM greeter as a PAM info/error message.
+Exits 0 = allow login, exits 1 = deny login.
+"""
+
+import grp
+import json
+import os
+import re
+import sys
+from datetime import date, datetime
+from pathlib import Path
+
+STATE_DIR   = Path("/var/lib/big-parental-controls")
+LIMITS_FILE = STATE_DIR / "time-limits.json"
+USAGE_FILE  = STATE_DIR / "time-state.json"
+TIME_CONF   = Path("/etc/security/time.conf")
+TODAY       = date.today().isoformat()
+_NOW        = datetime.now()
+_NOW_WDAY   = _NOW.weekday()
+_NOW_MIN    = _NOW.hour * 60 + _NOW.minute
+
+username = os.environ.get("PAM_USER", "")
+if not username:
+    sys.exit(0)
+
+# Only apply checks to supervised users
+try:
+    supervised_members = grp.getgrnam("supervised").gr_mem
+except KeyError:
+    sys.exit(0)
+
+if username not in supervised_members:
+    sys.exit(0)
+
+
+# ── Daily minutes check ───────────────────────────────────────────────────────
+
+try:
+    limits: dict = json.loads(LIMITS_FILE.read_text())
+except (OSError, json.JSONDecodeError):
+    limits = {}
+
+daily: int = limits.get(username, {}).get("daily_minutes", 0)
+if daily > 0:
+    try:
+        usage: dict = json.loads(USAGE_FILE.read_text())
+        used: int = usage.get(username, 0) if usage.get("_date") == TODAY else 0
+    except (OSError, json.JSONDecodeError):
+        used = 0
+
+    if used >= daily:
+        print(f"Tempo diário esgotado ({used}/{daily} min). Peça autorização a um responsável.")
+        sys.exit(1)
+
+
+# ── Schedule check (time.conf) ────────────────────────────────────────────────
+
+_DAY_MAP = {"Mo": 0, "Tu": 1, "We": 2, "Th": 3, "Fr": 4, "Sa": 5, "Su": 6}
+
+
+def _day_applies(day_str: str) -> bool:
+    if not day_str:
+        return True
+    if "Al" in day_str:
+        base = set(range(7))
+    elif "Wk" in day_str:
+        base = set(range(5))
+    elif "Wd" in day_str:
+        base = {5, 6}
+    else:
+        base = set()
+    remain = day_str.replace("Al", "").replace("Wk", "").replace("Wd", "")
+    i = 0
+    while i + 1 < len(remain):
+        code = remain[i : i + 2]
+        if code in _DAY_MAP:
+            base.add(_DAY_MAP[code])
+            i += 2
+        else:
+            i += 1
+    return _NOW_WDAY in base
+
+
+rule = None
+if TIME_CONF.exists():
+    for line in TIME_CONF.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split(";", 3)
+        if len(parts) == 4 and parts[2] == username:
+            rule = parts[3].strip()
+
+if rule is not None:
+    allowed = False
+    intervals: list[str] = []
+    for seg in rule.split("|"):
+        m = re.search(r"(\d{2})(\d{2})-(\d{2})(\d{2})$", seg)
+        if not m:
+            continue
+        start_min = int(m.group(1)) * 60 + int(m.group(2))
+        end_min   = int(m.group(3)) * 60 + int(m.group(4))
+        interval  = f"{m.group(1)}:{m.group(2)}-{m.group(3)}:{m.group(4)}"
+        if interval not in intervals:
+            intervals.append(interval)
+        if _day_applies(seg[: m.start()]) and start_min <= _NOW_MIN < end_min:
+            allowed = True
+            break
+
+    if not allowed:
+        print(f"Acesso fora do horário permitido. Horários: {', '.join(intervals)}")
+        sys.exit(1)
+
+sys.exit(0)

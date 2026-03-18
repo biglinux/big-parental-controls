@@ -68,14 +68,8 @@ case "$1" in
             /usr/bin/paru
             /usr/bin/flatpak
             /usr/bin/snap
-            /usr/bin/docker
-            /usr/bin/podman
-            /usr/bin/ncat
-            /usr/bin/nmap
-            /usr/bin/socat
-            /usr/bin/curl
-            /usr/bin/wget
             /usr/bin/ssh
+            /usr/bin/rustdesk
         )
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
@@ -90,7 +84,7 @@ case "$1" in
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/docker","/usr/bin/podman","/usr/bin/ncat","/usr/bin/nmap","/usr/bin/socat","/usr/bin/curl","/usr/bin/wget","/usr/bin/ssh"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
@@ -160,14 +154,8 @@ SEOF
             /usr/bin/paru
             /usr/bin/flatpak
             /usr/bin/snap
-            /usr/bin/docker
-            /usr/bin/podman
-            /usr/bin/ncat
-            /usr/bin/nmap
-            /usr/bin/socat
-            /usr/bin/curl
-            /usr/bin/wget
             /usr/bin/ssh
+            /usr/bin/rustdesk
         )
         for path in "${DEFAULT_BLOCKS[@]}"; do
             [[ -e "$path" ]] && setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
@@ -182,7 +170,7 @@ SEOF
         BPC_STATE="$CURRENT" BPC_USER="$USERNAME" python3 -c '
 import json, os
 state = json.loads(os.environ["BPC_STATE"])
-blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/docker","/usr/bin/podman","/usr/bin/ncat","/usr/bin/nmap","/usr/bin/socat","/usr/bin/curl","/usr/bin/wget","/usr/bin/ssh"] if os.path.exists(p)]
+blocks = [p for p in ["/usr/bin/pacman","/usr/bin/pamac-manager","/usr/bin/pamac-installer","/usr/bin/pamac-daemon","/usr/bin/yay","/usr/bin/paru","/usr/bin/flatpak","/usr/bin/snap","/usr/bin/ssh","/usr/bin/rustdesk"] if os.path.exists(p)]
 state[os.environ["BPC_USER"]] = blocks
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
@@ -401,34 +389,12 @@ EOF
         chmod 644 "$STATE_DIR/time-limits.json"
         ;;
     time-timer-enable)
-        # Install and enable the time check timer
-        cat > /etc/systemd/system/big-parental-time-check.service << EOF
-[Unit]
-Description=Check supervised users daily time limits
-
-[Service]
-Type=oneshot
-ExecStart=/usr/lib/big-parental-controls/time-check
-EOF
-        cat > /etc/systemd/system/big-parental-time-check.timer << EOF
-[Unit]
-Description=Parental controls daily time limit check
-
-[Timer]
-OnBootSec=1min
-OnUnitActiveSec=1min
-
-[Install]
-WantedBy=timers.target
-EOF
-        systemctl daemon-reload
-        systemctl enable --now big-parental-time-check.timer
+        # Time enforcement is handled by big-parental-daemon (always running).
+        # Ensure the daemon is active.
+        systemctl start big-parental-daemon 2>/dev/null || true
         ;;
     time-timer-disable)
-        systemctl disable --now big-parental-time-check.timer 2>/dev/null || true
-        rm -f /etc/systemd/system/big-parental-time-check.timer
-        rm -f /etc/systemd/system/big-parental-time-check.service
-        systemctl daemon-reload
+        # No-op: daemon stays running; it only enforces limits if rules exist.
         ;;
     remove-full)
         # Usage: remove-full USERNAME
@@ -516,8 +482,45 @@ with open(limits_file, "w") as f:
             systemctl disable --now big-parental-time-check.timer 2>/dev/null || true
             rm -f /etc/systemd/system/big-parental-time-check.timer
             rm -f /etc/systemd/system/big-parental-time-check.service
+            # (daemon keeps running — it will find no rules and do nothing)
         fi
         systemctl daemon-reload
+        ;;
+    delete-user)
+        # Usage: delete-user USERNAME
+        # Runs remove-full cleanup then deletes the system account + home dir.
+        [[ -z "$2" ]] && exit 1
+        validate_username "$2"
+        USERNAME="$2"
+
+        # Refuse to delete root or the running admin (extra safety)
+        [[ "$USERNAME" == "root" ]] && { echo "Cannot delete root" >&2; exit 1; }
+        CALLER_USER=$(id -un "$PKEXEC_UID" 2>/dev/null || true)
+        [[ "$USERNAME" == "$CALLER_USER" ]] && { echo "Cannot delete yourself" >&2; exit 1; }
+
+        # Verify user exists before proceeding
+        if ! id "$USERNAME" &>/dev/null; then
+            echo "User $USERNAME does not exist" >&2
+            exit 1
+        fi
+
+        # 1. Run the full parental-controls cleanup (same as remove-full)
+        "$0" remove-full "$USERNAME"
+
+        # 2. Kill any remaining processes for this user
+        pkill -KILL -u "$USERNAME" 2>/dev/null || true
+        sleep 0.5
+
+        # 3. Delete the account and home directory
+        userdel -r -f "$USERNAME" 2>/dev/null
+        STATUS=$?
+        if [[ $STATUS -ne 0 ]]; then
+            # userdel may exit 12 if home dir was already gone — still OK
+            if [[ $STATUS -ne 12 ]]; then
+                echo "userdel failed with status $STATUS" >&2
+                exit $STATUS
+            fi
+        fi
         ;;
     acl-batch)
         # Usage: acl-batch USERNAME BLOCK_CSV UNBLOCK_CSV
@@ -608,25 +611,132 @@ print(json.dumps(state, indent=2))
         ;;
     dns-set)
         # Usage: dns-set UID JSON_DATA
-        # Write DNS config for a user UID
+        # Write DNS config and apply nftables rules for a user UID
         [[ -z "$2" || -z "$3" ]] && { echo "Usage: dns-set UID JSON_DATA" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
         DNS_DIR="/etc/big-parental-controls/dns"
         mkdir -p "$DNS_DIR"
-        # Validate JSON
-        echo "$3" | python3 -c "import sys,json; json.load(sys.stdin)" 2>/dev/null || { echo "Invalid JSON" >&2; exit 1; }
+        # Validate JSON and extract dns1
+        DNS1=$(echo "$3" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['dns1'])" 2>/dev/null) || { echo "Invalid JSON" >&2; exit 1; }
         echo "$3" > "$DNS_DIR/$2.json"
         chmod 644 "$DNS_DIR/$2.json"
+        # Remove existing nftables rules for this UID
+        NFT_TABLE="big_parental"
+        NFT_CHAIN="dns_redirect"
+        TAG="bpc-uid-$2"
+        nft add table ip "$NFT_TABLE" 2>/dev/null || true
+        nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
+        # Remove old rules for this UID
+        while IFS= read -r line; do
+            if [[ "$line" == *"$TAG"* ]]; then
+                handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
+                [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
+            fi
+        done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
+        # Add new redirect rules
+        for proto in udp tcp; do
+            nft add rule ip "$NFT_TABLE" "$NFT_CHAIN" \
+                meta skuid "$2" "$proto" dport 53 dnat to "$DNS1" \
+                comment "\"$TAG\"" 2>/dev/null || true
+        done
         ;;
     dns-remove)
         # Usage: dns-remove UID
-        # Remove DNS config for a user UID
+        # Remove DNS config and nftables rules for a user UID
         [[ -z "$2" ]] && { echo "Usage: dns-remove UID" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
         DNS_DIR="/etc/big-parental-controls/dns"
         rm -f "$DNS_DIR/$2.json"
         # Remove login script hook
         rm -f "/etc/profile.d/big-dns-$2.sh"
+        # Remove nftables rules for this UID
+        NFT_TABLE="big_parental"
+        NFT_CHAIN="dns_redirect"
+        TAG="bpc-uid-$2"
+        while IFS= read -r line; do
+            if [[ "$line" == *"$TAG"* ]]; then
+                handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
+                [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
+            fi
+        done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
+        ;;
+    dns-restore)
+        # Restore all nftables DNS redirect rules from saved config files.
+        # Called at boot by big-parental-dns-restore.service (no pkexec — runs as root).
+        DNS_DIR="/etc/big-parental-controls/dns"
+        NFT_TABLE="big_parental"
+        NFT_CHAIN="dns_redirect"
+        [[ -d "$DNS_DIR" ]] || exit 0
+        nft add table ip "$NFT_TABLE" 2>/dev/null || true
+        nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
+        for cfg in "$DNS_DIR"/*.json; do
+            [[ -f "$cfg" ]] || continue
+            uid=$(basename "$cfg" .json)
+            [[ "$uid" =~ ^[0-9]+$ ]] || continue
+            dns1=$(python3 -c "import json; d=json.load(open('$cfg')); print(d['dns1'])" 2>/dev/null) || continue
+            TAG="bpc-uid-$uid"
+            # Remove stale rules for this UID before adding fresh ones
+            while IFS= read -r line; do
+                if [[ "$line" == *"$TAG"* ]]; then
+                    handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
+                    [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
+                fi
+            done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
+            for proto in udp tcp; do
+                nft add rule ip "$NFT_TABLE" "$NFT_CHAIN" \
+                    meta skuid "$uid" "$proto" dport 53 dnat to "$dns1" \
+                    comment "\"$TAG\"" 2>/dev/null || true
+            done
+        done
+        ;;
+    activity-sessions)
+        # Usage: activity-sessions USERNAME DAYS
+        # Returns raw `last` output in ISO format for the given user.
+        # The Python side parses the output.
+        [[ -z "$2" ]] && { echo "Usage: activity-sessions USERNAME DAYS" >&2; exit 1; }
+        validate_username "$2"
+        days="${3:-7}"
+        # Validate that days is numeric (1-365)
+        if ! [[ "$days" =~ ^[0-9]+$ ]] || [[ "$days" -lt 1 ]] || [[ "$days" -gt 365 ]]; then
+            echo "Invalid days parameter (1-365)" >&2
+            exit 1
+        fi
+        last -n 10000 "$2" --time-format iso 2>/dev/null
+        ;;
+    activity-ensure-dirs)
+        # Usage: activity-ensure-dirs USERNAME
+        # Create activity data directories for a supervised user.
+        [[ -z "$2" ]] && { echo "Usage: activity-ensure-dirs USERNAME" >&2; exit 1; }
+        validate_username "$2"
+        ACTIVITY_DIR="$STATE_DIR/activity/$2"
+        mkdir -p "$ACTIVITY_DIR"
+        chmod 700 "$ACTIVITY_DIR"
+        chown root:root "$ACTIVITY_DIR"
+        ;;
+    set-age-profile)
+        # Usage: set-age-profile USERNAME AGE_RANGE
+        # AGE_RANGE must be one of: 0-12, 13-15, 16-17, 18+
+        [[ -z "$2" || -z "$3" ]] && { echo "Usage: set-age-profile USERNAME AGE_RANGE" >&2; exit 1; }
+        validate_username "$2"
+        USERNAME="$2"
+        AGE_RANGE="$3"
+        case "$AGE_RANGE" in
+            0-12|13-15|16-17|18+) ;;
+            *) echo "Invalid age range: $AGE_RANGE" >&2; exit 1 ;;
+        esac
+        PROFILES_FILE="$STATE_DIR/user-profiles.json"
+        python3 - "$PROFILES_FILE" "$USERNAME" "$AGE_RANGE" << 'PYEOF'
+import json, sys, os
+profiles_file, username, age_range = sys.argv[1], sys.argv[2], sys.argv[3]
+try:
+    with open(profiles_file) as f:
+        profiles = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    profiles = {}
+profiles.setdefault(username, {})["age_range"] = age_range
+with open(profiles_file, "w") as f:
+    json.dump(profiles, f, indent=2)
+PYEOF
         ;;
     *)
         echo "Unknown command: $1" >&2

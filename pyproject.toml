@@ -1,0 +1,68 @@
+[project]
+name = "big-parental-controls"
+version = "1.0.0"
+description = "Parental controls for BigLinux — manage supervised accounts, app filters, time limits, and web filtering"
+license = "GPL-3.0-or-later"
+authors = [{ name = "BigLinux", email = "dev@biglinux.com.br" }]
+requires-python = ">=3.11"
+readme = "README.md"
+
+dependencies = [
+    "PyGObject>=3.50.0",
+    "pycairo>=1.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.5.0",
+    "pytest>=8.0",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+big-parental-controls = "big_parental_controls.__main__:main"
+
+[project.gui-scripts]
+big-parental-controls = "big_parental_controls.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/big_parental_controls"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "RUF",  # ruff-specific
+    "BLE",  # flake8-blind-except
+    "T20",  # flake8-print
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "T201",   # print allowed in CLI entry points
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["big_parental_controls"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

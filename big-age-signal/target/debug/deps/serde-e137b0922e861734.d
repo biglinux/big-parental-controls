@@ -1,0 +1,14 @@
+/home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/deps/serde-e137b0922e861734.d: /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/build/serde-252a9bbeccb60cd9/out/private.rs
+
+/home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/deps/libserde-e137b0922e861734.rlib: /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/build/serde-252a9bbeccb60cd9/out/private.rs
+
+/home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/deps/libserde-e137b0922e861734.rmeta: /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/build/serde-252a9bbeccb60cd9/out/private.rs
+
+/home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/home/bruno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/build/serde-252a9bbeccb60cd9/out/private.rs:
+
+# env-dep:OUT_DIR=/home/bruno/codigo-pacotes/big-parental-controls/big-age-signal/target/debug/build/serde-252a9bbeccb60cd9/out

@@ -1,5 +1,0 @@
-usr/share/biglinux/parental-controls/pages/users_page.py:482: error: Name "_show_error" already defined on line 129  [no-redef]
-usr/share/biglinux/parental-controls/pages/app_filter_page.py:40: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
-usr/share/biglinux/parental-controls/window.py:44: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
-usr/share/biglinux/parental-controls/window.py:45: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
-Found 1 error in 1 file (checked 22 source files)

@@ -25,10 +25,11 @@ polkit.addRule(function(action, subject) {
         if (action.id.indexOf("org.freedesktop.udisks2") === 0) {
             return polkit.Result.AUTH_ADMIN;
         }
-        // Block network configuration changes
+        // Block network configuration changes (allow read-only/status actions)
         if (action.id.indexOf("org.freedesktop.NetworkManager") === 0 &&
             action.id !== "org.freedesktop.NetworkManager.wifi.scan" &&
-            action.id !== "org.freedesktop.NetworkManager.network-control") {
+            action.id !== "org.freedesktop.NetworkManager.network-control" &&
+            action.id !== "org.freedesktop.NetworkManager.enable-disable-statistics") {
             return polkit.Result.AUTH_ADMIN;
         }
     }

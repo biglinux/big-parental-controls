@@ -14,4 +14,14 @@
     <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/big-parental-controls/group-helper</annotate>
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
+  <action id="br.com.biglinux.parental-controls.manage-settings">
+    <description>Open parental controls settings</description>
+    <message>Authentication is required to change parental controls settings</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
 </policyconfig>

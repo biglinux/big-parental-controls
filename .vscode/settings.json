@@ -1,0 +1,6 @@
+{
+    "tasksync.responseTimeout": "120",
+    "tasksync.sessionWarningHours": 8,
+    "tasksync.humanLikeDelayMax": 30,
+    "tasksync.humanLikeDelayMin": 5
+}
