@@ -42,7 +42,8 @@ WHO DOWNLOADS THE ISO AND INSTALLS THE SYSTEM
 │
 │  → This person is technically proficient.
 │  → They choose to install BigLinux on a machine that will be used by a child.
-│  → Just as they could have installed any of hundreds of other distros or Windows 7,
+│  → Just as they could have installed any of hundreds of other distros, a BSD variant,
+│    a Windows version, or any other operating system,
 │    the act of downloading and booting is irrelevant for child protection law.
 │  → The live environment is for testing and installation — it is not a child's desktop.
 │
