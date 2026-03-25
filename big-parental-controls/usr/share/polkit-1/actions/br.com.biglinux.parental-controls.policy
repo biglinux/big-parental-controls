@@ -6,6 +6,7 @@
   <action id="br.com.biglinux.parental-controls.manage-groups">
     <description>Manage supervised account groups</description>
     <message>Authentication is required to manage supervised accounts</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para gerenciar contas supervisionadas</message>
     <defaults>
       <allow_any>auth_admin</allow_any>
       <allow_inactive>auth_admin</allow_inactive>
@@ -17,6 +18,7 @@
   <action id="br.com.biglinux.parental-controls.manage-settings">
     <description>Open parental controls settings</description>
     <message>Authentication is required to change parental controls settings</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para alterar as configurações de controle parental</message>
     <defaults>
       <allow_any>auth_admin</allow_any>
       <allow_inactive>auth_admin</allow_inactive>
