@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/compliance.py:28
 msgid "Enable Activity Monitoring"
-msgstr ""
+msgstr "Aktivovat sledování aktivity"
 #: src/big_parental_controls/ui/compliance.py:31
 #, python-format
 msgid ""
@@ -63,12 +63,12 @@ msgid "Cancel"
 msgstr "Zrušit"
 #: src/big_parental_controls/ui/compliance.py:54
 msgid "I Understand and Consent"
-msgstr ""
+msgstr "Rozumím a souhlasím"
 #: src/big_parental_controls/ui/compliance.py:78
 #: src/big_parental_controls/ui/pages/user_detail_page.py:172
 #: src/big_parental_controls/ui/pages/user_detail_page.py:226
 msgid "Delete Activity Data"
-msgstr ""
+msgstr "Smazat data aktivity"
 #: src/big_parental_controls/ui/compliance.py:81
 #, python-format
 msgid ""
@@ -81,20 +81,20 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/compliance.py:88
 msgid "Delete All Data"
-msgstr "Smazat účet"
+msgstr "Smazat všechna data"
 #: src/big_parental_controls/ui/compliance.py:116
 #, python-format
 msgid "Activity data deleted for %s"
-msgstr ""
+msgstr "Data aktivity pro %s byla smazána"
 #: src/big_parental_controls/ui/compliance.py:130
 #: src/big_parental_controls/ui/pages/user_detail_page.py:184
 #: src/big_parental_controls/ui/pages/user_detail_page.py:239
 msgid "Export Activity Data"
-msgstr ""
+msgstr "Exportovat data aktivity"
 #: src/big_parental_controls/ui/compliance.py:179
 #, python-format
 msgid "Data exported to %s"
-msgstr ""
+msgstr "Data exportována do %s"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -106,7 +106,7 @@ msgid "User"
 msgstr "Uživatelé"
 #: src/big_parental_controls/ui/pages/activity_page.py:56
 msgid "Monitored Users"
-msgstr ""
+msgstr "Sledovaní uživatelé"
 #: src/big_parental_controls/ui/pages/activity_page.py:59
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
@@ -115,15 +115,15 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/activity_page.py:68
 #: src/big_parental_controls/ui/pages/app_filter_page.py:62
 msgid "Select a User"
-msgstr ""
+msgstr "Vybrat uživatele"
 #: src/big_parental_controls/ui/pages/activity_page.py:70
 msgid "Choose a supervised user to view activity."
-msgstr ""
+msgstr "Vyberte dozorovaného uživatele pro zobrazení aktivity."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 101
 #: src/big_parental_controls/ui/pages/activity_page.py:76
 msgid "Daily Usage"
-msgstr "Denní limit používání"
+msgstr "Denní využití"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 115
 #: src/big_parental_controls/ui/pages/activity_page.py:77
@@ -131,30 +131,30 @@ msgid "Minutes of screen time per day"
 msgstr "Minuty za den"
 #: src/big_parental_controls/ui/pages/activity_page.py:87
 msgid "Time of Day"
-msgstr ""
+msgstr "Denní doba"
 #: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "When this user is most active"
-msgstr ""
+msgstr "Kdy je tento uživatel nejaktivnější"
 #: src/big_parental_controls/ui/pages/activity_page.py:98
 msgid "Recent Sessions"
-msgstr ""
+msgstr "Poslední relace"
 #: src/big_parental_controls/ui/pages/activity_page.py:207
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
-msgstr ""
+msgstr "Sloupcový graf: %d celkových minut za %d dní"
 #: src/big_parental_controls/ui/pages/activity_page.py:221
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
-msgstr ""
+msgstr "Hodinový graf: vrchol aktivity v %d:00"
 #: src/big_parental_controls/ui/pages/activity_page.py:232
 #: src/big_parental_controls/ui/widgets/activity_block.py:243
 msgid "still active"
-msgstr ""
+msgstr "stále aktivní"
 #: src/big_parental_controls/ui/pages/activity_page.py:237
 #: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%dh %dmin"
-msgstr ""
+msgstr "%dh %dmin"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 228
 #: src/big_parental_controls/ui/pages/activity_page.py:239
@@ -164,7 +164,7 @@ msgid "%d min"
 msgstr "Konec minuty"
 #: src/big_parental_controls/ui/pages/app_filter_page.py:63
 msgid "Choose a supervised user to manage app access."
-msgstr ""
+msgstr "Vyberte dozorovaného uživatele pro správu přístupu k aplikacím."
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -172,10 +172,10 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 22
 #: src/big_parental_controls/ui/pages/app_filter_page.py:68
 msgid "Installed Apps"
-msgstr "Povolené aplikace"
+msgstr "Nainstalované aplikace"
 #: src/big_parental_controls/ui/pages/app_filter_page.py:73
 msgid "Apply Changes"
-msgstr ""
+msgstr "Použít změny"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/app_filter_page.py, line: 232
 #: src/big_parental_controls/ui/pages/app_filter_page.py:192
@@ -200,7 +200,7 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/dns_page.py:91
 msgid "What is web filtering?"
-msgstr "Povolit webový filtr"
+msgstr "Co je filtrování webu?"
 #: src/big_parental_controls/ui/pages/dns_page.py:94
 msgid ""
 "Web filtering uses special DNS servers to block access to inappropriate "
@@ -213,7 +213,7 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/dns_page.py:108
 #, fuzzy, python-format
 msgid "Filtering for %s"
-msgstr "Nastavení filtru"
+msgstr "Filtrování pro %s"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/dns_page.py:112
@@ -236,16 +236,16 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/dns_page.py:154
 msgid "Learn more"
-msgstr ""
+msgstr "Dozvědět se více"
 #: src/big_parental_controls/ui/pages/dns_page.py:165
 msgid "Custom DNS server"
-msgstr ""
+msgstr "Vlastní DNS server"
 #: src/big_parental_controls/ui/pages/dns_page.py:167
 msgid "Enter your own DNS addresses for advanced setups."
-msgstr ""
+msgstr "Zadejte vlastní DNS adresy pro pokročilé nastavení."
 #: src/big_parental_controls/ui/pages/dns_page.py:182
 msgid "Custom DNS Addresses"
-msgstr ""
+msgstr "Vlastní DNS adresy"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 96
 #: src/big_parental_controls/ui/pages/dns_page.py:186
@@ -275,7 +275,7 @@ msgid "Web filtering disabled."
 msgstr "Webový filtr je zakázán."
 #: src/big_parental_controls/ui/pages/dns_page.py:282
 msgid "Please select a DNS provider."
-msgstr ""
+msgstr "Vyberte poskytovatele DNS."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 226
 #: src/big_parental_controls/ui/pages/dns_page.py:289
@@ -283,32 +283,32 @@ msgid "Primary DNS address is required."
 msgstr "Primární DNS je vyžadován."
 #: src/big_parental_controls/ui/pages/dns_page.py:300
 msgid "Custom DNS applied."
-msgstr ""
+msgstr "Vlastní DNS použit."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 210
 #: src/big_parental_controls/ui/pages/dns_page.py:311
 msgid "Web filtering enabled."
-msgstr "Webový filtr je zakázán."
+msgstr "Filtrování webu povoleno."
 #: src/big_parental_controls/ui/pages/main_view.py:17
 msgid "Emotional support, 24h"
-msgstr ""
+msgstr "Emocionální podpora, 24h"
 #: src/big_parental_controls/ui/pages/main_view.py:18
 msgid "Online safety for children"
-msgstr ""
+msgstr "Online bezpečnost pro děti"
 #: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Human rights violations"
-msgstr ""
+msgstr "Porušení lidských práv"
 #: src/big_parental_controls/ui/pages/main_view.py:40
 msgid "Main Menu"
-msgstr ""
+msgstr "Hlavní nabídka"
 #: src/big_parental_controls/ui/pages/main_view.py:70
 msgid "Manage screen time, apps and web filters for supervised users."
-msgstr ""
+msgstr "Spravujte čas u obrazovky, aplikace a webové filtry pro dozorované uživatele."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 139
 #: src/big_parental_controls/ui/pages/main_view.py:81
 msgid "Supervised Users"
-msgstr "Supervizované"
+msgstr "Dozorovaní uživatelé"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/main_view.py:86
@@ -317,7 +317,7 @@ msgstr "Přidat dozorovaný účet"
 #: src/big_parental_controls/ui/pages/main_view.py:95
 #: src/big_parental_controls/ui/pages/supervised_view.py:157
 msgid "Help and Support"
-msgstr ""
+msgstr "Pomoc a podpora"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -341,10 +341,10 @@ msgid "Create a supervised account to get started."
 msgstr "Vytvořte jeden na stránce Uživatelé, abyste mohli začít."
 #: src/big_parental_controls/ui/pages/main_view.py:184
 msgid "Legal Framework"
-msgstr ""
+msgstr "Právní rámec"
 #: src/big_parental_controls/ui/pages/main_view.py:188
 msgid "ECA Digital — Brazil"
-msgstr ""
+msgstr "ECA Digital — Brazílie"
 #: src/big_parental_controls/ui/pages/main_view.py:190
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
@@ -354,7 +354,7 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/main_view.py:198
 msgid "LGPD — Brazil"
-msgstr ""
+msgstr "LGPD — Brazílie"
 #: src/big_parental_controls/ui/pages/main_view.py:200
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
@@ -363,7 +363,7 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/main_view.py:207
 msgid "GDPR — European Union"
-msgstr ""
+msgstr "GDPR — Evropská unie"
 #: src/big_parental_controls/ui/pages/main_view.py:209
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
@@ -373,7 +373,7 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/main_view.py:217
 msgid "UK Children's Code"
-msgstr ""
+msgstr "UK Children's Code"
 #: src/big_parental_controls/ui/pages/main_view.py:219
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
@@ -381,7 +381,7 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/main_view.py:226
 msgid "EU Digital Services Act"
-msgstr ""
+msgstr "Zákon EU o digitálních službách"
 #: src/big_parental_controls/ui/pages/main_view.py:228
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
@@ -398,10 +398,10 @@ msgstr "Čas strávený na obrazovce"
 #: src/big_parental_controls/ui/pages/supervised_view.py:136
 #, python-format
 msgid "Hello, %s"
-msgstr ""
+msgstr "Ahoj, %s"
 #: src/big_parental_controls/ui/pages/supervised_view.py:142
 msgid "Here you can see your screen time and application usage."
-msgstr ""
+msgstr "Zde můžete vidět svůj čas u obrazovky a využití aplikací."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 216
 #
@@ -410,7 +410,7 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 16
 #: src/big_parental_controls/ui/pages/support_page.py:16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
-msgstr ""
+msgstr "Centro de Valorização da Vida — emocionální podpora telefonem nebo chatem"
 "Centrum pro podporu života — emocionální podpora po telefonu nebo chatu"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 22
@@ -421,7 +421,7 @@ msgstr "Nahlásit a získat pomoc s problémy online bezpečnosti"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 27
 #: src/big_parental_controls/ui/pages/support_page.py:27
 msgid "Disque 100"
-msgstr "Disk 100"
+msgstr "Disque 100"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 28
 #: src/big_parental_controls/ui/pages/support_page.py:28
@@ -450,7 +450,7 @@ msgstr "Nouzový"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 102
 #: src/big_parental_controls/ui/pages/support_page.py:106
 msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
-msgstr ""
+msgstr "V případě bezprostředního nebezpečí volejte 190 (Policie) nebo 192 (SAMU)"
 "V případě bezprostředního nebezpečí volejte 190 (Policie) nebo 192 (SAMU)"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/support_page.py, line: 103
@@ -464,12 +464,12 @@ msgid "Allowed Hours"
 msgstr "Povolené hodiny"
 #: src/big_parental_controls/ui/pages/time_limits_page.py:63
 msgid "When this user is allowed to log in."
-msgstr ""
+msgstr "Kdy je tomuto uživateli povoleno přihlásit se."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 81
 #: src/big_parental_controls/ui/pages/time_limits_page.py:68
 msgid "Enable schedule"
-msgstr "Povolit webový filtr"
+msgstr "Aktivovat plán"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 90
 #: src/big_parental_controls/ui/pages/time_limits_page.py:82
@@ -482,7 +482,7 @@ msgid "Daily Usage Limit"
 msgstr "Denní limit používání"
 #: src/big_parental_controls/ui/pages/time_limits_page.py:94
 msgid "Maximum time this user can stay logged in per day."
-msgstr ""
+msgstr "Maximální doba, po kterou může být tento uživatel přihlášen za den."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 104
 #: src/big_parental_controls/ui/pages/time_limits_page.py:99
@@ -517,7 +517,7 @@ msgstr "Konec minuty"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/time_limits_page.py:229
 msgid "Delete range"
-msgstr "Smazat účet"
+msgstr "Smazat rozsah"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 240
 #: src/big_parental_controls/ui/pages/time_limits_page.py:231
@@ -537,10 +537,10 @@ msgstr "Nastavení času byla aplikována."
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:138
 msgid "Account"
-msgstr "Smazat účet"
+msgstr "Účet"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:149
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 247
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 527
@@ -550,44 +550,44 @@ msgid "Age Group"
 msgstr "Věková skupina"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:154
 msgid "ECA Digital classification"
-msgstr ""
+msgstr "Klasifikace ECA Digital"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 22
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Child (0–12)"
-msgstr "Dítě (do 10 let)"
+msgstr "Dítě (0–12)"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 24
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adolescent (13–15)"
-msgstr "Teen (13–16)"
+msgstr "Dospívající (13–15)"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adolescent (16–17)"
-msgstr ""
+msgstr "Dospívající (16–17)"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adult (18+)"
-msgstr ""
+msgstr "Dospělý (18+)"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:174
 #: src/big_parental_controls/ui/pages/user_detail_page.py:228
 msgid "Permanently remove all collected data (LGPD Art. 18)"
-msgstr ""
+msgstr "Trvale odstranit všechna shromážděná data (LGPD čl. 18)"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:186
 #: src/big_parental_controls/ui/pages/user_detail_page.py:241
 msgid "Download data as JSON file (GDPR Art. 20)"
-msgstr ""
+msgstr "Stáhnout data jako soubor JSON (GDPR čl. 20)"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:198
 msgid "Monitoring"
-msgstr ""
+msgstr "Sledování"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:200
 msgid "Track which programs are used and for how long."
-msgstr ""
+msgstr "Sledujte, které programy jsou používány a jak dlouho."
 #: src/big_parental_controls/ui/pages/user_detail_page.py:204
 msgid "Activity Monitoring"
-msgstr ""
+msgstr "Sledování aktivity"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:207
 msgid ""
 "Usage data stays exclusively on this device. In accordance with ECA Digital, "
@@ -596,10 +596,10 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:219
 msgid "Enable monitoring"
-msgstr ""
+msgstr "Aktivovat sledování"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:221
 msgid "Checks running programs every minute"
-msgstr ""
+msgstr "Kontroluje spuštěné programy každou minutu"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -615,10 +615,10 @@ msgstr "Čas strávený na obrazovce"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/time_limits_page.py, line: 74
 #: src/big_parental_controls/ui/pages/user_detail_page.py:308
 msgid "Edit Time Limits"
-msgstr "Povolit časová omezení"
+msgstr "Upravit časová omezení"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:310
 msgid "Set allowed hours and daily duration"
-msgstr ""
+msgstr "Nastavit povolené hodiny a denní dobu trvání"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -637,35 +637,35 @@ msgstr "Webový filtr"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 32
 #: src/big_parental_controls/ui/pages/user_detail_page.py:326
 msgid "Edit Web Filter"
-msgstr "Webový filtr"
+msgstr "Upravit webový filtr"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:328
 msgid "Choose DNS provider to block inappropriate content"
-msgstr ""
+msgstr "Vyberte poskytovatele DNS pro blokování nevhodného obsahu"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:342
 msgid "Account Actions"
-msgstr ""
+msgstr "Akce s účtem"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:345
 #: src/big_parental_controls/ui/pages/users_page.py:289
 msgid "Remove Supervision"
-msgstr "Odstranit dozorovaný účet"
+msgstr "Odebrat dozor"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:347
 msgid "Keep the account but remove parental controls"
-msgstr ""
+msgstr "Ponechat účet, ale odebrat rodičovskou kontrolu"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:355
 msgid "Delete User"
-msgstr "Smazat účet"
+msgstr "Smazat uživatele"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:357
 msgid "Permanently remove the account and all data"
-msgstr ""
+msgstr "Trvale odstranit účet a všechna data"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/pages/user_detail_page.py:368
 msgid "Remove Supervision?"
-msgstr "Odstranit dozorovaný účet"
+msgstr "Odebrat dozor?"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:370
 #, python-format
 msgid ""
@@ -675,16 +675,16 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:375
 #: src/big_parental_controls/ui/pages/users_page.py:294
 msgid "Remove"
-msgstr ""
+msgstr "Odstranit"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:401
 #: src/big_parental_controls/ui/pages/users_page.py:318
 #, python-format
 msgid "Supervision removed from %s."
-msgstr ""
+msgstr "Dozor odebrán od %s."
 #: src/big_parental_controls/ui/pages/user_detail_page.py:409
 #, python-format
 msgid "Delete User '%s'?"
-msgstr ""
+msgstr "Smazat uživatele '%s'?"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:411
 msgid ""
 "This will permanently delete the account and the home folder with all files. "
@@ -694,10 +694,10 @@ msgstr ""
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 474
 #: src/big_parental_controls/ui/pages/user_detail_page.py:415
 msgid "Delete Permanently"
-msgstr "Smazat účet"
+msgstr "Trvale smazat"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:431
 msgid "Are you sure?"
-msgstr ""
+msgstr "Jste si jisti?"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:433
 #, python-format
 msgid ""
@@ -706,17 +706,17 @@ msgid ""
 msgstr ""
 #: src/big_parental_controls/ui/pages/user_detail_page.py:438
 msgid "Yes, delete everything"
-msgstr ""
+msgstr "Ano, smazat vše"
 #: src/big_parental_controls/ui/pages/user_detail_page.py:465
 #, python-format
 msgid "User '%s' has been deleted."
-msgstr ""
+msgstr "Uživatel '%s' byl smazán."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: src/big_parental_controls/ui/pages/user_detail_page.py:469
 #, fuzzy, python-format
 msgid "Failed to delete user '%s'."
-msgstr "Nepodařilo se vytvořit uživatelský účet: %s"
+msgstr "Nepodařilo se smazat uživatele '%s'."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 195
 #: src/big_parental_controls/ui/pages/users_page.py:69
@@ -735,12 +735,12 @@ msgstr "Vytvořit dozorovaný účet"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 17
 #: src/big_parental_controls/ui/pages/users_page.py:79
 msgid "Other Users"
-msgstr "Uživatelé"
+msgstr "Ostatní uživatelé"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 74
 #: src/big_parental_controls/ui/pages/users_page.py:80
 msgid "Add supervision to an existing account."
-msgstr "Přidat dozorovaný účet"
+msgstr "Přidat dozor k existujícímu účtu."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:120
@@ -751,12 +751,12 @@ msgstr "Přidat dozor"
 #: src/big_parental_controls/ui/pages/users_page.py:123
 #, fuzzy, python-format
 msgid "Add supervision to %s"
-msgstr "Přidat dozor"
+msgstr "Přidat dozor k %s"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 86
 #: src/big_parental_controls/ui/pages/users_page.py:135
 msgid "Set up a new supervised account on this computer."
-msgstr ""
+msgstr "Nastavit nový dozorovaný účet na tomto počítači."
 "Vytvořte dozorovaný účet, aby dítě mohlo tento počítač používat bezpečně."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 207
@@ -798,21 +798,21 @@ msgstr "Vytváření účtu…"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 369
 #: src/big_parental_controls/ui/pages/users_page.py:257
 msgid "Failed to create user."
-msgstr "Nepodařilo se vytvořit uživatelský účet: %s"
+msgstr "Nepodařilo se vytvořit uživatele."
 #: src/big_parental_controls/ui/pages/users_page.py:273
 #: src/big_parental_controls/ui/pages/users_page.py:276
 #, python-format
 msgid "User %s created."
-msgstr ""
+msgstr "Uživatel %s byl vytvořen."
 #: src/big_parental_controls/ui/pages/users_page.py:291
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
-msgstr ""
+msgstr "Odebrat všechna omezení pro %s? Tuto akci nelze vrátit."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 519
 #: src/big_parental_controls/ui/pages/users_page.py:328
 msgid "Adding supervision…"
-msgstr "Přidat dozor"
+msgstr "Přidávání dozoru…"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 176
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 179
@@ -820,7 +820,7 @@ msgstr "Přidat dozor"
 #: src/big_parental_controls/ui/pages/users_page.py:343
 #, fuzzy, python-format
 msgid "%s is now supervised."
-msgstr "Udělej řízené"
+msgstr "%s je nyní pod dozorem."
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -839,7 +839,7 @@ msgid "Parental Controls"
 msgstr "Rodičovská kontrola"
 #: src/big_parental_controls/ui/pages/welcome_page.py:40
 msgid "Protect children online — manage apps, screen time, and web filtering."
-msgstr ""
+msgstr "Chráňte děti online — spravujte aplikace, čas u obrazovky a webové filtrování."
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 96
 #: src/big_parental_controls/ui/pages/welcome_page.py:46
@@ -858,7 +858,7 @@ msgstr "Funkce"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 70
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Supervised Accounts"
-msgstr "Žádné řízené účty"
+msgstr "Dozorované účty"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -866,13 +866,13 @@ msgstr "Žádné řízené účty"
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/dns_page.py, line: 72
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Create protected user profiles"
-msgstr "Nejprve vytvořte jeden na stránce Uživatelé."
+msgstr "Vytvořit chráněné uživatelské profily"
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
 msgid "App Access"
-msgstr ""
+msgstr "Přístup k aplikacím"
 #: src/big_parental_controls/ui/pages/welcome_page.py:53
 msgid "Control which apps each child can use"
-msgstr ""
+msgstr "Kontrolujte, které aplikace může každé dítě používat"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 28
 #: src/big_parental_controls/ui/pages/welcome_page.py:58
@@ -880,7 +880,7 @@ msgid "Set allowed hours and daily usage limits"
 msgstr "Nastavte denní limity používání"
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 msgid "Block inappropriate web content via DNS"
-msgstr ""
+msgstr "Blokovat nevhodný webový obsah přes DNS"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/welcome_page.py, line: 115
 #: src/big_parental_controls/ui/pages/welcome_page.py:78
@@ -888,98 +888,98 @@ msgid "Privacy"
 msgstr "Vaše soukromí"
 #: src/big_parental_controls/ui/pages/welcome_page.py:81
 msgid "Data stays on this computer"
-msgstr ""
+msgstr "Data zůstávají v tomto počítači"
 #: src/big_parental_controls/ui/pages/welcome_page.py:83
 msgid ""
 "Compliant with ECA Digital, LGPD, and GDPR — no data leaves this device."
 msgstr ""
 #: src/big_parental_controls/ui/widgets/activity_block.py:68
 msgid "No data"
-msgstr ""
+msgstr "Žádná data"
 #: src/big_parental_controls/ui/widgets/activity_block.py:88
 msgid "Previous week"
-msgstr ""
+msgstr "Předchozí týden"
 #: src/big_parental_controls/ui/widgets/activity_block.py:99
 msgid "Next week"
-msgstr ""
+msgstr "Následující týden"
 #: src/big_parental_controls/ui/widgets/activity_block.py:122
 msgid "Hours of the Day"
-msgstr ""
+msgstr "Hodiny dne"
 #: src/big_parental_controls/ui/widgets/activity_block.py:131
 msgid "Sessions"
-msgstr ""
+msgstr "Relace"
 #: src/big_parental_controls/ui/widgets/activity_block.py:174
 msgid "This week"
-msgstr ""
+msgstr "Tento týden"
 #: src/big_parental_controls/ui/widgets/activity_block.py:176
 msgid "Last week"
-msgstr ""
+msgstr "Minulý týden"
 #: src/big_parental_controls/ui/widgets/activity_block.py:179
 #, python-format
 msgid "%d weeks ago"
-msgstr ""
+msgstr "Před %d týdny"
 #: src/big_parental_controls/ui/widgets/activity_block.py:201
 msgid "Extended usage detected"
-msgstr ""
+msgstr "Zjištěno prodloužené používání"
 #: src/big_parental_controls/ui/widgets/activity_block.py:203
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
-msgstr ""
+msgstr "%(user)s dnes používal počítač %(hours)dh %(mins)dmin."
 #: src/big_parental_controls/ui/widgets/activity_block.py:233
 msgid "No sessions on this day"
-msgstr ""
+msgstr "Žádné relace v tento den"
 #: src/big_parental_controls/ui/widgets/activity_block.py:249
 msgid "Graphical session"
-msgstr ""
+msgstr "Grafická relace"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 463
 #: src/big_parental_controls/ui/widgets/activity_block.py:250
 msgid "Remote session"
-msgstr "Odstranit dozorovaný účet"
+msgstr "Vzdálená relace"
 #: src/big_parental_controls/ui/widgets/activity_block.py:251
 msgid "Console session"
-msgstr ""
+msgstr "Konzolová relace"
 #: src/big_parental_controls/ui/widgets/activity_block.py:252
 msgid "Session"
-msgstr ""
+msgstr "Relace"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:58
 msgid "No activity"
-msgstr ""
+msgstr "Žádná aktivita"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Mon"
-msgstr ""
+msgstr "Po"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Tue"
-msgstr ""
+msgstr "Út"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Wed"
-msgstr ""
+msgstr "St"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Thu"
-msgstr ""
+msgstr "Čt"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Fri"
-msgstr ""
+msgstr "Pá"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Sat"
-msgstr ""
+msgstr "So"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Sun"
-msgstr ""
+msgstr "Ne"
 #: src/big_parental_controls/ui/widgets/usage_chart.py:331
 msgid "No activity on this day"
-msgstr ""
+msgstr "V tento den není žádná aktivita"
 #: src/big_parental_controls/window.py:72
 msgid "Administrator authentication is required to change settings."
-msgstr ""
+msgstr "Pro změnu nastavení je vyžadováno ověření správce."
 #: src/big_parental_controls/window.py:89
 msgid "Authenticate"
-msgstr ""
+msgstr "Ověřit"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/pages/users_page.py, line: 360
 #: src/big_parental_controls/window.py:130
 msgid "Authentication failed. Try again."
-msgstr "Ověření bylo zrušeno."
+msgstr "Ověření selhalo. Zkuste to znovu."
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -992,7 +992,7 @@ msgstr "Uživatelé"
 #: src/big_parental_controls/window.py:252
 #: src/big_parental_controls/window.py:265
 msgid "OK"
-msgstr ""
+msgstr "OK"
 #
 # File: big-parental-controls/big-parental-controls/usr/share/biglinux/parental-controls/window.py, line: 214
 #: src/big_parental_controls/window.py:263
@@ -1014,7 +1014,7 @@ msgid "Allowed Apps"
 msgstr "Povolené aplikace"
 #: src/big_parental_controls/data/window.ui:188
 msgid "Activity"
-msgstr ""
+msgstr "Aktivita"
 #
 # #-#-#-#-#  big-parental-controls.pot (big-parental-controls)  #-#-#-#-#
 #
@@ -1025,7 +1025,7 @@ msgid "Help"
 msgstr "Pomoc"
 #: src/big_parental_controls/data/window.ui:245
 msgid "Main menu"
-msgstr ""
+msgstr "Hlavní nabídka"
 #: src/big_parental_controls/data/window.ui:270
 msgid "About"
-msgstr ""
+msgstr "O aplikaci"
