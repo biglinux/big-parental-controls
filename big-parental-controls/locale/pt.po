@@ -11,9 +11,8 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
 #: src/big_parental_controls/app.py:95
 msgid ""
 "Keep children safe on this computer.\n"
@@ -21,11 +20,9 @@ msgid ""
 msgstr ""
 "Mantenha as crianças seguras neste computador.\n"
 "Em conformidade com ECA Digital (Lei 15.211/2025), LGPD e RGPD."
-
 #: src/big_parental_controls/ui/compliance.py:28
 msgid "Enable Activity Monitoring"
 msgstr "Ativar Monitorização de Atividade"
-
 #: src/big_parental_controls/ui/compliance.py:31
 #, python-format
 msgid ""
@@ -68,7 +65,6 @@ msgstr ""
 "Direitos: Pode desativar a monitorização, exportar dados ou eliminar todos os "
 "dados a qualquer momento. O utilizador supervisionado será informado de que a "
 "monitorização está ativa através do indicador na bandeja do sistema."
-
 #: src/big_parental_controls/ui/compliance.py:53
 #: src/big_parental_controls/ui/compliance.py:87
 #: src/big_parental_controls/ui/pages/user_detail_page.py:374
@@ -78,17 +74,14 @@ msgstr ""
 #: src/big_parental_controls/ui/pages/users_page.py:293
 msgid "Cancel"
 msgstr "Cancelar"
-
 #: src/big_parental_controls/ui/compliance.py:54
 msgid "I Understand and Consent"
 msgstr "Compreendo e Consinto"
-
 #: src/big_parental_controls/ui/compliance.py:78
 #: src/big_parental_controls/ui/pages/user_detail_page.py:172
 #: src/big_parental_controls/ui/pages/user_detail_page.py:226
 msgid "Delete Activity Data"
 msgstr "Eliminar Dados de Atividade"
-
 #: src/big_parental_controls/ui/compliance.py:81
 #, python-format
 msgid ""
@@ -101,36 +94,29 @@ msgstr ""
 "Isso inclui o histórico de utilização de aplicações e registos de sessão.\n"
 "\n"
 "Esta ação não pode ser revertida."
-
 #: src/big_parental_controls/ui/compliance.py:88
 msgid "Delete All Data"
 msgstr "Eliminar Todos os Dados"
-
 #: src/big_parental_controls/ui/compliance.py:116
 #, python-format
 msgid "Activity data deleted for %s"
 msgstr "Dados de atividade eliminados para %s"
-
 #: src/big_parental_controls/ui/compliance.py:130
 #: src/big_parental_controls/ui/pages/user_detail_page.py:184
 #: src/big_parental_controls/ui/pages/user_detail_page.py:239
 msgid "Export Activity Data"
 msgstr "Exportar Dados de Atividade"
-
 #: src/big_parental_controls/ui/compliance.py:179
 #, python-format
 msgid "Data exported to %s"
 msgstr "Dados exportados para %s"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:47
 #: src/big_parental_controls/ui/pages/app_filter_page.py:52
 msgid "User"
 msgstr "Utilizador"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:56
 msgid "Monitored Users"
 msgstr "Utilizadores Monitorizados"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:59
 msgid ""
 "Choose which supervised accounts have activity tracking. The system checks "
@@ -138,79 +124,62 @@ msgid ""
 msgstr ""
 "Escolha quais contas supervisionadas têm rastreamento de atividade. O "
 "sistema verifica os programas em execução a cada minuto."
-
 #: src/big_parental_controls/ui/pages/activity_page.py:68
 #: src/big_parental_controls/ui/pages/app_filter_page.py:62
 msgid "Select a User"
 msgstr "Selecionar Utilizador"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:70
 msgid "Choose a supervised user to view activity."
 msgstr "Escolha um utilizador supervisionado para ver a atividade."
-
 #: src/big_parental_controls/ui/pages/activity_page.py:76
 msgid "Daily Usage"
 msgstr "Utilização Diária"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:77
 msgid "Minutes of screen time per day"
 msgstr "Minutos por dia"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:87
 msgid "Time of Day"
 msgstr "Hora do Dia"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:88
 msgid "When this user is most active"
 msgstr "Quando este utilizador é mais ativo"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:98
 msgid "Recent Sessions"
 msgstr "Sessões Recentes"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:207
 #, python-format
 msgid "Bar chart: %d total minutes across %d days"
 msgstr "Gráfico de barras: %d minutos totais em %d dias"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:221
 #, python-format
 msgid "Hourly chart: peak activity at %d:00"
 msgstr "Gráfico horário: pico de atividade às %d:00"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:232
 #: src/big_parental_controls/ui/widgets/activity_block.py:243
 msgid "still active"
 msgstr "ainda ativo"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:237
 #: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%dh %dmin"
 msgstr "%dh %dmin"
-
 #: src/big_parental_controls/ui/pages/activity_page.py:239
 #: src/big_parental_controls/ui/widgets/usage_chart.py:60
 #, python-format
 msgid "%d min"
 msgstr "%d min"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:63
 msgid "Choose a supervised user to manage app access."
 msgstr "Escolha um utilizador supervisionado para gerir o acesso às aplicações."
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:68
 msgid "Installed Apps"
 msgstr "Aplicações Instaladas"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:73
 msgid "Apply Changes"
 msgstr "Aplicar Alterações"
-
 #: src/big_parental_controls/ui/pages/app_filter_page.py:192
 msgid "App access updated."
 msgstr "Permissões da aplicação atualizadas."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:30
 msgid ""
 "Blocks adult content, gambling, and phishing websites. One of the most "
@@ -218,7 +187,6 @@ msgid ""
 msgstr ""
 "Bloqueia conteúdo adulto, jogos de azar e sites de phishing. Um dos filtros "
 "familiares gratuitos mais utilizados."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:41
 msgid ""
 "By Cisco. Automatically blocks adult content on all devices. No account or "
@@ -226,7 +194,6 @@ msgid ""
 msgstr ""
 "Da Cisco. Bloqueia automaticamente conteúdo adulto em todos os dispositivos. "
 "Sem necessidade de conta ou configuração."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:52
 msgid ""
 "By Cloudflare (1.1.1.3). Blocks malware and adult content. Very fast and "
@@ -234,11 +201,9 @@ msgid ""
 msgstr ""
 "Da Cloudflare (1.1.1.3). Bloqueia malware e conteúdo adulto. Muito rápido e "
 "focado na privacidade."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:91
 msgid "What is web filtering?"
 msgstr "O que é o filtro da web?"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:94
 msgid ""
 "Web filtering uses special DNS servers to block access to inappropriate "
@@ -251,16 +216,13 @@ msgstr ""
 "conhecidas. Funciona de forma transparente — nenhum software é instalado na "
 "sessão da criança; a firewall do sistema redireciona as consultas de internet "
 "para um servidor protetor."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:108
 #, python-format
 msgid "Filtering for %s"
 msgstr "Filtragem para %s"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:112
 msgid "Enable web filtering"
 msgstr "Ativar filtro da web"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:115
 msgid ""
 "When enabled, all web requests from this user are redirected through the "
@@ -268,11 +230,9 @@ msgid ""
 msgstr ""
 "Quando ativado, todos os pedidos web deste utilizador são redirecionados "
 "pelo fornecedor DNS escolhido."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:125
 msgid "Choose a provider"
 msgstr "Escolha um fornecedor"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:128
 msgid ""
 "Each provider maintains a list of blocked sites. All options below are free "
@@ -280,109 +240,83 @@ msgid ""
 msgstr ""
 "Cada fornecedor mantém uma lista de sites bloqueados. Todas as opções abaixo "
 "são gratuitas e respeitam a privacidade."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:154
 msgid "Learn more"
 msgstr "Saber mais"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:165
 msgid "Custom DNS server"
 msgstr "Servidor DNS personalizado"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:167
 msgid "Enter your own DNS addresses for advanced setups."
 msgstr "Introduza os seus próprios endereços DNS para configurações avançadas."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:182
 msgid "Custom DNS Addresses"
 msgstr "Endereços DNS Personalizados"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:186
 msgid "Primary DNS"
 msgstr "DNS Primário"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:190
 msgid "Secondary DNS (optional)"
 msgstr "DNS Secundário (opcional)"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:196
 #: src/big_parental_controls/ui/pages/time_limits_page.py:113
 msgid "Apply"
 msgstr "Aplicar"
-
 #: src/big_parental_controls/ui/pages/dns_page.py:275
 msgid "Web filtering disabled."
 msgstr "Filtro da web desativado."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:282
 msgid "Please select a DNS provider."
 msgstr "Por favor, selecione um fornecedor de DNS."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:289
 msgid "Primary DNS address is required."
 msgstr "O endereço DNS primário é obrigatório."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:300
 msgid "Custom DNS applied."
 msgstr "DNS personalizado aplicado."
-
 #: src/big_parental_controls/ui/pages/dns_page.py:311
 msgid "Web filtering enabled."
 msgstr "Filtro da web ativado."
-
 #: src/big_parental_controls/ui/pages/main_view.py:17
 msgid "Emotional support, 24h"
 msgstr "Apoio emocional, 24h"
-
 #: src/big_parental_controls/ui/pages/main_view.py:18
 msgid "Online safety for children"
 msgstr "Segurança online para crianças"
-
 #: src/big_parental_controls/ui/pages/main_view.py:19
 msgid "Human rights violations"
 msgstr "Violações dos direitos humanos"
-
 #: src/big_parental_controls/ui/pages/main_view.py:40
 msgid "Main Menu"
 msgstr "Menu Principal"
-
 #: src/big_parental_controls/ui/pages/main_view.py:70
 msgid "Manage screen time, apps and web filters for supervised users."
 msgstr "Gira o tempo de ecrã, aplicações e filtros da web para utilizadores supervisionados."
-
 #: src/big_parental_controls/ui/pages/main_view.py:81
 msgid "Supervised Users"
 msgstr "Utilizadores Supervisionados"
-
 #: src/big_parental_controls/ui/pages/main_view.py:86
 msgid "Add Supervised User"
 msgstr "Adicionar Utilizador Supervisionado"
-
 #: src/big_parental_controls/ui/pages/main_view.py:95
 #: src/big_parental_controls/ui/pages/supervised_view.py:157
 msgid "Help and Support"
 msgstr "Ajuda e Suporte"
-
 #: src/big_parental_controls/ui/pages/main_view.py:120
 msgid "About Parental Controls"
 msgstr "Sobre os Controlos Parentais"
-
 #: src/big_parental_controls/ui/pages/main_view.py:145
 msgid "No supervised users yet"
 msgstr "Ainda não há utilizadores supervisionados"
-
 #: src/big_parental_controls/ui/pages/main_view.py:147
 msgid "Create a supervised account to get started."
 msgstr "Crie uma conta supervisionada para começar."
-
 #: src/big_parental_controls/ui/pages/main_view.py:184
 msgid "Legal Framework"
 msgstr "Enquadramento Legal"
-
 #: src/big_parental_controls/ui/pages/main_view.py:188
 msgid "ECA Digital — Brazil"
 msgstr "ECA Digital — Brasil"
-
 #: src/big_parental_controls/ui/pages/main_view.py:190
 msgid ""
 "Law 15.211/2025 — Safety, Privacy, and Parental Control for Children in the "
@@ -394,11 +328,9 @@ msgstr ""
 "no Ambiente Digital. Esta aplicação implementa Art. 12 (verificação de "
 "idade), Art. 13 (minimização de dados), Art. 17 (medidas protetivas) e "
 "Art. 18 (monitorização de atividade)."
-
 #: src/big_parental_controls/ui/pages/main_view.py:198
 msgid "LGPD — Brazil"
 msgstr "LGPD — Brasil"
-
 #: src/big_parental_controls/ui/pages/main_view.py:200
 msgid ""
 "Law 13.709/2018 — General Data Protection Law. Compliant with Art. 14 "
@@ -408,11 +340,9 @@ msgstr ""
 "Lei 13.709/2018 — Lei Geral de Proteção de Dados. Conforme Art. 14 (dados de "
 "crianças requerem consentimento parental específico), Art. 18 (direito de "
 "acesso e eliminação de dados), Art. 46 (segurança)."
-
 #: src/big_parental_controls/ui/pages/main_view.py:207
 msgid "GDPR — European Union"
 msgstr "RGPD — União Europeia"
-
 #: src/big_parental_controls/ui/pages/main_view.py:209
 msgid ""
 "Regulation 2016/679 — General Data Protection Regulation. Compliant with "
@@ -424,11 +354,9 @@ msgstr ""
 "Art. 8 (consentimento de criança via responsável), Art. 13 (informação "
 "transparente), Art. 17 (direito ao apagamento), Art. 20 (portabilidade de "
 "dados), Art. 25 (privacidade por design)."
-
 #: src/big_parental_controls/ui/pages/main_view.py:217
 msgid "UK Children's Code"
 msgstr "Código de Proteção Infantil do Reino Unido"
-
 #: src/big_parental_controls/ui/pages/main_view.py:219
 msgid ""
 "Age Appropriate Design Code — 15 standards for child-safe digital services, "
@@ -437,11 +365,9 @@ msgstr ""
 "Código de Design Adequado à Idade — 15 padrões para serviços digitais "
 "seguros para crianças, incluindo minimização de dados, proteções padrão e "
 "controlos parentais."
-
 #: src/big_parental_controls/ui/pages/main_view.py:226
 msgid "EU Digital Services Act"
 msgstr "Lei de Serviços Digitais da UE"
-
 #: src/big_parental_controls/ui/pages/main_view.py:228
 msgid ""
 "Regulation 2022/2065 — Transparency, user safety, and minors' protection in "
@@ -449,40 +375,31 @@ msgid ""
 msgstr ""
 "Regulamento 2022/2065 — Transparência, segurança do utilizador e proteção de "
 "menores em plataformas digitais."
-
 #: src/big_parental_controls/ui/pages/supervised_view.py:96
 msgid "My Screen Time"
 msgstr "O Meu Tempo de Ecrã"
-
 #: src/big_parental_controls/ui/pages/supervised_view.py:136
 #, python-format
 msgid "Hello, %s"
 msgstr "Olá, %s"
-
 #: src/big_parental_controls/ui/pages/supervised_view.py:142
 msgid "Here you can see your screen time and application usage."
 msgstr "Aqui pode ver o seu tempo de ecrã e utilização de aplicações."
-
 #: src/big_parental_controls/ui/pages/support_page.py:16
 msgid "Centro de Valorização da Vida — emotional support by phone or chat"
 msgstr "Centro de Valorização da Vida — apoio emocional por telefone ou chat"
-
 #: src/big_parental_controls/ui/pages/support_page.py:22
 msgid "Report and get help with online safety issues"
 msgstr "Denunciar e obter ajuda com problemas de segurança online."
-
 #: src/big_parental_controls/ui/pages/support_page.py:27
 msgid "Disque 100"
 msgstr "Disque 100"
-
 #: src/big_parental_controls/ui/pages/support_page.py:28
 msgid "Report violations of children's and adolescents' rights"
 msgstr "Denunciar violações dos direitos de crianças e adolescentes"
-
 #: src/big_parental_controls/ui/pages/support_page.py:34
 msgid "Internet security guides and best practices"
 msgstr "Guias de segurança na Internet e melhores práticas"
-
 #: src/big_parental_controls/ui/pages/support_page.py:64
 msgid ""
 "If you or someone you know needs help, you are not alone. These "
@@ -491,142 +408,109 @@ msgstr ""
 "Se o utilizador ou alguém que conhece precisar de ajuda, não está sozinho. "
 "Estas organizações oferecem apoio gratuito e confidencial — ninguém o irá "
 "julgar."
-
 #: src/big_parental_controls/ui/pages/support_page.py:103
 msgid "Emergency"
 msgstr "Emergência"
-
 #: src/big_parental_controls/ui/pages/support_page.py:106
 msgid "In case of immediate danger, call 190 (Police) or 192 (SAMU)"
 msgstr "Em caso de perigo iminente, ligue 190 (Polícia) ou 192 (SAMU)"
-
 #: src/big_parental_controls/ui/pages/support_page.py:107
 msgid "These numbers are free and available 24/7"
 msgstr "Estes números são gratuitos e estão disponíveis 24 horas por dia, 7 dias por semana."
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:61
 msgid "Allowed Hours"
 msgstr "Horas Permitidas"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:63
 msgid "When this user is allowed to log in."
 msgstr "Quando este utilizador tem permissão para iniciar sessão."
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:68
 msgid "Enable schedule"
 msgstr "Ativar horário"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:82
 msgid "Add Time Range"
 msgstr "Adicionar intervalo de tempo"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:92
 msgid "Daily Usage Limit"
 msgstr "Limite de Utilização Diária"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:94
 msgid "Maximum time this user can stay logged in per day."
 msgstr "Tempo máximo que este utilizador pode permanecer com sessão iniciada por dia."
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:99
 msgid "Enable daily limit"
 msgstr "Ativar limite diário de tempo"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:104
 msgid "Minutes per day"
 msgstr "Minutos por dia"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:185
 msgid "Start hour"
 msgstr "Hora de início"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:195
 msgid "Start minute"
 msgstr "Minuto de início"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:205
 msgid "End hour"
 msgstr "Hora de fim"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:215
 msgid "End minute"
 msgstr "Minuto de fim"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:229
 msgid "Delete range"
 msgstr "Eliminar intervalo"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:231
 msgid "Delete time range"
 msgstr "Eliminar este intervalo de tempo"
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:288
 msgid "End time must be after start time in all ranges."
 msgstr "A hora de fim deve ser posterior à hora de início em todos os intervalos."
-
 #: src/big_parental_controls/ui/pages/time_limits_page.py:322
 msgid "Time settings applied."
 msgstr "Definições de horário aplicadas."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:138
 msgid "Account"
 msgstr "Conta"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:149
 msgid "Profile"
 msgstr "Perfil"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:153
 #: src/big_parental_controls/ui/pages/users_page.py:159
 msgid "Age Group"
 msgstr "Faixa etária"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:154
 msgid "ECA Digital classification"
 msgstr "Classificação ECA Digital"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Child (0–12)"
 msgstr "Criança (0–12)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adolescent (13–15)"
 msgstr "Adolescente (13–15)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adolescent (16–17)"
 msgstr "Adolescente (16–17)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:156
 #: src/big_parental_controls/ui/pages/users_page.py:161
 msgid "Adult (18+)"
 msgstr "Adulto (18+)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:174
 #: src/big_parental_controls/ui/pages/user_detail_page.py:228
 msgid "Permanently remove all collected data (LGPD Art. 18)"
 msgstr "Remover permanentemente todos os dados recolhidos (LGPD Art. 18)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:186
 #: src/big_parental_controls/ui/pages/user_detail_page.py:241
 msgid "Download data as JSON file (GDPR Art. 20)"
 msgstr "Transferir dados como ficheiro JSON (RGPD Art. 20)"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:198
 msgid "Monitoring"
 msgstr "Monitorização"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:200
 msgid "Track which programs are used and for how long."
 msgstr "Controle quais programas são utilizados e por quanto tempo."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:204
 msgid "Activity Monitoring"
 msgstr "Monitorização de Atividade"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:207
 msgid ""
 "Usage data stays exclusively on this device. In accordance with ECA Digital, "
@@ -637,70 +521,55 @@ msgstr ""
 "conformidade com ECA Digital, LGPD, UK Children's Code e EU DSA, os "
 "responsáveis podem rever padrões de utilização. Nenhum dado é transmitido "
 "externamente."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:219
 msgid "Enable monitoring"
 msgstr "Ativar monitorização"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:221
 msgid "Checks running programs every minute"
 msgstr "Verifica os programas em execução a cada minuto"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:306
 #: src/big_parental_controls/ui/pages/welcome_page.py:57
 #: src/big_parental_controls/window.py:193
 #: src/big_parental_controls/data/window.ui:132
 msgid "Screen Time"
 msgstr "Tempo de Ecrã"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:308
 msgid "Edit Time Limits"
 msgstr "Editar Limites de Tempo"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:310
 msgid "Set allowed hours and daily duration"
 msgstr "Definir horas permitidas e duração diária"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:324
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 #: src/big_parental_controls/window.py:205
 #: src/big_parental_controls/data/window.ui:160
 msgid "Web Filter"
 msgstr "Filtro da Web"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:326
 msgid "Edit Web Filter"
 msgstr "Editar Filtro da Web"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:328
 msgid "Choose DNS provider to block inappropriate content"
 msgstr "Escolha o fornecedor DNS para bloquear conteúdo inadequado"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:342
 msgid "Account Actions"
 msgstr "Ações da Conta"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:345
 #: src/big_parental_controls/ui/pages/users_page.py:289
 msgid "Remove Supervision"
 msgstr "Remover Supervisão"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:347
 msgid "Keep the account but remove parental controls"
 msgstr "Manter a conta mas remover os controlos parentais"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:355
 msgid "Delete User"
 msgstr "Eliminar Utilizador"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:357
 msgid "Permanently remove the account and all data"
 msgstr "Remover permanentemente a conta e todos os dados"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:368
 msgid "Remove Supervision?"
 msgstr "Remover Supervisão?"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:370
 #, python-format
 msgid ""
@@ -709,23 +578,19 @@ msgid ""
 msgstr ""
 "Isto irá remover os controlos parentais de %s. A conta permanecerá mas "
 "sem restrições."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:375
 #: src/big_parental_controls/ui/pages/users_page.py:294
 msgid "Remove"
 msgstr "Remover"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:401
 #: src/big_parental_controls/ui/pages/users_page.py:318
 #, python-format
 msgid "Supervision removed from %s."
 msgstr "Supervisão removida de %s."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:409
 #, python-format
 msgid "Delete User '%s'?"
 msgstr "Eliminar utilizador '%s'?"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:411
 msgid ""
 "This will permanently delete the account and the home folder with all files. "
@@ -733,15 +598,12 @@ msgid ""
 msgstr ""
 "Isto irá eliminar permanentemente a conta e a pasta pessoal com todos os "
 "ficheiros. Esta ação não pode ser revertida."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:415
 msgid "Delete Permanently"
 msgstr "Eliminar Permanentemente"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:431
 msgid "Are you sure?"
 msgstr "Tem a certeza?"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:433
 #, python-format
 msgid ""
@@ -750,105 +612,82 @@ msgid ""
 msgstr ""
 "TODOS os dados do utilizador '%s' serão apagados permanentemente, incluindo "
 "documentos, fotografias e definições. Esta ação NÃO pode ser revertida."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:438
 msgid "Yes, delete everything"
 msgstr "Sim, eliminar tudo"
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:465
 #, python-format
 msgid "User '%s' has been deleted."
 msgstr "Utilizador '%s' foi eliminado."
-
 #: src/big_parental_controls/ui/pages/user_detail_page.py:469
 #, python-format
 msgid "Failed to delete user '%s'."
 msgstr "Falha ao eliminar o utilizador '%s'."
-
 #: src/big_parental_controls/ui/pages/users_page.py:69
 #: src/big_parental_controls/ui/pages/users_page.py:134
 msgid "Create Supervised User"
 msgstr "Criar Utilizador Supervisionado"
-
 #: src/big_parental_controls/ui/pages/users_page.py:72
 msgid "Create supervised user"
 msgstr "Criar utilizador supervisionado"
-
 #: src/big_parental_controls/ui/pages/users_page.py:79
 msgid "Other Users"
 msgstr "Outros Utilizadores"
-
 #: src/big_parental_controls/ui/pages/users_page.py:80
 msgid "Add supervision to an existing account."
 msgstr "Adicionar supervisão a uma conta existente."
-
 #: src/big_parental_controls/ui/pages/users_page.py:120
 msgid "Add supervision"
 msgstr "Adicionar Supervisão"
-
 #: src/big_parental_controls/ui/pages/users_page.py:123
 #, python-format
 msgid "Add supervision to %s"
 msgstr "Adicionar supervisão a %s"
-
 #: src/big_parental_controls/ui/pages/users_page.py:135
 msgid "Set up a new supervised account on this computer."
 msgstr "Configure uma nova conta supervisionada neste computador."
-
 #: src/big_parental_controls/ui/pages/users_page.py:143
 msgid "Username"
 msgstr "Nome de utilizador"
-
 #: src/big_parental_controls/ui/pages/users_page.py:147
 msgid "Full Name"
 msgstr "Nome Completo"
-
 #: src/big_parental_controls/ui/pages/users_page.py:151
 msgid "Password"
 msgstr "Palavra-passe"
-
 #: src/big_parental_controls/ui/pages/users_page.py:155
 msgid "Confirm Password"
 msgstr "Confirmar Palavra-passe"
-
 #: src/big_parental_controls/ui/pages/users_page.py:170
 msgid "Create"
 msgstr "Criar"
-
 #: src/big_parental_controls/ui/pages/users_page.py:241
 msgid "Username and password are required."
 msgstr "O nome de utilizador e a palavra-passe são obrigatórios."
-
 #: src/big_parental_controls/ui/pages/users_page.py:251
 #, python-format
 msgid "Creating user %s…"
 msgstr "A criar utilizador %s…"
-
 #: src/big_parental_controls/ui/pages/users_page.py:257
 msgid "Failed to create user."
 msgstr "Falha ao criar utilizador."
-
 #: src/big_parental_controls/ui/pages/users_page.py:273
 #: src/big_parental_controls/ui/pages/users_page.py:276
 #, python-format
 msgid "User %s created."
 msgstr "Utilizador %s criado."
-
 #: src/big_parental_controls/ui/pages/users_page.py:291
 #, python-format
 msgid "Remove all restrictions from %s? This cannot be undone."
 msgstr "Remover todas as restrições de %s? Isto não pode ser revertido."
-
 #: src/big_parental_controls/ui/pages/users_page.py:328
 msgid "Adding supervision…"
 msgstr "A adicionar supervisão…"
-
 #: src/big_parental_controls/ui/pages/users_page.py:340
 #: src/big_parental_controls/ui/pages/users_page.py:343
 #, python-format
 msgid "%s is now supervised."
 msgstr "%s está agora supervisionado."
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:38
 #: src/big_parental_controls/window.py:29
 #: src/big_parental_controls/window.py:67
@@ -857,199 +696,152 @@ msgstr "%s está agora supervisionado."
 #: src/big_parental_controls/data/window.ui:15
 msgid "Parental Controls"
 msgstr "Controlos Parentais"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:40
 msgid "Protect children online — manage apps, screen time, and web filtering."
 msgstr "Proteja as crianças online — gira aplicações, tempo de ecrã e filtros da web."
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:46
 msgid "Features"
 msgstr "Funcionalidades"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Supervised Accounts"
 msgstr "Contas Supervisionadas"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:49
 msgid "Create protected user profiles"
 msgstr "Crie perfis de utilizador protegidos"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:52
 msgid "App Access"
 msgstr "Acesso a Aplicações"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:53
 msgid "Control which apps each child can use"
 msgstr "Controle quais aplicações cada criança pode utilizar"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:58
 msgid "Set allowed hours and daily usage limits"
 msgstr "Defina horários permitidos e limites de utilização diária"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:60
 msgid "Block inappropriate web content via DNS"
 msgstr "Bloquear conteúdo web inadequado via DNS"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:78
 msgid "Privacy"
 msgstr "Privacidade"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:81
 msgid "Data stays on this computer"
 msgstr "Os dados ficam neste computador"
-
 #: src/big_parental_controls/ui/pages/welcome_page.py:83
 msgid ""
 "Compliant with ECA Digital, LGPD, and GDPR — no data leaves this device."
 msgstr ""
 "Em conformidade com ECA Digital, LGPD e RGPD — nenhum dado sai deste "
 "dispositivo."
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:68
 msgid "No data"
 msgstr "Sem dados"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:88
 msgid "Previous week"
 msgstr "Semana anterior"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:99
 msgid "Next week"
 msgstr "Próxima semana"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:122
 msgid "Hours of the Day"
 msgstr "Horas do Dia"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:131
 msgid "Sessions"
 msgstr "Sessões"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:174
 msgid "This week"
 msgstr "Esta semana"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:176
 msgid "Last week"
 msgstr "Semana passada"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:179
 #, python-format
 msgid "%d weeks ago"
 msgstr "há %d semanas"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:201
 msgid "Extended usage detected"
 msgstr "Utilização prolongada detetada"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:203
 #, python-format
 msgid "%(user)s used the computer for %(hours)dh %(mins)dmin today."
 msgstr "%(user)s utilizou o computador durante %(hours)dh %(mins)dmin hoje."
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:233
 msgid "No sessions on this day"
 msgstr "Nenhuma sessão neste dia"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:249
 msgid "Graphical session"
 msgstr "Sessão gráfica"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:250
 msgid "Remote session"
 msgstr "Sessão remota"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:251
 msgid "Console session"
 msgstr "Sessão de consola"
-
 #: src/big_parental_controls/ui/widgets/activity_block.py:252
 msgid "Session"
 msgstr "Sessão"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:58
 msgid "No activity"
 msgstr "Sem atividade"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Mon"
 msgstr "Seg"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Tue"
 msgstr "Ter"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Wed"
 msgstr "Qua"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:81
 msgid "Thu"
 msgstr "Qui"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Fri"
 msgstr "Sex"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Sat"
 msgstr "Sáb"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:82
 msgid "Sun"
 msgstr "Dom"
-
 #: src/big_parental_controls/ui/widgets/usage_chart.py:331
 msgid "No activity on this day"
 msgstr "Nenhuma atividade neste dia"
-
 #: src/big_parental_controls/window.py:72
 msgid "Administrator authentication is required to change settings."
 msgstr "É necessária autenticação de administrador para alterar as definições."
-
 #: src/big_parental_controls/window.py:89
 msgid "Authenticate"
 msgstr "Autenticar"
-
 #: src/big_parental_controls/window.py:130
 msgid "Authentication failed. Try again."
 msgstr "Autenticação falhou. Tente novamente."
-
 #: src/big_parental_controls/window.py:217
 #: src/big_parental_controls/data/window.ui:76
 msgid "Users"
 msgstr "Utilizadores"
-
 #: src/big_parental_controls/window.py:252
 #: src/big_parental_controls/window.py:265
 msgid "OK"
 msgstr "OK"
-
 #: src/big_parental_controls/window.py:263
 msgid "Error"
 msgstr "Erro"
-
 #: src/big_parental_controls/data/window.ui:48
 #: src/big_parental_controls/data/window.ui:235
 msgid "Home"
 msgstr "Início"
-
 #: src/big_parental_controls/data/window.ui:104
 msgid "Allowed Apps"
 msgstr "Aplicações Permitidas"
-
 #: src/big_parental_controls/data/window.ui:188
 msgid "Activity"
 msgstr "Atividade"
-
 #: src/big_parental_controls/data/window.ui:216
 msgid "Help"
 msgstr "Ajuda"
-
 #: src/big_parental_controls/data/window.ui:245
 msgid "Main menu"
 msgstr "Menu principal"
-
 #: src/big_parental_controls/data/window.ui:270
 msgid "About"
 msgstr "Sobre"
