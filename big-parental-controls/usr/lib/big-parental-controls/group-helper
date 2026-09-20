@@ -533,14 +533,18 @@ with open(limits_file, "w") as f:
         fi
         ;;
     acl-batch)
-        # Usage: acl-batch USERNAME BLOCK_CSV UNBLOCK_CSV
+        # Usage: acl-batch USERNAME BLOCK_CSV UNBLOCK_CSV [BLOCK_WEBAPPS_CSV] [UNBLOCK_WEBAPPS_CSV]
         # BLOCK_CSV / UNBLOCK_CSV are comma-separated absolute paths (or empty string "")
-        # Applies setfacl + desktop NoDisplay in one shot
+        # BLOCK_WEBAPPS_CSV / UNBLOCK_WEBAPPS_CSV are comma-separated .desktop filenames
+        # Applies setfacl + desktop NoDisplay safely in one shot
         [[ -z "$2" ]] && exit 1
         validate_username "$2"
         USERNAME="$2"
         BLOCK_CSV="$3"
         UNBLOCK_CSV="$4"
+        BLOCK_WEBAPPS_CSV="${5:-}"
+        UNBLOCK_WEBAPPS_CSV="${6:-}"
+        WEBAPP_STATE="$STATE_DIR/webapp-blocks.json"
         HOME_DIR=$(get_home "$USERNAME")
         APPS_DIR="$HOME_DIR/.local/share/applications"
         mkdir -p "$APPS_DIR"
@@ -552,51 +556,97 @@ with open(limits_file, "w") as f:
             CURRENT_STATE="{}"
         fi
 
-        # Parse current user blocks from state
-        EXISTING_BLOCKS=$(BPC_STATE="$CURRENT_STATE" BPC_USER="$USERNAME" python3 -c '
-import json, os
-state = json.loads(os.environ["BPC_STATE"])
-for p in state.get(os.environ["BPC_USER"], []):
-    print(p)
-' 2>/dev/null || true)
-
-        # Process blocks
+        # Process binary blocks (batch setfacl)
         if [[ -n "$BLOCK_CSV" && "$BLOCK_CSV" != "" ]]; then
             IFS=',' read -ra BLOCK_PATHS <<< "$BLOCK_CSV"
+            VALID_BLOCK_PATHS=()
             for path in "${BLOCK_PATHS[@]}"; do
                 [[ -e "$path" ]] || continue
-                setfacl -m "u:${USERNAME}:---" "$path" 2>/dev/null || true
-                # Hide from desktop menu
-                BINARY=$(basename "$path")
-                for desktop in /usr/share/applications/*.desktop; do
-                    [[ -f "$desktop" ]] || continue
-                    if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
-                        DESKTOP_NAME=$(basename "$desktop")
-                        cat > "$APPS_DIR/$DESKTOP_NAME" << DEOF
+                base=$(basename "$path")
+                case "$base" in
+                    browser-tweaks-chromium-base|big-webapps-exec|env|sh|bash|zsh|dash|pkexec|sudo|xdg-open|python|python3*|systemctl|systemd)
+                        continue
+                        ;;
+                esac
+                real_base=$(basename "$(realpath -q "$path" 2>/dev/null || echo "$path")")
+                case "$real_base" in
+                    browser-tweaks-chromium-base|big-webapps-exec|env|sh|bash|zsh|dash|pkexec|sudo|xdg-open|python|python3*|systemctl|systemd)
+                        continue
+                        ;;
+                esac
+                VALID_BLOCK_PATHS+=("$path")
+            done
+            if [[ ${#VALID_BLOCK_PATHS[@]} -gt 0 ]]; then
+                setfacl -m "u:${USERNAME}:---" "${VALID_BLOCK_PATHS[@]}" 2>/dev/null || true
+            fi
+        fi
+
+        # Process binary unblocks (batch setfacl)
+        if [[ -n "$UNBLOCK_CSV" && "$UNBLOCK_CSV" != "" ]]; then
+            IFS=',' read -ra UNBLOCK_PATHS <<< "$UNBLOCK_CSV"
+            VALID_UNBLOCK_PATHS=()
+            for path in "${UNBLOCK_PATHS[@]}"; do
+                [[ -e "$path" ]] || continue
+                VALID_UNBLOCK_PATHS+=("$path")
+            done
+            if [[ ${#VALID_UNBLOCK_PATHS[@]} -gt 0 ]]; then
+                setfacl -x "u:${USERNAME}" "${VALID_UNBLOCK_PATHS[@]}" 2>/dev/null || true
+            fi
+        fi
+
+        # Process Desktop blocks (instantaneous)
+        if [[ -n "$BLOCK_WEBAPPS_CSV" && "$BLOCK_WEBAPPS_CSV" != "" ]]; then
+            IFS=',' read -ra W_BLOCKS <<< "$BLOCK_WEBAPPS_CSV"
+            for dt in "${W_BLOCKS[@]}"; do
+                [[ -n "$dt" ]] || continue
+                dt_name=$(basename "$dt")
+                cat > "$APPS_DIR/$dt_name" << DEOF
 [Desktop Entry]
 NoDisplay=true
 DEOF
-                        chown "${USERNAME}:${USERNAME}" "$APPS_DIR/$DESKTOP_NAME"
-                    fi
-                done
+                chown "${USERNAME}:${USERNAME}" "$APPS_DIR/$dt_name" 2>/dev/null || true
             done
         fi
 
-        # Process unblocks
-        if [[ -n "$UNBLOCK_CSV" && "$UNBLOCK_CSV" != "" ]]; then
-            IFS=',' read -ra UNBLOCK_PATHS <<< "$UNBLOCK_CSV"
-            for path in "${UNBLOCK_PATHS[@]}"; do
-                setfacl -x "u:${USERNAME}" "$path" 2>/dev/null || true
-                # Unhide from desktop menu
-                BINARY=$(basename "$path")
-                for desktop in /usr/share/applications/*.desktop; do
-                    [[ -f "$desktop" ]] || continue
-                    if grep -q "Exec=.*${BINARY}" "$desktop" 2>/dev/null; then
-                        DESKTOP_NAME=$(basename "$desktop")
-                        rm -f "$APPS_DIR/$DESKTOP_NAME"
-                    fi
-                done
+        # Process Desktop unblocks (instantaneous)
+        if [[ -n "$UNBLOCK_WEBAPPS_CSV" && "$UNBLOCK_WEBAPPS_CSV" != "" ]]; then
+            IFS=',' read -ra W_UNBLOCKS <<< "$UNBLOCK_WEBAPPS_CSV"
+            for dt in "${W_UNBLOCKS[@]}"; do
+                [[ -n "$dt" ]] || continue
+                dt_name=$(basename "$dt")
+                rm -f "$APPS_DIR/$dt_name"
             done
+        fi
+
+        # Save webapp blocks state
+        if [[ -n "$BLOCK_WEBAPPS_CSV" || -n "$UNBLOCK_WEBAPPS_CSV" ]]; then
+            BPC_WSTATE="$WEBAPP_STATE" BPC_USER="$USERNAME" BPC_WBLOCK="$BLOCK_WEBAPPS_CSV" BPC_WUNBLOCK="$UNBLOCK_WEBAPPS_CSV" python3 -c '
+import json, os
+path = os.environ["BPC_WSTATE"]
+user = os.environ["BPC_USER"]
+state = {}
+if os.path.exists(path):
+    try:
+        with open(path) as f:
+            state = json.load(f)
+    except Exception:
+        pass
+current = set(state.get(user, []))
+wblock = os.environ.get("BPC_WBLOCK", "")
+wunblock = os.environ.get("BPC_WUNBLOCK", "")
+if wblock:
+    for item in wblock.split(","):
+        if item:
+            current.add(item)
+if wunblock:
+    for item in wunblock.split(","):
+        if item:
+            current.discard(item)
+state[user] = sorted(current)
+with open(path, "w") as f:
+    json.dump(state, f, indent=2)
+' 2>/dev/null || true
+            chmod 644 "$WEBAPP_STATE" 2>/dev/null || true
         fi
 
         # Update ACL state JSON
@@ -607,14 +657,25 @@ username = os.environ["BPC_USER"]
 current = set(state.get(username, []))
 block_csv = os.environ.get("BPC_BLOCK", "")
 unblock_csv = os.environ.get("BPC_UNBLOCK", "")
+
+PROTECTED = {"browser-tweaks-chromium-base", "big-webapps-exec", "env", "sh", "bash", "zsh", "dash", "pkexec", "sudo", "xdg-open", "python", "python3", "systemctl", "systemd"}
+def is_prot(path):
+    b = os.path.basename(path)
+    if b in PROTECTED or b.startswith("python3."): return True
+    try:
+        rb = os.path.basename(os.path.realpath(path))
+        if rb in PROTECTED or rb.startswith("python3."): return True
+    except Exception: pass
+    return False
+
 if block_csv:
     for p in block_csv.split(","):
-        if os.path.exists(p):
+        if os.path.exists(p) and not is_prot(p):
             current.add(p)
 if unblock_csv:
     for p in unblock_csv.split(","):
         current.discard(p)
-state[username] = sorted(current)
+state[username] = sorted(p for p in current if not is_prot(p))
 print(json.dumps(state, indent=2))
 ' > "$ACL_STATE" 2>/dev/null || true
         chmod 644 "$ACL_STATE"

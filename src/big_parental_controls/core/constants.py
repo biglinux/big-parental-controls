@@ -32,6 +32,7 @@ DATA_DIR = "/var/lib/big-parental-controls"
 ACTIVITY_DIR = f"{DATA_DIR}/activity"
 TIME_LIMITS_FILE = f"{DATA_DIR}/time-limits.json"
 ACL_STATE_FILE = f"{DATA_DIR}/acl-blocks.json"
+WEBAPP_BLOCKS_FILE = f"{DATA_DIR}/webapp-blocks.json"
 DNS_CONFIG_DIR = "/etc/big-parental-controls/dns"
 
 # Polkit

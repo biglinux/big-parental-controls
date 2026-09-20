@@ -53,6 +53,42 @@ def _find_desktop_id_for_binary(binary_path: str) -> str | None:
     return None
 
 
+def hide_desktop(username: str, desktop_id: str) -> bool:
+    """Hide an app directly using its .desktop filename (used for WebApps/PWAs)."""
+    if not desktop_id:
+        return False
+    try:
+        subprocess.run(
+            ["pkexec", GROUP_HELPER, "desktop-hide", username, desktop_id],
+            check=True,
+            timeout=30,
+        )
+    except subprocess.CalledProcessError:
+        log.error("Failed to hide desktop %s for %s", desktop_id, username)
+        return False
+
+    _refresh_menu_cache(username)
+    return True
+
+
+def unhide_desktop(username: str, desktop_id: str) -> bool:
+    """Unhide an app directly using its .desktop filename."""
+    if not desktop_id:
+        return False
+    try:
+        subprocess.run(
+            ["pkexec", GROUP_HELPER, "desktop-unhide", username, desktop_id],
+            check=True,
+            timeout=30,
+        )
+    except subprocess.CalledProcessError:
+        log.error("Failed to unhide desktop %s for %s", desktop_id, username)
+        return False
+
+    _refresh_menu_cache(username)
+    return True
+
+
 def hide_app(username: str, binary_path: str) -> bool:
     """Hide an app from the user's menu by creating a NoDisplay .desktop override."""
     desktop_id = _find_desktop_id_for_binary(binary_path)
