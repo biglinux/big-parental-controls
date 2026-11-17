@@ -1,0 +1,244 @@
+#!/usr/bin/env python3
+"""Tray indicator: remaining screen time for a supervised user.
+
+Started by /etc/xdg/autostart/big-time-tray.desktop in every graphical
+session, but does nothing (exits at once) unless the user belongs to the
+`supervised` group. Read-only, no privileges, no daemon of its own: it only
+reads what big-parental-daemon already writes (see services/time_left.py).
+
+Works with any desktop that shows status-notifier / app-indicator icons
+(KDE Plasma, XFCE, GNOME with the AppIndicator extension...) and falls back to
+a classic GtkStatusIcon otherwise.
+"""
+
+import contextlib
+import getpass
+import grp
+import os
+import sys
+import tempfile
+from datetime import datetime
+from pathlib import Path
+
+try:
+    SUPERVISED = grp.getgrnam("supervised").gr_mem
+except KeyError:
+    SUPERVISED = []
+USER = os.environ.get("BPC_USER") or getpass.getuser()  # BPC_USER: test hook
+if USER not in SUPERVISED:
+    sys.exit(0)
+
+import cairo  # noqa: E402  (after the cheap exit above: keeps non-supervised sessions free)
+import warnings  # noqa: E402
+
+import gi  # noqa: E402
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import GLib, Gtk  # noqa: E402
+
+from big_parental_controls.services import time_left as tl  # noqa: E402
+
+_, _n = tl._tr()
+
+
+def _sni_watcher_present() -> bool:
+    """True when the desktop runs a StatusNotifier watcher (KDE, GNOME ext., XFCE plugin)."""
+    try:
+        from gi.repository import Gio
+
+        bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+        reply = bus.call_sync("org.freedesktop.DBus", "/org/freedesktop/DBus",
+                              "org.freedesktop.DBus", "NameHasOwner",
+                              GLib.Variant("(s)", ("org.kde.StatusNotifierWatcher",)),
+                              None, Gio.DBusCallFlags.NONE, 1000, None)
+        return bool(reply.unpack()[0])
+    except Exception:  # noqa: BLE001 — no session bus: fall back to GtkStatusIcon
+        return False
+
+
+Indicator = None
+if _sni_watcher_present():
+    import importlib
+
+    for _ns in ("AyatanaAppIndicator3", "AppIndicator3"):
+        try:
+            gi.require_version(_ns, "0.1")
+            Indicator = importlib.import_module(f"gi.repository.{_ns}")
+            break
+        except (ValueError, ImportError):
+            continue
+
+REFRESH_SECONDS = 30
+ICON_DIR = Path(os.environ.get("XDG_RUNTIME_DIR") or tempfile.gettempdir()) / "big-time-tray"
+COLORS = {"ok": (0.18, 0.55, 0.34), "warn": (0.90, 0.55, 0.10),
+          "crit": (0.80, 0.15, 0.15), "none": (0.40, 0.40, 0.45)}
+
+
+def level(rem):
+    if rem is None:
+        return "none"
+    if rem <= tl.WARN_MIN:
+        return "crit"
+    return "warn" if rem <= 15 else "ok"
+
+
+def short_text(rem) -> str:
+    if rem is None:
+        return "∞"
+    if rem >= 60:
+        return f"{rem // 60}h"
+    return str(max(rem, 0))
+
+
+def draw_icon(rem) -> str:
+    """Render a 64x64 icon (rounded square + number) and return its base name."""
+    name = f"t-{level(rem)}-{short_text(rem)}"
+    ICON_DIR.mkdir(parents=True, exist_ok=True)
+    path = ICON_DIR / f"{name}.png"
+    if not path.exists():
+        for old in ICON_DIR.glob("t-*.png"):
+            old.unlink(missing_ok=True)
+        s = 64
+        surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, s, s)
+        c = cairo.Context(surf)
+        r, g, b = COLORS[level(rem)]
+        c.set_source_rgb(r, g, b)
+        radius = 12
+        c.new_sub_path()
+        for cx, cy, a0 in ((s - radius, radius, -90), (s - radius, s - radius, 0),
+                           (radius, s - radius, 90), (radius, radius, 180)):
+            c.arc(cx, cy, radius, a0 * 3.14159 / 180, (a0 + 90) * 3.14159 / 180)
+        c.close_path()
+        c.fill()
+        text = short_text(rem)
+        c.set_source_rgb(1, 1, 1)
+        c.select_font_face("Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        c.set_font_size(40 if len(text) <= 2 else 30)
+        ext = c.text_extents(text)
+        c.move_to((s - ext.width) / 2 - ext.x_bearing, (s - ext.height) / 2 - ext.y_bearing)
+        c.show_text(text)
+        surf.write_to_png(str(path))
+    return name
+
+
+class Tray:
+    def __init__(self):
+        self.user = USER
+        self.menu = Gtk.Menu()
+        # Normal (sensitive) items: insensitive ones are drawn greyed-out and unreadable.
+        self.items = [Gtk.MenuItem(label="…") for _i in range(3)]
+        for item in self.items:
+            item.connect("activate", lambda _i: tl.main(["--notify"]))
+            self.menu.append(item)
+        # "Ask for more time" (parent code), shown only while a request is possible.
+        self.ask_sep = Gtk.SeparatorMenuItem()
+        self.ask_item = Gtk.MenuItem(label="…")
+        self.ask_item.connect("activate", lambda _i: self.ask_extra())
+        self.menu.append(self.ask_sep)
+        self.menu.append(self.ask_item)
+        self.dialog = None
+        self.step = tl.EXTRA_STEP_MIN
+        self.menu.show_all()
+        self.indicator = self.status_icon = None
+        name = draw_icon(None)
+        if Indicator is not None:
+            self.indicator = Indicator.Indicator.new(
+                "big-time-tray", name, Indicator.IndicatorCategory.APPLICATION_STATUS)
+            self.indicator.set_icon_theme_path(str(ICON_DIR))
+            self.indicator.set_status(Indicator.IndicatorStatus.ACTIVE)
+            self.indicator.set_menu(self.menu)
+        else:
+            self.status_icon = Gtk.StatusIcon()
+            self.status_icon.connect("popup-menu", lambda i, b, t: self.menu.popup(
+                None, None, Gtk.StatusIcon.position_menu, i, b, t))
+        self.refresh()
+        GLib.timeout_add_seconds(REFRESH_SECONDS, self.refresh)
+
+    def refresh(self):
+        info = tl.compute(self.user, datetime.now())
+        rem = info["remaining"]
+        label = tl.short_label(rem)
+        detail = tl.details(info)
+        title = f"{tl.title()}: {label}"
+        name = draw_icon(rem)
+        lines = [title, *detail.splitlines()]
+        for i, item in enumerate(self.items):
+            if i < len(lines):
+                text = GLib.markup_escape_text(lines[i])
+                item.get_child().set_markup(f"<b>{text}</b>" if i == 0 else text)
+                item.show()
+            else:
+                item.hide()
+        self.step = info["step"]
+        left = info["requests_left"]
+        self.ask_item.set_label(
+            _n("Ask for %(min)d more min (%(left)d request left)",
+               "Ask for %(min)d more min (%(left)d requests left)", left)
+            % {"min": self.step, "left": left})
+        self.ask_sep.set_visible(left > 0)
+        self.ask_item.set_visible(left > 0)
+        if self.indicator is not None:
+            self.indicator.set_icon_full(name, title)
+            self.indicator.set_title(title)
+            with contextlib.suppress(TypeError):
+                self.indicator.set_label(label, "00h00")
+        else:
+            self.status_icon.set_from_file(str(ICON_DIR / f"{name}.png"))
+            self.status_icon.set_tooltip_text(title + "\n" + detail)
+        return True  # keep the timer
+
+    def ask_extra(self):
+        """Parent-code dialog: a parent types their code to grant more minutes."""
+        if self.dialog is not None:
+            self.dialog.present()
+            return
+        dlg = Gtk.Dialog(title=_("Ask for more time"), modal=True)
+        dlg.set_keep_above(True)
+        dlg.set_position(Gtk.WindowPosition.CENTER)
+        dlg.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        dlg.add_button(_("OK"), Gtk.ResponseType.OK)
+        dlg.set_default_response(Gtk.ResponseType.OK)
+        box = dlg.get_content_area()
+        box.set_spacing(10)
+        box.set_border_width(14)
+        box.add(Gtk.Label(
+            label=_("A parent must type the parent code to grant %d minutes.") % self.step,
+            xalign=0))
+        entry = Gtk.Entry(visibility=False, max_length=8, activates_default=True,
+                          placeholder_text=_("Parent code"))
+        entry.set_input_purpose(Gtk.InputPurpose.PIN)
+        box.add(entry)
+        status = Gtk.Label(xalign=0)
+        box.add(status)
+        dlg.show_all()
+        status.hide()
+        self.dialog = dlg
+
+        def on_response(d, resp):
+            if resp != Gtk.ResponseType.OK:
+                d.destroy()
+                self.dialog = None
+                return
+            code = tl.request_extra(entry.get_text())
+            entry.set_text("")
+            msg = tl.result_text(code)
+            if code.startswith("ok"):
+                d.destroy()
+                self.dialog = None
+                self.refresh()
+                tl.notify(msg, "")
+                return
+            status.set_markup(f"<b>{GLib.markup_escape_text(msg)}</b>")
+            status.show()
+            if not code.startswith("bad_pin"):  # locked / max / error: nothing more to try
+                entry.set_sensitive(False)
+            self.refresh()
+
+        dlg.connect("response", on_response)
+
+
+if __name__ == "__main__":
+    Tray()
+    Gtk.main()

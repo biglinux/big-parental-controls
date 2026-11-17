@@ -13,6 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: attranslate\n"
 #: src/big_parental_controls/app.py:95
 msgid ""
@@ -718,7 +719,8 @@ msgstr "L'utilisateur '%s' a été supprimé."
 #: src/big_parental_controls/ui/pages/user_detail_page.py:469
 #, fuzzy, python-format
 msgid "Failed to delete user '%s'."
-msgstr "Échec de la suppression de l'utilisateur '%s'."controls/pages/users_page.py, line: 195
+msgstr "Échec de la suppression de l'utilisateur '%s'."
+#
 #: src/big_parental_controls/ui/pages/users_page.py:69
 #: src/big_parental_controls/ui/pages/users_page.py:134
 msgid "Create Supervised User"
@@ -1029,3 +1031,220 @@ msgstr "Menu principal"
 #: src/big_parental_controls/data/window.ui:270
 msgid "About"
 msgstr "À propos"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Extra Time"
+msgstr "Temps supplémentaire"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "The child can ask for more time from the clock icon; a parent approves by typing the parent code."
+msgstr "L'enfant peut demander du temps en plus depuis l'icône d'horloge ; un parent valide en tapant le code parent."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Allow requests for extra time"
+msgstr "Autoriser les demandes de temps en plus"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Minutes per request"
+msgstr "Minutes par demande"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Maximum requests per day"
+msgstr "Nombre maximal de demandes par jour"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Also push back the end of allowed hours"
+msgstr "Repousser aussi l'heure de fin de la plage horaire"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "The open session may continue after the end time; logging in again afterwards stays impossible."
+msgstr "La session ouverte peut continuer après l'heure de fin ; se reconnecter ensuite reste impossible."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Parent code"
+msgstr "Code parent"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Change…"
+msgstr "Modifier…"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Set"
+msgstr "Défini"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Not set — requests are refused until it is set"
+msgstr "Non défini — les demandes sont refusées tant qu'il n'est pas défini"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Unknown (parental daemon not reachable)"
+msgstr "Inconnu (service de contrôle parental injoignable)"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "%(bonus)d min granted, %(left)d request(s) left"
+msgstr "%(bonus)d min accordée(s), %(left)d demande(s) restante(s)"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Grant %d min now"
+msgstr "Accorder %d min maintenant"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "4 to 8 digits. It is asked on the child's session to approve extra time."
+msgstr "4 à 8 chiffres. Il est demandé sur la session de l'enfant pour valider du temps en plus."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "New code"
+msgstr "Nouveau code"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Confirm code"
+msgstr "Confirmer le code"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Save"
+msgstr "Enregistrer"
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Parent code saved."
+msgstr "Code parent enregistré."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "The parent code could not be saved."
+msgstr "Le code parent n'a pas pu être enregistré."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "%d extra minutes granted for today."
+msgstr "%d minutes supplémentaires accordées pour aujourd'hui."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "This user has no daily limit or extendable schedule."
+msgstr "Ce compte n'a ni limite quotidienne ni plage horaire repoussable."
+
+#: src/big_parental_controls/ui/pages/time_limits_page.py
+msgid "Extra time could not be granted."
+msgstr "Le temps supplémentaire n'a pas pu être accordé."
+
+msgid "Time left"
+msgstr "Temps restant"
+
+msgid "No limit"
+msgstr "Pas de limite"
+
+msgid "Time is up"
+msgstr "Temps écoulé"
+
+#, python-format
+msgid "Daily quota: %s left"
+msgstr "Quota du jour : il reste %s"
+
+#, python-format
+msgid "(incl. +%d min granted)"
+msgstr "(dont +%d min accordées)"
+
+#, python-format
+msgid "Allowed hours: ends at %(end)s (in %(left)s)"
+msgstr "Plage horaire : fin à %(end)s (dans %(left)s)"
+
+msgid "No time limit is set."
+msgstr "Aucune limite de temps n'est définie."
+
+#, python-format
+msgid "Granted: +%s min!"
+msgstr "C'est accordé : +%s min !"
+
+#, python-format
+msgid "Too many attempts: try again in %s min."
+msgstr "Trop d'essais : réessaie dans %s min."
+
+msgid "Wrong code."
+msgstr "Code incorrect."
+
+msgid "No more requests today."
+msgstr "Plus de demande possible aujourd'hui."
+
+msgid "Time requests are disabled."
+msgstr "Les demandes de temps sont désactivées."
+
+msgid "No parent code is set."
+msgstr "Aucun code parent n'est configuré."
+
+msgid "The request could not be completed."
+msgstr "La demande n'a pas pu aboutir."
+
+#, python-format
+msgid "%d minute left"
+msgid_plural "%d minutes left"
+msgstr[0] "%d minute restante"
+msgstr[1] "%d minutes restantes"
+
+#, python-format
+msgid "Your screen time for today ends in %d minute."
+msgid_plural "Your screen time for today ends in %d minutes."
+msgstr[0] "Ton temps d'écran du jour se termine dans %d minute."
+msgstr[1] "Ton temps d'écran du jour se termine dans %d minutes."
+
+msgid "Screen time is up"
+msgstr "Temps d'écran épuisé"
+
+#, python-format
+msgid "Your daily screen time of %d min has been reached."
+msgstr "Ton temps d'écran quotidien de %d min est atteint."
+
+#, python-format
+msgid "The allowed hours end in %d minute."
+msgid_plural "The allowed hours end in %d minutes."
+msgstr[0] "La plage horaire autorisée se termine dans %d minute."
+msgstr[1] "La plage horaire autorisée se termine dans %d minutes."
+
+msgid "Allowed hours are over"
+msgstr "Plage horaire terminée"
+
+msgid "The allowed usage period has ended."
+msgstr "La période d'utilisation autorisée est terminée."
+
+#, python-format
+msgid "Ask for %(min)d more min (%(left)d request left)"
+msgid_plural "Ask for %(min)d more min (%(left)d requests left)"
+msgstr[0] "Demander %(min)d min de plus (%(left)d demande restante)"
+msgstr[1] "Demander %(min)d min de plus (%(left)d demandes restantes)"
+
+msgid "Ask for more time"
+msgstr "Demander du temps en plus"
+
+#, python-format
+msgid "A parent must type the parent code to grant %d minutes."
+msgstr "Un parent doit taper le code parent pour accorder %d minutes."
+
+msgid "New parent code (4 to 8 digits): "
+msgstr "Nouveau code parent (4 à 8 chiffres) : "
+
+msgid "The code must have 4 to 8 digits."
+msgstr "Le code doit contenir 4 à 8 chiffres."
+
+msgid "Confirm the code: "
+msgstr "Confirme le code : "
+
+msgid "The two codes are different."
+msgstr "Les deux codes sont différents."
+
+msgid "Refused (administrators only)."
+msgstr "Refusé (réservé aux administrateurs)."
+
+#, python-format
+msgid "%(min)d extra minutes granted to %(user)s for today."
+msgstr "%(min)d minutes supplémentaires accordées à %(user)s pour aujourd'hui."
+
+#, python-format
+msgid "%s has no daily limit or extendable schedule."
+msgstr "%s n'a ni limite quotidienne ni plage horaire repoussable."
+
+msgid "Invalid number of minutes (1 to 240)."
+msgstr "Nombre de minutes invalide (1 à 240)."
+
+#, python-format
+msgid "%(user)s: %(bonus)d min granted today, %(left)d/%(max)d request(s) left, time left: %(rem)s"
+msgstr "%(user)s : %(bonus)d min accordée(s) aujourd'hui, %(left)d/%(max)d demande(s) restante(s), temps restant : %(rem)s"

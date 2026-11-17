@@ -3,6 +3,7 @@
 //! Combines two interfaces:
 //! - `br.com.biglinux.AgeSignal1`    — age range of the calling user
 //! - `br.com.biglinux.ParentalMonitor1` — process monitoring for supervised users
+//! - `br.com.biglinux.TimeExtra1`    — extra minutes approved by a parent (PIN)
 //!
 //! Runs on the **system bus** so it can read /proc for any UID.
 //! Write methods (EnableUser/DisableUser) restricted to `wheel` group via D-Bus policy.
@@ -108,12 +109,17 @@ struct AgeSignal {
 
 /// Check if a given UID belongs to the `supervised` group.
 fn is_uid_supervised(uid: Uid) -> bool {
+    uid_in_group(uid, SUPERVISED_GROUP)
+}
+
+/// Check if a given UID belongs to `group` (primary or supplementary).
+fn uid_in_group(uid: Uid, group: &str) -> bool {
     let user = match User::from_uid(uid) {
         Ok(Some(u)) => u,
         _ => return false,
     };
 
-    let gid = match Group::from_name(SUPERVISED_GROUP) {
+    let gid = match Group::from_name(group) {
         Ok(Some(g)) => g.gid,
         _ => return false,
     };
@@ -194,6 +200,299 @@ impl AgeSignal {
     #[zbus(property)]
     fn version(&self) -> &str {
         VERSION
+    }
+}
+
+// ── TimeExtra interface (extra minutes approved by a parent) ──
+
+const TIME_EXTRA_FILE: &str = "/var/lib/big-parental-controls/time-extra.json";
+const PARENT_PIN_FILE: &str = "/var/lib/big-parental-controls/parent-pin";
+const EXTRA_STEP_MIN: u32 = 15;
+const EXTRA_MAX_REQUESTS: u32 = 3;
+const EXTRA_MAX_GRANT_MIN: u32 = 240;
+const PIN_MAX_FAILS: u32 = 3;
+const PIN_LOCK_SECS: u64 = 15 * 60;
+const PIN_HASH_ROUNDS: u32 = 20_000;
+
+/// Today's extra time per user: (granted minutes, child requests accepted).
+fn load_time_extra(today: &str) -> HashMap<String, (u32, u32)> {
+    let mut out = HashMap::new();
+    let Ok(data) = fs::read_to_string(TIME_EXTRA_FILE) else {
+        return out;
+    };
+    let Ok(val) = serde_json::from_str::<serde_json::Value>(&data) else {
+        return out;
+    };
+    if val["_date"].as_str() != Some(today) {
+        return out;
+    }
+    if let Some(obj) = val.as_object() {
+        for (k, v) in obj {
+            if k == "_date" {
+                continue;
+            }
+            let get = |f: &str| v.get(f).and_then(|n| n.as_u64()).unwrap_or(0) as u32;
+            out.insert(k.clone(), (get("minutes"), get("requests")));
+        }
+    }
+    out
+}
+
+fn save_time_extra(today: &str, extra: &HashMap<String, (u32, u32)>) {
+    let mut obj = serde_json::Map::new();
+    obj.insert("_date".into(), serde_json::Value::String(today.into()));
+    for (k, (minutes, requests)) in extra {
+        obj.insert(k.clone(), serde_json::json!({ "minutes": minutes, "requests": requests }));
+    }
+    if let Ok(json) = serde_json::to_string_pretty(&serde_json::Value::Object(obj)) {
+        atomic_write(Path::new(TIME_EXTRA_FILE), json.as_bytes());
+    }
+}
+
+fn to_hex(bytes: &[u8]) -> String {
+    bytes.iter().map(|b| format!("{b:02x}")).collect()
+}
+
+/// Iterated, salted SHA-256 of the PIN (hex).
+fn hash_pin(salt: &str, pin: &str) -> String {
+    use sha2::{Digest, Sha256};
+    let mut h = Sha256::new().chain_update(salt).chain_update(pin).finalize();
+    for _ in 0..PIN_HASH_ROUNDS {
+        h = Sha256::new().chain_update(h).chain_update(salt).finalize();
+    }
+    to_hex(&h)
+}
+
+fn valid_pin_format(pin: &str) -> bool {
+    (4..=8).contains(&pin.len()) && pin.chars().all(|c| c.is_ascii_digit())
+}
+
+/// `Some(true/false)` = PIN checked; `None` = no parent PIN configured.
+fn check_pin(pin: &str) -> Option<bool> {
+    let stored = fs::read_to_string(PARENT_PIN_FILE).ok()?;
+    let (salt, hash) = stored.trim().split_once(':')?;
+    let candidate = hash_pin(salt, pin);
+    // Constant-time comparison.
+    let diff = candidate
+        .bytes()
+        .zip(hash.bytes())
+        .fold(candidate.len() ^ hash.len(), |acc, (a, b)| acc | usize::from(a ^ b));
+    Some(diff == 0)
+}
+
+fn store_pin(pin: &str) -> bool {
+    let mut salt = [0u8; 16];
+    let Ok(mut f) = fs::File::open("/dev/urandom") else {
+        return false;
+    };
+    if std::io::Read::read_exact(&mut f, &mut salt).is_err() {
+        return false;
+    }
+    let salt = to_hex(&salt);
+    let line = format!("{salt}:{}\n", hash_pin(&salt, pin));
+    let tmp = Path::new(PARENT_PIN_FILE).with_extension("tmp");
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        let Ok(mut out) = fs::OpenOptions::new()
+            .write(true)
+            .create(true)
+            .truncate(true)
+            .mode(0o600)
+            .open(&tmp)
+        else {
+            return false;
+        };
+        if std::io::Write::write_all(&mut out, line.as_bytes()).is_err() {
+            return false;
+        }
+    }
+    fs::rename(&tmp, PARENT_PIN_FILE).is_ok()
+}
+
+/// Daily quota of `username` in minutes (0 = none).
+fn daily_quota(username: &str) -> u32 {
+    load_time_limits()
+        .get(username)
+        .and_then(|c| c.get("daily_minutes"))
+        .and_then(|v| v.as_u64())
+        .unwrap_or(0) as u32
+}
+
+/// Per-child "extra time" settings, set by the parent in the app
+/// (`time-limits.json` → `<user>.extra`). Defaults keep the original behaviour.
+struct ExtraSettings {
+    /// Minutes granted per accepted request.
+    step: u32,
+    /// Child requests allowed per day (0 = feature disabled).
+    max_requests: u32,
+    /// The extra minutes also push the end of the allowed period.
+    extend_schedule: bool,
+}
+
+fn extra_settings_of(cfg: Option<&serde_json::Value>) -> ExtraSettings {
+    let e = cfg.and_then(|c| c.get("extra"));
+    let num = |k: &str, def: u64| e.and_then(|x| x.get(k)).and_then(|v| v.as_u64()).unwrap_or(def);
+    ExtraSettings {
+        step: (num("step", u64::from(EXTRA_STEP_MIN)) as u32).clamp(5, 120),
+        max_requests: (num("max_requests", u64::from(EXTRA_MAX_REQUESTS)) as u32).min(10),
+        extend_schedule: e
+            .and_then(|x| x.get("extend_schedule"))
+            .and_then(|v| v.as_bool())
+            .unwrap_or(false),
+    }
+}
+
+fn extra_settings(username: &str) -> ExtraSettings {
+    extra_settings_of(load_time_limits().get(username))
+}
+
+/// Extra minutes are useful for `username`: a daily quota, or a schedule
+/// that the parent allows to be pushed.
+fn extra_applies(username: &str, s: &ExtraSettings) -> bool {
+    daily_quota(username) > 0 || (s.extend_schedule && schedule_remaining(username, 0).is_some())
+}
+
+/// Schedule status (see `schedule_remaining`), with the end of the allowed
+/// period pushed by today's extra minutes when the parent enabled it.
+fn schedule_with_extra(
+    username: &str,
+    limits: &HashMap<String, serde_json::Value>,
+    extra: &HashMap<String, (u32, u32)>,
+) -> Option<Option<u32>> {
+    let base = schedule_remaining(username, 0)?;
+    let bonus = extra.get(username).map_or(0, |e| e.0);
+    if bonus == 0 || !extra_settings_of(limits.get(username)).extend_schedule {
+        return Some(base);
+    }
+    let pushed = schedule_remaining(username, bonus).flatten();
+    Some(match (base, pushed) {
+        (Some(a), Some(b)) => Some(a.max(b)),
+        (a, b) => a.or(b),
+    })
+}
+
+fn today_str() -> String {
+    Local::now().format("%Y-%m-%d").to_string()
+}
+
+/// Adds `minutes` of extra quota for today; `child` counts as a request.
+fn add_extra(username: &str, minutes: u32, child: bool) {
+    let today = today_str();
+    let mut extra = load_time_extra(&today);
+    let e = extra.entry(username.to_string()).or_insert((0, 0));
+    e.0 += minutes;
+    if child {
+        e.1 += 1;
+    }
+    save_time_extra(&today, &extra);
+}
+
+/// Caller is root or an administrator (`wheel`).
+async fn caller_is_admin(conn: &Connection, header: &Header<'_>) -> bool {
+    match get_caller_uid(conn, header).await {
+        Some(uid) => uid.is_root() || uid_in_group(uid, "wheel"),
+        None => false,
+    }
+}
+
+struct TimeExtra {
+    connection: Connection,
+    /// Failed PIN attempts per user: (count, locked until).
+    fails: Mutex<HashMap<String, (u32, Option<std::time::Instant>)>>,
+}
+
+#[interface(name = "br.com.biglinux.TimeExtra1")]
+impl TimeExtra {
+    /// Called by a supervised user: asks for more minutes (per-child setting,
+    /// 15 by default), validated by the parent PIN typed on the spot.
+    /// Returns "ok:<minutes>", "bad_pin", "locked:<minutes>", "max",
+    /// "disabled", "no_pin", "no_limit" or "denied".
+    async fn request_extra(&self, pin: String, #[zbus(header)] header: Header<'_>) -> String {
+        let Some(uid) = get_caller_uid(&self.connection, &header).await else {
+            return "denied".into();
+        };
+        if !is_uid_supervised(uid) {
+            return "denied".into();
+        }
+        let Ok(Some(user)) = User::from_uid(uid) else {
+            return "denied".into();
+        };
+        let name = user.name;
+        let settings = extra_settings(&name);
+        if settings.max_requests == 0 {
+            return "disabled".into();
+        }
+        if !extra_applies(&name, &settings) {
+            return "no_limit".into();
+        }
+        let today = today_str();
+        if load_time_extra(&today).get(&name).map_or(0, |e| e.1) >= settings.max_requests {
+            return "max".into();
+        }
+        let mut fails = self.fails.lock().await;
+        let entry = fails.entry(name.clone()).or_insert((0, None));
+        if let Some(until) = entry.1 {
+            let now = std::time::Instant::now();
+            if now < until {
+                let left = (until - now).as_secs().div_ceil(60);
+                return format!("locked:{left}");
+            }
+            *entry = (0, None);
+        }
+        match check_pin(&pin) {
+            None => "no_pin".into(),
+            Some(false) => {
+                entry.0 += 1;
+                eprintln!("Extra time for {name}: wrong PIN ({}/{PIN_MAX_FAILS})", entry.0);
+                if entry.0 >= PIN_MAX_FAILS {
+                    entry.1 = Some(
+                        std::time::Instant::now() + Duration::from_secs(PIN_LOCK_SECS),
+                    );
+                    return format!("locked:{}", PIN_LOCK_SECS / 60);
+                }
+                "bad_pin".into()
+            }
+            Some(true) => {
+                *entry = (0, None);
+                add_extra(&name, settings.step, true);
+                eprintln!("Extra time for {name}: +{} min (parent PIN)", settings.step);
+                format!("ok:{}", settings.step)
+            }
+        }
+    }
+
+    /// Parent side (wheel only): grants `minutes` extra minutes today.
+    async fn grant_extra(
+        &self,
+        username: String,
+        minutes: u32,
+        #[zbus(header)] header: Header<'_>,
+    ) -> String {
+        if !caller_is_admin(&self.connection, &header).await {
+            return "denied".into();
+        }
+        if minutes == 0 || minutes > EXTRA_MAX_GRANT_MIN {
+            return "invalid".into();
+        }
+        if !extra_applies(&username, &extra_settings(&username)) {
+            return "no_limit".into();
+        }
+        add_extra(&username, minutes, false);
+        eprintln!("Extra time for {username}: +{minutes} min (granted by a parent)");
+        "ok".into()
+    }
+
+    /// True when a parent PIN is configured (never reveals anything else).
+    async fn has_parent_pin(&self) -> bool {
+        Path::new(PARENT_PIN_FILE).exists()
+    }
+
+    /// Parent side (wheel only): sets the parent PIN (4 to 8 digits).
+    async fn set_parent_pin(&self, pin: String, #[zbus(header)] header: Header<'_>) -> bool {
+        if !caller_is_admin(&self.connection, &header).await || !valid_pin_format(&pin) {
+            return false;
+        }
+        store_pin(&pin)
     }
 }
 
@@ -512,7 +811,7 @@ fn atomic_write(path: &Path, content: &[u8]) {
 
 fn prettify_app_name(comm: &str) -> String {
     // Capitalize first letter, common substitutions
-    let mut name = comm.replace('-', " ").replace('_', " ");
+    let mut name = comm.replace(['-', '_'], " ");
     if let Some(first) = name.get_mut(..1) {
         first.make_ascii_uppercase();
     }
@@ -572,10 +871,130 @@ fn terminate_session(username: &str, session_id: &str, reason: &str) {
         .output();
 }
 
-fn notify_user(username: &str, summary: &str, body: &str) {
-    let _ = Command::new("sudo")
-        .args(["-u", username, "notify-send", "--urgency=critical", summary, body])
-        .output();
+/// Runs `program args` as `username` inside their graphical session.
+///
+/// The child gets the user's identity (setgroups + setgid + setuid, which
+/// needs only CAP_SETUID/CAP_SETGID — no `sudo`), their session bus (which a
+/// process spawned by the daemon would otherwise not find) and their locale.
+/// Fire-and-forget: a reaper thread waits on the child so it never lingers.
+fn spawn_as_user(username: &str, program: &str, args: &[&str]) {
+    use std::os::unix::process::CommandExt;
+    use std::process::Stdio;
+
+    let Ok(Some(user)) = User::from_name(username) else {
+        return;
+    };
+    let Ok(cname) = CString::new(username) else {
+        return;
+    };
+    let (uid, gid) = (user.uid, user.gid);
+    let runtime_dir = format!("/run/user/{}", uid.as_raw());
+
+    let mut cmd = Command::new(program);
+    cmd.args(args)
+        .env_clear()
+        .env("PATH", "/usr/bin:/bin")
+        .env("HOME", &user.dir)
+        .env("USER", username)
+        .env("XDG_RUNTIME_DIR", &runtime_dir)
+        .env("DBUS_SESSION_BUS_ADDRESS", format!("unix:path={runtime_dir}/bus"))
+        .current_dir("/")
+        .stdin(Stdio::null())
+        .stdout(Stdio::null())
+        .stderr(Stdio::null());
+    if let Some(lang) = user_locale(username) {
+        cmd.env("LANG", lang);
+    }
+
+    // Resolve groups *before* fork (NSS lookups are not fork-safe).
+    let groups = nix::unistd::getgrouplist(&cname, gid).unwrap_or_else(|_| vec![gid]);
+
+    // SAFETY: only raw syscalls (setgroups/setgid/setuid) run between fork and exec.
+    unsafe {
+        cmd.pre_exec(move || {
+            nix::unistd::setgroups(&groups)?;
+            nix::unistd::setgid(gid)?;
+            nix::unistd::setuid(uid)?;
+            Ok(())
+        });
+    }
+
+    match cmd.spawn() {
+        Ok(mut child) => {
+            std::thread::spawn(move || {
+                let _ = child.wait();
+            });
+        }
+        Err(e) => eprintln!("{program} for {username} failed: {e}"),
+    }
+}
+
+/// Locale of `username` (AccountsService `Language=`, else the system
+/// `LANG`), so the alert is shown in the user's language.
+fn user_locale(username: &str) -> Option<String> {
+    let value_of = |path: &str, key: &str| -> Option<String> {
+        fs::read_to_string(path).ok()?.lines().find_map(|l| {
+            l.strip_prefix(key)
+                .map(|v| v.trim().trim_matches('"').to_string())
+                .filter(|v| !v.is_empty())
+        })
+    };
+    value_of(&format!("/var/lib/AccountsService/users/{username}"), "Language=")
+        .or_else(|| value_of("/etc/locale.conf", "LANG="))
+}
+
+/// Alerts shown to the supervised user.
+enum Msg {
+    /// Daily quota: N minutes left.
+    DailyWarn(u32),
+    /// Daily quota (N min) reached.
+    DailyDone(u32),
+    /// Allowed period ends in N minutes.
+    ScheduleWarn(u32),
+    /// Allowed period is over.
+    ScheduleEnd,
+}
+
+/// Translated alerts are rendered by `big-time-left --alert` (gettext, same
+/// catalogue as the application); English is only a fallback when it is
+/// missing.
+const ALERT_HELPER: &str = "/usr/bin/big-time-left";
+
+fn notify_msg(username: &str, m: Msg) {
+    let (kind, n) = match m {
+        Msg::DailyWarn(n) => ("daily-warn", n),
+        Msg::DailyDone(n) => ("daily-done", n),
+        Msg::ScheduleWarn(n) => ("schedule-warn", n),
+        Msg::ScheduleEnd => ("schedule-end", 0),
+    };
+    let n_str = n.to_string();
+    if Path::new(ALERT_HELPER).exists() {
+        spawn_as_user(username, ALERT_HELPER, &["--alert", kind, &n_str]);
+        return;
+    }
+    let (summary, body) = match kind {
+        "daily-warn" => (
+            format!("{n} min left"),
+            format!("Your screen time for today ends in {n} min."),
+        ),
+        "daily-done" => (
+            "Screen time is up".to_string(),
+            format!("Your daily screen time of {n} min has been reached."),
+        ),
+        "schedule-warn" => (
+            format!("{n} min left"),
+            format!("The allowed hours end in {n} min."),
+        ),
+        _ => (
+            "Allowed hours are over".to_string(),
+            "The allowed usage period has ended.".to_string(),
+        ),
+    };
+    spawn_as_user(
+        username,
+        "notify-send",
+        &["--urgency=critical", "--icon=dialog-warning", &summary, &body],
+    );
 }
 
 fn day_code_applies(code: &str, current_wday: u8) -> bool {
@@ -599,20 +1018,24 @@ fn day_code_applies(code: &str, current_wday: u8) -> bool {
     false
 }
 
-/// Returns true if it is currently within the user's allowed schedule,
-/// or if no schedule rule exists for this user.
-fn is_within_schedule(username: &str) -> bool {
+/// Schedule status of `username`:
+/// - `None`          — no rule (no schedule restriction),
+/// - `Some(None)`    — a rule exists and we are outside every allowed range,
+/// - `Some(Some(n))` — inside an allowed range that ends in `n` minutes.
+///
+/// `shift` evaluates the rule `shift` minutes earlier (used to push the end of
+/// the allowed period by the parent-approved extra minutes): the returned
+/// remaining time is then counted from the pushed end.
+fn schedule_remaining(username: &str, shift: u32) -> Option<Option<u32>> {
     let conf = Path::new(TIME_CONF_FILE);
-    if !conf.exists() {
-        return true;
-    }
-    let Ok(content) = fs::read_to_string(conf) else {
-        return true;
-    };
+    let content = fs::read_to_string(conf).ok()?;
 
     let now = Local::now();
     let wday = now.weekday().num_days_from_monday() as u8;
-    let now_min = now.hour() * 60 + now.minute();
+    let Some(now_min) = (now.hour() * 60 + now.minute()).checked_sub(shift) else {
+        // Shifted back to the previous day: the extension never crosses midnight.
+        return Some(None);
+    };
 
     let rule: Option<String> = content
         .lines()
@@ -625,12 +1048,12 @@ fn is_within_schedule(username: &str) -> bool {
             let times = parts.next()?.trim().to_string();
             if users == username { Some(times) } else { None }
         })
-        .last();
+        .next_back();
 
-    let rule = match rule {
-        Some(r) => r,
-        None => return true,
-    };
+    let rule = rule?;
+
+    // Latest end among the allowed ranges that contain "now".
+    let mut latest_end: Option<u32> = None;
 
     // Each segment: DAYSPEC + HHMM-HHMM (time part is always last 9 chars)
     for seg in rule.split('|') {
@@ -651,11 +1074,11 @@ fn is_within_schedule(username: &str) -> bool {
                 + time_part[7..9].parse::<u32>().unwrap_or(0);
             let day_code = &seg[..seg.len() - 9];
             if day_code_applies(day_code, wday) && now_min >= start_min && now_min < end_min {
-                return true;
+                latest_end = Some(latest_end.map_or(end_min, |e| e.max(end_min)));
             }
         }
     }
-    false
+    Some(latest_end.map(|end| end - now_min))
 }
 
 fn load_time_limits() -> HashMap<String, serde_json::Value> {
@@ -706,16 +1129,18 @@ fn enforce_time_limits() {
         usage = HashMap::new();
     }
     let mut changed = false;
+    let extra = load_time_extra(&today);
 
-    // Daily minute limit
+    // Daily minute limit (plus today's parent-approved extra minutes)
     for (username, cfg) in &limits {
-        let daily_minutes = cfg
+        let base = cfg
             .get("daily_minutes")
             .and_then(|v| v.as_u64())
             .unwrap_or(0) as u32;
-        if daily_minutes == 0 {
+        if base == 0 {
             continue;
         }
+        let daily_minutes = base + extra.get(username).map_or(0, |e| e.0);
         let Some(session_id) = get_active_graphical_session(username) else {
             continue;
         };
@@ -725,12 +1150,8 @@ fn enforce_time_limits() {
         changed = true;
 
         if total >= daily_minutes {
-            notify_user(
-                username,
-                "Tempo diário esgotado",
-                &format!("Seu tempo de uso diário de {daily_minutes} min foi atingido."),
-            );
-            if total >= daily_minutes + 1 {
+            notify_msg(username, Msg::DailyDone(daily_minutes));
+            if total > daily_minutes {
                 terminate_session(
                     username,
                     &session_id,
@@ -740,28 +1161,28 @@ fn enforce_time_limits() {
         } else {
             let remaining = daily_minutes - total;
             if remaining == 5 || remaining == 1 {
-                notify_user(
-                    username,
-                    &format!("Aviso — {remaining} min restante(s)"),
-                    &format!("Seu tempo diário acaba em {remaining} minuto(s)."),
-                );
+                notify_msg(username, Msg::DailyWarn(remaining));
             }
         }
     }
 
     // Schedule enforcement
     for username in get_supervised_users() {
-        if is_within_schedule(&username) {
-            continue;
+        match schedule_with_extra(&username, &limits, &extra) {
+            None => continue,
+            Some(Some(left)) => {
+                // Warn shortly before the allowed period ends (needs a live session).
+                if (left == 5 || left == 1) && get_active_graphical_session(&username).is_some() {
+                    notify_msg(&username, Msg::ScheduleWarn(left));
+                }
+                continue;
+            }
+            Some(None) => {}
         }
         let Some(session_id) = get_active_graphical_session(&username) else {
             continue;
         };
-        notify_user(
-            &username,
-            "Horário de uso encerrado",
-            "O período de uso permitido terminou.",
-        );
+        notify_msg(&username, Msg::ScheduleEnd);
         terminate_session(&username, &session_id, "outside allowed schedule");
     }
 
@@ -822,6 +1243,16 @@ async fn main() -> Result<()> {
     connection
         .object_server()
         .at("/br/com/biglinux/ParentalDaemon", monitor)
+        .await?;
+
+    // Register TimeExtra interface
+    let time_extra = TimeExtra {
+        connection: connection.clone(),
+        fails: Mutex::new(HashMap::new()),
+    };
+    connection
+        .object_server()
+        .at("/br/com/biglinux/ParentalDaemon", time_extra)
         .await?;
 
     // Request bus name

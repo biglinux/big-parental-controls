@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Show the remaining screen time of the current supervised user.
+
+  big-time-left            one line of plain text
+  big-time-left --genmon   XML for the xfce4-genmon-plugin
+  big-time-left --notify   desktop notification with the details
+"""
+import sys
+
+from big_parental_controls.services.time_left import main
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -12,12 +12,15 @@ echo "=== $DOMAIN — update translations ==="
 # 1. Extract translatable strings from Python sources + UI templates
 echo "Extracting strings from Python sources..."
 find "$SRC_DIR" -name '*.py' | sort > /tmp/bpc_files.txt
+# Python scripts installed in /usr/bin (tray indicator, parent CLI)
+ls big-parental-controls/usr/bin/big-time-* >> /tmp/bpc_files.txt
 
 xgettext \
     --files-from=/tmp/bpc_files.txt \
     --language=Python \
     --keyword=_ \
     --keyword=N_ \
+    --keyword=_n:1,2 \
     --output="$POT_FILE" \
     --from-code=UTF-8 \
     --package-name="$DOMAIN" \

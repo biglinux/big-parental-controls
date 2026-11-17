@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Parental controls — time left
+Name[fr]=Contrôle parental — temps restant
+Name[pt_BR]=Controle parental — tempo restante
+Comment=Shows the remaining screen time of supervised accounts
+Comment[fr]=Affiche le temps d'écran restant des comptes supervisés
+Exec=/usr/bin/big-time-tray
+Icon=big-parental-controls
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
