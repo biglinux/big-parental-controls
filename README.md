@@ -214,6 +214,21 @@ Build:
 
 See `pkgbuild/PKGBUILD` for the full list.
 
+### systemd is required
+
+The project targets systemd distributions (BigLinux, Manjaro, Arch). Without systemd and logind, most enforcement does not work:
+
+| Feature | Needs |
+| --- | --- |
+| Screen time quota (usage tracking, warnings, ending the session) | `big-parental-daemon.service`, `big-parental-time-check.timer`, `loginctl` (logind) |
+| Allowed hours | PAM `pam_time` (works without systemd), but ending an open session needs logind |
+| DNS filtering restored at boot | `big-parental-dns-restore.service` |
+| Age signal over D-Bus | `big-parental-daemon.service` |
+| Activity (login sessions) | `wtmp` and `loginctl` |
+| App blocking (ACL), creating users | no systemd dependency |
+
+Non-systemd init systems (OpenRC, runit, s6…) are not supported or tested.
+
 ## Build and Install
 
 ### Package Build (recommended)
