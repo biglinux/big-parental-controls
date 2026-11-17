@@ -1,6 +1,7 @@
 """Users page — manage supervised accounts."""
 
 import subprocess
+
 import gi
 
 gi.require_version("Gtk", "4.0")
@@ -14,6 +15,7 @@ from big_parental_controls.services.malcontent_service import MalcontentService,
 from big_parental_controls.services import time_service
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
+from big_parental_controls.utils.username import to_login
 
 _ = setup_i18n()
 
@@ -178,7 +180,17 @@ class UsersPage(Gtk.Box):
         fullname_hid: list[int | None] = [None]
 
         def _validate(*_args: object) -> None:
-            uname = username_row.get_text().strip()
+            typed = username_row.get_text().strip()
+            uname = to_login(typed)
+            # Show the real login when it differs from what was typed.
+            if typed and uname and uname != typed:
+                username_row.set_title(_("Username") + " → " + uname)
+            else:
+                username_row.set_title(_("Username"))
+            if typed and not uname:
+                username_row.add_css_class("error")
+            else:
+                username_row.remove_css_class("error")
             pwd = password_row.get_text()
             conf = confirm_row.get_text()
             ok = bool(uname) and bool(pwd) and pwd == conf
@@ -233,8 +245,9 @@ class UsersPage(Gtk.Box):
         if response != "create":
             return
 
-        username = username_row.get_text().strip()
-        fullname = fullname_row.get_text().strip()
+        typed = username_row.get_text().strip()
+        username = to_login(typed)
+        fullname = fullname_row.get_text().strip() or typed
         password = password_row.get_text()
 
         if not username or not password:
