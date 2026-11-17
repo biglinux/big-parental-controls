@@ -15,7 +15,11 @@ from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
 
-POLKIT_ACTION = "br.com.biglinux.parental-controls.manage-settings"
+# Same action as the privileged helper (pkexec group-helper): polkit keeps an
+# "auth_admin_keep" authorization per action and per process, so checking this
+# one for our own PID at startup lets the following pkexec calls (whose subject
+# is this process, their parent) go through without asking the password again.
+POLKIT_ACTION = "br.com.biglinux.parental-controls.manage-groups"
 
 
 class MainWindow(Adw.ApplicationWindow):
