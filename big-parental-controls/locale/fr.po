@@ -718,7 +718,8 @@ msgstr "L'utilisateur '%s' a été supprimé."
 #: src/big_parental_controls/ui/pages/user_detail_page.py:469
 #, fuzzy, python-format
 msgid "Failed to delete user '%s'."
-msgstr "Échec de la suppression de l'utilisateur '%s'."controls/pages/users_page.py, line: 195
+msgstr "Échec de la suppression de l'utilisateur '%s'."
+#
 #: src/big_parental_controls/ui/pages/users_page.py:69
 #: src/big_parental_controls/ui/pages/users_page.py:134
 msgid "Create Supervised User"
