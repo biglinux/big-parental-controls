@@ -13,7 +13,8 @@ ProtectSystem=strict
 ReadWritePaths=/var/lib/big-parental-controls
 PrivateTmp=true
 NoNewPrivileges=false
-CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+# SETUID/SETGID: run notify-send as the supervised user; KILL: end their session
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_SETUID CAP_SETGID CAP_KILL
 
 [Install]
 WantedBy=multi-user.target

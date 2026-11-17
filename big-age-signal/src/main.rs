@@ -572,10 +572,63 @@ fn terminate_session(username: &str, session_id: &str, reason: &str) {
         .output();
 }
 
+/// Show a desktop notification in the user's graphical session.
+///
+/// Runs `notify-send` as the target user (setgroups + setgid + setuid, needs
+/// only CAP_SETUID/CAP_SETGID — no `sudo`) and points it at the user's
+/// session bus, which a freshly spawned process would otherwise not find.
+/// Fire-and-forget: a reaper thread waits on the child so it never lingers.
 fn notify_user(username: &str, summary: &str, body: &str) {
-    let _ = Command::new("sudo")
-        .args(["-u", username, "notify-send", "--urgency=critical", summary, body])
-        .output();
+    use std::os::unix::process::CommandExt;
+    use std::process::Stdio;
+
+    let Ok(Some(user)) = User::from_name(username) else {
+        return;
+    };
+    let Ok(cname) = CString::new(username) else {
+        return;
+    };
+    let (uid, gid) = (user.uid, user.gid);
+    let runtime_dir = format!("/run/user/{}", uid.as_raw());
+
+    let mut cmd = Command::new("notify-send");
+    cmd.args([
+        "--urgency=critical",
+        "--app-name=Controle parental",
+        "--icon=dialog-warning",
+        summary,
+        body,
+    ])
+    .env_clear()
+    .env("PATH", "/usr/bin:/bin")
+    .env("XDG_RUNTIME_DIR", &runtime_dir)
+    .env("DBUS_SESSION_BUS_ADDRESS", format!("unix:path={runtime_dir}/bus"))
+    .current_dir("/")
+    .stdin(Stdio::null())
+    .stdout(Stdio::null())
+    .stderr(Stdio::null());
+
+    // Resolve groups *before* fork (NSS lookups are not fork-safe).
+    let groups = nix::unistd::getgrouplist(&cname, gid).unwrap_or_else(|_| vec![gid]);
+
+    // SAFETY: only raw syscalls (setgroups/setgid/setuid) run between fork and exec.
+    unsafe {
+        cmd.pre_exec(move || {
+            nix::unistd::setgroups(&groups)?;
+            nix::unistd::setgid(gid)?;
+            nix::unistd::setuid(uid)?;
+            Ok(())
+        });
+    }
+
+    match cmd.spawn() {
+        Ok(mut child) => {
+            std::thread::spawn(move || {
+                let _ = child.wait();
+            });
+        }
+        Err(e) => eprintln!("notify-send for {username} failed: {e}"),
+    }
 }
 
 fn day_code_applies(code: &str, current_wday: u8) -> bool {
