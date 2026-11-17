@@ -121,6 +121,8 @@ WHO DOWNLOADS THE ISO AND INSTALLS THE SYSTEM
 | Age profile | Classify supervised users by ECA Digital age range (0–12, 13–15, 16–17, 18+) |
 | App restrictions | Allow or block access to selected applications via filesystem ACLs |
 | Screen time | Define daily usage limits and allowed time ranges |
+| Time left indicator | Supervised users see their remaining time in the system tray and are warned 5 and 1 minutes before the end |
+| Extra time | The child can ask for more minutes; a parent approves on the spot with a parent code (per-child amount, daily limit, optionally pushes the end of the allowed hours) |
 | Web filter | Apply family-safe DNS providers or custom DNS servers per user via nftables |
 | Activity history | View weekly screen time charts, hourly usage patterns, and login sessions |
 | Privacy controls | Delete or export collected activity data (LGPD Art. 18 / GDPR Art. 20) |
@@ -135,19 +137,26 @@ WHO DOWNLOADS THE ISO AND INSTALLS THE SYSTEM
 
 ## Architecture
 
-The project has four main parts:
+The project has five main parts:
 
 1. **`src/big_parental_controls/`** — Main GTK4 application (Python).
 2. **`big-parental-controls/usr/lib/big-parental-controls/group-helper`** — Privileged bash helper run through `pkexec`. All operations that touch protected paths go through this script.
 3. **`big-age-signal/`** — Rust D-Bus service (`br.com.biglinux.ParentalDaemon`) that exposes age-range information on the system bus. Other apps on the same device can query `GetAgeGroup(uid)` to get the ECA Digital range for a supervised user.
-4. **`big-parental-controls/usr/bin/big-supervised-indicator`** — Lightweight indicator for supervised sessions.
+4. **`big-parental-controls/usr/bin/big-time-tray`** — Tray indicator started by XDG autostart in supervised sessions only (StatusNotifier/AppIndicator, falling back to GtkStatusIcon). Shows the remaining time and lets the child ask for extra time.
+5. **`big-parental-controls/usr/bin/big-time-left`** and **`big-time-grant`** — Command-line tools: remaining time (also used by the daemon to show translated alerts) and the parent side of extra time (`big-time-grant USER [MINUTES]`, `--set-pin`, `--status USER`).
 
 ### D-Bus Interface
 
-The Rust daemon exposes two interfaces on `br.com.biglinux.ParentalDaemon`:
+The Rust daemon exposes three interfaces on `br.com.biglinux.ParentalDaemon`:
 
 - `br.com.biglinux.AgeSignal1.GetAgeGroup(uid: u32) → String` — Returns the ECA Digital range (`"0-12"`, `"13-15"`, `"16-17"`, `"18+"`) stored for the given UID.
 - `br.com.biglinux.ParentalMonitor1` — Screen time and session tracking.
+- `br.com.biglinux.TimeExtra1` — Extra time approved by a parent:
+  - `RequestExtra(pin: s) → s` — called by a supervised user; checks the parent code, the daily request limit and locks for 15 minutes after 3 wrong codes. Returns `ok:<minutes>`, `bad_pin`, `locked:<minutes>`, `max`, `disabled`, `no_pin`, `no_limit` or `denied`.
+  - `GrantExtra(user: s, minutes: u) → s` and `SetParentPin(pin: s) → b` — administrators only (D-Bus policy for `wheel`, re-checked by the daemon).
+  - `HasParentPin() → b`.
+
+  Per-child settings live in `time-limits.json` (`<user>.extra`: `step`, `max_requests`, `extend_schedule`); today's granted minutes in `time-extra.json`. The parent code is stored salted and hashed (iterated SHA-256) in `/var/lib/big-parental-controls/parent-pin`, readable by root only.
 
 ### Privileged Operations (group-helper)
 
@@ -198,6 +207,7 @@ The parent can adjust this list from the app's filter page.
 - No remote account required; no telemetry.
 - Age-range data is stored locally in `/var/lib/big-parental-controls/user-profiles.json`, written only by the privileged helper.
 - The D-Bus policy allows `GetAgeGroup` queries from all users on the local system bus.
+- Extra time: the parent code never leaves the daemon (only its salted hash is stored); wrong codes are rate-limited. Pushing back the end of the allowed hours only extends a session that is already open: PAM still refuses new logins outside the allowed hours.
 
 ## Dependencies
 

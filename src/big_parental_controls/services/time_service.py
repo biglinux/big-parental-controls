@@ -5,6 +5,7 @@ import logging
 import subprocess
 
 from big_parental_controls.core.constants import GROUP_HELPER, TIME_LIMITS_FILE
+from big_parental_controls.services.time_left import extra_settings
 
 log = logging.getLogger(__name__)
 
@@ -118,6 +119,32 @@ def set_daily_limit(username: str, minutes: int) -> bool:
     user_cfg["daily_minutes"] = minutes
     _save_limits(limits)
     _enable_timer()
+    return True
+
+
+def get_extra_settings(username: str) -> dict:
+    """Extra-time settings of a user: step, max_requests, extend_schedule."""
+    return extra_settings(_load_limits().get(username, {}))
+
+
+def save_daily_and_extra(username: str, minutes: int, extra: dict) -> bool:
+    """Daily limit (0 = none) and extra-time settings in ONE privileged write."""
+    limits = _load_limits()
+    user_cfg = limits.setdefault(username, {})
+    if minutes > 0:
+        user_cfg["daily_minutes"] = minutes
+    else:
+        user_cfg.pop("daily_minutes", None)
+    user_cfg["extra"] = {
+        "step": int(extra["step"]),
+        "max_requests": int(extra["max_requests"]),
+        "extend_schedule": bool(extra["extend_schedule"]),
+    }
+    _save_limits(limits)
+    if _has_any_restriction(limits):
+        _enable_timer()
+    else:
+        _disable_timer()
     return True
 
 

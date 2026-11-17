@@ -1,6 +1,7 @@
 """Time limits page — manage per-user screen time schedules and duration limits."""
 
 import contextlib
+from datetime import datetime
 
 import gi
 
@@ -9,7 +10,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Adw, GLib, Gtk
 
 from big_parental_controls.services.malcontent_service import MalcontentService
-from big_parental_controls.services import time_service
+from big_parental_controls.services import extra_time_service, time_left, time_service
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
@@ -109,6 +110,8 @@ class TimeLimitsPage(Gtk.Box):
 
         inner.append(self._duration_group)
 
+        self._build_extra_group(inner)
+
         # Apply button
         self._apply_btn = Gtk.Button(label=_("Apply"))
         self._apply_btn.add_css_class("suggested-action")
@@ -124,6 +127,142 @@ class TimeLimitsPage(Gtk.Box):
         self.append(toolbar)
 
         self._load_current_limits()
+
+    # ── Extra time (approved by a parent with the parent code) ──────────
+
+    def _build_extra_group(self, inner: Gtk.Box) -> None:
+
+        group = Adw.PreferencesGroup()
+        group.set_title(_("Extra Time"))
+        group.set_description(
+            _("The child can ask for more time from the clock icon; "
+              "a parent approves by typing the parent code.")
+        )
+
+        self._extra_enable_row = Adw.SwitchRow()
+        self._extra_enable_row.set_title(_("Allow requests for extra time"))
+        self._extra_enable_row.connect("notify::active", self._on_extra_toggled)
+        group.add(self._extra_enable_row)
+
+        self._extra_step_row = Adw.SpinRow.new_with_range(5, 60, 5)
+        self._extra_step_row.set_title(_("Minutes per request"))
+        self._extra_step_row.connect("notify::value", self._mark_dirty)
+        group.add(self._extra_step_row)
+
+        self._extra_max_row = Adw.SpinRow.new_with_range(1, 10, 1)
+        self._extra_max_row.set_title(_("Maximum requests per day"))
+        self._extra_max_row.connect("notify::value", self._mark_dirty)
+        group.add(self._extra_max_row)
+
+        self._extra_sched_row = Adw.SwitchRow()
+        self._extra_sched_row.set_title(_("Also push back the end of allowed hours"))
+        self._extra_sched_row.set_subtitle(
+            _("The open session may continue after the end time; "
+              "logging in again afterwards stays impossible.")
+        )
+        self._extra_sched_row.connect("notify::active", self._mark_dirty)
+        group.add(self._extra_sched_row)
+
+        self._pin_row = Adw.ActionRow()
+        self._pin_row.set_title(_("Parent code"))
+        pin_btn = Gtk.Button(label=_("Change…"))
+        pin_btn.set_valign(Gtk.Align.CENTER)
+        pin_btn.connect("clicked", self._on_set_pin)
+        self._pin_row.add_suffix(pin_btn)
+        group.add(self._pin_row)
+
+        self._today_row = Adw.ActionRow()
+        self._today_row.set_title(_("Today"))
+        self._grant_btn = Gtk.Button()
+        self._grant_btn.set_valign(Gtk.Align.CENTER)
+        self._grant_btn.connect("clicked", self._on_grant_now)
+        self._today_row.add_suffix(self._grant_btn)
+        group.add(self._today_row)
+
+        inner.append(group)
+
+    def _mark_dirty(self, *_args: object) -> None:
+        if not self._loading:
+            self._apply_btn.set_sensitive(True)
+
+    def _on_extra_toggled(self, row: Adw.SwitchRow, _pspec: object) -> None:
+        active = row.get_active()
+        for r in (self._extra_step_row, self._extra_max_row, self._extra_sched_row):
+            r.set_sensitive(active)
+        if not self._loading:
+            self._apply_btn.set_sensitive(True)
+
+    def _load_extra(self) -> None:
+        was_loading, self._loading = self._loading, True
+        s = time_service.get_extra_settings(self._selected_username)
+        self._extra_enable_row.set_active(s["max_requests"] > 0)
+        self._extra_step_row.set_value(s["step"])
+        self._extra_max_row.set_value(s["max_requests"] or time_left.EXTRA_MAX_REQUESTS)
+        self._extra_sched_row.set_active(s["extend_schedule"])
+        self._on_extra_toggled(self._extra_enable_row, None)
+
+        has = extra_time_service.has_pin()
+        self._pin_row.set_subtitle(
+            _("Set") if has else _("Not set — requests are refused until it is set")
+            if has is False else _("Unknown (parental daemon not reachable)")
+        )
+
+        info = time_left.compute(self._selected_username, datetime.now())
+        self._today_row.set_subtitle(
+            _("%(bonus)d min granted, %(left)d request(s) left")
+            % {"bonus": info["bonus"], "left": info["requests_left"]}
+        )
+        self._grant_btn.set_label(_("Grant %d min now") % s["step"])
+        self._loading = was_loading
+
+    def _on_set_pin(self, _button: Gtk.Button) -> None:
+        dialog = Adw.AlertDialog()
+        dialog.set_heading(_("Parent code"))
+        dialog.set_body(_("4 to 8 digits. It is asked on the child's session "
+                          "to approve extra time."))
+        group = Adw.PreferencesGroup()
+        pin_row = Adw.PasswordEntryRow()
+        pin_row.set_title(_("New code"))
+        confirm_row = Adw.PasswordEntryRow()
+        confirm_row.set_title(_("Confirm code"))
+        group.add(pin_row)
+        group.add(confirm_row)
+        dialog.set_extra_child(group)
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("save", _("Save"))
+        dialog.set_response_appearance("save", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_response_enabled("save", False)
+
+        def validate(*_args: object) -> None:
+            pin = pin_row.get_text()
+            ok = pin.isascii() and pin.isdigit() and 4 <= len(pin) <= 8
+            dialog.set_response_enabled("save", ok and pin == confirm_row.get_text())
+
+        pin_row.connect("changed", validate)
+        confirm_row.connect("changed", validate)
+
+        def on_response(_d: Adw.AlertDialog, response: str) -> None:
+            if response != "save":
+                return
+            if extra_time_service.set_pin(pin_row.get_text()):
+                self._show_success(_("Parent code saved."))
+            else:
+                self._show_error(_("The parent code could not be saved."))
+            self._load_extra()
+
+        dialog.connect("response", on_response)
+        dialog.present(self.get_root())
+
+    def _on_grant_now(self, _button: Gtk.Button) -> None:
+        minutes = int(self._extra_step_row.get_value())
+        res = extra_time_service.grant(self._selected_username, minutes)
+        if res == "ok":
+            self._show_success(_("%d extra minutes granted for today.") % minutes)
+        elif res == "no_limit":
+            self._show_error(_("This user has no daily limit or extendable schedule."))
+        else:
+            self._show_error(_("Extra time could not be granted."))
+        self._load_extra()
 
     def _load_current_limits(self) -> None:
         """Load current limits for the user."""
@@ -153,6 +292,8 @@ class TimeLimitsPage(Gtk.Box):
         else:
             self._duration_enable_row.set_active(False)
             self._duration_row.set_value(120)
+
+        self._load_extra()
 
         self._loading = False
         self._apply_btn.set_sensitive(False)
@@ -311,12 +452,17 @@ class TimeLimitsPage(Gtk.Box):
                 with contextlib.suppress(GLib.Error):
                     self._malcontent.set_session_limits(self._selected_uid, 0, 86400)
 
-        # Daily duration limit
-        if self._duration_enable_row.get_active():
-            minutes = int(self._duration_row.get_value())
-            time_service.set_daily_limit(username, minutes)
-        else:
-            time_service.remove_daily_limit(username)
+        # Daily duration limit + extra-time settings (one privileged write)
+        minutes = (
+            int(self._duration_row.get_value())
+            if self._duration_enable_row.get_active() else 0
+        )
+        enabled = self._extra_enable_row.get_active()
+        time_service.save_daily_and_extra(username, minutes, {
+            "step": int(self._extra_step_row.get_value()),
+            "max_requests": int(self._extra_max_row.get_value()) if enabled else 0,
+            "extend_schedule": enabled and self._extra_sched_row.get_active(),
+        })
 
         self._apply_btn.set_sensitive(False)
         self._show_success(_("Time settings applied."))

@@ -54,6 +54,9 @@ package() {
     if [ -d "$InternalDir/usr" ]; then
         cp -r "$InternalDir/usr" "$pkgdir/"
     fi
+    if [ -d "$InternalDir/etc" ]; then
+        cp -r "$InternalDir/etc" "$pkgdir/"
+    fi
 
     # Install unified Rust daemon binary
     install -Dm755 "$InternalDir/../big-age-signal/target/release/big-parental-daemon" \
@@ -70,6 +73,7 @@ package() {
 
     # Set executable permissions
     chmod +x "$pkgdir/usr/bin/big-parental-controls" 2>/dev/null || true
+    chmod +x "$pkgdir/usr/bin/big-time-left" "$pkgdir/usr/bin/big-time-tray" "$pkgdir/usr/bin/big-time-grant" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/group-helper" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/acl-reapply" 2>/dev/null || true
     chmod +x "$pkgdir/usr/lib/big-parental-controls/time-check" 2>/dev/null || true

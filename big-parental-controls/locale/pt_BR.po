@@ -13,6 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: attranslate\n"
 
 #: src/big_parental_controls/app.py:95
@@ -1266,3 +1267,199 @@ msgstr "Menu Principal"
 #: src/big_parental_controls/data/window.ui:270
 msgid "About"
 msgstr "Sobre"
+
+msgid "Time left"
+msgstr "Tempo restante"
+
+msgid "No limit"
+msgstr "Sem limite"
+
+msgid "Time is up"
+msgstr "Tempo esgotado"
+
+#, python-format
+msgid "Daily quota: %s left"
+msgstr "Cota do dia: restam %s"
+
+#, python-format
+msgid "(incl. +%d min granted)"
+msgstr "(inclui +%d min concedidos)"
+
+#, python-format
+msgid "Allowed hours: ends at %(end)s (in %(left)s)"
+msgstr "Horário permitido: termina às %(end)s (em %(left)s)"
+
+msgid "No time limit is set."
+msgstr "Nenhum limite de tempo definido."
+
+#, python-format
+msgid "Granted: +%s min!"
+msgstr "Concedido: +%s min!"
+
+#, python-format
+msgid "Too many attempts: try again in %s min."
+msgstr "Muitas tentativas: tente de novo em %s min."
+
+msgid "Wrong code."
+msgstr "Código incorreto."
+
+msgid "No more requests today."
+msgstr "Nenhum pedido possível hoje."
+
+msgid "Time requests are disabled."
+msgstr "Os pedidos de tempo estão desativados."
+
+msgid "No parent code is set."
+msgstr "Nenhum código de responsável configurado."
+
+msgid "The request could not be completed."
+msgstr "O pedido não pôde ser concluído."
+
+#, python-format
+msgid "%d minute left"
+msgid_plural "%d minutes left"
+msgstr[0] "%d minuto restante"
+msgstr[1] "%d minutos restantes"
+
+#, python-format
+msgid "Your screen time for today ends in %d minute."
+msgid_plural "Your screen time for today ends in %d minutes."
+msgstr[0] "Seu tempo de tela de hoje termina em %d minuto."
+msgstr[1] "Seu tempo de tela de hoje termina em %d minutos."
+
+msgid "Screen time is up"
+msgstr "Tempo de tela esgotado"
+
+#, python-format
+msgid "Your daily screen time of %d min has been reached."
+msgstr "Seu tempo de tela diário de %d min foi atingido."
+
+#, python-format
+msgid "The allowed hours end in %d minute."
+msgid_plural "The allowed hours end in %d minutes."
+msgstr[0] "O horário permitido termina em %d minuto."
+msgstr[1] "O horário permitido termina em %d minutos."
+
+msgid "Allowed hours are over"
+msgstr "Horário permitido encerrado"
+
+msgid "The allowed usage period has ended."
+msgstr "O período de uso permitido terminou."
+
+#, python-format
+msgid "Ask for %(min)d more min (%(left)d request left)"
+msgid_plural "Ask for %(min)d more min (%(left)d requests left)"
+msgstr[0] "Pedir mais %(min)d min (%(left)d pedido restante)"
+msgstr[1] "Pedir mais %(min)d min (%(left)d pedidos restantes)"
+
+msgid "Ask for more time"
+msgstr "Pedir mais tempo"
+
+#, python-format
+msgid "A parent must type the parent code to grant %d minutes."
+msgstr "Um responsável deve digitar o código para conceder %d minutos."
+
+msgid "Parent code"
+msgstr "Código do responsável"
+
+msgid "New parent code (4 to 8 digits): "
+msgstr "Novo código do responsável (4 a 8 dígitos): "
+
+msgid "The code must have 4 to 8 digits."
+msgstr "O código deve ter de 4 a 8 dígitos."
+
+msgid "Confirm the code: "
+msgstr "Confirme o código: "
+
+msgid "The two codes are different."
+msgstr "Os dois códigos são diferentes."
+
+msgid "Parent code saved."
+msgstr "Código do responsável salvo."
+
+msgid "Refused (administrators only)."
+msgstr "Recusado (somente administradores)."
+
+#, python-format
+msgid "%(min)d extra minutes granted to %(user)s for today."
+msgstr "%(min)d minutos extras concedidos a %(user)s para hoje."
+
+#, python-format
+msgid "%s has no daily limit or extendable schedule."
+msgstr "%s não tem limite diário nem horário prorrogável."
+
+msgid "Invalid number of minutes (1 to 240)."
+msgstr "Número de minutos inválido (1 a 240)."
+
+msgid "Extra time could not be granted."
+msgstr "Não foi possível conceder tempo extra."
+
+#, python-format
+msgid "%(user)s: %(bonus)d min granted today, %(left)d/%(max)d request(s) left, time left: %(rem)s"
+msgstr "%(user)s: %(bonus)d min concedidos hoje, %(left)d/%(max)d pedido(s) restante(s), tempo restante: %(rem)s"
+
+msgid "Extra Time"
+msgstr "Tempo extra"
+
+msgid "The child can ask for more time from the clock icon; a parent approves by typing the parent code."
+msgstr "A criança pode pedir mais tempo pelo ícone do relógio; um responsável aprova digitando o código."
+
+msgid "Allow requests for extra time"
+msgstr "Permitir pedidos de tempo extra"
+
+msgid "Minutes per request"
+msgstr "Minutos por pedido"
+
+msgid "Maximum requests per day"
+msgstr "Máximo de pedidos por dia"
+
+msgid "Also push back the end of allowed hours"
+msgstr "Também adiar o fim do horário permitido"
+
+msgid "The open session may continue after the end time; logging in again afterwards stays impossible."
+msgstr "A sessão aberta pode continuar após o horário final; entrar novamente depois continua impossível."
+
+msgid "Change…"
+msgstr "Alterar…"
+
+msgid "Today"
+msgstr "Hoje"
+
+msgid "Set"
+msgstr "Definido"
+
+msgid "Not set — requests are refused until it is set"
+msgstr "Não definido — os pedidos são recusados até que seja definido"
+
+msgid "Unknown (parental daemon not reachable)"
+msgstr "Desconhecido (serviço de controle parental inacessível)"
+
+#, python-format
+msgid "%(bonus)d min granted, %(left)d request(s) left"
+msgstr "%(bonus)d min concedidos, %(left)d pedido(s) restante(s)"
+
+#, python-format
+msgid "Grant %d min now"
+msgstr "Conceder %d min agora"
+
+msgid "4 to 8 digits. It is asked on the child's session to approve extra time."
+msgstr "4 a 8 dígitos. É pedido na sessão da criança para aprovar tempo extra."
+
+msgid "New code"
+msgstr "Novo código"
+
+msgid "Confirm code"
+msgstr "Confirmar código"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "The parent code could not be saved."
+msgstr "Não foi possível salvar o código do responsável."
+
+#, python-format
+msgid "%d extra minutes granted for today."
+msgstr "%d minutos extras concedidos para hoje."
+
+msgid "This user has no daily limit or extendable schedule."
+msgstr "Este usuário não tem limite diário nem horário prorrogável."
