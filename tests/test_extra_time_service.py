@@ -33,7 +33,7 @@ def svc():
         sys.modules.pop(MODULE, None)
         module = importlib.import_module(MODULE)
         yield module, bus
-    sys.modules.pop(MODULE, None)
+    # patch.dict restores sys.modules on exit (the real module, if it was loaded)
 
 
 def _reply(bus: MagicMock, value: object) -> None:
