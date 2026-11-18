@@ -20,9 +20,13 @@ class DnsService:
 
     @staticmethod
     def _validate_ip(addr: str) -> bool:
-        """Validate that addr is a valid IPv4 or IPv6 address."""
+        """Validate that addr is an IPv4 address.
+
+        The per-user redirect is an IPv4 DNAT (group-helper dns-set refuses
+        anything else), so an IPv6 server could not be applied.
+        """
         try:
-            ipaddress.ip_address(addr)
+            ipaddress.IPv4Address(addr)
             return True
         except ValueError:
             return False

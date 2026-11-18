@@ -1,6 +1,8 @@
 [Unit]
 Description=BigLinux Parental Controls Daemon
 After=dbus.service nftables.service
+# Keeps checking the DNS filter rules while the daemon runs (no enable needed)
+Wants=big-parental-dns-check.timer
 
 [Service]
 Type=dbus

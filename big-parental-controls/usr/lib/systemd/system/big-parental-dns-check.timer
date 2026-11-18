@@ -1,0 +1,9 @@
+[Unit]
+Description=Check the parental controls DNS filter rules
+
+[Timer]
+# Recreate per-user DNS rules removed by a "flush ruleset" (nftables restart,
+# firewall tools). Started by big-parental-daemon.service (Wants=).
+OnActiveSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s

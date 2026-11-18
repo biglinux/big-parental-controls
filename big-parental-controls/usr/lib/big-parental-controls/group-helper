@@ -68,9 +68,32 @@ $([[ -n "$v6" ]] && echo "add element inet $GUARD_TABLE doh6 { $v6 }")
 EOF
 }
 
+# Create the guard table and sets only if they are missing (keeps the loaded
+# lists; dns-restore at daemon start reloads them after a package upgrade).
+dns_guard_ensure() {
+    nft list set inet "$GUARD_TABLE" doh4 >/dev/null 2>&1 || dns_guard_setup
+}
+
+# valid_ipv4 ADDR — the DNAT lives in an "ip" table: IPv4 only
+valid_ipv4() {
+    local IFS=. octet
+    [[ "$1" =~ ^[0-9]{1,3}(\.[0-9]{1,3}){3}$ ]] || return 1
+    for octet in $1; do
+        (( 10#$octet <= 255 )) || return 1
+    done
+}
+
+# dns_rules_present UID — both the redirect and the bypass rules are loaded
+dns_rules_present() {
+    local tag="comment \"bpc-uid-$1\""
+    [[ $(nft list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null | grep -cF "$tag") -eq 2 ]] &&
+        [[ $(nft list chain inet "$GUARD_TABLE" "$GUARD_CHAIN" 2>/dev/null | grep -cF "$tag") -eq 4 ]]
+}
+
 # dns_apply UID DNS1 — redirect the user's DNS to DNS1 and block bypasses
 dns_apply() {
     local uid="$1" dns1="$2" tag="bpc-uid-$1" proto
+    valid_ipv4 "$dns1" || { echo "Invalid IPv4 DNS server for UID $uid: $dns1" >&2; return 1; }
     nft add table ip "$NFT_TABLE" 2>/dev/null || true
     nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
     nft_delete_tagged ip "$NFT_TABLE" "$NFT_CHAIN" "$tag"
@@ -79,7 +102,7 @@ dns_apply() {
             meta skuid "$uid" "$proto" dport 53 dnat to "$dns1" \
             comment "\"$tag\"" 2>/dev/null || true
     done
-    dns_guard_setup
+    dns_guard_ensure
     nft_delete_tagged inet "$GUARD_TABLE" "$GUARD_CHAIN" "$tag"
     nft -f - <<EOF || echo "Warning: could not add bypass rules for UID $uid" >&2
 add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid meta l4proto { tcp, udp } th dport 853 reject comment "$tag"
@@ -536,6 +559,15 @@ with open(limits_file, "w") as f:
 ' 2>/dev/null || true
         fi
 
+        # 5b. Remove the DNS filter: its config would otherwise be restored at
+        # every boot by dns-restore (and a later account reusing the UID
+        # would inherit it)
+        USER_UID=$(id -u "$USERNAME" 2>/dev/null || true)
+        if [[ "$USER_UID" =~ ^[0-9]+$ ]]; then
+            rm -f "$DNS_DIR/$USER_UID.json" "/etc/profile.d/big-dns-$USER_UID.sh"
+            dns_unapply "$USER_UID"
+        fi
+
         # 6. Remove from supervised group
         gpasswd -d "$USERNAME" "$GROUP" 2>/dev/null || true
 
@@ -696,6 +728,7 @@ print(json.dumps(state, indent=2))
         mkdir -p "$DNS_DIR"
         # Validate JSON and extract dns1
         DNS1=$(echo "$3" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['dns1'])" 2>/dev/null) || { echo "Invalid JSON" >&2; exit 1; }
+        valid_ipv4 "$DNS1" || { echo "Invalid IPv4 DNS server: $DNS1" >&2; exit 1; }
         echo "$3" > "$DNS_DIR/$2.json"
         chmod 644 "$DNS_DIR/$2.json"
         dns_apply "$2" "$DNS1"
@@ -711,16 +744,30 @@ print(json.dumps(state, indent=2))
         dns_unapply "$2"
         ;;
     dns-restore)
-        # Restore all nftables DNS rules from saved config files.
-        # Run as root by big-parental-daemon.service (ExecStartPre), so the
-        # rules, which only live in the kernel, come back after every boot.
+        # Usage: dns-restore [--missing]
+        # Restore the nftables DNS rules of every supervised user from the
+        # saved configs; they only live in the kernel.
+        # - no option: run by big-parental-daemon.service (ExecStartPre) at
+        #   boot and after an upgrade: reload the DoH lists, rewrite all rules;
+        # - --missing: run every few minutes by big-parental-dns-check.timer:
+        #   recreate only what a "flush ruleset" (nftables restart, firewall
+        #   tools) removed, without touching rules still in place.
         [[ -d "$DNS_DIR" ]] || exit 0
+        if [[ "${2:-}" == "--missing" ]]; then dns_guard_ensure; else dns_guard_setup; fi
         for cfg in "$DNS_DIR"/*.json; do
             [[ -f "$cfg" ]] || continue
             uid=$(basename "$cfg" .json)
             [[ "$uid" =~ ^[0-9]+$ ]] || continue
+            # Leftover of a removed account or of removed supervision (older
+            # versions did not delete it): never filter a non-supervised user.
+            user=$(id -nu "$uid" 2>/dev/null || true)
+            if [[ -z "$user" ]] || ! id -nG "$user" 2>/dev/null | tr ' ' '\n' | grep -qx "$GROUP"; then
+                dns_unapply "$uid"
+                continue
+            fi
+            [[ "${2:-}" == "--missing" ]] && dns_rules_present "$uid" && continue
             dns1=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['dns1'])" "$cfg" 2>/dev/null) || continue
-            dns_apply "$uid" "$dns1"
+            dns_apply "$uid" "$dns1" || true
         done
         ;;
     activity-sessions)

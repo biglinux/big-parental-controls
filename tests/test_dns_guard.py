@@ -97,10 +97,77 @@ def test_upgrade_restarts_daemon() -> None:
     body = text[text.index("post_upgrade() {") :]
     body = body[: body.index("\n}")]
     assert "systemctl try-restart big-parental-daemon.service" in body
+    # pacman reloads systemd only after the transaction: reload first, or
+    # the restart uses the old unit (without ExecStartPre)
+    assert body.index("systemctl daemon-reload") < body.index("systemctl try-restart")
 
 
-@pytest.mark.skipif(
+def _helper_case(name: str) -> str:
+    text = HELPER.read_text(encoding="utf-8")
+    body = text[text.index(f"    {name})\n") :]
+    return body[: body.index("\n        ;;")]
+
+
+def test_removing_supervision_removes_dns_filter() -> None:
+    """Otherwise dns-restore brings the filter back at every boot (delete-user
+    runs remove-full too)."""
+    body = _helper_case("remove-full")
+    assert 'rm -f "$DNS_DIR/$USER_UID.json"' in body
+    assert 'dns_unapply "$USER_UID"' in body
+    assert '"$0" remove-full' in _helper_case("delete-user")
+
+
+def test_restore_skips_non_supervised_users() -> None:
+    """Leftover configs from older versions must not filter anyone."""
+    body = _helper_case("dns-restore")
+    assert 'grep -qx "$GROUP"' in body
+    assert body.index('dns_unapply "$uid"') < body.index('dns_apply "$uid"')
+
+
+def test_rules_are_rechecked_while_running() -> None:
+    """A "flush ruleset" (nftables restart) must not leave a child unfiltered."""
+    unit = DAEMON_UNIT.read_text(encoding="utf-8")
+    assert re.search(r"^Wants=big-parental-dns-check\.timer$", unit, re.M)
+    units = DAEMON_UNIT.parent
+    timer = (units / "big-parental-dns-check.timer").read_text(encoding="utf-8")
+    assert re.search(r"^OnUnitActiveSec=", timer, re.M)
+    service = (units / "big-parental-dns-check.service").read_text(encoding="utf-8")
+    assert "group-helper dns-restore --missing" in service
+    install = INSTALL.read_text(encoding="utf-8")
+    assert "systemctl stop big-parental-dns-check.timer" in install
+
+
+def test_dns_set_validates_before_writing() -> None:
+    body = _helper_case("dns-set")
+    assert body.index('valid_ipv4 "$DNS1"') < body.index('> "$DNS_DIR/$2.json"')
+
+
+LINUX_BASH = pytest.mark.skipif(
     sys.platform != "linux" or shutil.which("bash") is None, reason="needs Linux bash"
 )
+
+
+@LINUX_BASH
 def test_helper_syntax() -> None:
     subprocess.run(["bash", "-n", str(HELPER)], check=True)
+
+
+@LINUX_BASH
+@pytest.mark.parametrize(
+    ("addr", "valid"),
+    [
+        ("86.54.11.12", True),
+        ("0.0.0.0", True),
+        ("255.255.255.255", True),
+        ("256.1.1.1", False),
+        ("1.2.3", False),
+        ("2001:db8::53", False),
+        ("1.2.3.4; nft flush ruleset", False),
+        ("08.8.8.8", True),
+        ("", False),
+    ],
+)
+def test_valid_ipv4(addr: str, valid: bool) -> None:
+    script = 'eval "$(sed -n \'/^valid_ipv4()/,/^}/p\' "$1")"; valid_ipv4 "$2"'
+    result = subprocess.run(["bash", "-c", script, "bash", str(HELPER), addr], check=False)
+    assert (result.returncode == 0) is valid
