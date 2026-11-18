@@ -225,18 +225,17 @@ class DnsPage(Gtk.Box):
         if config:
             self._enable_row.set_active(True)
             self._providers_group.set_sensitive(True)
-            provider = config.get("provider", "")
-            keys = [p.id for p in self._ordered]
-            if provider in keys:
-                idx = keys.index(provider)
+            # Show what is really applied (see dns_providers.identify);
+            # nothing is rewritten until the parent applies a change.
+            match = dns_providers.identify(config, self._providers)
+            if match:
+                provider, level = match
+                idx = [p.id for p in self._ordered].index(provider)
                 self._provider_checks[idx].set_active(True)
                 self._custom_group.set_visible(False)
-                level = config.get("level") or dns_providers.find_level(
-                    self._providers[provider], config.get("dns1")
-                )
                 if level in self._level_keys:
                     self._level_row.set_selected(self._level_keys.index(level))
-            elif provider == "custom":
+            else:
                 self._custom_check.set_active(True)
                 self._dns1_row.set_text(config.get("dns1", ""))
                 self._dns2_row.set_text(config.get("dns2", ""))

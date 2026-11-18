@@ -31,10 +31,13 @@ class DnsService:
     def get_dns_for_user(self, uid: int) -> dict | None:
         """Get the DNS configuration for a user UID."""
         config_file = os.path.join(DNS_CONFIG_DIR, f"{uid}.json")
-        if not os.path.isfile(config_file):
+        try:
+            with open(config_file, encoding="utf-8") as f:
+                config = json.load(f)
+        except (OSError, ValueError):
+            # missing or unreadable: dns-restore skips it too, no rule applies
             return None
-        with open(config_file) as f:
-            return json.load(f)
+        return config if isinstance(config, dict) and config.get("dns1") else None
 
     def set_dns_for_user(
         self,

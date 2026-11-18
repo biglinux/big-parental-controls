@@ -151,12 +151,45 @@ def test_resolve_invalid(shipped, spec: object) -> None:
     assert dp.resolve(spec, shipped) is None
 
 
-def test_find_level_of_older_configs(shipped) -> None:
-    # configs written before levels existed only have provider + addresses
-    assert dp.find_level(shipped["cleanbrowsing"], "185.228.168.168") == "strict"
-    assert dp.find_level(shipped["cleanbrowsing"], "185.228.168.10") == "adult"
-    assert dp.find_level(shipped["cloudflare"], "1.1.1.3") == "adult"
-    assert dp.find_level(shipped["cloudflare"], "6.6.6.6") == "adult"  # fallback
+@pytest.mark.parametrize(
+    ("config", "expected"),
+    [
+        # written by earlier versions (no "level"): the three original providers
+        (
+            {"provider": "cleanbrowsing", "dns1": "185.228.168.168", "dns2": "185.228.169.168"},
+            ("cleanbrowsing", "strict"),
+        ),
+        (
+            {"provider": "opendns", "dns1": "208.67.222.123", "dns2": "208.67.220.123"},
+            ("opendns", "adult"),
+        ),
+        ({"provider": "cloudflare", "dns1": "1.1.1.3", "dns2": "1.0.0.3"}, ("cloudflare", "adult")),
+        # a known provider typed by hand as custom (a real config, DNS4EU child)
+        (
+            {"provider": "custom", "dns1": "86.54.11.12", "dns2": "86.54.11.212"},
+            ("dns4eu", "strict"),
+        ),
+        # current format
+        (
+            {"provider": "adguard", "level": "security", "dns1": "94.140.14.14"},
+            ("adguard", "security"),
+        ),
+        # really custom, removed provider, provider whose address changed
+        ({"provider": "custom", "dns1": "10.0.0.53", "dns2": "10.0.0.54"}, None),
+        ({"provider": "gone", "dns1": "10.9.9.9"}, None),
+        ({"provider": "cleanbrowsing", "level": "strict", "dns1": "6.6.6.6"}, None),
+        ({}, None),
+    ],
+)
+def test_identify_existing_configs(shipped, config: dict, expected) -> None:
+    assert dp.identify(config, shipped) == expected
+
+
+def test_identify_prefers_the_stored_provider(tmp_path: Path) -> None:
+    both = {"levels": {"strict": ["10.0.0.1"]}}
+    providers = dp.load(_write(tmp_path / "p.json", {"a": both, "b": both}), NONE)
+    assert dp.identify({"provider": "b", "dns1": "10.0.0.1"}, providers) == ("b", "strict")
+    assert dp.identify({"provider": "custom", "dns1": "10.0.0.1"}, providers) == ("a", "strict")
 
 
 def test_describe(shipped) -> None:

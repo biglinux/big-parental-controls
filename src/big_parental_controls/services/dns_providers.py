@@ -186,12 +186,23 @@ def resolve(spec: object, providers: dict[str, Provider]) -> dict | None:
     return {"provider": pid, "level": level, "dns1": dns1, "dns2": dns2}
 
 
-def find_level(provider: Provider, dns1: str | None) -> str:
-    """Level of a stored config (older configs have no "level" key)."""
-    for level, (addr, _addr2) in provider.levels.items():
-        if addr == dns1:
-            return level
-    return next(iter(provider.levels))
+def identify(config: dict, providers: dict[str, Provider]) -> tuple[str, str] | None:
+    """(provider, level) of a stored user config, None for custom servers.
+
+    Matched on the address actually applied (dns1), whatever the config
+    says: configs written before levels existed have no "level", servers
+    typed as "custom" may be a known provider (DNS4EU entered by hand),
+    and a provider removed or changed in the data must not be shown as
+    filtering when its old address is still the one in use.
+    """
+    dns1 = config.get("dns1")
+    stored = providers.get(config.get("provider", ""))
+    candidates = ([stored] if stored else []) + list(providers.values())
+    for provider in candidates:
+        for level, (addr, _addr2) in provider.levels.items():
+            if addr == dns1:
+                return provider.id, level
+    return None
 
 
 def describe(config: dict, providers: dict[str, Provider]) -> str:
