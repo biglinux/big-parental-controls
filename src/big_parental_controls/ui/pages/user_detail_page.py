@@ -139,9 +139,12 @@ class UserDetailPage(Gtk.Box):
 
         if not age_profile.malcontent_available():
             oars_row = Adw.ActionRow()
-            oars_row.set_title(_("Age-based app ratings unavailable"))
+            oars_row.set_title(_("Age ratings in app stores not applied"))
             oars_row.set_subtitle(
-                _("Install the malcontent package to filter software stores by age.")
+                _((
+                    "This needs the malcontent service, which is not installed. "
+                    "Time limits, the web filter and app blocking work without it."
+                ))
             )
             oars_row.add_prefix(Gtk.Image(icon_name="dialog-information-symbolic"))
             group.add(oars_row)
