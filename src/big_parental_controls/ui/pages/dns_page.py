@@ -12,48 +12,34 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gtk
 
+from big_parental_controls.services import dns_providers
 from big_parental_controls.services.dns_service import DnsService
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
 
-# Provider metadata with descriptions and URLs
-_PROVIDERS = [
-    {
-        "key": "cleanbrowsing",
-        "name": "CleanBrowsing Family Filter",
-        "dns1": "185.228.168.168",
-        "dns2": "185.228.169.168",
-        "url": "https://cleanbrowsing.org",
-        "description": _(
-            "Blocks adult content, gambling, and phishing websites. "
-            "One of the most widely used free family filters."
-        ),
-    },
-    {
-        "key": "opendns",
-        "name": "OpenDNS FamilyShield",
-        "dns1": "208.67.222.123",
-        "dns2": "208.67.220.123",
-        "url": "https://www.opendns.com/setupguide/#familyshield",
-        "description": _(
-            "By Cisco. Automatically blocks adult content on all devices. "
-            "No account or configuration needed."
-        ),
-    },
-    {
-        "key": "cloudflare",
-        "name": "Cloudflare for Families",
-        "dns1": "1.1.1.3",
-        "dns2": "1.0.0.3",
-        "url": "https://one.one.one.one/family/",
-        "description": _(
-            "By Cloudflare (1.1.1.3). Blocks malware and adult content. "
-            "Very fast and privacy-focused."
-        ),
-    },
-]
+# Descriptions of the shipped providers (dns-providers.json); other
+# providers added in /etc show their levels instead.
+_DESCRIPTIONS = {
+    "cleanbrowsing": _(
+        "Blocks adult content, gambling, and phishing websites. "
+        "One of the most widely used free family filters."
+    ),
+    "dns4eu": _(
+        "Public DNS backed by the European Union. The child protection "
+        "level blocks adult and harmful content."
+    ),
+    "adguard": _("Family protection blocks adult content and enforces safe search."),
+    "opendns": _(
+        "By Cisco. Automatically blocks adult content on all devices. "
+        "No account or configuration needed."
+    ),
+    "cloudflare": _(
+        "By Cloudflare (1.1.1.3). Blocks malware and adult content. "
+        "Very fast and privacy-focused."
+    ),
+}
 
 
 class DnsPage(Gtk.Box):
@@ -65,6 +51,11 @@ class DnsPage(Gtk.Box):
         self._selected_uid: int = user.get_uid()
         self._selected_username: str = user.get_user_name()
         self._provider_checks: list[Gtk.CheckButton] = []
+        self._providers = dns_providers.load()
+        self._ordered = dns_providers.sort_for_region(
+            self._providers, dns_providers.system_region()
+        )
+        self._level_keys: list[str] = []
         self._loading: bool = False
         self._build_ui()
 
@@ -132,11 +123,19 @@ class DnsPage(Gtk.Box):
         self._providers_group.set_sensitive(False)
 
         radio_group_btn: Gtk.CheckButton | None = None
-        for prov in _PROVIDERS:
+        for prov in self._ordered:
             row = Adw.ActionRow()
-            row.set_title(prov["name"])
-            row.set_subtitle(prov["description"])
+            row.set_title(prov.name)
+            row.set_subtitle(
+                _DESCRIPTIONS.get(prov.id)
+                or ", ".join(dns_providers.level_label(lv) for lv in prov.levels)
+            )
             row.set_subtitle_lines(3)
+            if "eu" in prov.regions:
+                region = Gtk.Label(label=_("Europe"))
+                region.add_css_class("dim-label")
+                region.add_css_class("caption")
+                row.add_suffix(region)
 
             # Radio button
             check = Gtk.CheckButton()
@@ -154,8 +153,8 @@ class DnsPage(Gtk.Box):
             link = Gtk.Button(label=_("Learn more"))
             link.add_css_class("flat")
             link.set_valign(Gtk.Align.CENTER)
-            url = prov["url"]
-            link.connect("clicked", lambda _b, u=url: self._open_url(u))
+            link.set_visible(bool(prov.url))
+            link.connect("clicked", lambda _b, u=prov.url: self._open_url(u))
             row.add_suffix(link)
 
             self._providers_group.add(row)
@@ -176,6 +175,15 @@ class DnsPage(Gtk.Box):
         self._providers_group.add(custom_row)
 
         inner.append(self._providers_group)
+
+        # ── Filtering level of the selected provider ──────────
+        self._level_group = Adw.PreferencesGroup()
+        self._level_row = Adw.ComboRow()
+        self._level_row.set_title(_("Filtering level"))
+        self._level_row.connect("notify::selected", self._on_level_changed)
+        self._level_group.add(self._level_row)
+        self._level_group.set_visible(False)
+        inner.append(self._level_group)
 
         # ── Custom DNS entries ────────────────────────────────
         self._custom_group = Adw.PreferencesGroup()
@@ -218,11 +226,16 @@ class DnsPage(Gtk.Box):
             self._enable_row.set_active(True)
             self._providers_group.set_sensitive(True)
             provider = config.get("provider", "")
-            keys = [p["key"] for p in _PROVIDERS]
+            keys = [p.id for p in self._ordered]
             if provider in keys:
                 idx = keys.index(provider)
                 self._provider_checks[idx].set_active(True)
                 self._custom_group.set_visible(False)
+                level = config.get("level") or dns_providers.find_level(
+                    self._providers[provider], config.get("dns1")
+                )
+                if level in self._level_keys:
+                    self._level_row.set_selected(self._level_keys.index(level))
             elif provider == "custom":
                 self._custom_check.set_active(True)
                 self._dns1_row.set_text(config.get("dns1", ""))
@@ -239,15 +252,45 @@ class DnsPage(Gtk.Box):
     def _on_enable_toggled(self, row: Adw.SwitchRow, _pspec: object) -> None:
         active = row.get_active()
         self._providers_group.set_sensitive(active)
+        self._level_group.set_sensitive(active)
         if not active:
             self._custom_group.set_visible(False)
         if not self._loading:
             self._apply_btn.set_sensitive(True)
 
-    def _on_radio_toggled(self, _check: Gtk.CheckButton) -> None:
+    def _on_radio_toggled(self, check: Gtk.CheckButton) -> None:
         self._custom_group.set_visible(self._custom_check.get_active())
+        if check.get_active():
+            self._update_levels()
         if not self._loading:
             self._apply_btn.set_sensitive(True)
+
+    def _update_levels(self) -> None:
+        """Show the levels of the selected provider (hidden for custom)."""
+        provider = self._get_selected_provider()
+        prov = self._providers.get(provider or "")
+        self._level_group.set_visible(prov is not None)
+        if prov is None:
+            return
+        loading, self._loading = self._loading, True
+        self._level_keys = list(prov.levels)
+        self._level_row.set_model(
+            Gtk.StringList.new([dns_providers.level_label(lv) for lv in self._level_keys])
+        )
+        self._level_row.set_selected(0)
+        self._loading = loading
+        self._on_level_changed(self._level_row, None)
+
+    def _on_level_changed(self, row: Adw.ComboRow, _pspec: object) -> None:
+        idx = row.get_selected()
+        if 0 <= idx < len(self._level_keys):
+            row.set_subtitle(dns_providers.level_description(self._level_keys[idx]))
+        if not self._loading:
+            self._apply_btn.set_sensitive(True)
+
+    def _get_selected_level(self) -> str | None:
+        idx = self._level_row.get_selected()
+        return self._level_keys[idx] if 0 <= idx < len(self._level_keys) else None
 
     def _open_url(self, url: str) -> None:
         launcher = Gtk.UriLauncher(uri=url)
@@ -257,7 +300,7 @@ class DnsPage(Gtk.Box):
         """Return the key of the selected provider or 'custom'."""
         for i, check in enumerate(self._provider_checks):
             if check.get_active():
-                return _PROVIDERS[i]["key"]
+                return self._ordered[i].id
         if self._custom_check.get_active():
             return "custom"
         return None
@@ -303,8 +346,10 @@ class DnsPage(Gtk.Box):
                 do_set_custom, on_done, lambda e: self._show_error(str(e)),
             )
         else:
+            level = self._get_selected_level()
+
             def do_set() -> bool:
-                return self._dns.set_dns_for_user(uid, provider=provider)
+                return self._dns.set_dns_for_user(uid, provider=provider, level=level)
 
             def on_done(_result: object) -> None:
                 self._apply_btn.set_sensitive(False)

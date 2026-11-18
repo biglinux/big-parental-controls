@@ -5,7 +5,8 @@ import json
 import os
 import subprocess
 
-from big_parental_controls.core.constants import DNS_CONFIG_DIR, DNS_PROVIDERS, GROUP_HELPER
+from big_parental_controls.core.constants import DNS_CONFIG_DIR, GROUP_HELPER
+from big_parental_controls.services import dns_providers
 
 _SYSTEM_CONFIG_DIR = "/etc/big-parental-controls/dns"
 
@@ -41,8 +42,13 @@ class DnsService:
         provider: str | None = None,
         custom_dns1: str | None = None,
         custom_dns2: str | None = None,
+        level: str | None = None,
     ) -> bool:
-        """Configure DNS for a user. Pass provider=None to disable."""
+        """Configure DNS for a user. Pass provider=None to disable.
+
+        *level* is one of the provider's levels (dns_providers.LEVELS);
+        None selects its strictest one.
+        """
         config_file = os.path.join(DNS_CONFIG_DIR, f"{uid}.json")
 
         if provider is None:
@@ -70,15 +76,11 @@ class DnsService:
                 "dns1": custom_dns1,
                 "dns2": custom_dns2 or custom_dns1,
             }
-        elif provider in DNS_PROVIDERS:
-            info = DNS_PROVIDERS[provider]
-            config = {
-                "provider": provider,
-                "dns1": info["dns1"],
-                "dns2": info["dns2"],
-            }
         else:
-            return False
+            spec = f"{provider}:{level}" if level else provider
+            config = dns_providers.resolve(spec, dns_providers.load())
+            if config is None:
+                return False
 
         if self._use_privileged_helper():
             json_data = json.dumps(config)
@@ -111,6 +113,6 @@ class DnsService:
             os.remove(config_file)
 
     @staticmethod
-    def list_providers() -> dict:
-        """Return the available DNS providers."""
-        return DNS_PROVIDERS
+    def list_providers() -> dict[str, dns_providers.Provider]:
+        """Return the available DNS providers (dns-providers.json)."""
+        return dns_providers.load()

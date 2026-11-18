@@ -9,7 +9,10 @@ Format, every key optional (an absent key leaves that setting unchanged):
 
     {"0-12": {"daily_minutes": 90,
               "schedule": {"start": "08:00", "end": "20:00"},
-              "dns": "cleanbrowsing"}}
+              "dns": "cleanbrowsing:strict"}}
+
+"dns" is "provider:level" (dns-providers.json), a provider alone (its
+strictest level) or {"dns1": "...", "dns2": "..."} for custom servers.
 """
 
 import json
@@ -17,7 +20,7 @@ import logging
 import re
 from pathlib import Path
 
-from big_parental_controls.core.constants import DNS_PROVIDERS
+from big_parental_controls.services import dns_providers
 from big_parental_controls.services.age_profile import ECA_RANGES
 from big_parental_controls.utils.i18n import setup_i18n
 
@@ -35,7 +38,7 @@ def _parse_time(value: object) -> tuple[int, int] | None:
     return (int(match[1]), int(match[2])) if match else None
 
 
-def _clean_entry(entry: object) -> dict:
+def _clean_entry(entry: object, providers: dict) -> dict:
     """Keep only the valid settings of one range."""
     if not isinstance(entry, dict):
         return {}
@@ -48,8 +51,9 @@ def _clean_entry(entry: object) -> dict:
         start, end = _parse_time(schedule.get("start")), _parse_time(schedule.get("end"))
         if start and end and start < end:
             clean["schedule"] = {"start": schedule["start"], "end": schedule["end"]}
-    if entry.get("dns") in DNS_PROVIDERS:
-        clean["dns"] = entry["dns"]
+    dns = dns_providers.resolve(entry.get("dns"), providers)
+    if dns:
+        clean["dns"] = dns
     return clean
 
 
@@ -64,10 +68,19 @@ def _read(path: Path) -> dict:
     return data if isinstance(data, dict) else {}
 
 
-def load(shipped: Path = SHIPPED_FILE, local: Path = LOCAL_FILE) -> dict[str, dict]:
-    """Settings per ECA range; a range in *local* replaces the shipped one."""
+def load(
+    shipped: Path = SHIPPED_FILE,
+    local: Path = LOCAL_FILE,
+    providers: dict | None = None,
+) -> dict[str, dict]:
+    """Settings per ECA range; a range in *local* replaces the shipped one.
+
+    "dns" comes back resolved: {"provider", "level", "dns1", "dns2"}.
+    """
+    if providers is None:
+        providers = dns_providers.load()
     merged = {**_read(shipped), **_read(local)}
-    return {r: _clean_entry(merged.get(r)) for r in ECA_RANGES}
+    return {r: _clean_entry(merged.get(r), providers) for r in ECA_RANGES}
 
 
 def format_minutes(minutes: int) -> str:
@@ -77,7 +90,7 @@ def format_minutes(minutes: int) -> str:
     return f"{hours} h {mins:02d}" if mins else f"{hours} h"
 
 
-def describe(entry: dict) -> list[str]:
+def describe(entry: dict, providers: dict | None = None) -> list[str]:
     """One translated line per setting, for the confirmation UI."""
     lines = []
     if "daily_minutes" in entry:
@@ -86,7 +99,9 @@ def describe(entry: dict) -> list[str]:
         sched = entry["schedule"]
         lines.append(_("Allowed hours: %(start)s to %(end)s") % sched)
     if "dns" in entry:
-        lines.append(_("Web filter: %s") % DNS_PROVIDERS[entry["dns"]]["name"])
+        if providers is None:
+            providers = dns_providers.load()
+        lines.append(_("Web filter: %s") % dns_providers.describe(entry["dns"], providers))
     return lines
 
 
@@ -114,7 +129,14 @@ def apply(username: str, uid: int, entry: dict) -> list[str]:
             failed.append("schedule")
     if "dns" in entry:
         try:
-            if not DnsService().set_dns_for_user(uid, entry["dns"]):
+            dns = entry["dns"]
+            if dns["provider"] == "custom":
+                ok = DnsService().set_dns_for_user(
+                    uid, "custom", custom_dns1=dns["dns1"], custom_dns2=dns["dns2"]
+                )
+            else:
+                ok = DnsService().set_dns_for_user(uid, dns["provider"], level=dns["level"])
+            if not ok:
                 failed.append("dns")
         except Exception:  # noqa: BLE001
             failed.append("dns")
