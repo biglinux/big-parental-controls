@@ -198,7 +198,18 @@ class MalcontentService:
     ) -> None:
         """Set daily session schedule for a user UID."""
         builder = Malcontent.SessionLimitsBuilder.new()
-        builder.set_daily_schedule(daily_start_secs, daily_end_secs)
+        # libmalcontent 0.14 added a leading `enforced` argument:
+        # set_daily_schedule(enforced, start, end). Older versions take
+        # (start, end) only, so check the introspected signature.
+        try:
+            args = Malcontent.SessionLimitsBuilder.set_daily_schedule.get_arguments()
+            has_enforced = len(args) == 3
+        except AttributeError:
+            has_enforced = False
+        if has_enforced:
+            builder.set_daily_schedule(True, daily_start_secs, daily_end_secs)
+        else:
+            builder.set_daily_schedule(daily_start_secs, daily_end_secs)
         limits = builder.end()
         self._manager.set_session_limits(
             uid,
