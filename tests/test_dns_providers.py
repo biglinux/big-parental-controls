@@ -2,17 +2,11 @@
 
 import ipaddress
 import json
-import locale
 from pathlib import Path
 
 import pytest
 
-# The C gettext bindings only exist on Linux; let the tests run elsewhere.
-for _name in ("bindtextdomain", "textdomain"):
-    if not hasattr(locale, _name):
-        setattr(locale, _name, lambda *_args: None)
-
-from big_parental_controls.services import dns_providers as dp  # noqa: E402
+from big_parental_controls.services import dns_providers as dp
 
 REPO = Path(__file__).resolve().parent.parent
 SHARE = REPO / "big-parental-controls/usr/share/big-parental-controls"
@@ -195,3 +189,19 @@ def test_identify_prefers_the_stored_provider(tmp_path: Path) -> None:
 def test_describe(shipped) -> None:
     assert dp.describe(dp.resolve("dns4eu:strict", shipped), shipped) == "DNS4EU (Strict)"
     assert "10.0.0.1" in dp.describe({"provider": "custom", "dns1": "10.0.0.1"}, shipped)
+
+
+def test_invalid_local_entry_keeps_the_shipped_provider(tmp_path: Path) -> None:
+    """A typo in /etc must not make a shipped provider (and its users) vanish."""
+    local = _write(
+        tmp_path / "l.json",
+        {"cleanbrowsing": {"levels": {"strict": ["185.228.168.168 "]}}},  # trailing space
+    )
+    providers = dp.load(SHIPPED, local)
+    assert providers["cleanbrowsing"] == dp.load(SHIPPED, NONE)["cleanbrowsing"]
+
+
+def test_regions_given_as_a_string(tmp_path: Path) -> None:
+    raw = {"isp": {"regions": "FR", "levels": {"strict": ["10.0.0.1"]}}}
+    provider = dp.load(_write(tmp_path / "p.json", raw), NONE)["isp"]
+    assert provider.regions == ("fr",)

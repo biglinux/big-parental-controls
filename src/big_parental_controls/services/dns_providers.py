@@ -109,6 +109,8 @@ def _provider(pid: str, raw: object) -> Provider | None:
     if not levels:
         return None
     regions = raw.get("regions") or ["global"]
+    if isinstance(regions, str):  # "eu" instead of ["eu"]
+        regions = [regions]
     return Provider(
         id=pid,
         name=str(raw.get("name") or pid),
@@ -118,7 +120,8 @@ def _provider(pid: str, raw: object) -> Provider | None:
     )
 
 
-def _read(path: Path) -> dict:
+def read_json(path: Path) -> dict:
+    """JSON object of *path*; {} when missing, invalid (logged) or not an object."""
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -130,15 +133,18 @@ def _read(path: Path) -> dict:
 
 
 def load(shipped: Path = SHIPPED_FILE, local: Path = LOCAL_FILE) -> dict[str, Provider]:
-    """Valid providers by id; an id in *local* replaces the shipped one."""
-    merged = {**_read(shipped), **_read(local)}
-    providers = {}
-    for pid, raw in merged.items():
-        provider = _provider(str(pid), raw)
-        if provider:
-            providers[provider.id] = provider
-        else:
-            log.warning("Ignoring invalid DNS provider %r", pid)
+    """Valid providers by id; a valid id in *local* replaces the shipped one.
+
+    An invalid local entry is ignored: the shipped provider of that id stays.
+    """
+    providers: dict[str, Provider] = {}
+    for path in (shipped, local):
+        for pid, raw in read_json(path).items():
+            provider = _provider(str(pid), raw)
+            if provider:
+                providers[provider.id] = provider
+            else:
+                log.warning("Ignoring invalid DNS provider %r in %s", pid, path)
     return providers
 
 

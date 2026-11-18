@@ -62,17 +62,6 @@ def resolve_entry(entry: object, providers: dict | None = None) -> dict:
     return _clean_entry(entry, dns_providers.load() if providers is None else providers)
 
 
-def _read(path: Path) -> dict:
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return {}
-    except (OSError, ValueError) as exc:
-        log.warning("Ignoring %s: %s", path, exc)
-        return {}
-    return data if isinstance(data, dict) else {}
-
-
 def load(
     shipped: Path = SHIPPED_FILE,
     local: Path = LOCAL_FILE,
@@ -84,7 +73,7 @@ def load(
     """
     if providers is None:
         providers = dns_providers.load()
-    merged = {**_read(shipped), **_read(local)}
+    merged = {**dns_providers.read_json(shipped), **dns_providers.read_json(local)}
     return {r: _clean_entry(merged.get(r), providers) for r in ECA_RANGES}
 
 
@@ -173,14 +162,31 @@ def from_current(username: str, uid: int) -> tuple[dict, list[str]]:
             }
         else:
             skipped.append("schedule")
+    providers = dns_providers.load()
     config = DnsService().get_dns_for_user(uid)
     if config:
-        match = dns_providers.identify(config, dns_providers.load())
+        match = dns_providers.identify(config, providers)
         if match:
             entry["dns"] = f"{match[0]}:{match[1]}"
         else:
-            entry["dns"] = {"dns1": config["dns1"], "dns2": config.get("dns2", config["dns1"])}
-    return entry, skipped
+            entry["dns"] = {"dns1": config["dns1"], "dns2": config.get("dns2") or config["dns1"]}
+    # Keep only what load() would accept, so what the dialog shows is what
+    # gets saved (an IPv6 custom server, an odd legacy schedule...).
+    clean = to_spec(_clean_entry(entry, providers))
+    skipped += [key for key in entry if key not in clean]
+    return clean, skipped
+
+
+def to_spec(resolved: dict) -> dict:
+    """age-defaults.json form of a resolved entry ("dns" as "provider:level")."""
+    spec = dict(resolved)
+    dns = resolved.get("dns")
+    if dns:
+        if dns["provider"] == "custom":
+            spec["dns"] = {"dns1": dns["dns1"], "dns2": dns["dns2"]}
+        else:
+            spec["dns"] = f"{dns['provider']}:{dns['level']}"
+    return spec
 
 
 def save_local(age_range: str, entry: dict) -> bool:

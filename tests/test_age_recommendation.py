@@ -1,7 +1,6 @@
 """Tests for "use as recommended settings": current settings -> /etc file."""
 
 import json
-import locale
 import re
 import subprocess
 import sys
@@ -11,12 +10,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-# The C gettext bindings only exist on Linux; let the tests run elsewhere.
-for _name in ("bindtextdomain", "textdomain"):
-    if not hasattr(locale, _name):
-        setattr(locale, _name, lambda *_args: None)
-
-from big_parental_controls.services import age_defaults, dns_providers  # noqa: E402
+from big_parental_controls.services import age_defaults, dns_providers
 
 REPO = Path(__file__).resolve().parent.parent
 SHARE = REPO / "big-parental-controls/usr/share/big-parental-controls"
@@ -88,6 +82,20 @@ def test_from_current_unknown_custom_dns(current) -> None:
     assert entry == {"dns": {"dns1": "10.0.0.53", "dns2": "10.0.0.54"}}
 
 
+def test_from_current_keeps_only_what_can_be_saved(current) -> None:
+    """The dialog shows what is saved: an IPv6 custom server cannot be a
+    recommendation (the redirect is IPv4), it is left out and reported."""
+    current.update(minutes=60, dns={"provider": "custom", "dns1": "2001:db8::53"})
+    assert age_defaults.from_current("kid", 1002) == ({"daily_minutes": 60}, ["dns"])
+
+
+def test_from_current_empty_secondary_dns(current) -> None:
+    current.update(dns={"provider": "custom", "dns1": "10.0.0.53", "dns2": ""})
+    entry, skipped = age_defaults.from_current("kid", 1002)
+    assert entry == {"dns": {"dns1": "10.0.0.53", "dns2": "10.0.0.53"}}
+    assert skipped == []
+
+
 def _helper_save_script() -> str:
     """The python code group-helper runs for age-defaults-save."""
     text = HELPER.read_text(encoding="utf-8")
@@ -139,6 +147,9 @@ def test_helper_merges_ranges(tmp_path: Path) -> None:
         {"schedule": {"start": "9:00", "end": "21:00"}},
         {"dns": "evil; rm -rf /"},
         {"dns": {"dns1": "not-an-ip"}},
+        {"dns": "cleanbrowsing:bogus"},
+        {"dns": "cleanbrowsing\n"},
+        {"schedule": {"start": "09:00\n", "end": "21:00"}},
         {"unknown": 1},
         "not json",
         [],

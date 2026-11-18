@@ -150,7 +150,8 @@ class UsersPage(Gtk.Box):
         age_row.set_model(age_model)
         group.add(age_row)
 
-        # Recommended settings of the selected age range (age-defaults.json)
+        # Recommended settings of the selected age range (age-defaults.json);
+        # the same values are applied on Create, whatever changes meanwhile.
         defaults = age_defaults.load()
         defaults_row = Adw.SwitchRow()
         defaults_row.set_title(_("Apply recommended settings"))
@@ -220,6 +221,7 @@ class UsersPage(Gtk.Box):
             confirm_row,
             age_row,
             defaults_row,
+            defaults,
         )
         dialog.present(self.get_root())
 
@@ -233,6 +235,7 @@ class UsersPage(Gtk.Box):
         confirm_row: Adw.PasswordEntryRow,
         age_row: Adw.ComboRow,
         defaults_row: Adw.SwitchRow,
+        defaults: dict[str, dict],
     ) -> None:
         if response != "create":
             return
@@ -247,7 +250,7 @@ class UsersPage(Gtk.Box):
 
         age_range = age_profile.ECA_RANGES[age_row.get_selected()]
         recommended = (
-            age_defaults.load()[age_range]
+            defaults[age_range]
             if defaults_row.get_visible() and defaults_row.get_active()
             else {}
         )
@@ -262,10 +265,11 @@ class UsersPage(Gtk.Box):
 
             if self._malcontent and age_profile.malcontent_available():
                 age_profile.apply_oars_preset(self._malcontent, user.get_uid(), age_range)
-            age_profile.write_age_range(user.get_user_name(), age_range)
             failed = []
+            if not age_profile.write_age_range(user.get_user_name(), age_range):
+                failed.append("age")
             if recommended:
-                failed = age_defaults.apply(user.get_user_name(), user.get_uid(), recommended)
+                failed += age_defaults.apply(user.get_user_name(), user.get_uid(), recommended)
             return username, failed
 
         def on_done(result: tuple[str, list[str]]) -> None:
@@ -273,7 +277,9 @@ class UsersPage(Gtk.Box):
             self._add_btn.set_sensitive(True)
             created, failed = result
             message = _("User %s created.") % created
-            if failed:
+            if "age" in failed:
+                message += " " + _("The age group could not be saved.")
+            if set(failed) - {"age"}:
                 message += " " + _("Some recommended settings could not be applied.")
             window = self.get_root()
             if hasattr(window, "refresh_main_and_pop"):

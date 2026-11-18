@@ -1,7 +1,6 @@
 """Tests for age_defaults: file loading, /etc override, validation, apply."""
 
 import json
-import locale
 import sys
 from pathlib import Path
 from types import ModuleType
@@ -9,13 +8,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-# The C gettext bindings only exist on Linux; let the tests run elsewhere.
-for _name in ("bindtextdomain", "textdomain"):
-    if not hasattr(locale, _name):
-        setattr(locale, _name, lambda *_args: None)
-
-from big_parental_controls.services import age_defaults, dns_providers  # noqa: E402
-from big_parental_controls.services.age_profile import ECA_RANGES  # noqa: E402
+from big_parental_controls.services import age_defaults, dns_providers
+from big_parental_controls.services.age_profile import ECA_RANGES
 
 REPO = Path(__file__).resolve().parent.parent
 SHARE = REPO / "big-parental-controls/usr/share/big-parental-controls"

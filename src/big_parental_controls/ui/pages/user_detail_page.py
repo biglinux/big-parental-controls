@@ -356,6 +356,11 @@ class UserDetailPage(Gtk.Box):
                 "Allowed hours are not included: they differ between days or "
                 "have several ranges."
             )
+        if "dns" in skipped:
+            body += "\n\n" + _(
+                "The web filter is not included: its server address cannot be used "
+                "as a recommendation."
+            )
         dialog = Adw.AlertDialog()
         dialog.set_heading(_("Use as recommended settings?"))
         dialog.set_body(body)

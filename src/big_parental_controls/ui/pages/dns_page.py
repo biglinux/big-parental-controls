@@ -19,26 +19,18 @@ from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
 
-# Descriptions of the shipped providers (dns-providers.json); other
-# providers added in /etc show their levels instead.
+# Descriptions of the shipped providers (dns-providers.json), true for all
+# their levels: what each level blocks is shown on the level row. Providers
+# added in /etc show their levels instead.
 _DESCRIPTIONS = {
-    "cleanbrowsing": _(
-        "Blocks adult content, gambling, and phishing websites. "
-        "One of the most widely used free family filters."
-    ),
-    "dns4eu": _(
-        "Public DNS backed by the European Union. The child protection "
-        "level blocks adult and harmful content."
-    ),
-    "adguard": _("Family protection blocks adult content and enforces safe search."),
+    "cleanbrowsing": _("One of the most widely used free family filters, with three levels."),
+    "dns4eu": _("Public DNS backed by the European Union, with a child protection level."),
+    "adguard": _("Free public DNS; its family level also enforces safe search."),
     "opendns": _(
         "By Cisco. Automatically blocks adult content on all devices. "
         "No account or configuration needed."
     ),
-    "cloudflare": _(
-        "By Cloudflare (1.1.1.3). Blocks malware and adult content. "
-        "Very fast and privacy-focused."
-    ),
+    "cloudflare": _("By Cloudflare. Very fast and privacy-focused."),
 }
 
 
@@ -312,7 +304,10 @@ class DnsPage(Gtk.Box):
             def do_disable() -> bool:
                 return self._dns.set_dns_for_user(uid, provider=None)
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Web filtering disabled."))
 
@@ -337,7 +332,10 @@ class DnsPage(Gtk.Box):
                     custom_dns1=dns1, custom_dns2=dns2,
                 )
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Custom DNS applied."))
 
@@ -350,7 +348,10 @@ class DnsPage(Gtk.Box):
             def do_set() -> bool:
                 return self._dns.set_dns_for_user(uid, provider=provider, level=level)
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Web filtering enabled."))
 

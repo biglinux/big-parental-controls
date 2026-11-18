@@ -763,7 +763,9 @@ PYEOF
 import ipaddress, json, os, re, sys
 path, age_range, raw = sys.argv[1], sys.argv[2], sys.argv[3]
 entry = json.loads(raw)
-hhmm = re.compile(r"^([01]\d|2[0-3]):[0-5]\d$")
+# Structural checks only (the app sends what age_defaults.load() accepts);
+# fullmatch: "$" would also accept a trailing newline.
+hhmm = re.compile(r"([01]\d|2[0-3]):[0-5]\d")
 ok = isinstance(entry, dict) and set(entry) <= {"daily_minutes", "schedule", "dns"}
 if ok and "daily_minutes" in entry:
     m = entry["daily_minutes"]
@@ -771,12 +773,12 @@ if ok and "daily_minutes" in entry:
 if ok and "schedule" in entry:
     s = entry["schedule"]
     ok = (isinstance(s, dict) and set(s) == {"start", "end"}
-          and all(isinstance(v, str) and hhmm.match(v) for v in s.values())
+          and all(isinstance(v, str) and hhmm.fullmatch(v) for v in s.values())
           and s["start"] < s["end"])
 if ok and "dns" in entry:
     d = entry["dns"]
     if isinstance(d, str):
-        ok = bool(re.match(r"^[a-z0-9_-]+(:[a-z]+)?$", d))
+        ok = bool(re.fullmatch(r"[a-z0-9_-]+(:(strict|adult|security))?", d))
     elif isinstance(d, dict) and set(d) <= {"dns1", "dns2"} and "dns1" in d:
         try:
             for v in d.values():
