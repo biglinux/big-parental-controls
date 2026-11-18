@@ -8,6 +8,13 @@ post_install() {
 
 post_upgrade() {
     post_install
+    # "enable --now" does not restart a running daemon: restart it so the
+    # new version runs and its ExecStartPre (dns-restore) brings the DNS
+    # rules of existing supervised users up to date without a reboot.
+    # pacman reloads systemd only after the transaction (hook), so reload
+    # first, or the restart would use the old unit (without ExecStartPre).
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl try-restart big-parental-daemon.service 2>/dev/null || true
 }
 
 pre_remove() {
@@ -45,6 +52,13 @@ except Exception:
 
     # Disable daemon
     systemctl disable --now big-parental-daemon.service 2>/dev/null || true
+    systemctl stop big-parental-dns-check.timer 2>/dev/null || true
+    # a check already running would recreate the tables deleted below
+    systemctl stop big-parental-dns-check.service 2>/dev/null || true
+
+    # Remove the per-user DNS filter rules (nothing restores them any more)
+    nft delete table ip big_parental 2>/dev/null || true
+    nft delete table inet big_parental_guard 2>/dev/null || true
 
     rm -rf /etc/systemd/system/tmp.mount.d/big-parental-noexec.conf
     rm -rf /etc/systemd/system/dev-shm.mount.d/big-parental-noexec.conf

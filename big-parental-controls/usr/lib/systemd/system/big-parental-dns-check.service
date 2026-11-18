@@ -1,0 +1,7 @@
+[Unit]
+Description=Recreate missing parental controls DNS filter rules
+After=nftables.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/big-parental-controls/group-helper dns-restore --missing
