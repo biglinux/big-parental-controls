@@ -10,9 +10,22 @@ ACL_STATE="$STATE_DIR/acl-blocks.json"
 # Ensure state directory exists
 mkdir -p "$STATE_DIR"
 
-# Validate username: only alphanumeric, dash, underscore
+# Validate username: only ASCII alphanumeric, dash, underscore.
+# LC_ALL=C is required: in a UTF-8 locale bash ranges like [a-z] also match
+# accented letters (é, ç...), which useradd then rejects (issue #2).
 validate_username() {
+    local LC_ALL=C
     [[ "$1" =~ ^[a-zA-Z0-9_-]+$ ]] || { echo "Invalid username" >&2; exit 1; }
+}
+
+# Stricter rule for NEW accounts, same as useradd's default:
+# lowercase ASCII, starts with a letter or underscore, at most 32 chars.
+validate_new_username() {
+    local LC_ALL=C
+    [[ "$1" =~ ^[a-z_][a-z0-9_-]{0,31}$ ]] || {
+        echo "Invalid username '$1': use lowercase letters without accents, digits, - or _" >&2
+        exit 1
+    }
 }
 
 # Validate path: must be absolute and exist
@@ -39,7 +52,7 @@ case "$1" in
         # The file is deleted immediately after reading.
         # Creates user + adds to supervised + applies all default enforcement
         [[ -z "$2" || -z "$3" || -z "$4" ]] && { echo "Usage: create-full USERNAME FULLNAME PWFILE" >&2; exit 1; }
-        validate_username "$2"
+        validate_new_username "$2"
         USERNAME="$2"
         FULLNAME="$3"
         PWFILE="$4"
