@@ -749,6 +749,59 @@ with open(profiles_file, "w") as f:
 os.chmod(profiles_file, 0o644)
 PYEOF
         ;;
+    age-defaults-save)
+        # Usage: age-defaults-save AGE_RANGE JSON
+        # Store the parent's recommended settings for an age range in
+        # /etc/big-parental-controls/age-defaults.json (replaces that range).
+        [[ -z "$2" || -z "$3" ]] && { echo "Usage: age-defaults-save AGE_RANGE JSON" >&2; exit 1; }
+        case "$2" in
+            0-12|13-15|16-17|18+) ;;
+            *) echo "Invalid age range: $2" >&2; exit 1 ;;
+        esac
+        mkdir -p /etc/big-parental-controls
+        python3 - /etc/big-parental-controls/age-defaults.json "$2" "$3" << 'PYEOF'
+import ipaddress, json, os, re, sys
+path, age_range, raw = sys.argv[1], sys.argv[2], sys.argv[3]
+entry = json.loads(raw)
+hhmm = re.compile(r"^([01]\d|2[0-3]):[0-5]\d$")
+ok = isinstance(entry, dict) and set(entry) <= {"daily_minutes", "schedule", "dns"}
+if ok and "daily_minutes" in entry:
+    m = entry["daily_minutes"]
+    ok = isinstance(m, int) and not isinstance(m, bool) and 0 < m <= 1440
+if ok and "schedule" in entry:
+    s = entry["schedule"]
+    ok = (isinstance(s, dict) and set(s) == {"start", "end"}
+          and all(isinstance(v, str) and hhmm.match(v) for v in s.values())
+          and s["start"] < s["end"])
+if ok and "dns" in entry:
+    d = entry["dns"]
+    if isinstance(d, str):
+        ok = bool(re.match(r"^[a-z0-9_-]+(:[a-z]+)?$", d))
+    elif isinstance(d, dict) and set(d) <= {"dns1", "dns2"} and "dns1" in d:
+        try:
+            for v in d.values():
+                ipaddress.IPv4Address(v)
+        except (ValueError, TypeError):
+            ok = False
+    else:
+        ok = False
+if not ok:
+    sys.exit("Invalid settings")
+try:
+    with open(path) as f:
+        data = json.load(f)
+    if not isinstance(data, dict):
+        data = {}
+except (FileNotFoundError, ValueError):
+    data = {}
+data[age_range] = entry
+tmp = path + ".tmp"
+with open(tmp, "w") as f:
+    json.dump(data, f, indent=2)
+os.chmod(tmp, 0o644)
+os.replace(tmp, path)
+PYEOF
+        ;;
     *)
         echo "Unknown command: $1" >&2
         exit 1

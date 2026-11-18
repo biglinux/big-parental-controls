@@ -57,6 +57,11 @@ def _clean_entry(entry: object, providers: dict) -> dict:
     return clean
 
 
+def resolve_entry(entry: object, providers: dict | None = None) -> dict:
+    """Validated settings of one range, "dns" resolved (as load() returns)."""
+    return _clean_entry(entry, dns_providers.load() if providers is None else providers)
+
+
 def _read(path: Path) -> dict:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -141,3 +146,58 @@ def apply(username: str, uid: int, entry: dict) -> list[str]:
         except Exception:  # noqa: BLE001
             failed.append("dns")
     return failed
+
+
+def from_current(username: str, uid: int) -> tuple[dict, list[str]]:
+    """The user's current settings in age-defaults.json format.
+
+    Returns (entry, skipped): *skipped* names the settings that cannot be a
+    recommendation (several time ranges, or hours limited to some days).
+    """
+    from big_parental_controls.services import time_service
+    from big_parental_controls.services.dns_service import DnsService
+
+    entry: dict = {}
+    skipped: list[str] = []
+    minutes = time_service.get_daily_limit(username)
+    if minutes:
+        entry["daily_minutes"] = minutes
+    schedule = time_service.get_schedule(username)
+    if schedule and schedule.get("ranges"):
+        ranges, days = schedule["ranges"], schedule.get("days")
+        if len(ranges) == 1 and (not days or len(set(days)) == 7):
+            r = ranges[0]
+            entry["schedule"] = {
+                "start": f"{r['start_hour']:02d}:{r.get('start_min', 0):02d}",
+                "end": f"{r['end_hour']:02d}:{r.get('end_min', 0):02d}",
+            }
+        else:
+            skipped.append("schedule")
+    config = DnsService().get_dns_for_user(uid)
+    if config:
+        match = dns_providers.identify(config, dns_providers.load())
+        if match:
+            entry["dns"] = f"{match[0]}:{match[1]}"
+        else:
+            entry["dns"] = {"dns1": config["dns1"], "dns2": config.get("dns2", config["dns1"])}
+    return entry, skipped
+
+
+def save_local(age_range: str, entry: dict) -> bool:
+    """Store *entry* as the recommendation for *age_range* in LOCAL_FILE
+    (through group-helper, which validates it). Blocking."""
+    import subprocess
+
+    from big_parental_controls.core.constants import GROUP_HELPER
+
+    if age_range not in ECA_RANGES:
+        return False
+    try:
+        result = subprocess.run(
+            ["pkexec", GROUP_HELPER, "age-defaults-save", age_range, json.dumps(entry)],
+            check=False,
+            timeout=60,
+        )
+    except (subprocess.TimeoutExpired, OSError):
+        return False
+    return result.returncode == 0

@@ -146,6 +146,20 @@ class UserDetailPage(Gtk.Box):
             oars_row.add_prefix(Gtk.Image(icon_name="dialog-information-symbolic"))
             group.add(oars_row)
 
+        # Current settings -> recommendation for the age group
+        recommend_row = Adw.ActionRow()
+        recommend_row.set_title(_("Use as recommended settings"))
+        recommend_row.set_subtitle(
+            _(
+                "Offer this user's daily limit, allowed hours and web filter "
+                "for new accounts and age changes in the same age group."
+            )
+        )
+        recommend_row.set_activatable(True)
+        recommend_row.add_suffix(Gtk.Image(icon_name="go-next-symbolic"))
+        recommend_row.connect("activated", self._on_use_as_recommended)
+        group.add(recommend_row)
+
         # Delete Activity Data
         delete_row = Adw.ActionRow()
         delete_row.set_title(_("Delete Activity Data"))
@@ -325,6 +339,48 @@ class UserDetailPage(Gtk.Box):
                 self._show_stored_age(row)
             else:
                 self._save_age(row, age_range, entry if response == "apply" else {})
+
+        dialog.connect("response", on_response)
+        dialog.present(self.get_root())
+
+    def _on_use_as_recommended(self, _row: Adw.ActionRow) -> None:
+        age_range = age_profile.read_age_range(self._username)
+        entry, skipped = age_defaults.from_current(self._username, self._uid)
+        lines = age_defaults.describe(age_defaults.resolve_entry(entry))
+        if not lines:
+            self._window.show_toast(_("This user has no limit or filter to recommend."))
+            return
+        body = _("Recommended for this age group:") + "\n\n" + "\n".join(lines)
+        if "schedule" in skipped:
+            body += "\n\n" + _(
+                "Allowed hours are not included: they differ between days or "
+                "have several ranges."
+            )
+        dialog = Adw.AlertDialog()
+        dialog.set_heading(_("Use as recommended settings?"))
+        dialog.set_body(body)
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("save", _("Save"))
+        dialog.set_response_appearance("save", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_default_response("save")
+        dialog.set_close_response("cancel")
+
+        def on_response(_dialog: Adw.AlertDialog, response: str) -> None:
+            if response != "save":
+                return
+
+            def done(saved: bool) -> None:
+                self._window.show_toast(
+                    _("Recommended settings saved.")
+                    if saved
+                    else _("Could not save the recommended settings.")
+                )
+
+            run_async(
+                lambda: age_defaults.save_local(age_range, entry),
+                done,
+                lambda _exc: done(False),
+            )
 
         dialog.connect("response", on_response)
         dialog.present(self.get_root())
