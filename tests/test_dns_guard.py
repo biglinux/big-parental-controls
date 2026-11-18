@@ -18,6 +18,7 @@ PKG = REPO / "big-parental-controls"
 HELPER = PKG / "usr/lib/big-parental-controls/group-helper"
 DOH_SERVERS = PKG / "usr/share/big-parental-controls/doh-servers.txt"
 DAEMON_UNIT = PKG / "usr/lib/systemd/system/big-parental-daemon.service"
+INSTALL = REPO / "pkgbuild/big-parental-controls.install"
 
 # Shared CDN ranges: blocking port 443 there would break ordinary websites.
 CDN_RANGES = [
@@ -88,6 +89,14 @@ def test_bypass_rules_cover_dot_doh_and_ipv6() -> None:
     # after the DNAT, plain DNS goes to the filter, which may be in the list.
     assert body.count("daddr @doh") == body.count("th dport != 53 reject") == 2
     assert "meta nfproto ipv6" in body and "th dport 53 reject" in body
+
+
+def test_upgrade_restarts_daemon() -> None:
+    """Existing installs get the new rules on upgrade, not at the next boot."""
+    text = INSTALL.read_text(encoding="utf-8")
+    body = text[text.index("post_upgrade() {") :]
+    body = body[: body.index("\n}")]
+    assert "systemctl try-restart big-parental-daemon.service" in body
 
 
 @pytest.mark.skipif(

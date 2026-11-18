@@ -8,6 +8,10 @@ post_install() {
 
 post_upgrade() {
     post_install
+    # "enable --now" does not restart a running daemon: restart it so the
+    # new version runs and its ExecStartPre (dns-restore) brings the DNS
+    # rules of existing supervised users up to date without a reboot.
+    systemctl try-restart big-parental-daemon.service 2>/dev/null || true
 }
 
 pre_remove() {
