@@ -39,7 +39,7 @@ def _load_service(arg_count: int | None) -> tuple[ModuleType, MagicMock]:
     with patch.dict(sys.modules, {"gi": gi, "gi.repository": repository}):
         sys.modules.pop(MODULE, None)
         module = importlib.import_module(MODULE)
-    sys.modules.pop(MODULE, None)
+    # patch.dict restores sys.modules on exit (the real module, if it was loaded)
     return module, malcontent
 
 
