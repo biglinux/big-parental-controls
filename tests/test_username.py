@@ -13,6 +13,17 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 from big_parental_controls.utils.username import LOGIN_RE, to_login  # noqa: E402
 
 HELPER = REPO_ROOT / "big-parental-controls" / "usr" / "lib" / "big-parental-controls" / "group-helper"
+TEST_LOCALE = "fr_FR.UTF-8"
+
+
+def _locale_installed(name: str) -> bool:
+    """An unknown LC_ALL silently falls back to C, so check it exists."""
+    try:
+        out = subprocess.run(["locale", "-a"], capture_output=True, text=True, check=False).stdout
+    except OSError:
+        return False
+    wanted = name.lower().replace("-", "")
+    return any(line.strip().lower().replace("-", "") == wanted for line in out.splitlines())
 
 
 class TestToLogin(unittest.TestCase):
@@ -50,6 +61,10 @@ class TestToLogin(unittest.TestCase):
     sys.platform.startswith("linux") and shutil.which("bash") and HELPER.exists(),
     "needs Linux bash",
 )
+@unittest.skipUnless(
+    _locale_installed(TEST_LOCALE),
+    f"{TEST_LOCALE} not installed: the locale regression would not be exercised",
+)
 class TestHelperValidation(unittest.TestCase):
     """The helper must reject non-ASCII names whatever the locale."""
 
@@ -57,7 +72,7 @@ class TestHelperValidation(unittest.TestCase):
         script = (
             f"eval \"$(tr -d '\r' < \"$1\" | sed -n '/^{func}()/,/^}}/p')\"; ( {func} \"$2\" ) 2>/dev/null"
         )
-        env = dict(os.environ, LC_ALL="fr_FR.UTF-8")
+        env = dict(os.environ, LC_ALL=TEST_LOCALE)
         res = subprocess.run(["bash", "-c", script, "bash", str(HELPER), name], env=env)
         return res.returncode == 0
 
