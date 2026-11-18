@@ -26,6 +26,75 @@ get_home() {
     getent passwd "$1" | cut -d: -f6
 }
 
+# --- Per-user DNS filter (nftables) ----------------------------------------
+# table ip    big_parental       : DNAT of the user's port 53 to the chosen filter
+# table inet  big_parental_guard : blocks the usual ways around that redirect
+#   (DNS-over-TLS/QUIC on 853, DNS-over-HTTPS to well-known public resolvers on
+#   any port but 53 — after the DNAT, port 53 goes to the filter, often listed —,
+#   plain DNS over IPv6, which the ip-only DNAT does not see)
+NFT_TABLE="big_parental"
+NFT_CHAIN="dns_redirect"
+GUARD_TABLE="big_parental_guard"
+GUARD_CHAIN="output"
+DNS_DIR="/etc/big-parental-controls/dns"
+DOH_SERVERS="/usr/share/big-parental-controls/doh-servers.txt"
+
+# nft_delete_tagged FAMILY TABLE CHAIN TAG — delete rules whose comment is TAG
+nft_delete_tagged() {
+    local line handle
+    while IFS= read -r line; do
+        # exact match on the quoted comment: "bpc-uid-1000" must not hit 10001
+        if [[ "$line" == *"comment \"$4\""* ]]; then
+            handle=$(grep -oP '(?<=# handle )\d+' <<<"$line")
+            [[ -n "$handle" ]] && nft delete rule "$1" "$2" "$3" handle "$handle" 2>/dev/null || true
+        fi
+    done < <(nft -a list chain "$1" "$2" "$3" 2>/dev/null)
+}
+
+# Create the guard table and (re)load the DoH server sets from DOH_SERVERS.
+dns_guard_setup() {
+    local v4 v6
+    v4=$(grep -oE '^[0-9]+(\.[0-9]+){3}(/[0-9]+)?' "$DOH_SERVERS" 2>/dev/null | paste -sd, -)
+    v6=$(grep -oiE '^[0-9a-f]*:[0-9a-f:]+(/[0-9]+)?' "$DOH_SERVERS" 2>/dev/null | paste -sd, -)
+    nft -f - <<EOF || echo "Warning: could not set up $GUARD_TABLE" >&2
+add table inet $GUARD_TABLE
+add chain inet $GUARD_TABLE $GUARD_CHAIN { type filter hook output priority 0 ; policy accept ; }
+add set inet $GUARD_TABLE doh4 { type ipv4_addr ; flags interval ; auto-merge ; }
+add set inet $GUARD_TABLE doh6 { type ipv6_addr ; flags interval ; auto-merge ; }
+flush set inet $GUARD_TABLE doh4
+flush set inet $GUARD_TABLE doh6
+$([[ -n "$v4" ]] && echo "add element inet $GUARD_TABLE doh4 { $v4 }")
+$([[ -n "$v6" ]] && echo "add element inet $GUARD_TABLE doh6 { $v6 }")
+EOF
+}
+
+# dns_apply UID DNS1 — redirect the user's DNS to DNS1 and block bypasses
+dns_apply() {
+    local uid="$1" dns1="$2" tag="bpc-uid-$1" proto
+    nft add table ip "$NFT_TABLE" 2>/dev/null || true
+    nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
+    nft_delete_tagged ip "$NFT_TABLE" "$NFT_CHAIN" "$tag"
+    for proto in udp tcp; do
+        nft add rule ip "$NFT_TABLE" "$NFT_CHAIN" \
+            meta skuid "$uid" "$proto" dport 53 dnat to "$dns1" \
+            comment "\"$tag\"" 2>/dev/null || true
+    done
+    dns_guard_setup
+    nft_delete_tagged inet "$GUARD_TABLE" "$GUARD_CHAIN" "$tag"
+    nft -f - <<EOF || echo "Warning: could not add bypass rules for UID $uid" >&2
+add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid meta l4proto { tcp, udp } th dport 853 reject comment "$tag"
+add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid ip daddr @doh4 meta l4proto { tcp, udp } th dport != 53 reject comment "$tag"
+add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid ip6 daddr @doh6 meta l4proto { tcp, udp } th dport != 53 reject comment "$tag"
+add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid meta nfproto ipv6 meta l4proto { tcp, udp } th dport 53 reject comment "$tag"
+EOF
+}
+
+# dns_unapply UID — remove every DNS rule of the user
+dns_unapply() {
+    nft_delete_tagged ip "$NFT_TABLE" "$NFT_CHAIN" "bpc-uid-$1"
+    nft_delete_tagged inet "$GUARD_TABLE" "$GUARD_CHAIN" "bpc-uid-$1"
+}
+
 case "$1" in
     add)
         [[ -z "$2" ]] && exit 1
@@ -624,79 +693,34 @@ print(json.dumps(state, indent=2))
         # Write DNS config and apply nftables rules for a user UID
         [[ -z "$2" || -z "$3" ]] && { echo "Usage: dns-set UID JSON_DATA" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
-        DNS_DIR="/etc/big-parental-controls/dns"
         mkdir -p "$DNS_DIR"
         # Validate JSON and extract dns1
         DNS1=$(echo "$3" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['dns1'])" 2>/dev/null) || { echo "Invalid JSON" >&2; exit 1; }
         echo "$3" > "$DNS_DIR/$2.json"
         chmod 644 "$DNS_DIR/$2.json"
-        # Remove existing nftables rules for this UID
-        NFT_TABLE="big_parental"
-        NFT_CHAIN="dns_redirect"
-        TAG="bpc-uid-$2"
-        nft add table ip "$NFT_TABLE" 2>/dev/null || true
-        nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
-        # Remove old rules for this UID
-        while IFS= read -r line; do
-            if [[ "$line" == *"$TAG"* ]]; then
-                handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
-                [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
-            fi
-        done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
-        # Add new redirect rules
-        for proto in udp tcp; do
-            nft add rule ip "$NFT_TABLE" "$NFT_CHAIN" \
-                meta skuid "$2" "$proto" dport 53 dnat to "$DNS1" \
-                comment "\"$TAG\"" 2>/dev/null || true
-        done
+        dns_apply "$2" "$DNS1"
         ;;
     dns-remove)
         # Usage: dns-remove UID
         # Remove DNS config and nftables rules for a user UID
         [[ -z "$2" ]] && { echo "Usage: dns-remove UID" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
-        DNS_DIR="/etc/big-parental-controls/dns"
         rm -f "$DNS_DIR/$2.json"
         # Remove login script hook
         rm -f "/etc/profile.d/big-dns-$2.sh"
-        # Remove nftables rules for this UID
-        NFT_TABLE="big_parental"
-        NFT_CHAIN="dns_redirect"
-        TAG="bpc-uid-$2"
-        while IFS= read -r line; do
-            if [[ "$line" == *"$TAG"* ]]; then
-                handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
-                [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
-            fi
-        done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
+        dns_unapply "$2"
         ;;
     dns-restore)
-        # Restore all nftables DNS redirect rules from saved config files.
-        # Called at boot by big-parental-dns-restore.service (no pkexec — runs as root).
-        DNS_DIR="/etc/big-parental-controls/dns"
-        NFT_TABLE="big_parental"
-        NFT_CHAIN="dns_redirect"
+        # Restore all nftables DNS rules from saved config files.
+        # Run as root by big-parental-daemon.service (ExecStartPre), so the
+        # rules, which only live in the kernel, come back after every boot.
         [[ -d "$DNS_DIR" ]] || exit 0
-        nft add table ip "$NFT_TABLE" 2>/dev/null || true
-        nft add chain ip "$NFT_TABLE" "$NFT_CHAIN" '{ type nat hook output priority -100 ; }' 2>/dev/null || true
         for cfg in "$DNS_DIR"/*.json; do
             [[ -f "$cfg" ]] || continue
             uid=$(basename "$cfg" .json)
             [[ "$uid" =~ ^[0-9]+$ ]] || continue
-            dns1=$(python3 -c "import json; d=json.load(open('$cfg')); print(d['dns1'])" 2>/dev/null) || continue
-            TAG="bpc-uid-$uid"
-            # Remove stale rules for this UID before adding fresh ones
-            while IFS= read -r line; do
-                if [[ "$line" == *"$TAG"* ]]; then
-                    handle=$(echo "$line" | grep -oP '(?<=# handle )\d+')
-                    [[ -n "$handle" ]] && nft delete rule ip "$NFT_TABLE" "$NFT_CHAIN" handle "$handle" 2>/dev/null || true
-                fi
-            done < <(nft -a list chain ip "$NFT_TABLE" "$NFT_CHAIN" 2>/dev/null)
-            for proto in udp tcp; do
-                nft add rule ip "$NFT_TABLE" "$NFT_CHAIN" \
-                    meta skuid "$uid" "$proto" dport 53 dnat to "$dns1" \
-                    comment "\"$TAG\"" 2>/dev/null || true
-            done
+            dns1=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['dns1'])" "$cfg" 2>/dev/null) || continue
+            dns_apply "$uid" "$dns1"
         done
         ;;
     activity-sessions)

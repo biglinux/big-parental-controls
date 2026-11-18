@@ -1,10 +1,13 @@
 [Unit]
 Description=BigLinux Parental Controls Daemon
-After=dbus.service
+After=dbus.service nftables.service
 
 [Service]
 Type=dbus
 BusName=br.com.biglinux.ParentalDaemon
+# Per-user DNS filter rules only live in the kernel: restore them at every
+# start, as root and outside the sandbox below ("+"), ignoring failures ("-").
+ExecStartPre=-+/usr/lib/big-parental-controls/group-helper dns-restore
 ExecStart=/usr/lib/big-parental-controls/big-parental-daemon
 User=root
 # Hardening
