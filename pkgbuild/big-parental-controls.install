@@ -53,6 +53,8 @@ except Exception:
     # Disable daemon
     systemctl disable --now big-parental-daemon.service 2>/dev/null || true
     systemctl stop big-parental-dns-check.timer 2>/dev/null || true
+    # a check already running would recreate the tables deleted below
+    systemctl stop big-parental-dns-check.service 2>/dev/null || true
 
     # Remove the per-user DNS filter rules (nothing restores them any more)
     nft delete table ip big_parental 2>/dev/null || true

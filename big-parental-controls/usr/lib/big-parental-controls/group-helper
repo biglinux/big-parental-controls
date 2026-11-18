@@ -112,6 +112,14 @@ add rule inet $GUARD_TABLE $GUARD_CHAIN meta skuid $uid meta nfproto ipv6 meta l
 EOF
 }
 
+# dns_lock — serialise dns-set, dns-remove, dns-restore and the DNS part of
+# remove-full: a restore must never re-apply a config read before it was
+# changed or removed. Held until the helper exits.
+dns_lock() {
+    exec 9> "$STATE_DIR/dns.lock"
+    flock 9
+}
+
 # dns_unapply UID — remove every DNS rule of the user
 dns_unapply() {
     nft_delete_tagged ip "$NFT_TABLE" "$NFT_CHAIN" "bpc-uid-$1"
@@ -564,6 +572,7 @@ with open(limits_file, "w") as f:
         # would inherit it)
         USER_UID=$(id -u "$USERNAME" 2>/dev/null || true)
         if [[ "$USER_UID" =~ ^[0-9]+$ ]]; then
+            dns_lock
             rm -f "$DNS_DIR/$USER_UID.json" "/etc/profile.d/big-dns-$USER_UID.sh"
             dns_unapply "$USER_UID"
         fi
@@ -725,6 +734,7 @@ print(json.dumps(state, indent=2))
         # Write DNS config and apply nftables rules for a user UID
         [[ -z "$2" || -z "$3" ]] && { echo "Usage: dns-set UID JSON_DATA" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
+        dns_lock
         mkdir -p "$DNS_DIR"
         # Validate JSON and extract dns1
         DNS1=$(echo "$3" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['dns1'])" 2>/dev/null) || { echo "Invalid JSON" >&2; exit 1; }
@@ -738,6 +748,7 @@ print(json.dumps(state, indent=2))
         # Remove DNS config and nftables rules for a user UID
         [[ -z "$2" ]] && { echo "Usage: dns-remove UID" >&2; exit 1; }
         [[ "$2" =~ ^[0-9]+$ ]] || { echo "Invalid UID" >&2; exit 1; }
+        dns_lock
         rm -f "$DNS_DIR/$2.json"
         # Remove login script hook
         rm -f "/etc/profile.d/big-dns-$2.sh"
@@ -753,15 +764,27 @@ print(json.dumps(state, indent=2))
         #   recreate only what a "flush ruleset" (nftables restart, firewall
         #   tools) removed, without touching rules still in place.
         [[ -d "$DNS_DIR" ]] || exit 0
+        dns_lock
         if [[ "${2:-}" == "--missing" ]]; then dns_guard_ensure; else dns_guard_setup; fi
         for cfg in "$DNS_DIR"/*.json; do
             [[ -f "$cfg" ]] || continue
             uid=$(basename "$cfg" .json)
             [[ "$uid" =~ ^[0-9]+$ ]] || continue
             # Leftover of a removed account or of removed supervision (older
-            # versions did not delete it): never filter a non-supervised user.
-            user=$(id -nu "$uid" 2>/dev/null || true)
-            if [[ -z "$user" ]] || ! id -nG "$user" 2>/dev/null | tr ' ' '\n' | grep -qx "$GROUP"; then
+            # versions did not delete it): never filter a non-supervised user,
+            # and forget the config so that a later account reusing the UID
+            # does not inherit it. getent exits 2 only when the account does
+            # not exist; any other failure (directory service down) only
+            # skips the user for now and keeps the config.
+            rc=0
+            pw=$(getent passwd "$uid") || rc=$?
+            user=${pw%%:*}
+            if (( rc == 2 )) || { [[ -n "$user" ]] && ! id -nG "$user" 2>/dev/null | tr ' ' '\n' | grep -qx "$GROUP"; }; then
+                rm -f "$cfg" "/etc/profile.d/big-dns-$uid.sh"
+                dns_unapply "$uid"
+                continue
+            fi
+            if [[ -z "$user" ]]; then
                 dns_unapply "$uid"
                 continue
             fi

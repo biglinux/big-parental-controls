@@ -6,6 +6,8 @@ Redesigned with:
   - Custom DNS option
 """
 
+import ipaddress
+
 import gi
 
 gi.require_version("Gtk", "4.0")
@@ -15,6 +17,16 @@ from gi.repository import Adw, Gtk
 from big_parental_controls.services.dns_service import DnsService
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
+
+
+def _is_ipv4(addr: str) -> bool:
+    """The filter redirects IPv4 DNS only (see group-helper dns-set)."""
+    try:
+        ipaddress.IPv4Address(addr)
+    except ValueError:
+        return False
+    return True
+
 
 _ = setup_i18n()
 
@@ -270,7 +282,10 @@ class DnsPage(Gtk.Box):
             def do_disable() -> bool:
                 return self._dns.set_dns_for_user(uid, provider=None)
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Web filtering disabled."))
 
@@ -288,6 +303,9 @@ class DnsPage(Gtk.Box):
             if not dns1:
                 self._show_error(_("Primary DNS address is required."))
                 return
+            if not all(_is_ipv4(a) for a in (dns1, dns2) if a):
+                self._show_error(_("DNS addresses must be IPv4, for example 1.1.1.3."))
+                return
 
             def do_set_custom() -> bool:
                 return self._dns.set_dns_for_user(
@@ -295,7 +313,10 @@ class DnsPage(Gtk.Box):
                     custom_dns1=dns1, custom_dns2=dns2,
                 )
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Custom DNS applied."))
 
@@ -306,7 +327,10 @@ class DnsPage(Gtk.Box):
             def do_set() -> bool:
                 return self._dns.set_dns_for_user(uid, provider=provider)
 
-            def on_done(_result: object) -> None:
+            def on_done(result: object) -> None:
+                if not result:
+                    self._show_error(_("Could not apply the web filter settings."))
+                    return
                 self._apply_btn.set_sensitive(False)
                 self._show_success(_("Web filtering enabled."))
 

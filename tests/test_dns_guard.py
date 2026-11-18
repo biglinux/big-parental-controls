@@ -137,6 +137,32 @@ def test_rules_are_rechecked_while_running() -> None:
     assert "systemctl stop big-parental-dns-check.timer" in install
 
 
+def test_restore_forgets_confirmed_leftovers_only() -> None:
+    """A later account reusing the UID must not inherit the old filter, but a
+    directory-service failure must not erase a child's config."""
+    body = _helper_case("dns-restore")
+    assert "(( rc == 2 ))" in body  # getent: account does not exist
+    forget = body.index('rm -f "$cfg" "/etc/profile.d/big-dns-$uid.sh"')
+    assert forget < body.index('if [[ -z "$user" ]]; then')
+
+
+@pytest.mark.parametrize("case", ["dns-set", "dns-remove", "dns-restore", "remove-full"])
+def test_dns_changes_are_serialised(case: str) -> None:
+    """A restore must not re-apply a config that dns-set/dns-remove changed
+    between its read and its write."""
+    body = _helper_case(case)
+    lock = body.index("dns_lock")
+    for access in ('"$DNS_DIR/$2.json"', 'for cfg in "$DNS_DIR"', '"$DNS_DIR/$USER_UID.json"'):
+        if access in body:
+            assert lock < body.index(access), access
+
+
+def test_uninstall_stops_a_running_check_first() -> None:
+    text = INSTALL.read_text(encoding="utf-8")
+    stop = text.index("systemctl stop big-parental-dns-check.service")
+    assert stop < text.index("nft delete table inet big_parental_guard")
+
+
 def test_dns_set_validates_before_writing() -> None:
     body = _helper_case("dns-set")
     assert body.index('valid_ipv4 "$DNS1"') < body.index('> "$DNS_DIR/$2.json"')
