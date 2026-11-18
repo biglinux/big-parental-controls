@@ -1,8 +1,6 @@
 """User detail page — all settings and activity for a single supervised user."""
 
-import json
 import os
-import subprocess
 
 import gi
 
@@ -10,8 +8,8 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gtk
 
-from big_parental_controls.core.constants import GROUP_HELPER
 from big_parental_controls.daemon_client.client import DaemonClient
+from big_parental_controls.services import age_profile
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.ui.compliance import (
     confirm_delete_data,
@@ -23,30 +21,6 @@ from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
-
-_USER_PROFILES_FILE = "/var/lib/big-parental-controls/user-profiles.json"
-_ECA_RANGES = ["0-12", "13-15", "16-17", "18+"]
-
-
-def _read_age_range(username: str) -> str:
-    try:
-        with open(_USER_PROFILES_FILE) as f:
-            profiles = json.load(f)
-        return profiles.get(username, {}).get("age_range", "18+")
-    except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError):
-        return "18+"
-
-
-def _write_age_range(username: str, age_range: str) -> None:
-    try:
-        subprocess.run(
-            ["pkexec", GROUP_HELPER, "set-age-profile", username, age_range],
-            check=False,
-            timeout=15,
-        )
-    except (subprocess.TimeoutExpired, OSError):
-        pass
-
 
 class UserDetailPage(Gtk.Box):
     """All settings and activity graphs for a single supervised user."""
@@ -158,15 +132,19 @@ class UserDetailPage(Gtk.Box):
         )
         age_row.set_model(age_model)
 
-        current = _read_age_range(self._username)
-        idx = _ECA_RANGES.index(current) if current in _ECA_RANGES else 3
-        age_row.set_selected(idx)
-
-        def _on_age_changed(row: Adw.ComboRow, _pspec: object) -> None:
-            _write_age_range(self._username, _ECA_RANGES[row.get_selected()])
-
-        age_row.connect("notify::selected", _on_age_changed)
+        current = age_profile.read_age_range(self._username)
+        age_row.set_selected(age_profile.ECA_RANGES.index(current))
+        self._age_handler = age_row.connect("notify::selected", self._on_age_changed)
         group.add(age_row)
+
+        if not age_profile.malcontent_available():
+            oars_row = Adw.ActionRow()
+            oars_row.set_title(_("Age-based app ratings unavailable"))
+            oars_row.set_subtitle(
+                _("Install the malcontent package to filter software stores by age.")
+            )
+            oars_row.add_prefix(Gtk.Image(icon_name="dialog-information-symbolic"))
+            group.add(oars_row)
 
         # Delete Activity Data
         delete_row = Adw.ActionRow()
@@ -318,6 +296,31 @@ class UserDetailPage(Gtk.Box):
         )
         group.add(edit_row)
         return group
+
+    def _on_age_changed(self, row: Adw.ComboRow, _pspec: object) -> None:
+        age_range = age_profile.ECA_RANGES[row.get_selected()]
+        row.set_sensitive(False)
+
+        def task() -> bool:
+            saved = age_profile.write_age_range(self._username, age_range)
+            if saved and age_profile.malcontent_available():
+                from big_parental_controls.services.malcontent_service import (
+                    MalcontentService,
+                )
+
+                age_profile.apply_oars_preset(MalcontentService(), self._uid, age_range)
+            return saved
+
+        def done(saved: bool) -> None:
+            row.set_sensitive(True)
+            if not saved:
+                # Show the stored value again (e.g. password dialog cancelled).
+                stored = age_profile.read_age_range(self._username)
+                with row.handler_block(self._age_handler):
+                    row.set_selected(age_profile.ECA_RANGES.index(stored))
+                self._window.show_toast(_("Could not save the age group."))
+
+        run_async(task, done, lambda _exc: done(False))
 
     def _build_app_filter_block(self) -> Adw.PreferencesGroup:
         """App access control — link to full editor."""
