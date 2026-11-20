@@ -1,33 +1,20 @@
 """Users page — manage supervised accounts."""
 
-import subprocess
 import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, GLib, Gtk
 
-from big_parental_controls.core.constants import GROUP_HELPER
+from big_parental_controls.services import age_profile
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.services import acl_service
-from big_parental_controls.services.malcontent_service import MalcontentService, OARS_PRESETS
+from big_parental_controls.services.malcontent_service import MalcontentService
 from big_parental_controls.services import time_service
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
-
-
-def _save_user_age_profile(username: str, age_range: str) -> None:
-    """Persist ECA Digital age range via group-helper (requires root)."""
-    try:
-        subprocess.run(
-            ["pkexec", GROUP_HELPER, "set-age-profile", username, age_range],
-            check=False,
-            timeout=15,
-        )
-    except (subprocess.TimeoutExpired, OSError):
-        pass
 
 
 class UsersPage(Gtk.Box):
@@ -241,12 +228,7 @@ class UsersPage(Gtk.Box):
             self._show_error(_("Username and password are required."))
             return
 
-        # ECA Digital age ranges: 0-12, 13-15, 16-17, 18+
-        eca_ranges = ["0-12", "13-15", "16-17", "18+"]
-        # Map ECA range to malcontent OARS preset
-        oars_map = {"0-12": "child", "13-15": "preteen", "16-17": "teen", "18+": "young-adult"}
-        age_range = eca_ranges[age_row.get_selected()]
-        age_group = oars_map[age_range]
+        age_range = age_profile.ECA_RANGES[age_row.get_selected()]
 
         loading = self._show_loading_overlay(_("Creating user %s…") % username)
         self._add_btn.set_sensitive(False)
@@ -256,15 +238,9 @@ class UsersPage(Gtk.Box):
             if user is None:
                 raise RuntimeError(_("Failed to create user."))
 
-            if self._malcontent and age_group in OARS_PRESETS:
-                try:
-                    self._malcontent.set_app_filter(
-                        user.get_uid(),
-                        oars_values=OARS_PRESETS[age_group],
-                    )
-                except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
-                    pass
-            _save_user_age_profile(user.get_user_name(), age_range)
+            if self._malcontent and age_profile.malcontent_available():
+                age_profile.apply_oars_preset(self._malcontent, user.get_uid(), age_range)
+            age_profile.write_age_range(user.get_user_name(), age_range)
             return username
 
         def on_done(result: str) -> None:
