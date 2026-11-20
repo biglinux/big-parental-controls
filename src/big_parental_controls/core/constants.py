@@ -55,24 +55,8 @@ AGE_GROUPS: dict[str, tuple[str, int]] = {
     "young-adult": ("young-adult", 16),
 }
 
-# DNS providers
-DNS_PROVIDERS: dict[str, dict[str, str]] = {
-    "cleanbrowsing": {
-        "name": "CleanBrowsing Family Filter",
-        "dns1": "185.228.168.168",
-        "dns2": "185.228.169.168",
-    },
-    "opendns": {
-        "name": "OpenDNS FamilyShield",
-        "dns1": "208.67.222.123",
-        "dns2": "208.67.220.123",
-    },
-    "cloudflare": {
-        "name": "Cloudflare for Families",
-        "dns1": "1.1.1.3",
-        "dns2": "1.0.0.3",
-    },
-}
+# DNS providers: see /usr/share/big-parental-controls/dns-providers.json
+# (services/dns_providers.py)
 
 # Default supervised blocks (package managers, network tools)
 DEFAULT_SUPERVISED_BLOCKS: list[str] = [

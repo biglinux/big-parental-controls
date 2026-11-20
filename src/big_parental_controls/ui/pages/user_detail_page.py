@@ -1,8 +1,6 @@
 """User detail page — all settings and activity for a single supervised user."""
 
-import json
 import os
-import subprocess
 
 import gi
 
@@ -10,8 +8,8 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gtk
 
-from big_parental_controls.core.constants import GROUP_HELPER
 from big_parental_controls.daemon_client.client import DaemonClient
+from big_parental_controls.services import age_defaults, age_profile
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.ui.compliance import (
     confirm_delete_data,
@@ -23,30 +21,6 @@ from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
-
-_USER_PROFILES_FILE = "/var/lib/big-parental-controls/user-profiles.json"
-_ECA_RANGES = ["0-12", "13-15", "16-17", "18+"]
-
-
-def _read_age_range(username: str) -> str:
-    try:
-        with open(_USER_PROFILES_FILE) as f:
-            profiles = json.load(f)
-        return profiles.get(username, {}).get("age_range", "18+")
-    except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError):
-        return "18+"
-
-
-def _write_age_range(username: str, age_range: str) -> None:
-    try:
-        subprocess.run(
-            ["pkexec", GROUP_HELPER, "set-age-profile", username, age_range],
-            check=False,
-            timeout=15,
-        )
-    except (subprocess.TimeoutExpired, OSError):
-        pass
-
 
 class UserDetailPage(Gtk.Box):
     """All settings and activity graphs for a single supervised user."""
@@ -158,15 +132,36 @@ class UserDetailPage(Gtk.Box):
         )
         age_row.set_model(age_model)
 
-        current = _read_age_range(self._username)
-        idx = _ECA_RANGES.index(current) if current in _ECA_RANGES else 3
-        age_row.set_selected(idx)
-
-        def _on_age_changed(row: Adw.ComboRow, _pspec: object) -> None:
-            _write_age_range(self._username, _ECA_RANGES[row.get_selected()])
-
-        age_row.connect("notify::selected", _on_age_changed)
+        current = age_profile.read_age_range(self._username)
+        age_row.set_selected(age_profile.ECA_RANGES.index(current))
+        self._age_handler = age_row.connect("notify::selected", self._on_age_changed)
         group.add(age_row)
+
+        if not age_profile.malcontent_available():
+            oars_row = Adw.ActionRow()
+            oars_row.set_title(_("Age ratings in app stores not applied"))
+            oars_row.set_subtitle(
+                _((
+                    "This needs the malcontent service, which is not installed. "
+                    "Time limits, the web filter and app blocking work without it."
+                ))
+            )
+            oars_row.add_prefix(Gtk.Image(icon_name="dialog-information-symbolic"))
+            group.add(oars_row)
+
+        # Current settings -> recommendation for the age group
+        recommend_row = Adw.ActionRow()
+        recommend_row.set_title(_("Use as recommended settings"))
+        recommend_row.set_subtitle(
+            _(
+                "Offer this user's daily limit, allowed hours and web filter "
+                "for new accounts and age changes in the same age group."
+            )
+        )
+        recommend_row.set_activatable(True)
+        recommend_row.add_suffix(Gtk.Image(icon_name="go-next-symbolic"))
+        recommend_row.connect("activated", self._on_use_as_recommended)
+        group.add(recommend_row)
 
         # Delete Activity Data
         delete_row = Adw.ActionRow()
@@ -318,6 +313,120 @@ class UserDetailPage(Gtk.Box):
         )
         group.add(edit_row)
         return group
+
+    def _on_age_changed(self, row: Adw.ComboRow, _pspec: object) -> None:
+        age_range = age_profile.ECA_RANGES[row.get_selected()]
+        entry = age_defaults.load()[age_range]
+        if not entry:
+            self._save_age(row, age_range, {})
+            return
+
+        dialog = Adw.AlertDialog()
+        dialog.set_heading(_("Apply recommended settings?"))
+        dialog.set_body(
+            _("Recommended for this age group:")
+            + "\n\n"
+            + "\n".join(age_defaults.describe(entry))
+            + "\n\n"
+            + _("They replace the current settings of this user.")
+        )
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("age", _("Change Age Only"))
+        dialog.add_response("apply", _("Apply"))
+        dialog.set_response_appearance("apply", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_default_response("apply")
+        dialog.set_close_response("cancel")
+
+        def on_response(_dialog: Adw.AlertDialog, response: str) -> None:
+            if response == "cancel":
+                self._show_stored_age(row)
+            else:
+                self._save_age(row, age_range, entry if response == "apply" else {})
+
+        dialog.connect("response", on_response)
+        dialog.present(self.get_root())
+
+    def _on_use_as_recommended(self, _row: Adw.ActionRow) -> None:
+        age_range = age_profile.read_age_range(self._username)
+        entry, skipped = age_defaults.from_current(self._username, self._uid)
+        lines = age_defaults.describe(age_defaults.resolve_entry(entry))
+        if not lines:
+            self._window.show_toast(_("This user has no limit or filter to recommend."))
+            return
+        body = _("Recommended for this age group:") + "\n\n" + "\n".join(lines)
+        if "schedule" in skipped:
+            body += "\n\n" + _(
+                "Allowed hours are not included: they differ between days or "
+                "have several ranges."
+            )
+        if "dns" in skipped:
+            body += "\n\n" + _(
+                "The web filter is not included: its server address cannot be used "
+                "as a recommendation."
+            )
+        dialog = Adw.AlertDialog()
+        dialog.set_heading(_("Use as recommended settings?"))
+        dialog.set_body(body)
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("save", _("Save"))
+        dialog.set_response_appearance("save", Adw.ResponseAppearance.SUGGESTED)
+        dialog.set_default_response("save")
+        dialog.set_close_response("cancel")
+
+        def on_response(_dialog: Adw.AlertDialog, response: str) -> None:
+            if response != "save":
+                return
+
+            def done(saved: bool) -> None:
+                self._window.show_toast(
+                    _("Recommended settings saved.")
+                    if saved
+                    else _("Could not save the recommended settings.")
+                )
+
+            run_async(
+                lambda: age_defaults.save_local(age_range, entry),
+                done,
+                lambda _exc: done(False),
+            )
+
+        dialog.connect("response", on_response)
+        dialog.present(self.get_root())
+
+    def _show_stored_age(self, row: Adw.ComboRow) -> None:
+        stored = age_profile.read_age_range(self._username)
+        with row.handler_block(self._age_handler):
+            row.set_selected(age_profile.ECA_RANGES.index(stored))
+
+    def _save_age(self, row: Adw.ComboRow, age_range: str, recommended: dict) -> None:
+        row.set_sensitive(False)
+
+        def task() -> tuple[bool, list[str]]:
+            saved = age_profile.write_age_range(self._username, age_range)
+            if not saved:
+                return False, []
+            if age_profile.malcontent_available():
+                from big_parental_controls.services.malcontent_service import (
+                    MalcontentService,
+                )
+
+                age_profile.apply_oars_preset(MalcontentService(), self._uid, age_range)
+            failed = age_defaults.apply(self._username, self._uid, recommended)
+            return True, failed
+
+        def done(result: tuple[bool, list[str]]) -> None:
+            saved, failed = result
+            row.set_sensitive(True)
+            if not saved:
+                # Show the stored value again (e.g. password dialog cancelled).
+                self._show_stored_age(row)
+                self._window.show_toast(_("Could not save the age group."))
+            elif failed:
+                self._window.show_toast(_("Some recommended settings could not be applied."))
+            elif recommended:
+                self._window.show_toast(_("Recommended settings applied."))
+
+        run_async(task, done, lambda _exc: done((False, [])))
 
     def _build_app_filter_block(self) -> Adw.PreferencesGroup:
         """App access control — link to full editor."""
