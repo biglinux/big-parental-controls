@@ -1,33 +1,20 @@
 """Users page — manage supervised accounts."""
 
-import subprocess
 import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, GLib, Gtk
 
-from big_parental_controls.core.constants import GROUP_HELPER
+from big_parental_controls.services import age_defaults, age_profile
 from big_parental_controls.services.accounts_service import AccountsServiceWrapper
 from big_parental_controls.services import acl_service
-from big_parental_controls.services.malcontent_service import MalcontentService, OARS_PRESETS
+from big_parental_controls.services.malcontent_service import MalcontentService
 from big_parental_controls.services import time_service
 from big_parental_controls.utils.async_runner import run_async
 from big_parental_controls.utils.i18n import setup_i18n
 
 _ = setup_i18n()
-
-
-def _save_user_age_profile(username: str, age_range: str) -> None:
-    """Persist ECA Digital age range via group-helper (requires root)."""
-    try:
-        subprocess.run(
-            ["pkexec", GROUP_HELPER, "set-age-profile", username, age_range],
-            check=False,
-            timeout=15,
-        )
-    except (subprocess.TimeoutExpired, OSError):
-        pass
 
 
 class UsersPage(Gtk.Box):
@@ -163,6 +150,21 @@ class UsersPage(Gtk.Box):
         age_row.set_model(age_model)
         group.add(age_row)
 
+        # Recommended settings of the selected age range (age-defaults.json)
+        defaults = age_defaults.load()
+        defaults_row = Adw.SwitchRow()
+        defaults_row.set_title(_("Apply recommended settings"))
+        defaults_row.set_active(True)
+        group.add(defaults_row)
+
+        def _on_age_selected(*_args: object) -> None:
+            entry = defaults[age_profile.ECA_RANGES[age_row.get_selected()]]
+            defaults_row.set_visible(bool(entry))
+            defaults_row.set_subtitle(" · ".join(age_defaults.describe(entry)))
+
+        age_row.connect("notify::selected", _on_age_selected)
+        _on_age_selected()
+
         content.append(group)
         dialog.set_extra_child(content)
 
@@ -217,6 +219,7 @@ class UsersPage(Gtk.Box):
             password_row,
             confirm_row,
             age_row,
+            defaults_row,
         )
         dialog.present(self.get_root())
 
@@ -229,6 +232,7 @@ class UsersPage(Gtk.Box):
         password_row: Adw.PasswordEntryRow,
         confirm_row: Adw.PasswordEntryRow,
         age_row: Adw.ComboRow,
+        defaults_row: Adw.SwitchRow,
     ) -> None:
         if response != "create":
             return
@@ -241,42 +245,43 @@ class UsersPage(Gtk.Box):
             self._show_error(_("Username and password are required."))
             return
 
-        # ECA Digital age ranges: 0-12, 13-15, 16-17, 18+
-        eca_ranges = ["0-12", "13-15", "16-17", "18+"]
-        # Map ECA range to malcontent OARS preset
-        oars_map = {"0-12": "child", "13-15": "preteen", "16-17": "teen", "18+": "young-adult"}
-        age_range = eca_ranges[age_row.get_selected()]
-        age_group = oars_map[age_range]
+        age_range = age_profile.ECA_RANGES[age_row.get_selected()]
+        recommended = (
+            age_defaults.load()[age_range]
+            if defaults_row.get_visible() and defaults_row.get_active()
+            else {}
+        )
 
         loading = self._show_loading_overlay(_("Creating user %s…") % username)
         self._add_btn.set_sensitive(False)
 
-        def do_create() -> str:
+        def do_create() -> tuple[str, list[str]]:
             user = self._accounts.create_supervised_user(username, fullname, password)
             if user is None:
                 raise RuntimeError(_("Failed to create user."))
 
-            if self._malcontent and age_group in OARS_PRESETS:
-                try:
-                    self._malcontent.set_app_filter(
-                        user.get_uid(),
-                        oars_values=OARS_PRESETS[age_group],
-                    )
-                except Exception:  # noqa: BLE001 — malcontent D-Bus is optional
-                    pass
-            _save_user_age_profile(user.get_user_name(), age_range)
-            return username
+            if self._malcontent and age_profile.malcontent_available():
+                age_profile.apply_oars_preset(self._malcontent, user.get_uid(), age_range)
+            age_profile.write_age_range(user.get_user_name(), age_range)
+            failed = []
+            if recommended:
+                failed = age_defaults.apply(user.get_user_name(), user.get_uid(), recommended)
+            return username, failed
 
-        def on_done(result: str) -> None:
+        def on_done(result: tuple[str, list[str]]) -> None:
             self._hide_loading_overlay(loading)
             self._add_btn.set_sensitive(True)
+            created, failed = result
+            message = _("User %s created.") % created
+            if failed:
+                message += " " + _("Some recommended settings could not be applied.")
             window = self.get_root()
             if hasattr(window, "refresh_main_and_pop"):
                 window.refresh_main_and_pop()
-                window.show_toast(_("User %s created.") % result)
+                window.show_toast(message)
             else:
                 self._refresh_users()
-                self._show_success(_("User %s created.") % result)
+                self._show_success(message)
 
         def on_error(exc: Exception) -> None:
             self._hide_loading_overlay(loading)
